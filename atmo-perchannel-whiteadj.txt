@@ -1,0 +1,55 @@
+
+short hack description to setup - a primitive White Adjustment for 
+each hardware channel.
+
+first load "atmo_ch.reg" into the registry.
+
+now open the registry at:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\AtmoWinX
+
+the key "UsePerChWhiteAdj" is for enable / disable the feature
+1: means enabled
+0: means disables
+
+this option shouldn't be mixed with the normal software white adjustment (I  think)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\AtmoWinX\WhiteAdjPerChannel]
+contains the white adjustment values for each channel
+
+"count" defines the number of channels which should be read by the software
+for classic ATMO its 5.
+for MultiAtmo the number is [AtmoControllerCount] * 4
+
+channel numbers and mapping to classic atmo device
+
+Channel
+ 0: Summenkanal (eher selten verwendet)
+ 1: Linker Kanal    
+ 2: Rechter Kanal
+ 3: Oberer Kanal
+ 4: Unterer Kanal
+
+for quattro atmo gilt folgendes
+
+Channel
+ 0: Atmo 0: Linker Kanal
+ 1: Atmo 0: Rechter Kanal
+ 2: Atmo 0: Oberer Kanal
+ 3: Atmo 0: Unterer Kanal
+
+ 4: Atmo 1: Linker Kanal
+ 5: Atmo 1: Rechter Kanal
+ 6: Atmo 1: Oberer Kanal
+ 7: Atmo 1: Unterer Kanal
+
+ 8: Atmo 2: Linker Kanal
+ 9: Atmo 2: Rechter Kanal
+10: Atmo 2: Oberer Kanal
+11: Atmo 2: Unterer Kanal
+
+12: Atmo 3: Linker Kanal
+13: Atmo 3: Rechter Kanal
+14: Atmo 3: Oberer Kanal
+15: Atmo 3: Unterer Kanal
+

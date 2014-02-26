@@ -1,0 +1,3 @@
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Sourcemein\Test Projekte\Net\AtmoWin\atmolight v1.9.1.9\Interop.AtmoWinRemoteControl\bin\Release\AtmoWinRemoteControl.dll
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Sourcemein\Test Projekte\Net\AtmoWin\atmolight v1.9.1.9\Interop.AtmoWinRemoteControl\obj\Release\AtmoWinRemoteControl.csprojResolveAssemblyReference.cache
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Sourcemein\Test Projekte\Net\AtmoWin\atmolight v1.9.1.9\Interop.AtmoWinRemoteControl\obj\Release\AtmoWinRemoteControl.dll

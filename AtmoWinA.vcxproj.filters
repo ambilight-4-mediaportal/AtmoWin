@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Quelldateien\basics">
+      <UniqueIdentifier>{0018ab19-458f-455d-aa3d-4ca92b3e71de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dialogs">
+      <UniqueIdentifier>{071adc09-88d0-43a4-b74d-8f2c206da6a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\pixelsources">
+      <UniqueIdentifier>{aea839f1-18cb-495a-a445-e107e1b7988a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\effects">
+      <UniqueIdentifier>{abd67fe9-782b-406f-9dbb-1238f05b9640}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\settings">
+      <UniqueIdentifier>{c9dbe22e-30b9-47ff-a295-d9053e03245b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\devices">
+      <UniqueIdentifier>{ce39401f-3426-4ea6-a7ec-f236f06e5c5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\devices">
+      <UniqueIdentifier>{7ff3e89d-66a4-413a-866a-562c1490c7f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\basics">
+      <UniqueIdentifier>{2449eb5d-7a6c-4e14-9baa-5c9d2f02601f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\dialogs">
+      <UniqueIdentifier>{e61a2c55-8cdf-4e56-8690-da92aa83eeba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\pixelsources">
+      <UniqueIdentifier>{cc98b184-e38c-4859-94d3-782eeb52445a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\effects">
+      <UniqueIdentifier>{f1f15b97-c8c3-4a54-a227-3ac8a3ff56f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\settings">
+      <UniqueIdentifier>{b8b3f07d-99ec-40cc-a911-dbd9bad2415b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien\Quelldateien">
+      <UniqueIdentifier>{88ffdced-9b9e-4f8b-aa1e-56796636add4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AtmoRes.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoTools.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoWin_i.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoWinA.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoWinTrayIconHandler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="DmxTools.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoRegistry.cpp">
+      <Filter>Quelldateien\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoThread.cpp">
+      <Filter>Quelldateien\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicDialog.cpp">
+      <Filter>Quelldateien\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicWindow.cpp">
+      <Filter>Quelldateien\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoClassicConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoColorPicker.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoCustomColorPicker.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoEditChannelAssignment.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoGradients.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoMultiConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoSettingsDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoWhiteAdjHW.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoWhiteSetup.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="DmxConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="FnordlichtConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoMoConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoCalculations.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoExternalCaptureInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoGdiDisplayCaptureInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoBasicEffect.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoColorChanger.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoLeftRightColorChanger.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoLiveView.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoLiveViewControlImpl.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoOutputFilter.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoPacketQueue.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoPacketQueueStatus.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoRemoteControlImplEx.cpp">
+      <Filter>Quelldateien\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoChannelAssignment.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoComRegistry.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoConfig.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDisplays.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDynData.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoRegistryConfig.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoZoneDefinition.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoClassicConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDmxSerialConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDummyConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoEntecSerialConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoMultiConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoNulConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="FnordlichtConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="MoMoConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="MondolightConnection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="AtmoWin.idl">
+      <Filter>Quelldateien</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AtmoCtrlMessages.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDefs.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoRes.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoTools.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoWin_h.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoWinA.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoWinTrayIconHandler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="DmxTools.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoClassicConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDmxSerialConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDummyConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoEntecSerialConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoMultiConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoNulConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="FnordlichtConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="MoMoConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="MondolightConnection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoRegistry.h">
+      <Filter>Headerdateien\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoThread.h">
+      <Filter>Headerdateien\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicDialog.h">
+      <Filter>Headerdateien\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicWindow.h">
+      <Filter>Headerdateien\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoClassicConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoColorPicker.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoCustomColorPicker.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoEditChannelAssignment.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoGradients.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoMultiConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoSettingsDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoWhiteAdjHW.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoWhiteSetup.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="DmxConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="FnordlichtConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoMoConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoCalculations.h">
+      <Filter>Headerdateien\pixelsources</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoExternalCaptureInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoGdiDisplayCaptureInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoBasicEffect.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoColorChanger.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoLeftRightColorChanger.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoLiveView.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoLiveViewControlImpl.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoOutputFilter.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoPacketQueue.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoPacketQueueStatus.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoRemoteControlImplEx.h">
+      <Filter>Headerdateien\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoChannelAssignment.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoComRegistry.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoConfig.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="basics\AtmoDisplays.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDisplays.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDynData.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoRegistryConfig.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoZoneDefinition.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AtmoWinA.ico">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="AtmoWinA.tlb">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="icon1.ico">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="small.ico">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="HISTORY.txt" />
+    <None Include="ReadMe.txt" />
+    <None Include="libconfig.h++" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AtmoWinA.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="AtmoWinTlb.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
