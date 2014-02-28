@@ -90,7 +90,8 @@ void CAtmoEditChannelAssignment::RealignComboboxes(int startPos)
     ATMO_BOOL visible;
     POINT topLeft;
     RECT r;
-    if(!m_pZoneBoxes || !m_pChannelNames) return;
+
+		if(!m_pZoneBoxes || !m_pChannelNames) return;
 
     GetWindowRect( getDlgItem(IDC_HW_ZONE_STATIC) , &r);
     topLeft.x = r.left;
@@ -124,7 +125,6 @@ void CAtmoEditChannelAssignment::RealignComboboxes(int startPos)
 
     int y = top;
 
-
     for(int ch=0; ch < m_iChCount ; ch++)
     {
         visible = (ch>=startPos); // general Visible
@@ -136,7 +136,7 @@ void CAtmoEditChannelAssignment::RealignComboboxes(int startPos)
         if(visible) 
         {
             SetWindowPos(m_pZoneBoxes[ch],NULL,comboLeft,y - controlHeight,0,0,SWP_NOREPOSITION | SWP_NOSIZE | SWP_SHOWWINDOW);
-            SetWindowPos(m_pChannelNames[ch],NULL,labelLeft,y - controlHeight,0,0,SWP_NOREPOSITION | SWP_NOSIZE | SWP_SHOWWINDOW);
+            SetWindowPos(m_pChannelNames[ch],NULL,labelLeft,(y - controlHeight) + 4,0,0,SWP_NOREPOSITION | SWP_NOSIZE | SWP_SHOWWINDOW);
         }
         else
         {
@@ -279,7 +279,7 @@ void CAtmoEditChannelAssignment::CleanupListbox() {
 void CAtmoEditChannelAssignment::HandleVertScroll(int code,int position,HWND scrollBarHandle)
 {
  SCROLLINFO ScrollInfo;
-    
+
  if(scrollBarHandle == m_hScrollbox) { // 
     switch(code) {
         // Scroll to top. 
@@ -309,6 +309,8 @@ void CAtmoEditChannelAssignment::HandleVertScroll(int code,int position,HWND scr
             m_ScrollPos++;
             if(m_ScrollPos > m_MaxScrollPos) m_ScrollPos = m_MaxScrollPos;
             SetScrollPos(scrollBarHandle, SB_CTL, m_ScrollPos, true);
+            if(m_ScrollPos < m_MaxScrollPos)
+							RealignComboboxes(m_ScrollPos);
         break;
 
          // Scroll one line up. 
@@ -316,6 +318,8 @@ void CAtmoEditChannelAssignment::HandleVertScroll(int code,int position,HWND scr
             m_ScrollPos--;
             if(m_ScrollPos < 0) m_ScrollPos = 0;
             SetScrollPos(scrollBarHandle, SB_CTL, m_ScrollPos, true);
+            if(m_ScrollPos > 0)
+							RealignComboboxes(m_ScrollPos);
         break;
 
         // Scroll one page down. 
@@ -349,12 +353,14 @@ void CAtmoEditChannelAssignment::HandleVertScroll(int code,int position,HWND scr
 ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int wmEvent) {
     HWND ctrl;
 
-    switch(wmId) {
+    switch(wmId) 
+		{
        case NULL:
        {
            if(m_pZoneBoxes && (wmEvent == CBN_SELCHANGE))
            {
-               for(int i=0; i<m_iChCount; i++) {
+               for(int i=0; i<m_iChCount; i++) 
+							 {
                    if(m_pZoneBoxes[i] == hControl)
                    {
                         ctrl = getDlgItem(IDC_BU_MODIFY);
@@ -364,7 +370,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
                         EnableWindow(ctrl, ATMO_TRUE);
 
                         int selIndex = ListBox_GetCurSel(getDlgItem(IDC_LST_MAPPINGS));
-                        if(selIndex >= 0) {
+                        if(selIndex >= 0) 
+												{
                             CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(getDlgItem(IDC_LST_MAPPINGS), selIndex);
                             ctrl = getDlgItem(IDC_BU_MODIFY);
                             EnableWindow(ctrl, (ca->system == ATMO_FALSE));
@@ -376,19 +383,22 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
            break;
        }
 
-       case IDCANCEL: {
+       case IDCANCEL: 
+				 {
             CleanupListbox();
             EndDialog(this->m_hDialog, wmId);
             break;
        }
 
-       case IDOK: {
+       case IDOK: 
+				 {
             // Ok. Copy Values to Config Object!
             CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
             pAtmoConfig->clearAllChannelMappings();
             HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
             int c = ListBox_GetCount(listBox);
-            for(int i=0;i<c;i++) {
+            for(int i=0;i<c;i++) 
+						{
                 CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, i);
                 pAtmoConfig->AddChannelAssignment(ca);
             }
@@ -396,8 +406,10 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
             break;
        }
 
-       case IDC_LST_MAPPINGS: {
-            if(wmEvent == LBN_SELCHANGE) {
+       case IDC_LST_MAPPINGS: 
+				 {
+            if(wmEvent == LBN_SELCHANGE) 
+						{
                int selIndex = ListBox_GetCurSel(hControl);
                if(selIndex >= 0) 
                   EditAssignment( (CAtmoChannelAssignment *)ListBox_GetItemData(hControl, selIndex) );
@@ -406,9 +418,11 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
         }
 
        case IDC_EDT_NAME: {
-            if(wmEvent == EN_CHANGE) {
+            if(wmEvent == EN_CHANGE) 
+						{
                char buffer[64];
-               if(Edit_GetText(hControl,buffer,sizeof(buffer))>0) {
+               if(Edit_GetText(hControl,buffer,sizeof(buffer))>0) 
+							 {
 
                   ctrl = getDlgItem(IDC_BU_MODIFY);
                   EnableWindow(ctrl, ATMO_TRUE);
@@ -422,7 +436,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
                      ctrl = getDlgItem(IDC_BU_MODIFY);
                      EnableWindow(ctrl, (ca->system == ATMO_FALSE));
                   }
-               } else {
+               } else 
+							 {
                   ctrl = getDlgItem(IDC_BU_MODIFY);
                   EnableWindow(ctrl, ATMO_FALSE);
 
@@ -435,9 +450,11 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
        case IDC_BU_ADD: {
             HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
-            if(ListBox_GetCount(listBox)>=10) {
+            if(ListBox_GetCount(listBox)>=10) 
+						{
                 MessageBox(this->m_hDialog,"Sorry maximal 10 Settings möglich.","Hinweis",MB_ICONINFORMATION | MB_OK);
-            } else {
+            } else 
+						{
                 CAtmoChannelAssignment *ca = new CAtmoChannelAssignment();
 
                 SaveAssignment(ca);
@@ -449,12 +466,14 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
             break;
        }
 
-       case IDC_BU_MODIFY: {
+       case IDC_BU_MODIFY: 
+				 {
             HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
             int listIndex = ListBox_GetCurSel(listBox);
 			if (listIndex < 0) listIndex = 0; // [TF] bugfix for no selection
             CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
-            if((ca!=NULL) && (ca->system == ATMO_FALSE)) {
+            if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
+						{
 
                 SaveAssignment(ca);
 
@@ -466,11 +485,13 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
            break;
        }
 
-       case IDC_BU_DELETE: {
+       case IDC_BU_DELETE: 
+				 {
             HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
             int listIndex = ListBox_GetCurSel(listBox);
             CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
-            if((ca!=NULL) && (ca->system == ATMO_FALSE)) {
+            if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
+						{
                 delete ca;
                 ListBox_DeleteString(listBox, listIndex);
                 ListBox_SetCurSel(listBox, 0);
@@ -481,8 +502,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
             }
             break;
-      }
-
+				 }
       default:
           return ATMO_FALSE;
     }

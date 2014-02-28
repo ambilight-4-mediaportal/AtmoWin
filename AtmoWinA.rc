@@ -15,7 +15,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Deutsch (Deutschland) resources
+// German (Germany) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
@@ -161,7 +161,7 @@ BEGIN
     LTEXT           "blue",IDC_STATIC,9,63,14,8
 END
 
-IDD_WHITEADJ DIALOGEX 0, 0, 611, 259
+IDD_WHITEADJ DIALOGEX 0, 0, 468, 259
 STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Colorpicker"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
@@ -252,7 +252,7 @@ BEGIN
     CONTROL         "active",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_DISABLED | WS_TABSTOP,474,21,100,8
     LTEXT           "5%",IDC_STATIC,490,39,18,9
     PUSHBUTTON      "reset all",IDC_BUTTON1,397,231,43,16,BS_NOTIFY | NOT WS_VISIBLE
-    PUSHBUTTON      "reset to default value",IDC_BUTTON4,331,202,269,25
+    PUSHBUTTON      "reset to default value",IDC_BUTTON4,331,202,134,25
     CONTROL         "View Color",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,346,234,50,10
     LTEXT           "red",IDC_STATIC,517,28,12,8
     LTEXT           "green",IDC_STATIC,544,28,20,8
@@ -334,22 +334,22 @@ BEGIN
     GROUPBOX        "Globale Helligkeit (Globaler Kontrast;-) ",IDC_STATIC,0,129,309,38
 END
 
-IDD_CHANNELASSIGNMENT DIALOGEX 0, 0, 388, 194
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_CHANNELASSIGNMENT DIALOGEX 0, 0, 421, 213
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU
 CAPTION "Channel assignment"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LISTBOX         IDC_LST_MAPPINGS,2,12,114,177,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    EDITTEXT        IDC_EDT_NAME,120,12,144,14,ES_AUTOHSCROLL
-    SCROLLBAR       IDC_SCROLL,265,41,10,148,SBS_VERT
-    PUSHBUTTON      "delete mapping",IDC_BU_DELETE,280,115,104,14,WS_DISABLED
-    PUSHBUTTON      "edit mapping",IDC_BU_MODIFY,280,130,104,14,WS_DISABLED
-    PUSHBUTTON      "Mapping hinzufügen",IDC_BU_ADD,280,145,104,14,WS_DISABLED
-    PUSHBUTTON      "cancel",IDCANCEL,280,160,104,14
-    DEFPUSHBUTTON   "OK",IDOK,280,175,104,14
+    LISTBOX         IDC_LST_MAPPINGS,2,46,114,163,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDT_NAME,120,12,174,14,ES_AUTOHSCROLL
+    SCROLLBAR       IDC_SCROLL,285,46,10,163,SBS_VERT
+    PUSHBUTTON      "delete mapping",IDC_BU_DELETE,313,115,104,14,WS_DISABLED
+    PUSHBUTTON      "edit mapping",IDC_BU_MODIFY,313,130,104,14,WS_DISABLED
+    PUSHBUTTON      "Mapping hinzufügen",IDC_BU_ADD,313,145,104,14,WS_DISABLED
+    PUSHBUTTON      "cancel",IDCANCEL,313,160,104,14
+    DEFPUSHBUTTON   "OK",IDOK,313,195,104,14
     LTEXT           "Mappings",IDC_STATIC,1,1,31,8
     LTEXT           "Hardware Channel",IDC_HW_CHANNEL_STATIC,120,29,60,8
-    LTEXT           "Zone number",IDC_HW_ZONE_STATIC,188,29,43,8
+    LTEXT           "Zone number",IDC_HW_ZONE_STATIC,205,29,43,8
     LTEXT           "Name of mapping",IDC_STATIC,120,1,56,8
 END
 
@@ -525,9 +525,8 @@ BEGIN
     IDD_CHANNELASSIGNMENT, DIALOG
     BEGIN
         LEFTMARGIN, 2
-        RIGHTMARGIN, 384
+        RIGHTMARGIN, 417
         TOPMARGIN, 2
-        BOTTOMMARGIN, 189
     END
 
     IDD_CFG_ATMO_DLG, DIALOG
@@ -583,6 +582,52 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "AtmoWinA.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,2
+ PRODUCTVERSION 1,0,0,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040704b0"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.2"
+            VALUE "InternalName", "AtmoWinA.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2014"
+            VALUE "OriginalFilename", "AtmoWinA.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.2"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x407, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
@@ -609,7 +654,7 @@ BEGIN
     IDS_EFFECT_COLOR_MODE   "ColorMode"
 END
 
-#endif    // Deutsch (Deutschland) resources
+#endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

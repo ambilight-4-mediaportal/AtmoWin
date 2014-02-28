@@ -22,6 +22,9 @@
 #include "AtmoComRegistry.h"
 #include "AtmoRes.h"
 #include <string>
+#include <Commctrl.h>
+
+#pragma comment (lib, "Comctl32.lib")
 
 
 int RegistryKeyExists(HKEY mykey, char *path) {
@@ -45,15 +48,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
     TIMECAPS tc;
     UINT wTimerRes;
 
-
-
-	 HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
+	  HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
      bool gefunden=FALSE;
      if(GetLastError() == ERROR_ALREADY_EXISTS) gefunden = TRUE;
 
 if (!gefunden)	
 {
 
+	  InitCommonControls();
 
     if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
     {

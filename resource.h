@@ -36,6 +36,8 @@
 #define IDD_CFG_MOMO_DLG                142
 #define IDD_GRADIENTS                   143
 #define IDD_CFG_FNORDL_DLG              144
+#define IDR_RT_MANIFEST1                144
+#define IDR_RT_MANIFEST2                145
 #define IDC_COMPORT                     1001
 #define IDC_EFFECTS                     1002
 #define IDC_BAUDRATE                    1002
@@ -232,7 +234,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        144
+#define _APS_NEXT_RESOURCE_VALUE        146
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1205
 #define _APS_NEXT_SYMED_VALUE           110

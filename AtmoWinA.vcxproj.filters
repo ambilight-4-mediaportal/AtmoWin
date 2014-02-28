@@ -423,4 +423,7 @@
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="AtmoWinA.exe.manifest" />
+  </ItemGroup>
 </Project>
