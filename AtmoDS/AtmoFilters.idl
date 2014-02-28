@@ -1,0 +1,19 @@
+[
+    uuid(45DBF429-2EFC-32c0-8354-3C6D2AAD250A),
+    version(1.0)
+]
+library AtmoLightFiltersLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    [
+        uuid(234335BD-A380-30a4-CCD4-3087017BC15A)
+    ]
+    coclass AtmoLightFilter
+    {
+        [default] interface IUnknown;
+    };
+
+};
+
