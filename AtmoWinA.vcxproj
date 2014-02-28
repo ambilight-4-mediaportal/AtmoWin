@@ -93,7 +93,7 @@
       <AdditionalIncludeDirectories>d:\dev\libconfig-1.4.9\Debug\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(VCInstallDir)\PlatformSDK\Lib\ComCtl32.Lib;$(VCInstallDir)\PlatformSDK\Lib\WinMM.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)AtmoWinA.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)AtmoWinA.pdb</ProgramDatabaseFile>
