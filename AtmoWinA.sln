@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AtmoWinA", "AtmoWinA.vcxproj", "{70294792-414F-437A-8275-AD605D54D690}"
 EndProject
 Global
@@ -11,8 +11,8 @@ Global
 		Template|Win32 = Template|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.ActiveCfg = Debug|Win32
-		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.Build.0 = Debug|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.ActiveCfg = Release|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.Build.0 = Release|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Release_16x9|Win32.ActiveCfg = Release_16x9|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Release_16x9|Win32.Build.0 = Release_16x9|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Release|Win32.ActiveCfg = Release|Win32
