@@ -189,7 +189,15 @@ EffectMode CAtmoTools::SwitchEffect(CAtmoDynData *pDynData, EffectMode newEffect
                 }
                 currentPacketQueue = new CAtmoPacketQueue(packetMon);
                 pDynData->setLivePictureSource(lpsScreenCapture);
-                currentInput = new CAtmoGdiDisplayCaptureInput( pDynData );
+								/* FIXME : uncomment this line and add proper code for select the good capture mode. 
+								if (checkbox button or WIN8 detect)
+								{ */
+								currentInput = new CAtmoDesktopDuplicationCaptureInput( pDynData );
+								/*}
+								else 
+                currentInput = new CAtmoGdiDisplayCaptureInput( pDynData );*/
+
+
 #else
                 currentPacketQueue = new CAtmoPacketQueue();
                 pDynData->setLivePictureSource(lpsExtern);
