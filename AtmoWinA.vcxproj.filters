@@ -221,6 +221,9 @@
     </ClCompile>
     <ClCompile Include="libkarate.c">
       <Filter>Quelldateien\devices</Filter>
+    <ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>
+    </ClCompile>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -408,6 +411,9 @@
     </ClInclude>
     <ClInclude Include="libkarate.h">
       <Filter>Headerdateien\devices</Filter>
+    <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>
+    </ClInclude>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

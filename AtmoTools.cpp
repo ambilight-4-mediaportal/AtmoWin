@@ -32,6 +32,7 @@
 #   include "MondolightConnection.h"
 
 #   include "AtmoGdiDisplayCaptureInput.h"
+#   include "AtmoDesktopDuplicationCaptureInput.h"
 #endif
 
 
