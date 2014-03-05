@@ -222,6 +222,9 @@
     <ClCompile Include="libkarate.c">
       <Filter>Quelldateien\devices</Filter>
     </ClCompile>
+    <ClCompile Include="Language.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -408,6 +411,9 @@
     </ClInclude>
     <ClInclude Include="libkarate.h">
       <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="Language.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

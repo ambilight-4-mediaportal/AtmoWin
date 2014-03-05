@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 7.00.0555 */
-/* at Fri Feb 28 19:13:21 2014
+/* at Wed Mar 05 12:45:12 2014
  */
 /* Compiler settings for AtmoWin.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 

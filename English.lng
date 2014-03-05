@@ -1,0 +1,200 @@
+[Menu]
+0=Setting
+1=Language
+2=Mode
+3=no effect
+4=life
+5=static color
+6=color changer
+7=color changer LR
+8=channel assignment
+9=Info
+10=Exit
+
+[ChannelAssignment]
+0=Off
+1=Top 
+2=Right
+3=Bottom
+4=Left
+5=Combined
+6=Delete Mapping
+7=Edit Mapping
+8=Add Mapping
+9=Cancel
+10=Mappings
+11=Hardware Channel
+12=Zone number
+13=Name of mapping
+14=Channel assignment
+
+[SettingsDialog]
+0=no effect
+1=life
+2=static color
+3=color changer
+4=color changer LR
+5=Connected successfully
+6=Configure device 
+7=Combined zone
+8=Change channel assignments
+9=Configure software adjustment
+10=Configure hardware adjustment
+11=Select
+12=Select
+13=Use...
+14=Widescreenmodus
+15=Exit
+16=Effect active:
+17=Static color
+18=Color change
+19=Color change Left/Right
+20=Shutdown color
+21=Steps:
+22=Steps:
+23=Device type:
+24=Zones top:
+25=Zones bottom:
+26=Zones Left/Right:
+27=Live image parameters
+28=No Filter
+29=Combined
+30=Percent
+31=Edge weighting
+32=Brightness
+33=Darkness Limit
+34=Hue windowing
+35=Sat windowing
+36=Zone overlap
+37=Saturation
+38=Sensitivity
+39=Filter length
+40=Filter threshold
+41=Filter smoothness
+42=GDI capure framerate
+43=Filtermode:
+44=source:
+45=zone/ LED setup
+46=White-/ Color Adjustmet
+47=Gradienten...
+48=Interlace rows
+49=name
+50=save
+51=delete
+52=profiles
+53=load
+54=default
+
+[Gradients]
+0=Zone
+1=Combined zone
+2=Edge weighting
+3=File
+4=really overwrite?
+5=Question
+6=file cannot be overwritten.
+7=Error
+8=Gradient loaded ok.
+9=Info
+10=File not found
+11=File size / resolution is wrong!
+12=File is probably no BMP file!
+13=File has not the correct color depth (8-bit, 24-bit)?
+14=Please only BMP drag files onto the surface!
+15=Gradient progressions
+16=Cancel
+17=Zones
+
+[ColorPicker]
+0=Red
+1=Green
+2=Blue
+3=ColorPicker
+4=Cancel
+
+[WhiteSetup]
+0=white
+1=red
+2=green
+3=blue
+4=yellow
+5=magenta
+6=cyan
+7=Cancel
+8=color slider
+9=software gamma adjustment
+10=modus:
+11=active
+12=reset all
+13=reset to default value
+14=View Color
+15=greyscale adjustment
+16=get value from LUT
+17=use 3D-Lut
+18=color/ white adjustment
+19=simple white adjustment
+20=color adjustment
+21=!!! not yet implemented !!!
+22=SEDU calibration mode
+23=invert colors
+24=disabled
+25=Each color individually
+
+[WhiteSetupHW]
+0=Save to controller programming (EEPROM)...
+1=Cancel
+2=Adjusting brightness...
+3=contrast
+4=Red
+5=Green
+6=Blue
+7=Gamma correction
+8=Global contrast
+9=The hardware white balance is possible only with an active connection to the hardware.
+10=Error
+
+[Atmoduinosetup]
+0=cancel
+1=Interface:
+2=Connection...
+3=number of LED's
+4=Speed:
+
+[Dmxsetup]
+0=cancel
+1=Interface:
+2=Connection...
+3=DMX start channels (separator "," or ";")
+4=Number of RGB channels (1..256):
+5=Speed:
+6=Configure simple DMX
+
+[MultiAtmoLightsetup]
+0=Configure Atmo light multi
+1=Cancel
+2=Interface 0
+3=Connection...
+4=Interface 1
+5=Interface 2
+6=Interface 3
+7=Disabled     
+
+[Momosetup]
+0=Configure MoMoLight device
+1=Cancel
+2=Serialport:
+3=Connection...
+4=Device type:
+5=3 - Channels
+6=4 - Channels
+
+[FNordLightsetup]
+0=Configure fnordlight device
+1=Cancel
+2=Serialport:
+3=Connection...
+4=Num Channels:
+5=Number of channels out of range 1..255
+6=Error
+
+

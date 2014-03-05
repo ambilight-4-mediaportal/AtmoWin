@@ -31,4 +31,5 @@ protected:
 public:
     CAtmoEditChannelAssignment(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData);
     virtual ~CAtmoEditChannelAssignment(void);
+
 };
