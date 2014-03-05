@@ -3,11 +3,11 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 7.00.0555 */
-/* at Wed Mar 05 12:45:12 2014
+ /* File created by MIDL compiler version 8.00.0595 */
+/* at Wed Mar 05 15:09:05 2014
  */
 /* Compiler settings for AtmoWin.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -48,36 +48,42 @@
 #ifndef __IAtmoRemoteControl_FWD_DEFINED__
 #define __IAtmoRemoteControl_FWD_DEFINED__
 typedef interface IAtmoRemoteControl IAtmoRemoteControl;
+
 #endif 	/* __IAtmoRemoteControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl2_FWD_DEFINED__
 #define __IAtmoRemoteControl2_FWD_DEFINED__
 typedef interface IAtmoRemoteControl2 IAtmoRemoteControl2;
+
 #endif 	/* __IAtmoRemoteControl2_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoLiveViewControl_FWD_DEFINED__
 #define __IAtmoLiveViewControl_FWD_DEFINED__
 typedef interface IAtmoLiveViewControl IAtmoLiveViewControl;
+
 #endif 	/* __IAtmoLiveViewControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoLiveViewControl_FWD_DEFINED__
 #define __IAtmoLiveViewControl_FWD_DEFINED__
 typedef interface IAtmoLiveViewControl IAtmoLiveViewControl;
+
 #endif 	/* __IAtmoLiveViewControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl_FWD_DEFINED__
 #define __IAtmoRemoteControl_FWD_DEFINED__
 typedef interface IAtmoRemoteControl IAtmoRemoteControl;
+
 #endif 	/* __IAtmoRemoteControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl2_FWD_DEFINED__
 #define __IAtmoRemoteControl2_FWD_DEFINED__
 typedef interface IAtmoRemoteControl2 IAtmoRemoteControl2;
+
 #endif 	/* __IAtmoRemoteControl2_FWD_DEFINED__ */
 
 
@@ -118,18 +124,20 @@ extern "C"{
 
 
 enum ComLiveViewSource
-    {	lvsGDI	= 0,
-	lvsExternal	= 1
+    {
+        lvsGDI	= 0,
+        lvsExternal	= 1
     } ;
 
 enum ComEffectMode
-    {	cemUndefined	= -1,
-	cemDisabled	= 0,
-	cemStaticColor	= 1,
-	cemLivePicture	= 2,
-	cemColorChange	= 3,
-	cemLrColorChange	= 4,
-	cemColorMode	= 5
+    {
+        cemUndefined	= -1,
+        cemDisabled	= 0,
+        cemStaticColor	= 1,
+        cemLivePicture	= 2,
+        cemColorChange	= 3,
+        cemLrColorChange	= 4,
+        cemColorMode	= 5
     } ;
 
 
@@ -173,6 +181,7 @@ EXTERN_C const IID IID_IAtmoRemoteControl;
             /* [in] */ SAFEARRAY * channel_values) = 0;
         
     };
+    
     
 #else 	/* C style interface */
 
@@ -287,6 +296,7 @@ EXTERN_C const IID IID_IAtmoRemoteControl2;
             /* [out] */ int *Height) = 0;
         
     };
+    
     
 #else 	/* C style interface */
 
@@ -416,6 +426,7 @@ EXTERN_C const IID IID_IAtmoLiveViewControl;
             /* [in] */ SAFEARRAY * pixelData) = 0;
         
     };
+    
     
 #else 	/* C style interface */
 
