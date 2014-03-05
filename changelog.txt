@@ -1,0 +1,39 @@
+Version 1.0.0.2
+Add KarateLight device ( cloned from 0.51 )
+Add Visual Styles and changed any in Channel assignment Dialog
+Correct Build with Comctl32.lib error link. 
+hidden not yet implemented Greyscale Setting )not removed in code only Change Window size)
+
+Version 1.0.0.1
+Based on Angie05 rework : alpha 09
+
+Version 1.0.0.0
+
+splitted to each mpei
+
+
+Version 1.1.19014.1
+
+PLEASE Uninstall the AtmoLight plugin version 1.9.0.15 manually with the MPEI!
+There were some bugs regarding folder creation. The unused folders will be deleted while installing the new version!
+
+	- Installer changes: 
+		*MPCoreChanger is now a stand alone plugin to provide better update support for new core.dll files - automatic downloaded/installation will be started if needed!
+		*A shortcut to the installed AtmoWinA.exe will be created on the desktop!
+		*better uninstall handling!
+		*new version system
+
+	- Plugin:
+		*added support for extensions plugin (atmolight configuration inside MP GUI)!
+		*the path to AtmoWinA.exe will be entered automatically inside the MediaPortal.xml file!
+
+Version 1.9.0.15
+
+	Initial release!!
+	- Atmowin versions included: *Atmowin v0.51 original 
+		*Atmowin v0.51 mod by angie05 (supports up to 256 LEDs, modified configuration...see the readme of this mod for more information)
+		*Atmowin v0.50 Atmoduino mod: Mod by RickDB for his Atmoduino - Arduino firmware! see https://bitbucket.org/RickDB/atmowin-atmoduino-mod/wiki/Home
+		*Install location: "C:\program files (x86)\team mediaportal\mediaportal\atmowin\"
+
+	- Atmolight plugin version: 1.9.0.14
+	- includes MPCoreChanger for replacing the installed core.dll
