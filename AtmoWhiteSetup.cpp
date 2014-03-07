@@ -94,7 +94,7 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	// config->getSoftware_gamma_blue();
 	// AtmoGammaCorrect mode = config->getSoftware_gamma_mode();
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);

@@ -67,10 +67,15 @@ void CTrayIconWindow::createWindow()
 	ShowNotifyIcon(ATMO_TRUE);
 	
 	CLanguage *Lng;
-	// GetCurrentDir
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
+	// GetSpecialFolder
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+		if (!Lng->DirectoryExists(Lng->szCurrentDir ))
+	{
+		CreateDirectory(Lng->szCurrentDir, NULL);
+	}
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	this->m_hLanguageSubMenu = CreatePopupMenu();
 
@@ -78,7 +83,11 @@ void CTrayIconWindow::createWindow()
 	void *hSearch;
 	WIN32_FIND_DATA wfd;
 	char szFile[MAX_PATH];
-	hSearch = FindFirstFile("*.lng", &wfd);
+  
+	CString strExtension   = _T("\\*.lng");
+	strcat(Lng->szCurrentDir, strExtension);
+
+	hSearch = FindFirstFile(Lng->szCurrentDir, &wfd);
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	nCurrentLanguage = MENUID_FIRST_LANGUAGE;
@@ -104,6 +113,7 @@ void CTrayIconWindow::createWindow()
 	FindClose(hSearch);
 
 	// Read Buffer from IniFile
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
 	for (int i = 0; i < MAX_MENU_STRINGS; i++)
 	{

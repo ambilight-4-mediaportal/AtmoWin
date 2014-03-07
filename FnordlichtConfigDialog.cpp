@@ -18,7 +18,7 @@ ATMO_BOOL CFnordlichtConfigDialog::InitDialog(WPARAM wParam)
 {
 	CLanguage *Lng;
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);

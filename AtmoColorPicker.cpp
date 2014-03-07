@@ -58,7 +58,7 @@ ATMO_BOOL CAtmoColorPicker::InitDialog(WPARAM wParam)
 
 	UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
