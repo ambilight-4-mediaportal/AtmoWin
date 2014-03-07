@@ -84,6 +84,7 @@
 52=profiles
 53=Charg.
 54=default
+55=Utiliser Win8 API pour remplacer GDI
 
 [Gradients]
 0=Zone
