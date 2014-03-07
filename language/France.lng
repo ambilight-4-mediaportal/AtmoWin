@@ -18,15 +18,15 @@
 3=Bas
 4=Gauche
 5=Combinée
-6=   
-7=   
-8=   
-9=   
-10=  
-11=  
-12=  
-13=
-14=
+6=Suppr. Profil
+7=Edit. Profil
+8=Ajout. Profil
+9=Annuler
+10=Profils
+11=Canaux contrôleur
+12=Num. Zone
+13=Nom du profil
+14=Attribution des canaux
 
 [SettingsDialog]
 0=OFF
@@ -78,7 +78,7 @@
 46=Blanc/Couleur Adjust.
 47=Dégradé
 48=Ligne interlacé
-49=nom
+49=Nom
 50=Enreg.
 51=Suppr.
 52=profiles
@@ -94,7 +94,7 @@
 5=Question
 6=Ne peut être remplacé
 7=Erreur
-8= Dégradé charg. OK
+8=Dégradé charg. OK
 9=Info
 10=Fichier introuvable
 11=Taille fichier / résolution est faux
@@ -114,17 +114,17 @@
 
 [WhiteSetup]
 0=Blanc
-1=rouge
-2=vert
-3=bleu
-4=jaune
-5=magenta
-6=cyan
+1=Rouge
+2=Vert
+3=Bleu
+4=Jaune
+5=Magenta
+6=Cyan
 7=Annuler
 8=curseur couleur
-9=logiciel Gamma Adjust.
-10=mode :
-11=actif
+9=logiciel Adjust. Gamma
+10=Mode:
+11=Actif
 12=Tout Reinit.
 13=Reinit tout par défaut.
 14=Couleur affichée
