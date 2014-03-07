@@ -310,6 +310,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_STATIC10), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[25]));
 	SendMessage(getDlgItem(IDC_STATIC11), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[26]));
 	SendMessage(getDlgItem(IDC_STATIC12), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[27]));
+	SendMessage(getDlgItem(IDC_LIVEMODE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[55]));
 
 	hwndCtrl = getDlgItem(IDC_FILTERMODE);
 	ComboBox_AddString(hwndCtrl, Lng->sSettingText[28]);

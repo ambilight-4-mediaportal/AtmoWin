@@ -75,6 +75,7 @@ char *sTextSettingDialog[MAX_SETTINGSDIALOG_STRINGS] =
 "profiles ",                     //52
 "load",                          //53
 "default",                       //54
+"Enhanced Live view (Windows 8 or higher)", //55
 };
 
 char *sTextMenu[MAX_MENU_STRINGS] = 
