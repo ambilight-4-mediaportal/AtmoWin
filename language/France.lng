@@ -1,0 +1,198 @@
+[Menu]
+ 0=Configuration
+ 1=Langage 
+ 2=Mode
+ 3=OFF
+ 4=Temps réel
+ 5=Couleur unique
+ 6=Changement de couleur
+ 7=Changement de couleur G/D
+ 8=Attribution des canaux
+ 9=Info
+ 10=Quitter 
+ 
+[ChannelAssignment]
+0=OFF
+1=Haut 
+2=Droite
+3=Bas
+4=Gauche
+5=Combinée
+6=Suppr. Profil
+7=Edit. Profil
+8=Ajout. Profil
+9=Annuler
+10=Profils
+11=Canaux contrôleur
+12=Num. Zone
+13=Nom du profil
+14=Attribution des canaux
+
+[SettingsDialog]
+0=OFF
+1=Temps réel
+2=Couleur unique
+3=Changement de couleur
+4=Changement de couleur G/D
+5=Connexion réussi
+6=Configuré périphérique 
+7=Zone Combinée
+8=Config. attribution des canaux
+9=Configurer ajustement logiciel
+10=Configurer ajustement matériel
+11=Sélectionner
+12=Sélectionner
+13=Utiliser...
+14=Bar noire = Leds OFF
+15=Quitter
+16=Effet actif:
+17=Couleur unique
+18=Changement de couleur
+19=Changement de couleur G/D
+20=Couleur à l'extinction
+21=Étapes:
+22=Étapes:
+23=Matériel type:
+24=Zones Haut:
+25=Zones Bas:
+26=Zones Gauche/Droite:
+27=Configuration Temps réel
+28=Aucun filtre
+29=Combiné
+30=Pourcentage
+31=hauteur bords
+32=Luminosité
+33=Lim. obscurité 
+34=Teinte
+35=Saturation ?!?
+36=superpos. zones
+37=Saturation
+38=Sensibilité
+39=réponses du filtre
+40=Seuil du filtre
+41=Lissage du filtre
+42=Capture GDI
+43=Filtre :
+44=source:
+45=zone/Led
+46=Blanc/Couleur Adjust.
+47=Dégradé
+48=Ligne interlacé
+49=Nom
+50=Enreg.
+51=Suppr.
+52=profiles
+53=Charg.
+54=default
+
+[Gradients]
+0=Zone
+1=Zone combinée
+2=hauteur bord
+3=Fichier
+4=vraiment ré-écrire
+5=Question
+6=Ne peut être remplacé
+7=Erreur
+8=Dégradé charg. OK
+9=Info
+10=Fichier introuvable
+11=Taille fichier / résolution est faux
+12=Le fichier n'est peut être pas un fichier BMP !
+13=Fichier n'a peut être pas le bonne résolution (8bit, 24 bit)?
+14=SVP seulement BMP fichier peuvent être comme surface
+15=progression du dégradé
+16=Quitter
+17=Zones
+
+[ColorPicker]
+0=Rouge
+1=Vert
+2=Bleu
+3=ColorPicker
+4=Annuler
+
+[WhiteSetup]
+0=Blanc
+1=Rouge
+2=Vert
+3=Bleu
+4=Jaune
+5=Magenta
+6=Cyan
+7=Annuler
+8=curseur couleur
+9=logiciel Adjust. Gamma
+10=Mode:
+11=Actif
+12=Tout Reinit.
+13=Reinit tout par défaut.
+14=Couleur affichée
+15=Gris adjust.
+16=Récupérer depuis LUT.
+17=utiliser 3D-Lut
+18=Couleur/Blanc adjust.
+19=Blanc simple adjust.
+20=couleurs adjust.
+21=! Non implanté !
+22=Calibrage SEDU 
+23=inverser couleurs
+24=désactivé
+25=Chaque couleur individuelle
+
+[WhiteSetupHW]
+0=Flasher le contrôleur (EEPROM)
+1=Annuler
+2=Ajusté luminosité.
+3=contraste
+4=Rouge
+5=Vert
+6=Bleu
+7=Correction Gamma
+8=contraste global
+9=l'ajustement des blancs par le contrôleur n'est possible qu'avec une connexion.
+10=Erreur
+
+[Atmoduinosetup]
+0=Annuler
+1=Interface:
+2=Connexion...
+3=Nombre de LED
+4=Vitesse : 
+
+[Dmxsetup]
+0=Annuler
+1=Interface : 
+2=Connexion...
+3=DMX, 1er canaux (séparateur "," ou ";")
+4=Nombre de RGB canaux (1..256) :
+5=Vitesse:
+6=Configurer DMX simple
+
+[MultiAtmoLightsetup]
+0=Configuration AtmoLight-multi
+1=Annuler
+2=Interface 0
+3=Connexion...
+4=Interface 1
+5=Interface 2
+6=Interface 3
+7=Désactivé
+
+[Momosetup]
+0=Configuration MomoLight
+1=Annuler
+2=Port série :
+3=Connexion...
+4=Type de contrôleur:
+5=3 - canaux
+6=4 - canaux
+
+[FNordLightsetup]
+0=Configuration Fnordlight 
+1=Annuler
+2=Port série:
+3=Connexion...
+4=Nombre canaux:
+5=Nombre de canaux hors de 1..255
+6=Erreur

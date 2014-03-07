@@ -225,6 +225,9 @@
       <Filter>Quelldateien\pixelsources</Filter>
     </ClCompile>
     </ClCompile>
+    <ClCompile Include="Language.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -414,6 +417,9 @@
     <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
       <Filter>Headerdateien\pixelsources</Filter>
     </ClInclude>
+    </ClInclude>
+    <ClInclude Include="Language.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
