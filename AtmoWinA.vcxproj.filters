@@ -415,11 +415,11 @@
     <ClInclude Include="libkarate.h">
       <Filter>Headerdateien\devices</Filter>
     </ClInclude>
-    <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
-      <Filter>Headerdateien\pixelsources</Filter>
-    </ClInclude>
     <ClInclude Include="Language.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,16 +3,11 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
-
- /* File created by MIDL compiler version 8.00.0595 */
-/* at Fri Mar 07 21:25:36 2014
-=======
  /* File created by MIDL compiler version 7.00.0555 */
-/* at Fri Mar 07 18:14:13 2014
-
+/* at Fri Mar 07 22:36:46 2014
  */
 /* Compiler settings for AtmoWin.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -53,42 +48,36 @@
 #ifndef __IAtmoRemoteControl_FWD_DEFINED__
 #define __IAtmoRemoteControl_FWD_DEFINED__
 typedef interface IAtmoRemoteControl IAtmoRemoteControl;
-
 #endif 	/* __IAtmoRemoteControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl2_FWD_DEFINED__
 #define __IAtmoRemoteControl2_FWD_DEFINED__
 typedef interface IAtmoRemoteControl2 IAtmoRemoteControl2;
-
 #endif 	/* __IAtmoRemoteControl2_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoLiveViewControl_FWD_DEFINED__
 #define __IAtmoLiveViewControl_FWD_DEFINED__
 typedef interface IAtmoLiveViewControl IAtmoLiveViewControl;
-
 #endif 	/* __IAtmoLiveViewControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoLiveViewControl_FWD_DEFINED__
 #define __IAtmoLiveViewControl_FWD_DEFINED__
 typedef interface IAtmoLiveViewControl IAtmoLiveViewControl;
-
 #endif 	/* __IAtmoLiveViewControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl_FWD_DEFINED__
 #define __IAtmoRemoteControl_FWD_DEFINED__
 typedef interface IAtmoRemoteControl IAtmoRemoteControl;
-
 #endif 	/* __IAtmoRemoteControl_FWD_DEFINED__ */
 
 
 #ifndef __IAtmoRemoteControl2_FWD_DEFINED__
 #define __IAtmoRemoteControl2_FWD_DEFINED__
 typedef interface IAtmoRemoteControl2 IAtmoRemoteControl2;
-
 #endif 	/* __IAtmoRemoteControl2_FWD_DEFINED__ */
 
 
@@ -129,20 +118,18 @@ extern "C"{
 
 
 enum ComLiveViewSource
-    {
-        lvsGDI	= 0,
-        lvsExternal	= 1
+    {	lvsGDI	= 0,
+	lvsExternal	= 1
     } ;
 
 enum ComEffectMode
-    {
-        cemUndefined	= -1,
-        cemDisabled	= 0,
-        cemStaticColor	= 1,
-        cemLivePicture	= 2,
-        cemColorChange	= 3,
-        cemLrColorChange	= 4,
-        cemColorMode	= 5
+    {	cemUndefined	= -1,
+	cemDisabled	= 0,
+	cemStaticColor	= 1,
+	cemLivePicture	= 2,
+	cemColorChange	= 3,
+	cemLrColorChange	= 4,
+	cemColorMode	= 5
     } ;
 
 
@@ -187,7 +174,6 @@ EXTERN_C const IID IID_IAtmoRemoteControl;
         
     };
     
-    
 #else 	/* C style interface */
 
     typedef struct IAtmoRemoteControlVtbl
@@ -198,7 +184,7 @@ EXTERN_C const IID IID_IAtmoRemoteControl;
             IAtmoRemoteControl * This,
             /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
+            __RPC__deref_out  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IAtmoRemoteControl * This);
@@ -302,7 +288,6 @@ EXTERN_C const IID IID_IAtmoRemoteControl2;
         
     };
     
-    
 #else 	/* C style interface */
 
     typedef struct IAtmoRemoteControl2Vtbl
@@ -313,7 +298,7 @@ EXTERN_C const IID IID_IAtmoRemoteControl2;
             IAtmoRemoteControl2 * This,
             /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
+            __RPC__deref_out  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IAtmoRemoteControl2 * This);
@@ -432,7 +417,6 @@ EXTERN_C const IID IID_IAtmoLiveViewControl;
         
     };
     
-    
 #else 	/* C style interface */
 
     typedef struct IAtmoLiveViewControlVtbl
@@ -443,7 +427,7 @@ EXTERN_C const IID IID_IAtmoLiveViewControl;
             IAtmoLiveViewControl * This,
             /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
+            __RPC__deref_out  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IAtmoLiveViewControl * This);
