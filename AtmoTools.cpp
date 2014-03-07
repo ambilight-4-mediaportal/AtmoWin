@@ -189,6 +189,7 @@ EffectMode CAtmoTools::SwitchEffect(CAtmoDynData *pDynData, EffectMode newEffect
                 }
                 currentPacketQueue = new CAtmoPacketQueue(packetMon);
                 pDynData->setLivePictureSource(lpsScreenCapture);
+
 				//Atmo liveview option GDi <Win7 / DekstopDuplication >Win8
 				int AtmoSetup_Mode = atmoConfig->getLiveView_Mode();
 				if (AtmoSetup_Mode == 1)

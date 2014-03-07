@@ -221,9 +221,9 @@
     </ClCompile>
     <ClCompile Include="libkarate.c">
       <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
     <ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
       <Filter>Quelldateien\pixelsources</Filter>
-    </ClCompile>
     </ClCompile>
     <ClCompile Include="Language.cpp">
       <Filter>Quelldateien</Filter>
@@ -414,9 +414,9 @@
     </ClInclude>
     <ClInclude Include="libkarate.h">
       <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
     <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
       <Filter>Headerdateien\pixelsources</Filter>
-    </ClInclude>
     </ClInclude>
     <ClInclude Include="Language.h">
       <Filter>Headerdateien</Filter>
