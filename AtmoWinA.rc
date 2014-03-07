@@ -141,6 +141,8 @@ BEGIN
     PUSHBUTTON      "load",IDC_BUTTON5,213,286,49,14
     LTEXT           "default",IDC_STATIC21,280,271,34,8
     COMBOBOX        IDC_COMBO3,319,269,48,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+	CONTROL         "Enhanced Live view (Windows 8 or higher)",IDC_LIVEMODE, //Checkbox Select GDI or DesktropDuplication
+					"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,314,151,10
 END
 
 IDD_COLORPICKER DIALOGEX 0, 0, 331, 113

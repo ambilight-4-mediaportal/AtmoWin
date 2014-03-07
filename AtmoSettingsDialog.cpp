@@ -319,6 +319,9 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	hwndCtrl = getDlgItem(IDC_WIDESCREEN);
 	Button_SetCheck(hwndCtrl, config->getLiveView_WidescreenMode());
+	
+	hwndCtrl = getDlgItem(IDC_LIVEMODE);
+    Button_SetCheck(hwndCtrl, config->getLiveView_Mode());
 
 	SetupSliderControl(IDC_EdgeWeighting,1,100,config->getLiveView_EdgeWeighting(),5);
 	SendMessage(getDlgItem(IDC_EdgeWeighting),TBM_SETPAGESIZE,0,2);
@@ -925,7 +928,17 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				pAtmoConfig->setLiveView_WidescreenMode(0);
 			break;
 		}
-
+		
+	case IDC_LIVEMODE: {
+            CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+			int AtmoSetup_Mode = pAtmoConfig->getLiveView_Mode();
+            if(Button_GetCheck(hControl) == BST_CHECKED)
+               pAtmoConfig->setLiveView_Mode(1);
+            else
+               pAtmoConfig->setLiveView_Mode(0);
+            break;
+        }
+		
 	case IDC_FILTERMODE: 
 		{
 			/// CBN_SELCHANGE

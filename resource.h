@@ -99,6 +99,8 @@
 #define IDC_BrightCorrect               1033
 #define IDC_DarknessLimit               1034
 #define IDC_HueWinSize                  1035
+#define IDC_WIDESCREEN2                 1036
+#define IDC_LIVEMODE                    1036
 #define IDC_SatWinSize                  1037
 #define IDC_TXT_EDGEWEIGHTNING          1038
 #define IDC_TXT_BRIGHTCORRECT           1039

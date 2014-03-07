@@ -151,6 +151,11 @@ class CAtmoConfig {
           playback of letterboxed material on a 16:9 output device
         */
         int m_LiveView_WidescreenMode; // = 0
+		
+		/*
+			Live view mode option (GDI or WINDOWSDESKTOPDUPLICATION)
+		*/
+		int m_LiveView_Mode; // 0 = GDI / 1 = WINDOWSDESKTOPDUPLICATION (>=Windows 8)
 
         // border from source image which should be ignored
         // the values are only used by the Win32 GDI Screen capture
@@ -350,12 +355,11 @@ class CAtmoConfig {
         int getLiveView_DarknessLimit() { return m_LiveView_DarknessLimit; }
         void setLiveView_DarknessLimit(int value) { m_LiveView_DarknessLimit=value; }
 
-   int getLiveView_Saturation() { return m_LiveView_Saturation; }
-   void setLiveView_Saturation(int value) { m_LiveView_Saturation=value; }
+		int getLiveView_Saturation() { return m_LiveView_Saturation; }
+		void setLiveView_Saturation(int value) { m_LiveView_Saturation=value; }
 
-   int getLiveView_Sensitivity() { return m_LiveView_Sensitivity; }
-   void setLiveView_Sensitivity(int value) { m_LiveView_Sensitivity=value; }
-
+		int getLiveView_Sensitivity() { return m_LiveView_Sensitivity; }
+		void setLiveView_Sensitivity(int value) { m_LiveView_Sensitivity=value; }
 
         int getLiveView_HueWinSize() { return m_LiveView_HueWinSize; }
         void setLiveView_HueWinSize(int value) { m_LiveView_HueWinSize=value; }
@@ -363,11 +367,14 @@ class CAtmoConfig {
         int getLiveView_SatWinSize() { return m_LiveView_SatWinSize; }
         void setLiveView_SatWinSize(int value) { m_LiveView_SatWinSize=value; }
 
-     int getLiveView_Overlap() { return m_LiveView_Overlap; }
-     void setLiveView_Overlap(int value) { m_LiveView_Overlap=value; }
+		int getLiveView_Overlap() { return m_LiveView_Overlap; }
+		void setLiveView_Overlap(int value) { m_LiveView_Overlap=value; }
 
         int getLiveView_WidescreenMode() { return m_LiveView_WidescreenMode; }
         void setLiveView_WidescreenMode(int value) { m_LiveView_WidescreenMode=value; }
+		
+		int getLiveView_Mode() { return m_LiveView_Mode; }
+        void setLiveView_Mode(int value) { m_LiveView_Mode=value; }
 
         int getLiveView_HOverscanBorder() { return m_LiveView_HOverscanBorder; }
         void setLiveView_HOverscanBorder(int value) { m_LiveView_HOverscanBorder = value; }

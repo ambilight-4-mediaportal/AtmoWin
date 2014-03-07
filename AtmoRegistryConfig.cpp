@@ -108,6 +108,7 @@ void CAtmoRegistryConfig::SaveSettings(HKEY mykey, std::string profile1) {
     WriteRegistryInt(mykey, newconfigRootKey,"LiveView_SatWinSize",m_LiveView_SatWinSize);
       WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Overlap",m_LiveView_Overlap);
     WriteRegistryInt(mykey, newconfigRootKey,"LiveView_WidescreenMode",m_LiveView_WidescreenMode);
+	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Mode",m_LiveView_Mode);
 //
  WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Saturation",m_LiveView_Saturation);
  WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Sensitivity",m_LiveView_Sensitivity);
@@ -397,7 +398,8 @@ void CAtmoRegistryConfig::LoadSettings(HKEY mykey, std::string profile1)
 	   m_Useinvert          = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_invert",0);
 	
 	m_LiveView_WidescreenMode = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_WidescreenMode",m_LiveView_WidescreenMode);
-
+	m_LiveView_Mode = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_Mode",m_LiveView_Mode);
+	
     m_LiveView_HOverscanBorder  = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_HOverscanBorder",m_LiveView_HOverscanBorder);
     m_LiveView_VOverscanBorder  = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_VOverscanBorder",m_LiveView_VOverscanBorder);
     m_LiveView_DisplayNr        = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_DisplayNr",m_LiveView_DisplayNr);
@@ -701,7 +703,8 @@ void CAtmoRegistryConfig::fastLoadSettings(HKEY mykey, std::string profile1)
 	   m_Useinvert          = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_invert",0);
 	
 	m_LiveView_WidescreenMode = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_WidescreenMode",m_LiveView_WidescreenMode);
-
+	m_LiveView_Mode = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_Mode",m_LiveView_Mode);
+	
     m_LiveView_HOverscanBorder  = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_HOverscanBorder",m_LiveView_HOverscanBorder);
     m_LiveView_VOverscanBorder  = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_VOverscanBorder",m_LiveView_VOverscanBorder);
     m_LiveView_DisplayNr        = ReadRegistryInt(mykey, newconfigRootKey,"LiveView_DisplayNr",m_LiveView_DisplayNr);

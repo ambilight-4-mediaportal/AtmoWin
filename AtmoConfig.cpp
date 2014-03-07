@@ -173,6 +173,7 @@ void CAtmoConfig::LoadDefaults() {
     m_LiveView_SatWinSize     = 3;
 	m_LiveView_Overlap        = 2;
     m_LiveView_WidescreenMode = 0;
+	m_LiveView_Mode		  = 0;
 
     m_LiveView_HOverscanBorder  = 0;
     m_LiveView_VOverscanBorder  = 0;
@@ -297,8 +298,9 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc) {
     this->m_LiveView_DarknessLimit  =  pAtmoConfigSrc->m_LiveView_DarknessLimit;
     this->m_LiveView_HueWinSize     =  pAtmoConfigSrc->m_LiveView_HueWinSize;
     this->m_LiveView_SatWinSize     =  pAtmoConfigSrc->m_LiveView_SatWinSize;
-      this->m_LiveView_Overlap     =  pAtmoConfigSrc->m_LiveView_Overlap;
+    this->m_LiveView_Overlap     =  pAtmoConfigSrc->m_LiveView_Overlap;
     this->m_LiveView_WidescreenMode =  pAtmoConfigSrc->m_LiveView_WidescreenMode;
+	this->m_LiveView_Mode			=  pAtmoConfigSrc->m_LiveView_Mode;
 
     this->m_LiveView_HOverscanBorder  = pAtmoConfigSrc->m_LiveView_HOverscanBorder;
     this->m_LiveView_VOverscanBorder  = pAtmoConfigSrc->m_LiveView_VOverscanBorder;
