@@ -1,5 +1,7 @@
 #pragma once
+
 #include "atlstr.h"
+#include "shlobj.h" 
 
 #define MAX_MENU_STRINGS 11
 extern char *sTextMenu[MAX_MENU_STRINGS];
@@ -60,7 +62,8 @@ public:
   static char szFileINI[MAX_PATH];
   static char szLang[MAX_PATH], szTemp[512], Buffer[1024], szParam[32];	
 
-	char GetCurrentDir();
+	char GetSpecialFolder(int CLSID);
+	bool DirectoryExists(const char* dirName);
 
 	CLanguage(void);
 	virtual ~CLanguage(void);

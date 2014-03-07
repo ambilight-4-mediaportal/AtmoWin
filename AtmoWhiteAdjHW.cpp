@@ -93,7 +93,7 @@ ATMO_BOOL CAtmoWhiteAdjHW::InitDialog(WPARAM wParam)
 	SetupSliderControl(IDC_SL_GAMMA_BLUE,11,35,m_Hardware_gamma_blue,1);
 	SetEditDouble(IDC_EDT_GAMMA_BLUE, (double)m_Hardware_gamma_blue / 10.0);
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);

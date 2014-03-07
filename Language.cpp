@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Language.h"
+#include "shlobj.h" 
 
 char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] = 
 {"Off",                   //0
@@ -237,11 +238,43 @@ CLanguage::~CLanguage(void)
 {
 }
 
-char CLanguage::GetCurrentDir() 
+bool CLanguage::DirectoryExists(const char* dirName) 
 {
-	int i = GetCurrentDirectory(255, (char*)szCurrentDir);
-	if (szCurrentDir[i - 1] == '\\')
-		szCurrentDir[i - 1] = 0;
+	DWORD attribs = ::GetFileAttributesA(dirName);
+	if (attribs == INVALID_FILE_ATTRIBUTES) 
+	{
+		return false;
+	}
+	return (attribs & FILE_ATTRIBUTE_DIRECTORY);
+}
 
-	return szCurrentDir[i];
+
+char CLanguage::GetSpecialFolder(int CLSID) 
+{
+	LPITEMIDLIST  pidl ; 
+	LPMALLOC      pShellMalloc; 
+
+	// SHGetSpecialFolderLocation generates a PIDL. The memory for the PIDL 
+	// is allocated by the shell, and should be freed using the shell 
+	// mallocator COM object. Use SHGetMalloc to retrieve the malloc object 
+	if(SUCCEEDED(SHGetMalloc(&pShellMalloc))) 
+	{ 
+		// if we were able to get the shell malloc object, then 
+		// proceed by fetching the pidl for the windows desktop 
+		if(SUCCEEDED(SHGetSpecialFolderLocation(NULL, 
+			CLSID, &pidl))) 
+		{ 
+			// return is true if success 
+			if(SHGetPathFromIDList(pidl, (char*)szCurrentDir)) 
+			{ 
+				
+				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Language");
+				return *szCurrentDir;
+			} 
+
+			pShellMalloc->Free(pidl); 
+		} 
+
+		pShellMalloc->Release(); 
+	} 
 }
