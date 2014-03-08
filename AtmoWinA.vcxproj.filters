@@ -216,12 +216,6 @@
     <ClCompile Include="MondolightConnection.cpp">
       <Filter>Quelldateien\devices</Filter>
     </ClCompile>
-    <ClCompile Include="KarateConnection.cpp">
-      <Filter>Quelldateien\devices</Filter>
-    </ClCompile>
-    <ClCompile Include="libkarate.c">
-      <Filter>Quelldateien\devices</Filter>
-    </ClCompile>
     <ClCompile Include="Language.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -405,12 +399,6 @@
     </ClInclude>
     <ClInclude Include="AtmoZoneDefinition.h">
       <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
-    <ClInclude Include="KarateConnection.h">
-      <Filter>Headerdateien\devices</Filter>
-    </ClInclude>
-    <ClInclude Include="libkarate.h">
-      <Filter>Headerdateien\devices</Filter>
     </ClInclude>
     <ClInclude Include="Language.h">
       <Filter>Headerdateien</Filter>
