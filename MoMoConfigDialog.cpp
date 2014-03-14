@@ -16,7 +16,7 @@ CMoMoConfigDialog::~CMoMoConfigDialog(void)
 
 ATMO_BOOL CMoMoConfigDialog::InitDialog(WPARAM wParam) 
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
@@ -24,15 +24,9 @@ ATMO_BOOL CMoMoConfigDialog::InitDialog(WPARAM wParam)
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_MOMODLG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("Momosetup", Lng->szParam, sTextMomoDlg[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sMomoDlgText[i] = Lng->Buffer;
-		Lng->sMomoDlgText[i].Replace("\\t", "\t");
-		Lng->sMomoDlgText[i].Replace("\\n", "\n");
-	}  	 
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+	Lng->XMLParse(Lng->szTemp, Lng->sMomoDlgText, "Momosetup");
 
 	m_hCbxComports = getDlgItem(IDC_COMPORT);
 	InitDialog_ComPorts( m_hCbxComports );

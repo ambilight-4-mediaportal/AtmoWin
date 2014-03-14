@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration>
+	<section name="Menu">
+		<setting name="0" value="Einstellungen" />
+		<setting name="1" value="Sprache" />
+		<setting name="2" value="Modus" />
+		<setting name="3" value="Kein Effekt" />
+		<setting name="4" value="Live" />
+		<setting name="5" value="Statische Farben" />
+		<setting name="6" value="Farbwechsel" />
+		<setting name="7" value="Farbwechsel LR" />
+		<setting name="8" value="Kanal Zuordung" />
+		<setting name="9" value="Information" />
+		<setting name="10" value="Beenden" />
+	</section>
+	<section name="ChannelAssignment">
+		<setting name="0" value="Deaktiviert" />
+		<setting name="1" value="Oben" />
+		<setting name="2" value="Rechts" />
+		<setting name="3" value="Unten" />
+		<setting name="4" value="Links" />
+		<setting name="5" value="Summenzone" />
+		<setting name="6" value="Zuordnung löschen" />
+		<setting name="7" value="Zuordnung editieren" />
+		<setting name="8" value="Zuordnung addieren" />
+		<setting name="9" value="Abbrechen" />
+		<setting name="10" value="Zuordnungen" />
+		<setting name="11" value="Hardware Kanal" />
+		<setting name="12" value="Zonen Nummern" />
+		<setting name="13" value="Name der Zuordnung" />
+		<setting name="14" value="Kanal Zuordnung" />
+	</section>
+	<section name="SettingsDialog">
+		<setting name="0" value="Kein Effekt aktiv" />
+		<setting name="1" value="Feste Farbe" />
+		<setting name="2" value="Live Bild" />
+		<setting name="3" value="Farbwechsel" />
+		<setting name="4" value="Farbwechsel LR" />
+		<setting name="5" value="Verbindung hergestellt" />
+		<setting name="6" value="Gerät konfigurieren..." />
+		<setting name="7" value="Summenzone" />
+		<setting name="8" value="Kanalzuordnung bearbeiten" />
+		<setting name="9" value="Softwareabgleich konfigurieren" />
+		<setting name="10" value="Hardwareabgleich konfigurieren" />
+		<setting name="11" value="auswählen" />
+		<setting name="12" value="auswählen" />
+		<setting name="13" value="verwenden..." />
+		<setting name="14" value="Widescreenmodus" />
+		<setting name="15" value="Abbrechen" />
+		<setting name="16" value="Aktiver Effekt:" />
+		<setting name="17" value="Feste Farbe" />
+		<setting name="18" value="Farbwechsel" />
+		<setting name="19" value="Farbwechsel LR" />
+		<setting name="20" value="Farbe beim beenden" />
+		<setting name="21" value="Schritte:" />
+		<setting name="22" value="Schritte:" />
+		<setting name="23" value="Gerätetyp:" />
+		<setting name="24" value="Anzahl Zonen oben:" />
+		<setting name="25" value="Anzahl Zonen unten:" />
+		<setting name="26" value="Anzahl Zonen Links/Rechts:" />
+		<setting name="27" value="Live Bild Parameter..." />
+		<setting name="28" value="KeinFilter" />
+		<setting name="29" value="Kombiniert" />
+		<setting name="30" value="Prozent" />
+		<setting name="31" value="Randmaß" />
+		<setting name="32" value="Helligkeit" />
+		<setting name="33" value="Dunkelheits-Limit" />
+		<setting name="34" value="Fensterton" />
+		<setting name="35" value="Sat Windowing" />
+		<setting name="36" value="Zonen Überlappung" />
+		<setting name="37" value="Sättigung" />
+		<setting name="38" value="Empfindlichkeit" />
+		<setting name="39" value="Filter länge" />
+		<setting name="40" value="Filter Schwelle" />
+		<setting name="41" value="Filter Glätte" />
+		<setting name="42" value="GDI Capt. Framerate" />
+		<setting name="43" value="Filtermodus" />
+		<setting name="44" value="Quelle" />
+		<setting name="45" value="Zone / LED Einstellungen..." />
+		<setting name="46" value="Weissabgleich..." />
+		<setting name="47" value="Farbverläufe" />
+		<setting name="48" value="Interlace Zeilen" />
+		<setting name="49" value="Namen:" />
+		<setting name="50" value="Speichern" />
+		<setting name="51" value="Löschen" />
+		<setting name="52" value="Profile..." />
+		<setting name="53" value="Laden" />
+		<setting name="54" value="Standard:" />
+	</section>
+	<section name="Gradients">
+		<setting name="0" value="Zone" />
+		<setting name="1" value="Summenzone" />
+		<setting name="2" value="Randmaß" />
+		<setting name="3" value="Datei" />
+		<setting name="4" value="wirklich überschreiben?" />
+		<setting name="5" value="Frage" />
+		<setting name="6" value="konnte nicht überschrieben werden." />
+		<setting name="7" value="Fehler" />
+		<setting name="8" value="Farbverlauf geladen ok." />
+		<setting name="9" value="Info" />
+		<setting name="10" value="Datei nicht gefunden?" />
+		<setting name="11" value="Dateigröße / Auflösung stimmt nicht!" />
+		<setting name="12" value="Datei ist vermutlich keine BMP Datei!" />
+		<setting name="13" value="Datei hat nicht die richtige Farbtiefe (8-bit, 24-bit)?" />
+		<setting name="14" value="Bitte nur BMP Dateien auf die Fläche ziehen!" />
+		<setting name="15" value="Gradientverläufe" />
+		<setting name="16" value="Abbrechen" />
+		<setting name="17" value="Zonen" />
+	</section>
+	<section name="ColorPicker">
+		<setting name="0" value="Rot" />
+		<setting name="1" value="Grün" />
+		<setting name="2" value="Blau" />
+		<setting name="3" value="Farbwähler" />
+		<setting name="4" value="Abbrechen" />
+	</section>
+	<section name="WhiteSetup">
+		<setting name="0" value="Weiss" />
+		<setting name="1" value="Rot" />
+		<setting name="2" value="Grün" />
+		<setting name="3" value="Blau" />
+		<setting name="4" value="Gelb" />
+		<setting name="5" value="Magenta" />
+		<setting name="6" value="Türkis" />
+		<setting name="7" value="Abbrechen" />
+		<setting name="8" value="Farbregler" />
+		<setting name="9" value="Software Gamma Anpassung" />
+		<setting name="10" value="Modus:" />
+		<setting name="11" value="Aktiv" />
+		<setting name="12" value="Alles zurücksetzen" />
+		<setting name="13" value="auf Standardwert zurückgesetzt" />
+		<setting name="14" value="Farbe anzeigen" />
+		<setting name="15" value="Graustufen Anpassen" />
+		<setting name="16" value="Wert von LUT einlesen" />
+		<setting name="17" value="3D-LUT verwenden" />
+		<setting name="18" value="Weissabgleich" />
+		<setting name="19" value="einfache weisse Anpassung" />
+		<setting name="20" value="Farbanpassung" />
+		<setting name="21" value="!!! noch nicht implementiert !!!" />
+		<setting name="22" value="SEDU Kalibriermodus" />
+		<setting name="23" value="Farben invertieren" />
+		<setting name="24" value="Deaktiviert" />
+		<setting name="25" value="Je Farbanteil" />
+	</section>
+	<section name="WhiteSetupHW">
+		<setting name="0" value="in Controller speichern..." />
+		<setting name="1" value="Abbrechen" />
+		<setting name="2" value="Einstellhelligkeit..." />
+		<setting name="3" value="Kontrast" />
+		<setting name="4" value="Rot" />
+		<setting name="5" value="Grün" />
+		<setting name="6" value="Blau" />
+		<setting name="7" value="Gamma Korrektur" />
+		<setting name="8" value="Globaler Kontrast" />
+		<setting name="9" value="Der Hardware-Weisabgleich ist nur mit einer aktiven Verbindung zur Hardware möglich." />
+		<setting name="10" value="Fehler" />
+	</section>
+	<section name="Atmoduinosetup">
+		<setting name="0" value="Abbrechen" />
+		<setting name="1" value="Schnittstelle:" />
+		<setting name="2" value="Verbindungs Einstellungen..." />
+		<setting name="3" value="Anzahl der Led's:" />
+		<setting name="4" value="Geschwindigkeit:" />
+	</section>
+	<section name="Dmxsetup">
+		<setting name="0" value="Abbrechen" />
+		<setting name="1" value="Schnittstelle:" />
+		<setting name="2" value="Verbindungs Einstellungen..." />
+		<setting name="3" value="DMX Kanäle Starten(Trennzeichen &quot;,&quot; oder &quot;;&quot;)" />
+		<setting name="4" value="Anzahl der RGB-Kanäle (1..256):" />
+		<setting name="5" value="Geschwindigkeit:" />
+		<setting name="6" value="Simple DMX  konfigurieren" />
+	</section>
+	<section name="MultiAtmoLightsetup">
+		<setting name="0" value="Multi Atmo Light konfigurieren" />
+		<setting name="1" value="Abbrechen" />
+		<setting name="2" value="Schnittstelle 0:" />
+		<setting name="3" value="Verbindung..." />
+		<setting name="4" value="Schnittstelle 1:" />
+		<setting name="5" value="Schnittstelle 2:" />
+		<setting name="6" value="Schnittstelle 3:" />
+		<setting name="7" value="Deaktiviert" />
+	</section>
+	<section name="Momosetup">
+		<setting name="0" value="MoMoLight Gerät konfigurieren" />
+		<setting name="1" value="Abbrechen" />
+		<setting name="2" value="Serialport:" />
+		<setting name="3" value="Verbindung..." />
+		<setting name="4" value="Gerätetyp:" />
+		<setting name="5" value="3 - Kanäle" />
+		<setting name="6" value="4 - Kanäle" />
+	</section>
+	<section name="FNordLichtsetup">
+		<setting name="0" value="Fnordlicht Gerät konfigurieren" />
+		<setting name="1" value="Abbrechen" />
+		<setting name="2" value="Serialport:" />
+		<setting name="3" value="Verbindung..." />
+		<setting name="4" value="Kanal Nummern" />
+		<setting name="5" value="Anzahl der Kanäle wurden überschritten 1..255" />
+		<setting name="6" value="Fehler" />
+	</section>
+</configuration>

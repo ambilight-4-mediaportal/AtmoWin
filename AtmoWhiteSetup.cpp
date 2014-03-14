@@ -40,7 +40,7 @@ CAtmoWhiteSetup::~CAtmoWhiteSetup(void)
 
 ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 	CAtmoCustomColorPicker::InitDialog(wParam);
 
 	CAtmoConfig *config = m_pAtmoDynData->getAtmoConfig();
@@ -100,15 +100,9 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_WHITESETUP_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("WhiteSetup", Lng->szParam, sTextWhiteSetup[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sWhiteSetupText[i] = Lng->Buffer;
-		Lng->sWhiteSetupText[i].Replace("\\t", "\t");
-		Lng->sWhiteSetupText[i].Replace("\\n", "\n");
-	} 
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+  Lng->XMLParse(Lng->szTemp, Lng->sWhiteSetupText, "WhiteSetup"); 
 
 	// order of items must match enum AtmoGammaCorrect!!
 	hwndCtrl = getDlgItem(IDC_SW_GAMMA_MODE);

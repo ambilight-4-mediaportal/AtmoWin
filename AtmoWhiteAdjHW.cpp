@@ -50,7 +50,7 @@ void CAtmoWhiteAdjHW::UpdateHardware()
 ATMO_BOOL CAtmoWhiteAdjHW::InitDialog(WPARAM wParam) 
 {
 	HWND hwndCtrl;
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	hwndCtrl = getDlgItem(IDC_EDT_GLOBALGAMMA);
 	Edit_LimitText(hwndCtrl,3);
@@ -99,15 +99,9 @@ ATMO_BOOL CAtmoWhiteAdjHW::InitDialog(WPARAM wParam)
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_COLORPICKER_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("WhiteSetupHW", Lng->szParam, sTextColorPicker[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sTextCPicker[i] = Lng->Buffer;
-		Lng->sTextCPicker[i].Replace("\\t", "\t");
-		Lng->sTextCPicker[i].Replace("\\n", "\n");
-	} 
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+  Lng->XMLParse(Lng->szTemp, Lng->sTextCPicker, "WhiteSetupHW"); 
 
 	SendMessage(getDlgItem(IDC_SAVE_TO_EEPROM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupHWText[0]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupHWText[1]));
@@ -366,7 +360,7 @@ ATMO_BOOL CAtmoWhiteAdjHW::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 
 ATMO_BOOL CAtmoWhiteAdjHW::Execute(HINSTANCE hInst, HWND parent, CAtmoDynData *pAtmoDynData, ATMO_BOOL &saveLaterToHardware) 
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	// so kann ColorPicker sein aktuellen Farbwert ausgeben - ohne etwas zu stören...
 	CAtmoConnection *pAtmoConnection = pAtmoDynData->getAtmoConnection();

@@ -39,7 +39,7 @@ ATMO_BOOL CAtmoClassicConfigDialog::InitDialog(WPARAM wParam)
 	sprintf(buf, "%d", m_pConfig->getAtmoClLeds());
 	Edit_SetText(control, buf);
 
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
   Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
@@ -47,15 +47,9 @@ ATMO_BOOL CAtmoClassicConfigDialog::InitDialog(WPARAM wParam)
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_ATMODLG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("Atmoduinosetup", Lng->szParam, sTextAtmoDlg[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sAtmoDlgText[i] = Lng->Buffer;
-		Lng->sAtmoDlgText[i].Replace("\\t", "\t");
-		Lng->sAtmoDlgText[i].Replace("\\n", "\n");
-	}  	    
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	
+	Lng->XMLParse(Lng->szTemp, Lng->sAtmoDlgText, "Atmoduinosetup");
 
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sAtmoDlgText[0]));
 	SendMessage(getDlgItem(IDC_STATIC58), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sAtmoDlgText[1]));

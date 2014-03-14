@@ -594,8 +594,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,3
- PRODUCTVERSION 1,0,0,3
+ FILEVERSION 1,0,0,4
+ PRODUCTVERSION 1,0,0,4
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -612,12 +612,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Privat"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.3"
+            VALUE "FileVersion", "1.0.0.4"
             VALUE "InternalName", "AtmoWinA.exe"
             VALUE "LegalCopyright", "Copyright (C) 2014"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.3"
+            VALUE "ProductVersion", "1.0.0.4"
         END
     END
     BLOCK "VarFileInfo"
@@ -625,36 +625,7 @@ BEGIN
         VALUE "Translation", 0x407, 1200
     END
 END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
-
-STRINGTABLE
-BEGIN
-    IDS_APP_TITLE           "AtmoWinX"
-    IDS_SETTINGS            "&settings"
-    IDS_MODUS               "mode"
-    IDS_EFFECT_NONE         "no effect"
-    IDS_EFFECT_LIVE         "Live"
-    IDS_EFFECT_STAT_COLOR   "static color"
-    IDC_ATMOWINA            "AtmoSetupDialog"
-    IDS_EFFECT_COLOR_CHANGE "color changer"
-    IDS_EFFECT_COLOR_CHLR   "color changer LR"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_INFO                "Info"
-    IDS_QUIT                "exit"
-    IDS_CHANNELASSIGN       "channel assignment"
-    IDS_DISPLAY_SETCHANGED  "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen."
-    IDS_HINT                "hint"
-    IDS_EFFECT_COLOR_MODE   "ColorMode"
-END
-
+*/
 #endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
 

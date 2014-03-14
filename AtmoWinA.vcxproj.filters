@@ -219,6 +219,18 @@
     <ClCompile Include="Language.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -403,6 +415,12 @@
     <ClInclude Include="Language.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="AtmoWinA.ico">
@@ -417,9 +435,6 @@
     <None Include="small.ico">
       <Filter>Ressourcendateien</Filter>
     </None>
-    <None Include="HISTORY.txt" />
-    <None Include="ReadMe.txt" />
-    <None Include="libconfig.h++" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AtmoWinA.rc">

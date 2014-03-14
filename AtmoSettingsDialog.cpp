@@ -11,21 +11,20 @@
 #include "windowsx.h"
 #include "Winreg.h"
 
-#include "atmosettingsdialog.h"
+#include "Atmosettingsdialog.h"
 #include "AtmoConfig.h"
 #include "AtmoThread.h"
 #include "AtmoDisplays.h"
-
 #include "AtmoConnection.h"
-
 #include "AtmoTools.h"
 #include "AtmoColorPicker.h"
 #include "AtmoWhiteSetup.h"
 #include "AtmoWhiteAdjHW.h"
 #include "AtmoEditChannelAssignment.h"
 #include "AtmoGradients.h"
-#include <string>
 #include "AtmoRegistryConfig.h"
+
+#include <string>
 #include <strsafe.h>
 
 #include "Resource.h"
@@ -171,6 +170,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 	return ATMO_TRUE;
 }
 
+
 ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam) 
 {
 	CAtmoConfig *config = m_pDynData->getAtmoConfig();
@@ -189,24 +189,18 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	else
 		ComboBox_SetCurSel(m_hCbxDevicetypes, (int)-1);
 
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
-  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_SETTINGSDIALOG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("SettingsDialog", Lng->szParam, sTextSettingDialog[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sSettingText[i] = Lng->Buffer;
-		Lng->sSettingText[i].Replace("\\t", "\t");
-		Lng->sSettingText[i].Replace("\\n", "\n");
-	}      	
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
+	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
+	
 	m_hCbxEffects = getDlgItem(IDC_EFFECTS);
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[0] );
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[1] );

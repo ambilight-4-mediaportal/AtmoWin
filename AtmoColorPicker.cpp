@@ -28,7 +28,7 @@ CAtmoColorPicker::CAtmoColorPicker(HINSTANCE hInst, HWND parent, CAtmoDynData *p
 
 ATMO_BOOL CAtmoColorPicker::InitDialog(WPARAM wParam) 
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	HWND hwndCtrl;
 	hwndCtrl = this->getDlgItem(IDC_EDT_RED);
@@ -64,15 +64,9 @@ ATMO_BOOL CAtmoColorPicker::InitDialog(WPARAM wParam)
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_COLORPICKER_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("ColorPicker", Lng->szParam, sTextColorPicker[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sTextCPicker[i] = Lng->Buffer;
-		Lng->sTextCPicker[i].Replace("\\t", "\t");
-		Lng->sTextCPicker[i].Replace("\\n", "\n");
-	} 
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+	Lng->XMLParse(Lng->szTemp, Lng->sTextCPicker, "ColorPicker");
 
 	SendMessage(getDlgItem(IDC_STATIC22), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sTextCPicker[0]));
 	SendMessage(getDlgItem(IDC_STATIC23), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sTextCPicker[1]));
