@@ -125,6 +125,7 @@ void CTrayIconWindow::createWindow()
 	else
 	{
 		Lng->CreateDefaultXML(Lng->szTemp, sSection);
+		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
 	}
 
 	this->m_hTrayIconPopupMenu = CreatePopupMenu();

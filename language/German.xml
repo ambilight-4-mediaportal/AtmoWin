@@ -4,8 +4,8 @@
 		<setting name="0" value="Einstellungen" />
 		<setting name="1" value="Sprache" />
 		<setting name="2" value="Modus" />
-		<setting name="3" value="Kein Effekt" />
-		<setting name="4" value="Live" />
+		<setting name="3" value="Live" />
+		<setting name="4" value="Kein Effekt" />
 		<setting name="5" value="Statische Farben" />
 		<setting name="6" value="Farbwechsel" />
 		<setting name="7" value="Farbwechsel LR" />
