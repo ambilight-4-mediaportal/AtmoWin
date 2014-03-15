@@ -253,7 +253,7 @@ void CAtmoColorPicker::HandleHorzScroll(int code,int position,HWND scrollBarHand
 	//this->m_iBlue = 10;
 	// }
 
-	hwndCtrl = this->getDlgItem(IDC_CHECK3);
+	hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 	if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 }
 

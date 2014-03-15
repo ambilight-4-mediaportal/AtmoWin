@@ -1,7 +1,8 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by AtmoWinA.rc
-
+//
+#define ID_LANGUAGE                     500
 #define IDS_APP_TITLE                   1000
 #define IDD_ABOUTBOX                    1001
 #define IDM_ABOUT                       1002
@@ -31,7 +32,7 @@
 #define IDC_SL_GAMMA_RED                1026
 #define IDC_SL_GAMMA_GREEN              1027
 #define IDC_CHK_USESHUTDOWNCOLOR        1028
-#define IDC_ENABLE                      1029
+#define IDC_CHK_WHITEADJ                1029
 #define IDC_SL_GAMMA_BLUE               1030
 #define IDC_BU_SELSHUTDOWNCOLOR         1031
 #define IDC_SL_BRIGHTN_GLOBAL           1032
@@ -132,7 +133,7 @@
 #define IDC_RADIO8                      1127
 #define IDC_RADIO9                      1128
 #define IDC_RADIO10                     1129
-#define IDC_RADIO11                     1130
+#define IDC_RB_WHITE                    1130
 #define IDC_EDIT10                      1131
 #define IDC_EDIT11                      1132
 #define IDC_EDIT12                      1133
@@ -160,41 +161,39 @@
 #define IDC_BUTTON1                     1155
 #define IDC_BUTTON4                     1156
 #define IDC_EDIT6                       1157
-#define IDC_CHECK3                      1158
+#define IDC_CHK_VIEWCOLOR               1158
 #define IDC_BUTTON5                     1159
-#define IDC_CHECK4                      1160
-#define IDC_CHECK5                      1161
+#define IDC_CHK_COLORADJ                1160
+#define IDC_CHK_USE3DLUT                1161
 #define IDC_COMBO2                      1162
-#define IDC_CHECK6                      1163
-#define IDC_CHECK7                      1164
+#define IDC_CHK_SEDUCALMODE             1163
+#define IDC_CHK_INVERTCLR               1164
 #define IDC_COMBO3                      1165
 #define IDC_RADIO50                     1166
-#define IDC_RADIO12                     1167
+#define IDC_RB_RED                      1167
 #define IDC_EDIT34                      1168
 #define IDC_EDIT35                      1169
 #define IDC_EDIT36                      1170
-#define IDC_RADIO13                     1171
+#define IDC_RB_GREEN                    1171
 #define IDC_EDIT37                      1172
 #define IDC_EDIT38                      1173
 #define IDC_EDIT39                      1174
-#define IDC_RADIO14                     1175
+#define IDC_RB_BLUE                     1175
 #define IDC_EDIT40                      1176
 #define IDC_EDIT41                      1177
 #define IDC_EDIT42                      1178
-#define IDC_RADIO15                     1179
+#define IDC_RB_YELLOW                   1179
 #define IDC_EDIT43                      1180
 #define IDC_EDIT44                      1181
 #define IDC_EDIT45                      1182
-#define IDC_RADIO16                     1183
+#define IDC_RB_MAGENTA                  1183
 #define IDC_EDIT46                      1184
 #define IDC_EDIT47                      1185
 #define IDC_EDIT48                      1186
-#define IDC_RADIO17                     1187
+#define IDC_RB_CYAN                     1187
 #define IDC_EDIT49                      1188
 #define IDC_EDIT50                      1189
 #define IDC_EDIT51                      1190
-
-#define IDC_STATIC                      -1
 #define IDC_STATIC1                     1400
 #define IDC_STATIC2                     1401
 #define IDC_STATIC3                     1402
@@ -241,38 +240,37 @@
 #define IDC_STATIC44                    1443
 #define IDC_STATIC45                    1444
 #define IDC_STATIC46                    1445
-#define IDC_STATIC47                    1445
-#define IDC_STATIC48                    1446
-#define IDC_STATIC49                    1447
-#define IDC_STATIC50                    1448
-#define IDC_STATIC51                    1449
-#define IDC_STATIC52                    1450
-#define IDC_STATIC53                    1451
-#define IDC_STATIC54                    1452
-#define IDC_STATIC55                    1453
-#define IDC_STATIC56                    1454
-#define IDC_STATIC57                    1455
-#define IDC_STATIC58                    1456
-#define IDC_STATIC59                    1457
-#define IDC_STATIC60                    1458
-#define IDC_STATIC61                    1459
-#define IDC_STATIC62                    1460
-#define IDC_STATIC63                    1461
-#define IDC_STATIC64                    1462
-#define IDC_STATIC65                    1463
-#define IDC_STATIC66                    1464
-#define IDC_STATIC67                    1465
-#define IDC_STATIC68                    1466
-#define IDC_STATIC69                    1467
-#define IDC_STATIC70                    1468
-#define IDC_STATIC71                    1469
-#define IDC_STATIC72                    1470
-#define IDC_STATIC73                    1471
-#define IDC_STATIC74                    1472
-#define IDC_STATIC75                    1473
-#define IDC_STATIC76                    1474
-
-#define ID_LANGUAGE                     500
+#define IDC_STATIC47                    1446
+#define IDC_STATIC48                    1447
+#define IDC_STATIC49                    1448
+#define IDC_STATIC50                    1449
+#define IDC_STATIC51                    1450
+#define IDC_STATIC52                    1451
+#define IDC_STATIC53                    1452
+#define IDC_STATIC54                    1453
+#define IDC_STATIC55                    1454
+#define IDC_STATIC56                    1455
+#define IDC_STATIC57                    1456
+#define IDC_STATIC58                    1457
+#define IDC_STATIC59                    1458
+#define IDC_STATIC60                    1459
+#define IDC_STATIC61                    1460
+#define IDC_STATIC62                    1461
+#define IDC_STATIC63                    1462
+#define IDC_STATIC64                    1463
+#define IDC_STATIC65                    1464
+#define IDC_STATIC66                    1465
+#define IDC_STATIC67                    1466
+#define IDC_STATIC68                    1467
+#define IDC_STATIC69                    1468
+#define IDC_STATIC70                    1469
+#define IDC_STATIC71                    1470
+#define IDC_STATIC72                    1471
+#define IDC_STATIC73                    1472
+#define IDC_STATIC74                    1473
+#define IDC_STATIC75                    1474
+#define IDC_STATIC76                    1475
+#define IDC_STATIC                      -1
 
 // Next default values for new objects
 // 
