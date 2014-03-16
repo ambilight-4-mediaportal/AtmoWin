@@ -953,7 +953,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO2);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -963,7 +963,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO3);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -973,7 +973,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO4);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -983,7 +983,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO5);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -993,7 +993,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO6);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1003,7 +1003,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO7);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1013,7 +1013,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO8);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1023,7 +1023,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO9);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1033,7 +1033,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RADIO10);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1043,7 +1043,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_WHITE);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1053,7 +1053,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_RED);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1063,7 +1063,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_GREEN);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1073,7 +1073,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_BLUE);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1083,7 +1083,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_YELLOW);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1093,7 +1093,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_MAGENTA);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{
@@ -1103,7 +1103,7 @@ ATMO_BOOL CAtmoCustomColorPicker::ExecuteCommand(HWND hControl,int wmId, int wmE
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 				out_wb_color();
 			}
-			
+
 			hwndCtrl = this->getDlgItem(IDC_RB_CYAN);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 			{

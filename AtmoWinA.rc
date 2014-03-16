@@ -97,22 +97,22 @@ BEGIN
     EDITTEXT        IDC_GDI_CAPURE_RATE,261,237,24,14,ES_AUTOHSCROLL | ES_NUMBER
     PUSHBUTTON      "cancel",IDCANCEL,229,314,67,14
     DEFPUSHBUTTON   "OK",IDOK,318,314,67,14
-    LTEXT           "current mode:",IDC_STATIC1,4,20,48,8
-    GROUPBOX        "fixed color",IDC_STATIC2,193,95,93,46
-    GROUPBOX        "Color changer",IDC_STATIC3,2,95,93,46
-    GROUPBOX        "Color changer LR",IDC_STATIC4,98,95,93,46
-    GROUPBOX        "Shutdown color",IDC_STATIC5,292,95,93,46
-    LTEXT           "steps:",IDC_STATIC6,8,105,31,8
+    LTEXT           "current mode:",IDC_TXT_CURMODE,4,20,48,8
+    GROUPBOX        "fixed color",IDC_GRP_FIXCOLOR,193,95,93,46
+    GROUPBOX        "Color changer",IDC_GRP_COLCHANGER,2,95,93,46
+    GROUPBOX        "Color changer LR",IDC_GRP_COLCHANGERLR,98,95,93,46
+    GROUPBOX        "Shutdown color",IDC_GRP_SHUDOWNCOL,292,95,93,46
+    LTEXT           "steps:",IDC_TXT_STEPS,8,105,31,8
     LTEXT           "Delay [ms]:",IDC_STATIC,8,121,38,8
-    LTEXT           "steps:",IDC_STATIC7,104,107,31,8
+    LTEXT           "steps:",IDC_TXT_STEPS2,104,107,31,8
     LTEXT           "Delay [ms]:",IDC_STATIC,104,121,38,8
-    LTEXT           "device:",IDC_STATIC8,4,5,34,8
-    LTEXT           "top zones:",IDC_STATIC9,8,44,65,8
-    LTEXT           "bottom zones:",IDC_STATIC10,8,76,67,8
-    LTEXT           "right/ left zones:",IDC_STATIC11,8,60,94,8
-    GROUPBOX        "live image parameters",IDC_STATIC12,2,141,381,169
-    LTEXT           "GDI capure framerate",IDC_STATIC13,187,241,75,8
-    LTEXT           "Filtermode:",IDC_STATIC14,187,172,84,8
+    LTEXT           "device:",IDC_TXT_DEVICE,4,5,34,8
+    LTEXT           "top zones:",IDC_TXT_TOPZONES,8,44,65,8
+    LTEXT           "bottom zones:",IDC_TXT_BOTZONES,8,76,67,8
+    LTEXT           "right/ left zones:",IDC_TXT_RLZONES,8,60,94,8
+    GROUPBOX        "live image parameters",IDC_GRP_LIPARAM,2,141,381,169
+    LTEXT           "GDI capure framerate",IDC_TXT_GDICAFRAM,187,241,75,8
+    LTEXT           "Filtermode:",IDC_TXT_FILMODE,187,172,84,8
     LTEXT           "Filter smoothness [100%]",IDC_TXT_Filter_PercentNew,187,223,84,8,NOT WS_GROUP
     LTEXT           "Filter threshold [100%]",IDC_TXT_Filter_MeanThreshold,187,206,84,8,NOT WS_GROUP
     LTEXT           "Filter length [5000 ms]",IDC_TXT_Filter_MeanLength,187,190,84,8,NOT WS_GROUP

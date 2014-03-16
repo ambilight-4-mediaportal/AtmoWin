@@ -94,7 +94,7 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	// config->getSoftware_gamma_blue();
 	// AtmoGammaCorrect mode = config->getSoftware_gamma_mode();
 
-  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
@@ -102,7 +102,7 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	// Read Buffer from IniFile
 	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
-  Lng->XMLParse(Lng->szTemp, Lng->sWhiteSetupText, "WhiteSetup"); 
+	Lng->XMLParse(Lng->szTemp, Lng->sWhiteSetupText, "WhiteSetup"); 
 
 	// order of items must match enum AtmoGammaCorrect!!
 	hwndCtrl = getDlgItem(IDC_SW_GAMMA_MODE);
@@ -320,21 +320,21 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_RB_CYAN), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[6]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[7]));
 	SendMessage(getDlgItem(IDC_STATIC25), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC26), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC27), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));		
+	SendMessage(getDlgItem(IDC_STATIC26), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC27), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));		
 	SendMessage(getDlgItem(IDC_STATIC28), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[8]));
-  SendMessage(getDlgItem(IDC_STATIC29), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[9]));
-  SendMessage(getDlgItem(IDC_STATIC30), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[10]));
+	SendMessage(getDlgItem(IDC_STATIC29), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[9]));
+	SendMessage(getDlgItem(IDC_STATIC30), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[10]));
 	SendMessage(getDlgItem(IDC_STATIC31), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC32), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC33), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
-  SendMessage(getDlgItem(IDC_CHECK2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[11]));
-  SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[12]));
+	SendMessage(getDlgItem(IDC_STATIC32), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC33), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_CHECK2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[11]));
+	SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[12]));
 	SendMessage(getDlgItem(IDC_BUTTON4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[13]));
 	SendMessage(getDlgItem(IDC_CHK_VIEWCOLOR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[14]));
 	SendMessage(getDlgItem(IDC_STATIC34), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC35), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC36), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC35), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC36), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC37), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[15]));
 	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[16]));
 	SendMessage(getDlgItem(IDC_CHK_USE3DLUT), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[17]));
@@ -342,11 +342,11 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_CHK_WHITEADJ), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[19]));
 	SendMessage(getDlgItem(IDC_CHK_COLORADJ), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[20]));
 	SendMessage(getDlgItem(IDC_STATIC39), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC40), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC41), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC40), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC41), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC42), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC43), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC44), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC43), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC44), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC45), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[21]));
 	SendMessage(getDlgItem(IDC_CHK_SEDUCALMODE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[22]));
 	SendMessage(getDlgItem(IDC_CHK_INVERTCLR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[23]));
