@@ -474,7 +474,7 @@
     <Manifest Include="AtmoWinA.exe.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="XMLFoundation\Libraries\XMLFoundation\Build\XMLFoundationLib.vcxproj">
+    <ProjectReference Include="XMLFoundation\Libraries\XMLFoundation\Builds\XMLFoundationLib.vcxproj">
       <Project>{2a98fd5a-64e4-4dad-9855-e99fc73533e9}</Project>
     </ProjectReference>
   </ItemGroup>
