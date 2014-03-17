@@ -1,3 +1,8 @@
+Version 1.0.0.4
+Moved Language files to language folder.
+Replacement of Lng files by XML.
+Correct White adjustement Setting : only White or Color adjustement can be used. 
+
 Version 1.0.0.3
 Add Multi-language support on GUI Screen,
 
