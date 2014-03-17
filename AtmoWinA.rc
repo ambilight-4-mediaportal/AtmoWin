@@ -97,22 +97,22 @@ BEGIN
     EDITTEXT        IDC_GDI_CAPURE_RATE,261,237,24,14,ES_AUTOHSCROLL | ES_NUMBER
     PUSHBUTTON      "cancel",IDCANCEL,229,314,67,14
     DEFPUSHBUTTON   "OK",IDOK,318,314,67,14
-    LTEXT           "current mode:",IDC_STATIC1,4,20,48,8
-    GROUPBOX        "fixed color",IDC_STATIC2,193,95,93,46
-    GROUPBOX        "Color changer",IDC_STATIC3,2,95,93,46
-    GROUPBOX        "Color changer LR",IDC_STATIC4,98,95,93,46
-    GROUPBOX        "Shutdown color",IDC_STATIC5,292,95,93,46
-    LTEXT           "steps:",IDC_STATIC6,8,105,31,8
+    LTEXT           "current mode:",IDC_TXT_CURMODE,4,20,48,8
+    GROUPBOX        "fixed color",IDC_GRP_FIXCOLOR,193,95,93,46
+    GROUPBOX        "Color changer",IDC_GRP_COLCHANGER,2,95,93,46
+    GROUPBOX        "Color changer LR",IDC_GRP_COLCHANGERLR,98,95,93,46
+    GROUPBOX        "Shutdown color",IDC_GRP_SHUDOWNCOL,292,95,93,46
+    LTEXT           "steps:",IDC_TXT_STEPS,8,105,31,8
     LTEXT           "Delay [ms]:",IDC_STATIC,8,121,38,8
-    LTEXT           "steps:",IDC_STATIC7,104,107,31,8
+    LTEXT           "steps:",IDC_TXT_STEPS2,104,107,31,8
     LTEXT           "Delay [ms]:",IDC_STATIC,104,121,38,8
-    LTEXT           "device:",IDC_STATIC8,4,5,34,8
-    LTEXT           "top zones:",IDC_STATIC9,8,44,65,8
-    LTEXT           "bottom zones:",IDC_STATIC10,8,76,67,8
-    LTEXT           "right/ left zones:",IDC_STATIC11,8,60,94,8
-    GROUPBOX        "live image parameters",IDC_STATIC12,2,141,381,169
-    LTEXT           "GDI capure framerate",IDC_STATIC13,187,241,75,8
-    LTEXT           "Filtermode:",IDC_STATIC14,187,172,84,8
+    LTEXT           "device:",IDC_TXT_DEVICE,4,5,34,8
+    LTEXT           "top zones:",IDC_TXT_TOPZONES,8,44,65,8
+    LTEXT           "bottom zones:",IDC_TXT_BOTZONES,8,76,67,8
+    LTEXT           "right/ left zones:",IDC_TXT_RLZONES,8,60,94,8
+    GROUPBOX        "live image parameters",IDC_GRP_LIPARAM,2,141,381,169
+    LTEXT           "GDI capure framerate",IDC_TXT_GDICAFRAM,187,241,75,8
+    LTEXT           "Filtermode:",IDC_TXT_FILMODE,187,172,84,8
     LTEXT           "Filter smoothness [100%]",IDC_TXT_Filter_PercentNew,187,223,84,8,NOT WS_GROUP
     LTEXT           "Filter threshold [100%]",IDC_TXT_Filter_MeanThreshold,187,206,84,8,NOT WS_GROUP
     LTEXT           "Filter length [5000 ms]",IDC_TXT_Filter_MeanLength,187,190,84,8,NOT WS_GROUP
@@ -161,19 +161,18 @@ BEGIN
     LTEXT           "blue",IDC_STATIC24,9,63,14,8
 END
 
-// Greyscale setting hidden Restore width 603
 IDD_WHITEADJ DIALOGEX 0, 0, 468, 259
 STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "White-/ Color Adjustmet"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    CONTROL         "white",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON | WS_GROUP,336,42,36,8
-    CONTROL         "red",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON,336,82,29,8
-    CONTROL         "green",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON,336,93,33,8
-    CONTROL         "blue",IDC_RADIO14,"Button",BS_AUTORADIOBUTTON,336,104,29,8
-    CONTROL         "yellow",IDC_RADIO15,"Button",BS_AUTORADIOBUTTON,336,115,35,8
-    CONTROL         "magenta",IDC_RADIO16,"Button",BS_AUTORADIOBUTTON,336,126,38,8
-    CONTROL         "cyan",IDC_RADIO17,"Button",BS_AUTORADIOBUTTON,336,137,36,8
+    CONTROL         "white",IDC_RB_WHITE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,336,42,36,8
+    CONTROL         "red",IDC_RB_RED,"Button",BS_AUTORADIOBUTTON,336,82,29,8
+    CONTROL         "green",IDC_RB_GREEN,"Button",BS_AUTORADIOBUTTON,336,93,33,8
+    CONTROL         "blue",IDC_RB_BLUE,"Button",BS_AUTORADIOBUTTON,336,104,29,8
+    CONTROL         "yellow",IDC_RB_YELLOW,"Button",BS_AUTORADIOBUTTON,336,115,35,8
+    CONTROL         "magenta",IDC_RB_MAGENTA,"Button",BS_AUTORADIOBUTTON,336,126,38,8
+    CONTROL         "cyan",IDC_RB_CYAN,"Button",BS_AUTORADIOBUTTON,336,137,36,8
     CONTROL         "",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,474,41,16,10
     CONTROL         "",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,474,52,16,8
     CONTROL         "",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,474,63,16,8
@@ -254,7 +253,7 @@ BEGIN
     LTEXT           "5%",IDC_STATIC,490,39,18,9
     PUSHBUTTON      "reset all",IDC_BUTTON1,397,231,43,16,BS_NOTIFY | NOT WS_VISIBLE
     PUSHBUTTON      "reset to default value",IDC_BUTTON4,331,202,134,25
-    CONTROL         "View Color",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,346,234,50,10
+    CONTROL         "View Color",IDC_CHK_VIEWCOLOR,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,346,234,50,10
     LTEXT           "red",IDC_STATIC34,517,28,12,8
     LTEXT           "green",IDC_STATIC35,544,28,20,8
     LTEXT           "blue",IDC_STATIC36,571,28,14,8
@@ -281,13 +280,13 @@ BEGIN
     EDITTEXT        IDC_EDIT50,403,135,27,12,ES_AUTOHSCROLL | ES_READONLY
     EDITTEXT        IDC_EDIT51,429,135,28,12,ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "get value from LUT",IDC_BUTTON5,337,150,120,16,WS_DISABLED
-    CONTROL         "use 3D-Lut",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,336,171,71,10
+    CONTROL         "use 3D-Lut",IDC_CHK_USE3DLUT,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,336,171,71,10
     GROUPBOX        " color/ white adjustment ",IDC_STATIC38,331,3,133,196
-    CONTROL         "simple white adjustment",IDC_ENABLE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,337,20,103,10
+    CONTROL         "simple white adjustment",IDC_CHK_WHITEADJ,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,337,20,103,10
     EDITTEXT        IDC_EDIT31,377,40,28,12,ES_AUTOHSCROLL | ES_READONLY
     EDITTEXT        IDC_EDIT32,404,40,27,12,ES_AUTOHSCROLL | ES_READONLY
     EDITTEXT        IDC_EDIT33,430,40,27,12,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "color adjustment",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,337,60,69,10
+    CONTROL         "color adjustment",IDC_CHK_COLORADJ,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,337,60,69,10
     LTEXT           "red",IDC_STATIC39,379,30,12,8
     LTEXT           "green",IDC_STATIC40,407,30,20,8
     LTEXT           "blue",IDC_STATIC41,433,30,14,8
@@ -295,8 +294,8 @@ BEGIN
     LTEXT           "green",IDC_STATIC43,407,69,20,8
     LTEXT           "blue",IDC_STATIC44,435,69,14,8
     LTEXT           " !!! not yet implemented !!!",IDC_STATIC45,486,168,88,8
-    CONTROL         "SEDU calibration mode",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,91,239,87,10
-    CONTROL         "invert colors",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,336,183,75,10
+    CONTROL         "SEDU calibration mode",IDC_CHK_SEDUCALMODE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,91,239,87,10
+    CONTROL         "invert colors",IDC_CHK_INVERTCLR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,336,183,75,10
 END
 
 IDD_WHITEADJ_HW DIALOGEX 0, 0, 310, 278
@@ -510,7 +509,6 @@ BEGIN
     IDD_WHITEADJ, DIALOG
     BEGIN
         LEFTMARGIN, 3
-        RIGHTMARGIN, 604
         TOPMARGIN, 3
         BOTTOMMARGIN, 256
     END
@@ -594,8 +592,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,3
- PRODUCTVERSION 1,0,0,3
+ FILEVERSION 1,0,0,4
+ PRODUCTVERSION 1,0,0,4
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -612,47 +610,18 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Privat"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.3"
+            VALUE "FileVersion", "1.0.0.4"
             VALUE "InternalName", "AtmoWinA.exe"
             VALUE "LegalCopyright", "Copyright (C) 2014"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.3"
+            VALUE "ProductVersion", "1.0.0.4"
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
         VALUE "Translation", 0x407, 1200
     END
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
-
-STRINGTABLE
-BEGIN
-    IDS_APP_TITLE           "AtmoWinX"
-    IDS_SETTINGS            "&settings"
-    IDS_MODUS               "mode"
-    IDS_EFFECT_NONE         "no effect"
-    IDS_EFFECT_LIVE         "Live"
-    IDS_EFFECT_STAT_COLOR   "static color"
-    IDC_ATMOWINA            "AtmoSetupDialog"
-    IDS_EFFECT_COLOR_CHANGE "color changer"
-    IDS_EFFECT_COLOR_CHLR   "color changer LR"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_INFO                "Info"
-    IDS_QUIT                "exit"
-    IDS_CHANNELASSIGN       "channel assignment"
-    IDS_DISPLAY_SETCHANGED  "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen."
-    IDS_HINT                "hint"
-    IDS_EFFECT_COLOR_MODE   "ColorMode"
 END
 
 #endif    // German (Germany) resources

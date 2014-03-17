@@ -16,23 +16,17 @@ CFnordlichtConfigDialog::~CFnordlichtConfigDialog(void)
 
 ATMO_BOOL CFnordlichtConfigDialog::InitDialog(WPARAM wParam) 
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_NORDLIGHTSETUP_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("FNordLichtsetup", Lng->szParam, sTextNordLightSetup[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sNordLightSetupText[i] = Lng->Buffer;
-		Lng->sNordLightSetupText[i].Replace("\\t", "\t");
-		Lng->sNordLightSetupText[i].Replace("\\n", "\n");
-	}  
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+  Lng->XMLParse(Lng->szTemp, Lng->sNordLightSetupText, "FNordLichtsetup");  
 
 	m_hCbxComports = getDlgItem(IDC_COMPORT);
 	InitDialog_ComPorts( m_hCbxComports );
@@ -55,7 +49,7 @@ ATMO_BOOL CFnordlichtConfigDialog::InitDialog(WPARAM wParam)
 
 ATMO_BOOL CFnordlichtConfigDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent) 
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	switch(wmId) 
 	{

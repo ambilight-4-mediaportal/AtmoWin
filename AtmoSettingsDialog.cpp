@@ -11,21 +11,20 @@
 #include "windowsx.h"
 #include "Winreg.h"
 
-#include "atmosettingsdialog.h"
+#include "Atmosettingsdialog.h"
 #include "AtmoConfig.h"
 #include "AtmoThread.h"
 #include "AtmoDisplays.h"
-
 #include "AtmoConnection.h"
-
 #include "AtmoTools.h"
 #include "AtmoColorPicker.h"
 #include "AtmoWhiteSetup.h"
 #include "AtmoWhiteAdjHW.h"
 #include "AtmoEditChannelAssignment.h"
 #include "AtmoGradients.h"
-#include <string>
 #include "AtmoRegistryConfig.h"
+
+#include <string>
 #include <strsafe.h>
 
 #include "Resource.h"
@@ -171,6 +170,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 	return ATMO_TRUE;
 }
 
+
 ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam) 
 {
 	CAtmoConfig *config = m_pDynData->getAtmoConfig();
@@ -189,24 +189,18 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	else
 		ComboBox_SetCurSel(m_hCbxDevicetypes, (int)-1);
 
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_SETTINGSDIALOG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("SettingsDialog", Lng->szParam, sTextSettingDialog[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sSettingText[i] = Lng->Buffer;
-		Lng->sSettingText[i].Replace("\\t", "\t");
-		Lng->sSettingText[i].Replace("\\n", "\n");
-	}      	
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
+	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
+	
 	m_hCbxEffects = getDlgItem(IDC_EFFECTS);
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[0] );
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[1] );
@@ -298,18 +292,18 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_CHK_USESHUTDOWNCOLOR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[13]));
 	SendMessage(getDlgItem(IDC_WIDESCREEN), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[14]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[15]));
-	SendMessage(getDlgItem(IDC_STATIC1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[16]));
-	SendMessage(getDlgItem(IDC_STATIC2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[17]));
-	SendMessage(getDlgItem(IDC_STATIC3), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[18]));
-	SendMessage(getDlgItem(IDC_STATIC4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[19]));	
-	SendMessage(getDlgItem(IDC_STATIC5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[20]));
-	SendMessage(getDlgItem(IDC_STATIC6), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[21]));
-	SendMessage(getDlgItem(IDC_STATIC7), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[22]));
-	SendMessage(getDlgItem(IDC_STATIC8), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[23]));
-	SendMessage(getDlgItem(IDC_STATIC9), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[24]));	
-	SendMessage(getDlgItem(IDC_STATIC10), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[25]));
-	SendMessage(getDlgItem(IDC_STATIC11), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[26]));
-	SendMessage(getDlgItem(IDC_STATIC12), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[27]));
+	SendMessage(getDlgItem(IDC_TXT_CURMODE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[16]));
+	SendMessage(getDlgItem(IDC_GRP_FIXCOLOR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[17]));
+	SendMessage(getDlgItem(IDC_GRP_COLCHANGER), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[18]));
+	SendMessage(getDlgItem(IDC_GRP_COLCHANGERLR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[19]));	
+	SendMessage(getDlgItem(IDC_GRP_SHUDOWNCOL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[20]));
+	SendMessage(getDlgItem(IDC_TXT_STEPS), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[21]));
+	SendMessage(getDlgItem(IDC_TXT_STEPS2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[22]));
+	SendMessage(getDlgItem(IDC_TXT_DEVICE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[23]));
+	SendMessage(getDlgItem(IDC_TXT_TOPZONES), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[24]));	
+	SendMessage(getDlgItem(IDC_TXT_BOTZONES), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[25]));
+	SendMessage(getDlgItem(IDC_TXT_RLZONES), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[26]));
+	SendMessage(getDlgItem(IDC_GRP_LIPARAM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[27]));
 
 	hwndCtrl = getDlgItem(IDC_FILTERMODE);
 	ComboBox_AddString(hwndCtrl, Lng->sSettingText[28]);
@@ -375,8 +369,8 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	sprintf(buffer,Lng->sSettingText[41] + "[%d%%]",config->getLiveViewFilter_PercentNew());
 	SetStaticText(IDC_TXT_Filter_PercentNew, buffer);
 
-	SendMessage(getDlgItem(IDC_STATIC13), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[42]));
-	SendMessage(getDlgItem(IDC_STATIC14), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[43]));
+	SendMessage(getDlgItem(IDC_TXT_GDICAFRAM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[42]));
+	SendMessage(getDlgItem(IDC_TXT_FILMODE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[43]));
 	SendMessage(getDlgItem(IDC_STATIC15), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[44]));
 	SendMessage(getDlgItem(IDC_STATIC16), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[45]));
 	SendMessage(getDlgItem(IDC_STATIC17), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[46]));

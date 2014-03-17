@@ -65,12 +65,17 @@ void CTrayIconWindow::createWindow()
 	CBasicWindow::createWindow();
 
 	ShowNotifyIcon(ATMO_TRUE);
-	
-	CLanguage *Lng;
-	// GetCurrentDir
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
+	CLanguage *Lng = new CLanguage;
+
+	// GetSpecialFolder
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+	if (!Lng->DirectoryExists(Lng->szCurrentDir ))
+	{
+		CreateDirectory(Lng->szCurrentDir, NULL);
+	}
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	this->m_hLanguageSubMenu = CreatePopupMenu();
 
@@ -78,11 +83,15 @@ void CTrayIconWindow::createWindow()
 	void *hSearch;
 	WIN32_FIND_DATA wfd;
 	char szFile[MAX_PATH];
-	hSearch = FindFirstFile("*.lng", &wfd);
+
+	CString strExtension   = _T("\\*.xml");
+	strcat(Lng->szCurrentDir, strExtension);
+
+	hSearch = FindFirstFile(Lng->szCurrentDir, &wfd);
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	nCurrentLanguage = MENUID_FIRST_LANGUAGE;
-	AppendMenu(m_hLanguageSubMenu, MF_STRING, MENUID_FIRST_LANGUAGE, "&English");
+	AppendMenu(m_hLanguageSubMenu, MF_STRING, MENUID_FIRST_LANGUAGE, "English");
 	nLanguages = 1;
 
 	if (hSearch != INVALID_HANDLE_VALUE)
@@ -104,14 +113,19 @@ void CTrayIconWindow::createWindow()
 	FindClose(hSearch);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_MENU_STRINGS; i++)
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+	// Create Default Xml Language if not exists
+	ifstream FileExists(Lng->szTemp);
+	if (Lng->szTemp != "" && FileExists)
 	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("Menu", Lng->szParam, sTextMenu[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sMenuText[i] = Lng->Buffer;
-		Lng->sMenuText[i].Replace("\\t", "\t");
-		Lng->sMenuText[i].Replace("\\n", "\n");
+		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
+	}
+	else
+	{
+		Lng->CreateDefaultXML(Lng->szTemp, sSection);
+		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
 	}
 
 	this->m_hTrayIconPopupMenu = CreatePopupMenu();
@@ -327,7 +341,8 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 
 		int index = wmId - MENUID_FIRST_LANGUAGE;
 		GetMenuString(this->m_hLanguageSubMenu, index, data, 1023, MF_BYPOSITION);
-		CLanguage *Lng;
+
+		CLanguage *Lng = new CLanguage;		
 		WritePrivateProfileString("Common", "Language", data, Lng->szFileINI);
 		PostMessage(m_hWindow, WM_QUIT, 0, 0); 				
 		ShowNotifyIcon(false);

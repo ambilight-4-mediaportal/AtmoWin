@@ -153,7 +153,7 @@ void CAtmoEditChannelAssignment::RealignComboboxes(int startPos)
 ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam) 
 {
 	CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	HWND ctrl;
 	ctrl = getDlgItem(IDC_EDT_NAME);
@@ -216,51 +216,45 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 
 				SetWindowFont(m_pChannelNames[ch], GetWindowFont(m_hDialog), false);
 
-				Lng->szCurrentDir[Lng->GetCurrentDir()];
+				Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 				sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 				GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 				// Read Buffer from IniFile
-				sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-				for (int i = 0; i < MAX_CHANNELASSIGNMENT_STRINGS; i++)
-				{
-					sprintf(Lng->szParam, "%d\0", i);
-					GetPrivateProfileString("ChannelAssignment", Lng->szParam, sTextChannelAssignment[i], Lng->Buffer, 512, Lng->szTemp);
-					Lng->sText[i] = Lng->Buffer;
-					Lng->sText[i].Replace("\\t", "\t");
-					Lng->sText[i].Replace("\\n", "\n");
-				}            
+				sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+				
+				Lng->XMLParse(Lng->szTemp, Lng->sChannelAssigmentText, "ChannelAssignment");
 
-				ComboBox_AddString(m_pZoneBoxes[ch],Lng->sText[0]);
+				ComboBox_AddString(m_pZoneBoxes[ch],Lng->sChannelAssigmentText[0]);
 				int  zoneCounter = 0;
 				for(int z = 0; z < pAtmoConfig->getZonesTopCount(); z++)
 				{
-					sprintf(buf,Lng->sText[1] +"[%d]",zoneCounter++);
+					sprintf(buf,Lng->sChannelAssigmentText[1] +"[%d]",zoneCounter++);
 					ComboBox_AddString(m_pZoneBoxes[ch], buf );
 				}
 
 				for(int z = 0; z < pAtmoConfig->getZonesLRCount(); z++)
 				{
-					sprintf(buf,Lng->sText[2] +"[%d]",zoneCounter++);
+					sprintf(buf,Lng->sChannelAssigmentText[2] +"[%d]",zoneCounter++);
 					ComboBox_AddString(m_pZoneBoxes[ch], buf );
 				}
 
 				for(int z = 0; z < pAtmoConfig->getZonesBottomCount(); z++)
 				{
-					sprintf(buf,Lng->sText[3] +"[%d]",zoneCounter++);
+					sprintf(buf,Lng->sChannelAssigmentText[3] +"[%d]",zoneCounter++);
 					ComboBox_AddString(m_pZoneBoxes[ch], buf );
 				}
 
 				for(int z = 0; z < pAtmoConfig->getZonesLRCount(); z++)
 				{
-					sprintf(buf,Lng->sText[4] +"[%d]",zoneCounter++);
+					sprintf(buf,Lng->sChannelAssigmentText[4] +"[%d]",zoneCounter++);
 					ComboBox_AddString(m_pZoneBoxes[ch], buf );
 				}
 
 				if(pAtmoConfig->getZoneSummary() == ATMO_TRUE)
 				{
-					ComboBox_AddString(m_pZoneBoxes[ch], Lng->sText[5]);
+					ComboBox_AddString(m_pZoneBoxes[ch], Lng->sChannelAssigmentText[5]);
 				}
 
 				y += (comboRect.bottom - comboRect.top) + 1;
@@ -288,15 +282,15 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
 	ListBox_SetCurSel(listBox,0);
 
-	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[6]));
-	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[7]));
-	SendMessage(getDlgItem(IDC_BU_ADD), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[8]));
-	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[9]));
-	SendMessage(getDlgItem(IDC_STATIC56), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[10]));
-	SendMessage(getDlgItem(IDC_HW_CHANNEL_STATIC), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[11]));
-	SendMessage(getDlgItem(IDC_HW_ZONE_STATIC), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[12]));
-	SendMessage(getDlgItem(IDC_STATIC57), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[13]));
-	SendMessage(this->m_hDialog, WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sText[14]));
+	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[6]));
+	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[7]));
+	SendMessage(getDlgItem(IDC_BU_ADD), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[8]));
+	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[9]));
+	SendMessage(getDlgItem(IDC_STATIC56), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[10]));
+	SendMessage(getDlgItem(IDC_HW_CHANNEL_STATIC), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[11]));
+	SendMessage(getDlgItem(IDC_HW_ZONE_STATIC), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[12]));
+	SendMessage(getDlgItem(IDC_STATIC57), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[13]));
+	SendMessage(this->m_hDialog, WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[14]));
 
 	return ATMO_FALSE;
 }

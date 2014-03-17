@@ -51,24 +51,18 @@ ATMO_BOOL CAtmoGradients::Execute(HINSTANCE hInst, HWND parent, CAtmoDynData *pA
 ATMO_BOOL CAtmoGradients::InitDialog(WPARAM wParam) 
 {
 	HWND groupBox = getDlgItem( IDC_ZONE_GROUP );
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	// GetCurrentDir
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_GRADIENTSDIALOG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("Gradients", Lng->szParam, sTextAtmoGradients[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sGradientsText[i] = Lng->Buffer;
-		Lng->sGradientsText[i].Replace("\\t", "\t");
-		Lng->sGradientsText[i].Replace("\\n", "\n");
-	}      	
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	
+	Lng->XMLParse(Lng->szTemp, Lng->sGradientsText, "Gradients");  	
 
 	SetWindowLongPtr(groupBox, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
 	OrgGroupBoxProc = (WNDPROC)SetWindowLongPtr(groupBox, GWL_WNDPROC, reinterpret_cast<LONG_PTR>(GroupBoxProc));
@@ -222,7 +216,7 @@ void CAtmoGradients::HandleHorzScroll(int code,int position,HWND scrollBarHandle
 	// slider handling...
 	char buffer[100];
 	int dlgItemId = GetDlgCtrlID(scrollBarHandle);
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	switch(dlgItemId) 
 	{
@@ -297,7 +291,7 @@ ATMO_BOOL CAtmoGradients::HandleMessage(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 { 
 	ATMO_BOOL r = CBasicDialog::HandleMessage(hwnd, uMsg, wParam, lParam);
 	HWND groupBox = getDlgItem( IDC_ZONE_GROUP );
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	if((hwnd == groupBox) && (uMsg == WM_PAINT)) 
 	{

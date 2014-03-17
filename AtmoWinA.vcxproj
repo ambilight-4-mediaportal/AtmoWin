@@ -89,6 +89,9 @@
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -378,6 +381,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -395,9 +402,7 @@
     <ClInclude Include="AtmoWinA.h" />
     <ClInclude Include="AtmoWinTrayIconHandler.h" />
     <ClInclude Include="DmxTools.h" />
-
     <ClInclude Include="Language.h" />
-
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="AtmoClassicConnection.h" />
@@ -448,15 +453,14 @@
     <ClInclude Include="AtmoDynData.h" />
     <ClInclude Include="AtmoRegistryConfig.h" />
     <ClInclude Include="AtmoZoneDefinition.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AtmoWinA.ico" />
     <None Include="AtmoWinA.tlb" />
     <None Include="icon1.ico" />
-    <None Include="libconfig.h++" />
     <None Include="small.ico" />
-    <None Include="HISTORY.txt" />
-    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AtmoWinA.rc" />

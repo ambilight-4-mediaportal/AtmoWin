@@ -52,23 +52,17 @@ ATMO_BOOL CDmxConfigDialog::InitDialog(WPARAM wParam)
 	sprintf(buf,"%d",m_pConfig->getDMX_RGB_Channels());
 	Edit_SetText(control, buf);
 
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
-	Lng->szCurrentDir[Lng->GetCurrentDir()];
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_DMXDLG_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("Dmxsetup", Lng->szParam, sTextDmxDlg[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sDmxDlgText[i] = Lng->Buffer;
-		Lng->sDmxDlgText[i].Replace("\\t", "\t");
-		Lng->sDmxDlgText[i].Replace("\\n", "\n");
-	}  	    
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+  Lng->XMLParse(Lng->szTemp, Lng->sDmxDlgText, "Dmxsetup");     
 
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sDmxDlgText[0]));
 	SendMessage(getDlgItem(IDC_STATIC61), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sDmxDlgText[1]));
