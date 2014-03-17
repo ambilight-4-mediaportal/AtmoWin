@@ -23,8 +23,15 @@
 #include "AtmoRes.h"
 #include <string>
 #include <Commctrl.h>
+#include "ObjectModel.h"
 
 #pragma comment (lib, "Comctl32.lib")
+
+char pXML2[] = 
+	"<configuration>"
+	"<section name='Default'>"
+	"</section>"
+	"</configuration>";
 
 int RegistryKeyExists(HKEY mykey, char *path)
 {
@@ -205,6 +212,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		}
 
 		trayIcon->SetRestart(false);
+
+		AllocConsole();
+	  freopen("CONIN$", "r",stdin);
+	  freopen("CONOUT$", "w",stdout);
+	  freopen("CONOUT$", "w",stderr);
+
+  	MyConfiguration O;
+
+  	O.FromXML(pXML2); 
+  	O.ToXMLFile("Test.xml");
+  	printf(O.ToXML());
 
 		// Enter Mainmessage Loop.. infitely - will be stopped by the PostQuitmessage call in AtmoWinTrayIconHandler...
 		while (GetMessage(&msg, NULL, 0, 0))

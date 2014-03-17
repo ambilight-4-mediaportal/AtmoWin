@@ -88,9 +88,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
+    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
+    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -98,7 +100,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -118,10 +120,10 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -189,6 +191,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Language.cpp" />
+    <ClCompile Include="ObjectModel.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_16x9|Win32'">Create</PrecompiledHeader>
@@ -403,6 +406,7 @@
     <ClInclude Include="AtmoWinTrayIconHandler.h" />
     <ClInclude Include="DmxTools.h" />
     <ClInclude Include="Language.h" />
+    <ClInclude Include="ObjectModel.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="AtmoClassicConnection.h" />
@@ -468,6 +472,11 @@
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="AtmoWinA.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="XMLFoundation\Libraries\XMLFoundation\Build\XMLFoundationLib.vcxproj">
+      <Project>{2a98fd5a-64e4-4dad-9855-e99fc73533e9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
