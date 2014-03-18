@@ -86,6 +86,7 @@
 		<setting name="52" value="profiles" />
 		<setting name="53" value="Charg." />
 		<setting name="54" value="default" />
+		<setting name="55" value="Win8 capture mode API" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />
