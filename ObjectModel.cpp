@@ -5,7 +5,7 @@
 
 IMPLEMENT_FACTORY(MyConfiguration, configuration)
 IMPLEMENT_FACTORY(MySection, section)
-IMPLEMENT_FACTORY(MyWhiteAdjPerChannel,	WhiteAdjPerChannel)
+IMPLEMENT_FACTORY(MyWhiteAdjPerChannel,	section)
 
 
 int g_verify0ref = 0;
@@ -34,6 +34,7 @@ void MySection::MapXMLTagsToMembers()
 	MapMember(&profile, "lastprofile");
 	MapMember(&d_profile, "defaultprofile");
 	MapMember(&m_eAtmoConnectionType, "ConnectionType");
+MapMember(&m_IgnoreConnectionErrorOnStartup, "IgnoreConnectionErrorOnStartup");	
 	MapMember(&m_eEffectMode, "EffectMode");
 	MapMember(&m_Comport, "comport");
 	MapMember(&m_ArduComport, "Arducomport");
@@ -48,7 +49,6 @@ void MySection::MapXMLTagsToMembers()
 	MapMember(&m_UseColorKWhiteAdj, "UseColorK");
 	MapMember(&m_Use3dlut, "Use3dlut");
 	MapMember(&m_WhiteAdjPerChannel, "UsePerChWhiteAdj");
-//	MapMember(&m_IgnoreConnectionErrorOnStartup, "IgnoreConnectionErrorOnStartup");
 	MapMember(&m_ColorChanger_iSteps, "ColorChanger_iSteps");
 	MapMember(&m_ColorChanger_iDelay, "ColorChanger_iDelay");
 	MapMember(&m_LrColorChanger_iSteps, "LrColorChanger_iSteps");
@@ -165,4 +165,7 @@ void MySection::MapXMLTagsToMembers()
 	MapMember(&m_Fnordlicht_Amount, "Fnordlicht_Amount");
 	MapMember(&getNumChannelAssignments, "NumChannelAssignments");
 	MapMember(&m_CurrentChannelAssignment, "CurrentChannelAssignment");
+
+	// All of the <Section>'s under <Configuration> goes into this list
+	MapMember(&m_lstMyObjects, MyWhiteAdjPerChannel::GetStaticTag());
 }

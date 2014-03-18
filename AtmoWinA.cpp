@@ -29,8 +29,143 @@
 
 char pXML2[] = 
 	"<configuration>"
-	"<section name='Default'>"
-	"</section>"
+	  "<section name='Default'>"
+	    "<profiles>-1</profiles>"
+	    "<lastprofile>' '</lastprofile>"
+	    "<defaultprofile>' '</defaultprofile>"
+	    "<ConnectionType>0</ConnectionType>"
+	    "<IgnoreConnectionErrorOnStartup>0</IgnoreConnectionErrorOnStartup>"
+	    "<EffectMode>0</EffectMode>"
+	    "<comport>-1</comport>"
+	    "<Arducomport>-1</Arducomport>"
+//	    "<comport_1>-1</comport_1>"
+//	    "<comport_2>-1</comport_2>"
+//	    "<comport_3>-1</comport_3>" 
+	    "<WhiteAdjustment_Red>255</WhiteAdjustment_Red>"
+	    "<WhiteAdjustment_Green>255</WhiteAdjustment_Green>"
+	    "<WhiteAdjustment_Blue>255</WhiteAdjustment_Blue>"
+	    "<UseSoftwareWhiteAdj>1</UseSoftwareWhiteAdj>"
+	    "<UseSoftware2WhiteAdj>1</UseSoftware2WhiteAdj>"
+	    "<UseColorK>0</UseColorK>"
+	    "<Use3dlut>0</Use3dlut>"
+	    "<UsePerChWhiteAdj>False</UsePerChWhiteAdj>"
+	    "<ColorChanger_iSteps>50</ColorChanger_iSteps>"
+	    "<ColorChanger_iDelay>25</ColorChanger_iDelay>"
+	    "<LrColorChanger_iSteps>50</LrColorChanger_iSteps>"
+	    "<LrColorChanger_iDelay>26</LrColorChanger_iDelay>"
+	    "<StaticColor_Red>127</StaticColor_Red>"
+	    "<StaticColor_Green>192</StaticColor_Green>"
+	    "<StaticColor_Blue>255</StaticColor_Blue>" 
+	    "<isSetShutdownColor>1</isSetShutdownColor>"
+	    "<ShutdownColor_red>0</ShutdownColor_red>"
+	    "<ShutdownColor_green>0</ShutdownColor_green>"
+	    "<ShutdownColor_blue>0</ShutdownColor_blue>"
+			"<LiveViewFilterMode>1</LiveViewFilterMode>"
+	    "<LiveViewFilter_PercentNew>50</LiveViewFilter_PercentNew>"
+	    "<LiveViewFilter_MeanLength>300</LiveViewFilter_MeanLength>"
+	    "<LiveViewFilter_MeanThreshold>40</LiveViewFilter_MeanThreshold>"
+			"<LiveView_EdgeWeighting>8</LiveView_EdgeWeighting>"
+	    "<LiveView_RowsPerFrame>1</LiveView_RowsPerFrame>"
+	    "<LiveView_BrightCorrect>100</LiveView_BrightCorrect>"
+	    "<LiveView_DarknessLimit>5</LiveView_DarknessLimit>"
+	    "<LiveView_HueWinSize>3</LiveView_HueWinSize>"
+	    "<LiveView_SatWinSize>3</LiveView_SatWinSize>"
+	    "<LiveView_Overlap>2</LiveView_Overlap>"
+	    "<LiveView_WidescreenMode>0</LiveView_WidescreenMode>"
+			"<LiveView_Saturation>100</LiveView_Saturation>"
+	    "<LiveView_Sensitivity>0</LiveView_Sensitivity>"
+	    "<LiveView_invert>0</LiveView_invert>"
+	    "<LiveView_HOverscanBorder>0</LiveView_HOverscanBorder>"
+	    "<LiveView_VOverscanBorder>0</LiveView_VOverscanBorder>"
+	    "<LiveView_DisplayNr>0</LiveView_DisplayNr>"
+	    "<LiveView_FrameDelay>30</LiveView_FrameDelay>"
+	    "<LiveView_GDI_FrameRate>25</LiveView_GDI_FrameRate>"
+			"<ZonesTopCount>1</ZonesTopCount>"
+	    "<ZonesBottomCount>1</ZonesBottomCount>"
+	    "<ZonesLRCount>1</ZonesLRCount>"
+	    "<ZoneSummary>False</ZoneSummary>"
+	    "<Hardware_global_gamma>128</Hardware_global_gamma>"
+	    "<Hardware_global_contrast>100</Hardware_global_contrast>"
+	    "<Hardware_contrast_red>100</Hardware_contrast_red>"
+	    "<Hardware_contrast_green>100</Hardware_contrast_green>"
+	    "<Hardware_contrast_blue>100</Hardware_contrast_blue>"
+	    "<Hardware_gamma_red>22</Hardware_gamma_red>"
+	    "<Hardware_gamma_green>22</Hardware_gamma_green>"
+	    "<Hardware_gamma_blue>22</Hardware_gamma_blue>"
+	    "<Software_gamma_mode>0</Software_gamma_mode>"
+	    "<Software_gamma_red>10</Software_gamma_red>"
+	    "<Software_gamma_green>10</Software_gamma_green>"
+	    "<Software_gamma_blue>10</Software_gamma_blue>"
+	    "<Software_gamma_global>10</Software_gamma_global>"
+			"<hAtmoClLeds>32</hAtmoClLeds>"
+/*
+	    "Software_ColK_rr");
+	    "Software_ColK_rg");
+    	"Software_ColK_rb");
+	    "Software_ColK_gr");
+	    "Software_ColK_gg");
+	    "Software_ColK_gb");
+	    "Software_ColK_br");
+    	"Software_ColK_bg");
+	    "Software_ColK_bb");
+
+	    "Software_ColK_yr");
+	    "Software_ColK_yg");
+	    "Software_ColK_yb");
+	    "Software_ColK_mr");
+	    "Software_ColK_mg");
+	    "Software_ColK_mb");
+	    "Software_ColK_cr");
+	    "Software_ColK_cg");
+	    "Software_ColK_cb");
+
+	    "Software_red_g_5");
+	    "Software_red_g_10");
+	    "Software_red_g_20");
+	    "Software_red_g_30");
+	    "Software_red_g_40");
+     	"Software_red_g_50");
+    	"Software_red_g_60");
+	    "Software_red_g_70");
+	    "Software_red_g_80");
+	    "Software_red_g_90");
+	    "Software_red_g_100");
+
+	    "Software_green_g_5");
+	    "Software_green_g_10");
+	    "Software_green_g_20");
+	    "Software_green_g_30");
+    	"Software_green_g_40");
+    	"Software_green_g_50");
+	    "Software_green_g_60");
+	    "Software_green_g_70");
+    	"Software_green_g_80");
+	    "Software_green_g_90");
+	    "Software_green_g_100");
+
+	    "Software_blue_g_5");
+	    "Software_blue_g_10");
+	    "Software_blue_g_20");
+	    "Software_blue_g_30");
+	    "Software_blue_g_40");
+	    "Software_blue_g_50");
+	    "Software_blue_g_60");
+	    "Software_blue_g_70");
+	    "Software_blue_g_80");
+	    "Software_blue_g_90");
+	    "Software_blue_g_100");
+*/
+	    "<DMX_BaseChannels>NULL</DMX_BaseChannels>"
+	    "<DMX_RGB_Channels>5</DMX_RGB_Channels>"
+	    "<DMX_BaudrateIndex>0</DMX_BaudrateIndex>"  
+	    "<Ardu_BaudrateIndex>0</Ardu_BaudrateIndex>"
+	    "<MoMo_Channels>3</MoMo_Channels>"
+	    "<Fnordlicht_Amount>2</Fnordlicht_Amount>"
+	    "<NumChannelAssignments></NumChannelAssignments>"
+	    "<CurrentChannelAssignment>0</CurrentChannelAssignment>"
+	  "</section>"
+	  "<section name='WhiteAdjPerChannel'>"
+	  "</section>"
 	"</configuration>";
 
 int RegistryKeyExists(HKEY mykey, char *path)

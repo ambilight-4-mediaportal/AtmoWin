@@ -16,10 +16,12 @@ class MySection : public XMLObject
 
 public:							    // All public example simplicity - not required
 	GString m_strSection; // An attribute, not an element
+	GList m_lstMyObjects;
 
 	GString profile;
 	GString d_profile;
 	int m_eAtmoConnectionType;
+  int m_IgnoreConnectionErrorOnStartup;	
 	int m_eEffectMode;
 	int m_Comport;
 	int m_ArduComport;
@@ -33,8 +35,7 @@ public:							    // All public example simplicity - not required
 	int m_UseSoftware2WhiteAdj;
 	int m_UseColorKWhiteAdj;
 	int m_Use3dlut;
-	int m_WhiteAdjPerChannel;
-//  bool m_IgnoreConnectionErrorOnStartup;
+	bool m_WhiteAdjPerChannel;
 	int m_ColorChanger_iSteps;
 	int m_ColorChanger_iDelay;
 	int m_LrColorChanger_iSteps;
@@ -69,7 +70,7 @@ public:							    // All public example simplicity - not required
 	int m_ZonesTopCount;
 	int m_ZonesBottomCount;
 	int m_ZonesLRCount;
-	int m_ZoneSummary;
+	bool m_ZoneSummary;
 	int m_Hardware_global_gamma;
 	int m_Hardware_global_contrast;
 	int m_Hardware_contrast_red;
@@ -184,14 +185,14 @@ class MyWhiteAdjPerChannel : public XMLObject
 {
 	virtual void MapXMLTagsToMembers();
 public:
-	int m_chWhiteAdj_Count; 
+	INT32 m_chWhiteAdj_Count; 
 	int m_chWhiteAdj_Red;
 	int m_chWhiteAdj_Green;
 	int m_chWhiteAdj_Blue;
 
 public:
 
-	DECLARE_FACTORY(MyWhiteAdjPerChannel, WhiteAdjPerChannel);
+	DECLARE_FACTORY(MyWhiteAdjPerChannel, section);
 
 	MyWhiteAdjPerChannel(){}
 	~MyWhiteAdjPerChannel(){}
