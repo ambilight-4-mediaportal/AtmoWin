@@ -26,10 +26,12 @@
 
 #pragma comment (lib, "Comctl32.lib")
 
-int RegistryKeyExists(HKEY mykey, char *path) {
+int RegistryKeyExists(HKEY mykey, char *path)
+{
 	HKEY keyHandle;
 
-	if( RegOpenKeyEx(mykey, path, 0, KEY_READ, &keyHandle) == ERROR_SUCCESS) {
+	if( RegOpenKeyEx(mykey, path, 0, KEY_READ, &keyHandle) == ERROR_SUCCESS) 
+	{
 		RegCloseKey(keyHandle);	
 		return 1;
 	}
@@ -64,7 +66,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 
 		// OLE COM System initialisierung? muss in jedem weiteren Thread auch passieren?
 		HRESULT r = CoInitialize(NULL);
-		if(r != S_OK) {
+		if(r != S_OK)
+		{
 			MessageBox(0,"CoInitialize failed. Terminate.","Error",MB_OK | MB_ICONERROR);
 			return 0;
 		}
@@ -77,7 +80,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		INITCOMMONCONTROLSEX comCtrlSettings;
 		comCtrlSettings.dwSize = sizeof(INITCOMMONCONTROLSEX);
 		comCtrlSettings.dwICC  = ICC_BAR_CLASSES | ICC_WIN95_CLASSES; // reicht das?
-		if(!InitCommonControlsEx(&comCtrlSettings)) {
+		if(!InitCommonControlsEx(&comCtrlSettings))
+		{
 			MessageBox(0,"Common Controls Initialization failed. Programm will be terminated.","Error",MB_OK | MB_ICONERROR);
 			return 0;
 		}
@@ -103,8 +107,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		char workdir[MAX_PATH];
 		GetModuleFileName(GetModuleHandle(NULL),workdir,MAX_PATH);
 		// strip of everything after last "\"
-		for(size_t i=(strlen(workdir)-1); i > 1 ; i--) {  /*  c:\*/
-			if(workdir[i] == '\\')  {
+		for(size_t i=(strlen(workdir)-1); i > 1 ; i--) 
+		{  /*  c:\*/
+			if(workdir[i] == '\\')  
+			{
 				workdir[i+1] = 0;
 				break;
 			}
@@ -118,7 +124,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		hAtmo_ResInstance = hResInstance;
 		hAtmo_Instance    = hInstance;
 
-/*
+		/*
 		char zone_bitmap[MAX_PATH];
 		for(int i=0; i < CAP_MAX_NUM_ZONES; i++) {
 		sprintf(zone_bitmap,"%szone_%d.bmp",workdir, i);
@@ -128,10 +134,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		MessageBox(0,zone_bitmap,"Failed to load, Check Format, Check Size.",MB_ICONERROR);
 		}
 		}
-*/
+		*/
 
 		atmoDisplays = new CAtmoDisplays();
-		if(atmoConfig->getLiveView_DisplayNr()>=atmoDisplays->getCount()) {
+		if(atmoConfig->getLiveView_DisplayNr()>=atmoDisplays->getCount()) 
+		{
 			MessageBox(0,"Displayseinstellungen prüfen.","Fehler",MB_ICONERROR | MB_OK);
 			atmoConfig->setShowConfigDialog(1);
 		}
@@ -144,18 +151,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 
 
 		// schnittstelle nur versuchen zu öffnen wenn config auch scheinbar soweit ok.!
-		if((atmoConfig->isShowConfigDialog()==0) && (CAtmoTools::RecreateConnection(atmoDynData) == ATMO_FALSE)) {
+		if((atmoConfig->isShowConfigDialog()==0) && (CAtmoTools::RecreateConnection(atmoDynData) == ATMO_FALSE))
+		{
 			if(atmoConfig->getIgnoreConnectionErrorOnStartup()==ATMO_TRUE) 
 			{
 				atmoConfig->setConnectionType(actNUL);
 				CAtmoTools::RecreateConnection(atmoDynData);                       
-			} else {
+			} 
+			else 
+			{
 				// ging nicht zu öffnen...
 				CAtmoConnection *acon = atmoDynData->getAtmoConnection();
 				if(acon)
 				{
 					DWORD lastError = acon->getLastError();
-					if(lastError) {
+					if(lastError) 
+					{
 						char lerror[500]; 
 						sprintf( lerror,"Open Device LastError 0x%x (%d)", lastError, lastError);
 						MessageBox(0, lerror,"Failed to open device",MB_ICONERROR | MB_OK);
@@ -168,7 +179,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 
 		// the whole configuration is missing? or one parameter seems be invalid? or hardware connection failed?
 		// show config dialog...
-		if(atmoConfig->isShowConfigDialog()!=0) {
+		if(atmoConfig->isShowConfigDialog()!=0) 
+		{
 			// irgend ein Parameter hat in Registry gefehlt oder war nicht
 			// so wie erwartet - also sollte man jetzt den Config Dialog anzeigen...?
 			CAtmoSettingsDialog *pSetupDlg = new CAtmoSettingsDialog(hResInstance, 0, atmoDynData);
@@ -187,7 +199,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		// damit es jemand finden kann?
 		CAtmoRemoteControlImplEx *atmoComRemoteControlex = new CAtmoRemoteControlImplEx(atmoDynData);
 		HRESULT res = RegisterActiveObject(atmoComRemoteControlex, CLSID_AtmoRemoteControl, ACTIVEOBJECT_STRONG, &activeObjectID);
-		if(res != S_OK) {
+		if(res != S_OK) 
+		{
 			MessageBox(0,"RegisterActiveObject failed.","Error",MB_ICONERROR);
 		}
 
@@ -215,14 +228,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		// aktiven Effect Thread ermitteln... und zur Terminierung vorbereiten...
 		CAtmoInput *input = atmoDynData->getLiveInput();
 		atmoDynData->setLiveInput( NULL );
-		if(input != NULL) {
+		if(input != NULL) 
+		{
 			input->Close();
 			delete input;
 		}
 
 		CThread *effect = atmoDynData->getEffectThread();
 		atmoDynData->setEffectThread(NULL);
-		if(effect!=NULL) {
+		if(effect!=NULL) 
+		{
 			effect->Terminate();
 			delete effect;
 		}
@@ -239,7 +254,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		// Verbindung zum Ausgabe Device Schliessen!
 		CAtmoConnection *atmoConnection = atmoDynData->getAtmoConnection();
 		atmoDynData->setAtmoConnection(NULL);
-		if(atmoConnection != NULL) {
+		if(atmoConnection != NULL) 
+		{
 			delete atmoConnection;
 		}
 

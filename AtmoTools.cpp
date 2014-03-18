@@ -18,7 +18,6 @@
 #include "AtmoEntecSerialConnection.h"
 #include "AtmoMultiConnection.h"
 #include "MoMoConnection.h"
-#include "KarateConnection.h"
 #include "FnordlichtConnection.h"
 #include "AtmoExternalCaptureInput.h"
 #include <math.h>
@@ -464,24 +463,6 @@ ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
  
            case actEnttecDMX: {
                CAtmoEntecSerialConnection *tempConnection = new CAtmoEntecSerialConnection( atmoConfig );
-               if(tempConnection->OpenConnection() == ATMO_FALSE) {
-                  pDynData->setAtmoConnection(tempConnection);
-                  pDynData->UnLockCriticalSection();
-                  return ATMO_FALSE;
-               }
-               pDynData->setAtmoConnection(tempConnection);
-               pDynData->ReloadZoneDefinitionBitmaps();
-
-               tempConnection->CreateDefaultMapping( atmoConfig->getChannelAssignment(0) );
-
-               CAtmoTools::SetChannelAssignment(pDynData, atmoConfig->getCurrentChannelAssignment() );
-
-               pDynData->UnLockCriticalSection();
-               return ATMO_TRUE;
-           }
-
-           case actKarateLight: {
-               CKarateConnection *tempConnection = new CKarateConnection( atmoConfig );
                if(tempConnection->OpenConnection() == ATMO_FALSE) {
                   pDynData->setAtmoConnection(tempConnection);
                   pDynData->UnLockCriticalSection();

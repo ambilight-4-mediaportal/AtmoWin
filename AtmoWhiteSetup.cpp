@@ -40,7 +40,7 @@ CAtmoWhiteSetup::~CAtmoWhiteSetup(void)
 
 ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 {
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 	CAtmoCustomColorPicker::InitDialog(wParam);
 
 	CAtmoConfig *config = m_pAtmoDynData->getAtmoConfig();
@@ -48,7 +48,7 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	HWND hwndCtrl;
 	char buffer[10];
 
-	hwndCtrl = this->getDlgItem(IDC_ENABLE);
+	hwndCtrl = this->getDlgItem(IDC_CHK_WHITEADJ);
 	if(this->m_UseSoftware)
 		Button_SetCheck(hwndCtrl, BST_CHECKED);
 	else
@@ -60,19 +60,19 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	else
 		Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 
-	hwndCtrl = this->getDlgItem(IDC_CHECK4);
+	hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 	if(this->m_UseColorK)
 		Button_SetCheck(hwndCtrl, BST_CHECKED);
 	else
 		Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 
-	hwndCtrl = this->getDlgItem(IDC_CHECK7);
+	hwndCtrl = this->getDlgItem(IDC_CHK_INVERTCLR);
 	if(this->m_Useinvert)
 		Button_SetCheck(hwndCtrl, BST_CHECKED);
 	else
 		Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 
-	hwndCtrl = this->getDlgItem(IDC_CHECK5);
+	hwndCtrl = this->getDlgItem(IDC_CHK_USE3DLUT);
 	if(config->m_3dlut)
 		EnableWindow(hwndCtrl,1);
 	else
@@ -94,21 +94,15 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 	// config->getSoftware_gamma_blue();
 	// AtmoGammaCorrect mode = config->getSoftware_gamma_mode();
 
-  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.lng\0", Lng->szCurrentDir, Lng->szLang);
-	for (int i = 0; i < MAX_WHITESETUP_STRINGS; i++)
-	{
-		sprintf(Lng->szParam, "%d\0", i);
-		GetPrivateProfileString("WhiteSetup", Lng->szParam, sTextWhiteSetup[i], Lng->Buffer, 512, Lng->szTemp);
-		Lng->sWhiteSetupText[i] = Lng->Buffer;
-		Lng->sWhiteSetupText[i].Replace("\\t", "\t");
-		Lng->sWhiteSetupText[i].Replace("\\n", "\n");
-	} 
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+	Lng->XMLParse(Lng->szTemp, Lng->sWhiteSetupText, "WhiteSetup"); 
 
 	// order of items must match enum AtmoGammaCorrect!!
 	hwndCtrl = getDlgItem(IDC_SW_GAMMA_MODE);
@@ -128,7 +122,7 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 
 	//calib
 
-	hwndCtrl = this->getDlgItem(IDC_RADIO11);
+	hwndCtrl = this->getDlgItem(IDC_RB_WHITE);
 	Button_SetCheck(hwndCtrl, BST_CHECKED);
 
 	hwndCtrl = this->getDlgItem(IDC_EDIT1);
@@ -317,45 +311,45 @@ ATMO_BOOL CAtmoWhiteSetup::InitDialog(WPARAM wParam)
 
 
 	SetWindowText(this->m_hDialog,Lng->sWhiteSetupText[18]); //?
-	SendMessage(getDlgItem(IDC_RADIO11), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[0]));
-	SendMessage(getDlgItem(IDC_RADIO12), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-	SendMessage(getDlgItem(IDC_RADIO13), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-	SendMessage(getDlgItem(IDC_RADIO14), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
-	SendMessage(getDlgItem(IDC_RADIO15), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[4]));
-	SendMessage(getDlgItem(IDC_RADIO16), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[5]));
-	SendMessage(getDlgItem(IDC_RADIO17), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[6]));
+	SendMessage(getDlgItem(IDC_RB_WHITE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[0]));
+	SendMessage(getDlgItem(IDC_RB_RED), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
+	SendMessage(getDlgItem(IDC_RB_GREEN), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_RB_BLUE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_RB_YELLOW), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[4]));
+	SendMessage(getDlgItem(IDC_RB_MAGENTA), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[5]));
+	SendMessage(getDlgItem(IDC_RB_CYAN), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[6]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[7]));
 	SendMessage(getDlgItem(IDC_STATIC25), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC26), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC27), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));		
+	SendMessage(getDlgItem(IDC_STATIC26), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC27), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));		
 	SendMessage(getDlgItem(IDC_STATIC28), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[8]));
-  SendMessage(getDlgItem(IDC_STATIC29), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[9]));
-  SendMessage(getDlgItem(IDC_STATIC30), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[10]));
+	SendMessage(getDlgItem(IDC_STATIC29), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[9]));
+	SendMessage(getDlgItem(IDC_STATIC30), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[10]));
 	SendMessage(getDlgItem(IDC_STATIC31), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC32), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC33), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
-  SendMessage(getDlgItem(IDC_CHECK2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[11]));
-  SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[12]));
+	SendMessage(getDlgItem(IDC_STATIC32), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC33), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_CHECK2), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[11]));
+	SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[12]));
 	SendMessage(getDlgItem(IDC_BUTTON4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[13]));
-	SendMessage(getDlgItem(IDC_CHECK3), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[14]));
+	SendMessage(getDlgItem(IDC_CHK_VIEWCOLOR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[14]));
 	SendMessage(getDlgItem(IDC_STATIC34), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC35), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC36), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC35), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC36), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC37), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[15]));
 	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[16]));
-	SendMessage(getDlgItem(IDC_CHECK5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[17]));
+	SendMessage(getDlgItem(IDC_CHK_USE3DLUT), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[17]));
 	SendMessage(getDlgItem(IDC_STATIC38), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[18]));
-	SendMessage(getDlgItem(IDC_ENABLE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[19]));
-	SendMessage(getDlgItem(IDC_CHECK4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[20]));
+	SendMessage(getDlgItem(IDC_CHK_WHITEADJ), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[19]));
+	SendMessage(getDlgItem(IDC_CHK_COLORADJ), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[20]));
 	SendMessage(getDlgItem(IDC_STATIC39), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC40), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC41), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC40), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC41), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC42), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[1]));
-  SendMessage(getDlgItem(IDC_STATIC43), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
-  SendMessage(getDlgItem(IDC_STATIC44), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC43), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC44), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[3]));
 	SendMessage(getDlgItem(IDC_STATIC45), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[21]));
-	SendMessage(getDlgItem(IDC_CHECK6), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[22]));
-	SendMessage(getDlgItem(IDC_CHECK7), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[23]));
+	SendMessage(getDlgItem(IDC_CHK_SEDUCALMODE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[22]));
+	SendMessage(getDlgItem(IDC_CHK_INVERTCLR), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupText[23]));
 
 	return ATMO_TRUE;
 }
@@ -374,7 +368,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		m_Global_Gamma = pos;
 		SetEditDouble(IDC_EDT_GLOBALGAMMA, (double)m_Global_Gamma / 100.0);
 
-		hwndCtrl = this->getDlgItem(IDC_CHECK4);
+		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
 			/*int Red   = max(max((float)m_cRed[0]*this->m_iRed/255.0f,(float)m_cGreen[0]*this->m_iGreen/255.0f),(float)m_cBlue[0]*this->m_iBlue/255.0f);
@@ -389,7 +383,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		else
 		{
 
-			hwndCtrl = this->getDlgItem(IDC_CHECK3);
+			hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 		}
 
@@ -399,7 +393,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		m_Gamma_Red = pos;
 		SetEditDouble(IDC_EDT_GAMMA_RED, (double)m_Gamma_Red / 100.0);
 
-		hwndCtrl = this->getDlgItem(IDC_CHECK4);
+		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
 			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -410,7 +404,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		else
 		{
 
-			hwndCtrl = this->getDlgItem(IDC_CHECK3);
+			hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 		}
 
@@ -420,7 +414,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		m_Gamma_Green = pos;
 		SetEditDouble(IDC_EDT_GAMMA_GREEN, (double)m_Gamma_Green / 100.0);
 
-		hwndCtrl = this->getDlgItem(IDC_CHECK4);
+		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
 			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -431,7 +425,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		else
 		{
 
-			hwndCtrl = this->getDlgItem(IDC_CHECK3);
+			hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 		}
 
@@ -441,7 +435,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		m_Gamma_Blue = pos;
 		SetEditDouble(IDC_EDT_GAMMA_BLUE, (double)m_Gamma_Blue / 100.0);
 
-		hwndCtrl = this->getDlgItem(IDC_CHECK4);
+		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
 			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -452,7 +446,7 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		else
 		{
 
-			hwndCtrl = this->getDlgItem(IDC_CHECK3);
+			hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 			if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 		}
 
@@ -472,7 +466,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 	switch(wmId) 
 	{
 		//simple whiteadjust
-	case IDC_ENABLE: 
+	case IDC_CHK_WHITEADJ: 
 		{
 			if( Button_GetCheck(hControl) == BST_CHECKED) 
 			{
@@ -480,9 +474,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 
 				m_Use3dlut = ATMO_FALSE;
 				m_UseColorK = ATMO_FALSE;
-				hwndCtrl = this->getDlgItem(IDC_CHECK4);
+				hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_CHECK5);
+				hwndCtrl = this->getDlgItem(IDC_CHK_USE3DLUT);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 			} 
 			else 
@@ -492,16 +486,16 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 			break;
 		}
 		//loaded 3d lut
-	case IDC_CHECK5: 
+	case IDC_CHK_USE3DLUT: 
 		{
 			if( Button_GetCheck(hControl) == BST_CHECKED) 
 			{
 				m_Use3dlut = ATMO_TRUE;
 				m_UseColorK = ATMO_FALSE;
 				m_UseSoftware = ATMO_TRUE;
-				hwndCtrl = this->getDlgItem(IDC_CHECK4);
+				hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_ENABLE);
+				hwndCtrl = this->getDlgItem(IDC_CHK_WHITEADJ);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 			} 
 			else 
@@ -511,7 +505,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 			break;
 		}
 		//invert
-	case IDC_CHECK7: 
+	case IDC_CHK_INVERTCLR: 
 		{
 			if( Button_GetCheck(hControl) == BST_CHECKED) 
 			{
@@ -554,14 +548,14 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 				hwndCtrl = this->getDlgItem(IDC_RADIO10);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO11);
+				hwndCtrl = this->getDlgItem(IDC_RB_WHITE);
 				Button_SetCheck(hwndCtrl, BST_CHECKED);
 
 				this->m_iRed = this->m_gRed[10] ;
 				this->m_iGreen = this->m_gGreen[10];
 				this->m_iBlue = this->m_gBlue[10];
 				UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
-				hwndCtrl = this->getDlgItem(IDC_CHECK4);
+				hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 
 				if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 				{
@@ -572,14 +566,14 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 				}
 				else
 				{
-					hwndCtrl = this->getDlgItem(IDC_CHECK3);
+					hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 				}
 			}
 			break; 
 		}
 
-	case IDC_CHECK3:  //view color
+	case IDC_CHK_VIEWCOLOR:  //view color
 		{
 
 			if( Button_GetCheck(hControl) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
@@ -587,7 +581,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 			break;
 		}
 		//color adjust 1x1 Cube
-	case IDC_CHECK4: 
+	case IDC_CHK_COLORADJ: 
 		{
 			if( Button_GetCheck(hControl) == BST_CHECKED)
 			{
@@ -598,10 +592,10 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 				outputColor(m_iRed, m_iGreen, m_iBlue);
 				//}
 				m_Use3dlut = ATMO_FALSE;
-				hwndCtrl = this->getDlgItem(IDC_CHECK5);
+				hwndCtrl = this->getDlgItem(IDC_CHK_USE3DLUT);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 				m_UseSoftware = ATMO_FALSE;
-				hwndCtrl = this->getDlgItem(IDC_ENABLE);
+				hwndCtrl = this->getDlgItem(IDC_CHK_WHITEADJ);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 
 			} 
@@ -609,17 +603,17 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 			{
 				m_UseColorK = ATMO_FALSE;
 
-				hwndCtrl = this->getDlgItem(IDC_RADIO12);
+				hwndCtrl = this->getDlgItem(IDC_RB_RED);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO13);
+				hwndCtrl = this->getDlgItem(IDC_RB_GREEN);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO14);
+				hwndCtrl = this->getDlgItem(IDC_RB_BLUE);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO15);
+				hwndCtrl = this->getDlgItem(IDC_RB_YELLOW);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO16);
+				hwndCtrl = this->getDlgItem(IDC_RB_MAGENTA);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
-				hwndCtrl = this->getDlgItem(IDC_RADIO17);
+				hwndCtrl = this->getDlgItem(IDC_RB_CYAN);
 				Button_SetCheck(hwndCtrl, BST_UNCHECKED);
 
 				/*this->m_iRed = this->m_gRed[10] ;
@@ -641,7 +635,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 				{
 					m_GammaCorrect = (AtmoGammaCorrect)i;
 
-					hwndCtrl = this->getDlgItem(IDC_CHECK4);
+					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
 						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -651,7 +645,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					}
 					else
 					{
-						hwndCtrl = this->getDlgItem(IDC_CHECK3);
+						hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 						if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 					}
 
@@ -670,7 +664,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					m_Global_Gamma = int(value * 100);
 					SendMessage(getDlgItem(IDC_SL_GLOBALGAMMA), TBM_SETPOS, 1, m_Global_Gamma);
 
-					hwndCtrl = this->getDlgItem(IDC_CHECK4);
+					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
 						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -681,7 +675,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					else
 					{
 
-						hwndCtrl = this->getDlgItem(IDC_CHECK3);
+						hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 						if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 					}
 
@@ -705,7 +699,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					m_Gamma_Red = iValue;
 					SendMessage(getDlgItem(IDC_SL_GAMMA_RED), TBM_SETPOS, 1, iValue);
 
-					hwndCtrl = this->getDlgItem(IDC_CHECK4);
+					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
 						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -716,7 +710,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					else
 					{
 
-						hwndCtrl = this->getDlgItem(IDC_CHECK3);
+						hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 						if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 					}
 
@@ -740,7 +734,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					m_Gamma_Green = iValue;
 					SendMessage(getDlgItem(IDC_SL_GAMMA_GREEN), TBM_SETPOS, 1, iValue);
 
-					hwndCtrl = this->getDlgItem(IDC_CHECK4);
+					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
 						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -751,7 +745,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					else
 					{
 
-						hwndCtrl = this->getDlgItem(IDC_CHECK3);
+						hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 						if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 					}
 
@@ -775,7 +769,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					m_Gamma_Blue = iValue;
 					SendMessage(getDlgItem(IDC_SL_GAMMA_BLUE2), TBM_SETPOS, 1, iValue);
 
-					hwndCtrl = this->getDlgItem(IDC_CHECK4);
+					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
 						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
@@ -786,7 +780,7 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					else
 					{
 
-						hwndCtrl = this->getDlgItem(IDC_CHECK3);
+						hwndCtrl = this->getDlgItem(IDC_CHK_VIEWCOLOR);
 						if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED) outputColor(this->m_iRed, this->m_iGreen, this->m_iBlue);
 					}
 

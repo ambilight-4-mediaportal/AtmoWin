@@ -1,6 +1,25 @@
 #include "stdafx.h"
 #include "Language.h"
 #include "shlobj.h" 
+#include "tinyxml.h"
+#include <string>
+#include <sstream>
+#include <fstream>
+
+char *sSection[MAX_SECTION_STRINGS] =
+{"Menu",               //0
+"ChannelAssignment",   //1
+"SettingsDialog",      //2
+"Gradients",           //3
+"ColorPicker",         //4 
+"WhiteSetup",          //5
+"WhiteSetupHW",        //6
+"Atmoduinosetup",      //7
+"Dmxsetup",            //8
+"MultiAtmoLightsetup", //9
+"Momosetup",           //10
+"FNordLightsetup",     //11
+};
 
 char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] = 
 {"Off",                   //0
@@ -16,7 +35,7 @@ char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] =
 "Mappings",               //10
 "Hardware Channel",       //11
 "Zone number",            //12
-"Name of mapping"         //13
+"Name of mapping",        //13
 "Channel assignment",     //14
 };
 
@@ -214,7 +233,7 @@ char *sTextNordLightSetup[MAX_NORDLIGHTSETUP_STRINGS] =
 "Error",                                                  //6
 };
 
-CString CLanguage::sText[MAX_CHANNELASSIGNMENT_STRINGS];
+CString CLanguage::sChannelAssigmentText[MAX_CHANNELASSIGNMENT_STRINGS];
 CString CLanguage::sSettingText[MAX_SETTINGSDIALOG_STRINGS];
 CString CLanguage::sMenuText[MAX_MENU_STRINGS];
 CString CLanguage::sTextCPicker[MAX_COLORPICKER_STRINGS];
@@ -268,7 +287,6 @@ char CLanguage::GetSpecialFolder(int CLSID)
 			// return is true if success 
 			if(SHGetPathFromIDList(pidl, (char*)szCurrentDir)) 
 			{ 
-				
 				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Language");
 				return *szCurrentDir;
 			} 
@@ -278,4 +296,153 @@ char CLanguage::GetSpecialFolder(int CLSID)
 
 		pShellMalloc->Release(); 
 	} 
+}
+
+void CLanguage::XMLParse(const char* FileName, CString *sInText, const char* Section)
+{
+
+	std::ostringstream ostrm;
+	std::ifstream inFile(FileName);
+	ostrm << inFile.rdbuf();
+
+	TiXmlDocument doc;
+	doc.Parse(ostrm.str().c_str()); 
+
+	inFile.close();
+
+	TiXmlElement *pRoot = doc.RootElement();
+	if (pRoot)
+	{
+		TiXmlElement *element = pRoot->FirstChildElement();
+
+		string attribute;
+		while(attribute != Section)
+		{
+			string value = element->Value(); 
+			attribute = element->Attribute("name");
+			if (attribute == Section)
+			{
+				TiXmlElement *pChildNode = element->FirstChildElement();         
+				while (pChildNode)
+				{
+					string name = pChildNode->Attribute("name");            
+					string values = pChildNode->Attribute("value"); 
+
+					int entry = atoi(name.c_str());
+
+					strcpy(Buffer, values.c_str());
+
+					sInText[entry] = Buffer;
+					sInText[entry].Replace("\\t", "\t");
+					sInText[entry].Replace("\\n", "\n");	
+
+					pChildNode = pChildNode->NextSiblingElement();
+				}
+			}
+			element = element->NextSiblingElement();
+		}
+	}
+}
+
+void CLanguage::CreateDefaultXML(const char* FileName, char* Section[])
+{
+	char *sInText[128];
+	int Count;
+
+	TiXmlDocument doc; 
+	TiXmlDeclaration * xdeclaration = new TiXmlDeclaration( "1.0", "ISO-8859-1", "" ); 
+	doc.LinkEndChild( xdeclaration ); 
+
+	// first entry
+	TiXmlElement * xEConfiguration = new TiXmlElement( "configuration" ); 
+	doc.LinkEndChild( xEConfiguration ); 
+	m_XmlOnInit = true;
+
+	for(int j=0; j < MAX_SECTION_STRINGS; j++)
+	{ 
+		switch (j)
+		{
+		case 0:
+			memcpy(sInText, sTextMenu, sizeof(sTextMenu));
+			Count = MAX_MENU_STRINGS;
+			break;
+		case 1:
+			memcpy(sInText, sTextChannelAssignment, sizeof(sTextChannelAssignment));
+			Count = MAX_CHANNELASSIGNMENT_STRINGS;
+			break;
+		case 2:
+			memcpy(sInText, sTextSettingDialog, sizeof(sTextSettingDialog));
+			Count = MAX_SETTINGSDIALOG_STRINGS;
+			break;
+		case 3:
+			memcpy(sInText, sTextAtmoGradients, sizeof(sTextAtmoGradients));
+			Count = MAX_GRADIENTSDIALOG_STRINGS;
+			break;
+		case 4:
+			memcpy(sInText, sTextColorPicker, sizeof(sTextColorPicker));
+			Count = MAX_COLORPICKER_STRINGS;
+			break;
+		case 5:
+			memcpy(sInText, sTextWhiteSetup, sizeof(sTextWhiteSetup));
+			Count = MAX_WHITESETUP_STRINGS;
+			break;
+		case 6:
+			memcpy(sInText, sTextWhiteSetupHW, sizeof(sTextWhiteSetupHW));
+			Count = MAX_WHITESETUPHW_STRINGS;
+			break;
+		case 7:
+			memcpy(sInText, sTextAtmoDlg, sizeof(sTextAtmoDlg));
+			Count = MAX_ATMODLG_STRINGS;
+			break;
+		case 8:
+			memcpy(sInText, sTextDmxDlg, sizeof(sTextDmxDlg));
+			Count = MAX_DMXDLG_STRINGS;
+			break;
+		case 9:
+			memcpy(sInText, sTextMultiAtmoLightDlg, sizeof(sTextMultiAtmoLightDlg));
+			Count = MAX_MULTIATMOLIGHTDLG_STRINGS;
+			break;
+		case 10:
+			memcpy(sInText, sTextMomoDlg, sizeof(sTextMomoDlg));
+			Count = MAX_MOMODLG_STRINGS;
+			break;
+		case 11:
+			memcpy(sInText, sTextNordLightSetup, sizeof(sTextNordLightSetup));
+			Count = MAX_NORDLIGHTSETUP_STRINGS;
+			break;
+		}
+
+		// Section Menu
+		TiXmlElement * xESection = new TiXmlElement( "section" );
+		xESection->SetAttribute("name", Section[j]);
+
+		// Settings
+		TiXmlElement * xESettings = new TiXmlElement( "setting" ); 
+
+
+		// enumerate Line count from sTextMenu
+		for(int i=0; i < Count; i++)
+		{
+			// convert integer(i) to string 
+			std::string s = std::to_string(i);
+			char const *pchar = s.c_str(); 
+
+			// copy string buffer to *char
+			char *buffer = new char[s.length()];
+			strcpy(buffer,s.c_str());
+
+			// First Attribut for Line(i)
+			xESettings->SetAttribute("name", buffer);
+			// Attribute Value for Line(i)
+
+			xESettings->SetAttribute("value", sInText[i]);
+			// End Line(i)
+			xESection->InsertEndChild(*xESettings);
+		}
+		xESettings->LinkEndChild( xESection ); 
+		xEConfiguration->LinkEndChild( xESection );
+	}
+
+	doc.SaveFile( FileName);
+
 }

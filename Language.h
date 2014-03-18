@@ -3,6 +3,8 @@
 #include "atlstr.h"
 #include "shlobj.h" 
 
+using namespace std;
+
 #define MAX_MENU_STRINGS 11
 extern char *sTextMenu[MAX_MENU_STRINGS];
 
@@ -39,15 +41,19 @@ extern char *sTextMomoDlg[MAX_MOMODLG_STRINGS];
 #define MAX_NORDLIGHTSETUP_STRINGS 7
 extern char *sTextNordLightSetup[MAX_NORDLIGHTSETUP_STRINGS];
 
+#define MAX_SECTION_STRINGS 12
+extern char *sSection[MAX_SECTION_STRINGS];
+
 class CLanguage
 {
 private:
+	bool m_XmlOnInit;
 
 public:
 
   static CString sMenuText[MAX_MENU_STRINGS];
 	static CString sSettingText[MAX_SETTINGSDIALOG_STRINGS];
-	static CString sText[MAX_CHANNELASSIGNMENT_STRINGS];
+	static CString sChannelAssigmentText[MAX_CHANNELASSIGNMENT_STRINGS];
 	static CString sTextCPicker[MAX_COLORPICKER_STRINGS];
 	static CString sGradientsText[MAX_GRADIENTSDIALOG_STRINGS];
 	static CString sWhiteSetupText[MAX_WHITESETUP_STRINGS];
@@ -64,6 +70,8 @@ public:
 
 	char GetSpecialFolder(int CLSID);
 	bool DirectoryExists(const char* dirName);
+	void XMLParse(const char* FileName, CString* sInText, const char* Section);
+	void CreateDefaultXML(const char* FileName, char* Section[]);
 
 	CLanguage(void);
 	virtual ~CLanguage(void);
