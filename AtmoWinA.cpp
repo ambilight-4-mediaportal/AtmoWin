@@ -27,144 +27,140 @@
 
 #pragma comment (lib, "Comctl32.lib")
 
+// Do not Change.. Default configuration
 char pXML2[] = 
 	"<configuration>"
-	  "<section name='Default'>"
-	    "<profiles>-1</profiles>"
-	    "<lastprofile>' '</lastprofile>"
-	    "<defaultprofile>' '</defaultprofile>"
-	    "<ConnectionType>0</ConnectionType>"
-	    "<IgnoreConnectionErrorOnStartup>0</IgnoreConnectionErrorOnStartup>"
-	    "<EffectMode>0</EffectMode>"
-	    "<comport>-1</comport>"
-	    "<Arducomport>-1</Arducomport>"
-//	    "<comport_1>-1</comport_1>"
-//	    "<comport_2>-1</comport_2>"
-//	    "<comport_3>-1</comport_3>" 
-	    "<WhiteAdjustment_Red>255</WhiteAdjustment_Red>"
-	    "<WhiteAdjustment_Green>255</WhiteAdjustment_Green>"
-	    "<WhiteAdjustment_Blue>255</WhiteAdjustment_Blue>"
-	    "<UseSoftwareWhiteAdj>1</UseSoftwareWhiteAdj>"
-	    "<UseSoftware2WhiteAdj>1</UseSoftware2WhiteAdj>"
-	    "<UseColorK>0</UseColorK>"
-	    "<Use3dlut>0</Use3dlut>"
-	    "<UsePerChWhiteAdj>False</UsePerChWhiteAdj>"
-	    "<ColorChanger_iSteps>50</ColorChanger_iSteps>"
-	    "<ColorChanger_iDelay>25</ColorChanger_iDelay>"
-	    "<LrColorChanger_iSteps>50</LrColorChanger_iSteps>"
-	    "<LrColorChanger_iDelay>26</LrColorChanger_iDelay>"
-	    "<StaticColor_Red>127</StaticColor_Red>"
-	    "<StaticColor_Green>192</StaticColor_Green>"
-	    "<StaticColor_Blue>255</StaticColor_Blue>" 
-	    "<isSetShutdownColor>1</isSetShutdownColor>"
-	    "<ShutdownColor_red>0</ShutdownColor_red>"
-	    "<ShutdownColor_green>0</ShutdownColor_green>"
-	    "<ShutdownColor_blue>0</ShutdownColor_blue>"
-			"<LiveViewFilterMode>1</LiveViewFilterMode>"
-	    "<LiveViewFilter_PercentNew>50</LiveViewFilter_PercentNew>"
-	    "<LiveViewFilter_MeanLength>300</LiveViewFilter_MeanLength>"
-	    "<LiveViewFilter_MeanThreshold>40</LiveViewFilter_MeanThreshold>"
-			"<LiveView_EdgeWeighting>8</LiveView_EdgeWeighting>"
-	    "<LiveView_RowsPerFrame>1</LiveView_RowsPerFrame>"
-	    "<LiveView_BrightCorrect>100</LiveView_BrightCorrect>"
-	    "<LiveView_DarknessLimit>5</LiveView_DarknessLimit>"
-	    "<LiveView_HueWinSize>3</LiveView_HueWinSize>"
-	    "<LiveView_SatWinSize>3</LiveView_SatWinSize>"
-	    "<LiveView_Overlap>2</LiveView_Overlap>"
-	    "<LiveView_WidescreenMode>0</LiveView_WidescreenMode>"
-			"<LiveView_Saturation>100</LiveView_Saturation>"
-	    "<LiveView_Sensitivity>0</LiveView_Sensitivity>"
-	    "<LiveView_invert>0</LiveView_invert>"
-	    "<LiveView_HOverscanBorder>0</LiveView_HOverscanBorder>"
-	    "<LiveView_VOverscanBorder>0</LiveView_VOverscanBorder>"
-	    "<LiveView_DisplayNr>0</LiveView_DisplayNr>"
-	    "<LiveView_FrameDelay>30</LiveView_FrameDelay>"
-	    "<LiveView_GDI_FrameRate>25</LiveView_GDI_FrameRate>"
-			"<ZonesTopCount>1</ZonesTopCount>"
-	    "<ZonesBottomCount>1</ZonesBottomCount>"
-	    "<ZonesLRCount>1</ZonesLRCount>"
-	    "<ZoneSummary>False</ZoneSummary>"
-	    "<Hardware_global_gamma>128</Hardware_global_gamma>"
-	    "<Hardware_global_contrast>100</Hardware_global_contrast>"
-	    "<Hardware_contrast_red>100</Hardware_contrast_red>"
-	    "<Hardware_contrast_green>100</Hardware_contrast_green>"
-	    "<Hardware_contrast_blue>100</Hardware_contrast_blue>"
-	    "<Hardware_gamma_red>22</Hardware_gamma_red>"
-	    "<Hardware_gamma_green>22</Hardware_gamma_green>"
-	    "<Hardware_gamma_blue>22</Hardware_gamma_blue>"
-	    "<Software_gamma_mode>0</Software_gamma_mode>"
-	    "<Software_gamma_red>10</Software_gamma_red>"
-	    "<Software_gamma_green>10</Software_gamma_green>"
-	    "<Software_gamma_blue>10</Software_gamma_blue>"
-	    "<Software_gamma_global>10</Software_gamma_global>"
-			"<hAtmoClLeds>32</hAtmoClLeds>"
-/*
-	    "Software_ColK_rr");
-	    "Software_ColK_rg");
-    	"Software_ColK_rb");
-	    "Software_ColK_gr");
-	    "Software_ColK_gg");
-	    "Software_ColK_gb");
-	    "Software_ColK_br");
-    	"Software_ColK_bg");
-	    "Software_ColK_bb");
-
-	    "Software_ColK_yr");
-	    "Software_ColK_yg");
-	    "Software_ColK_yb");
-	    "Software_ColK_mr");
-	    "Software_ColK_mg");
-	    "Software_ColK_mb");
-	    "Software_ColK_cr");
-	    "Software_ColK_cg");
-	    "Software_ColK_cb");
-
-	    "Software_red_g_5");
-	    "Software_red_g_10");
-	    "Software_red_g_20");
-	    "Software_red_g_30");
-	    "Software_red_g_40");
-     	"Software_red_g_50");
-    	"Software_red_g_60");
-	    "Software_red_g_70");
-	    "Software_red_g_80");
-	    "Software_red_g_90");
-	    "Software_red_g_100");
-
-	    "Software_green_g_5");
-	    "Software_green_g_10");
-	    "Software_green_g_20");
-	    "Software_green_g_30");
-    	"Software_green_g_40");
-    	"Software_green_g_50");
-	    "Software_green_g_60");
-	    "Software_green_g_70");
-    	"Software_green_g_80");
-	    "Software_green_g_90");
-	    "Software_green_g_100");
-
-	    "Software_blue_g_5");
-	    "Software_blue_g_10");
-	    "Software_blue_g_20");
-	    "Software_blue_g_30");
-	    "Software_blue_g_40");
-	    "Software_blue_g_50");
-	    "Software_blue_g_60");
-	    "Software_blue_g_70");
-	    "Software_blue_g_80");
-	    "Software_blue_g_90");
-	    "Software_blue_g_100");
-*/
-	    "<DMX_BaseChannels>NULL</DMX_BaseChannels>"
-	    "<DMX_RGB_Channels>5</DMX_RGB_Channels>"
-	    "<DMX_BaudrateIndex>0</DMX_BaudrateIndex>"  
-	    "<Ardu_BaudrateIndex>0</Ardu_BaudrateIndex>"
-	    "<MoMo_Channels>3</MoMo_Channels>"
-	    "<Fnordlicht_Amount>2</Fnordlicht_Amount>"
-	    "<NumChannelAssignments></NumChannelAssignments>"
-	    "<CurrentChannelAssignment>0</CurrentChannelAssignment>"
+	  "<section name='AtmoWinX'>"
+		  "<setting name='Ardu_BaudrateIndex' value='0' />"			
+	    "<setting name='Arducomport' value='1' />"			
+	    "<setting name='ColorChanger_iDelay' value='25' />"			
+	    "<setting name='ColorChanger_iSteps' value='50' />"		
+	    "<setting name='comport' value='1' />"			
+	    "<setting name='comport_1' value='1' />"			
+	    "<setting name='comport_2' value='1' />"			
+	    "<setting name='comport_3' value='1' />"			
+	    "<setting name='ConnectionType' value='0' />"			
+			"<setting name='CurrentChannelAssignment' value='0' />"		
+	    "<setting name='defaultprofile' value='' />"	    
+	    "<setting name='DMX_BaseChannels' value='NULL' />"	
+	    "<setting name='DMX_BaudrateIndex' value='0' />"				    
+			"<setting name='DMX_RGB_Channels' value='5' />"			
+	    "<setting name='EffectMode' value='0' />"						
+	    "<setting name='Fnordlicht_Amount' value='2' />"			
+	    "<setting name='Hardware_contrast_blue' value='100' />"			
+	    "<setting name='Hardware_contrast_green' value='100' />"			
+	    "<setting name='Hardware_contrast_red' value='100' />"			
+	    "<setting name='Hardware_gamma_blue' value='22' />"			
+	    "<setting name='Hardware_gamma_green' value='22' />"			
+	    "<setting name='Hardware_gamma_red' value='22' />"			
+	    "<setting name='Hardware_global_contrast' value='100' />"				    
+			"<setting name='Hardware_global_gamma' value='128' />"			
+	    "<setting name='hAtmoClLeds' value='32' />"			
+	    "<setting name='isSetShutdownColor' value='1' />"			
+	    "<setting name='lastprofile' value='' />"
+	    "<setting name='LiveView_BrightCorrect' value='100' />"			
+	    "<setting name='LiveView_DarknessLimit' value='5' />"	
+	    "<setting name='LiveView_DisplayNr' value='0' />"			
+	    "<setting name='LiveView_EdgeWeighting' value='8' />"		
+	    "<setting name='LiveView_FrameDelay' value='30' />"			
+	    "<setting name='LiveView_GDI_FrameRate' value='25' />"	
+	    "<setting name='LiveView_HOverscanBorder' value='0' />"			
+	    "<setting name='LiveView_HueWinSize' value='3' />"			
+	    "<setting name='LiveView_invert' value='0' />"			
+	    "<setting name='LiveView_Overlap' value='2' />"			
+	    "<setting name='LiveView_RowsPerFrame' value='1' />"			
+	    "<setting name='LiveView_Saturation' value='100' />"			
+	    "<setting name='LiveView_SatWinSize' value='3' />"			
+	    "<setting name='LiveView_Sensitivity' value='0' />"	
+	    "<setting name='LiveView_VOverscanBorder' value='0' />"	
+	    "<setting name='LiveView_WidescreenMode' value='0' />"			
+	    "<setting name='LiveViewFilter_MeanLength' value='300' />"			
+	    "<setting name='LiveViewFilter_MeanThreshold' value='40' />"			
+	    "<setting name='LiveViewFilter_PercentNew' value='50' />"	
+	    "<setting name='LiveViewFilterMode' value='1' />"			
+	    "<setting name='LrColorChanger_iDelay' value='25' />"		
+	    "<setting name='LrColorChanger_iSteps' value='50' />"			
+	    "<setting name='MoMo_Channels' value='3' />"			
+	    "<setting name='NumChannelAssignments' value='0' />"			
+			"<setting name='profiles' value='1' />"
+	    "<setting name='ShutdownColor_blue' value='0' />"			
+	    "<setting name='ShutdownColor_green' value='0' />"	
+	    "<setting name='ShutdownColor_red' value='0' />"			
+		  "<setting name='Software_blue_g_10' value='25' />"			
+	    "<setting name='Software_blue_g_100' value='255' />"		    
+			"<setting name='Software_blue_g_20' value='51' />"			
+	    "<setting name='Software_blue_g_30' value='76' />"	
+	    "<setting name='Software_blue_g_40' value='102' />"			
+	    "<setting name='Software_blue_g_5' value='12' />"				    
+			"<setting name='Software_blue_g_50' value='127' />"			
+	    "<setting name='Software_blue_g_60' value='153' />"	
+	    "<setting name='Software_blue_g_70' value='178' />"			
+	    "<setting name='Software_blue_g_80' value='204' />"			
+	    "<setting name='Software_blue_g_90' value='229' />"	
+	    "<setting name='Software_ColK_bb' value='255' />"			
+	    "<setting name='Software_ColK_bg' value='0' />"			
+	    "<setting name='Software_ColK_br' value='0' />"			
+	    "<setting name='Software_ColK_cb' value='255' />"			    
+			"<setting name='Software_ColK_cg' value='255' />"			
+	    "<setting name='Software_ColK_cr' value='0' />"			
+	    "<setting name='Software_ColK_gb' value='0' />"		
+	    "<setting name='Software_ColK_gg' value='255' />"			
+	    "<setting name='Software_ColK_gr' value='0' />"			
+	    "<setting name='Software_ColK_mb' value='255' />"			
+	    "<setting name='Software_ColK_mg' value='0' />"			
+	    "<setting name='Software_ColK_mr' value='255' />"			
+	    "<setting name='Software_ColK_rb' value='0' />"			
+	    "<setting name='Software_ColK_rr' value='255' />"			
+	    "<setting name='Software_ColK_rg' value='0' />"			
+	    "<setting name='Software_ColK_yb' value='0' />"				    
+			"<setting name='Software_ColK_yg' value='255' />"			
+	    "<setting name='Software_ColK_yr' value='255' />"			
+	    "<setting name='Software_gamma_blue' value='10' />"			
+	    "<setting name='Software_gamma_global' value='10' />"					  	   
+			"<setting name='Software_gamma_green' value='10' />"				    
+			"<setting name='Software_gamma_mode' value='0' />"			
+	    "<setting name='Software_gamma_red' value='10' />"			
+	    "<setting name='Software_green_g_10' value='25' />"			
+	    "<setting name='Software_green_g_100' value='255' />"							    
+			"<setting name='Software_green_g_20' value='51' />"			
+	    "<setting name='Software_green_g_30' value='76' />"			
+	    "<setting name='Software_green_g_40' value='102' />"			
+	    "<setting name='Software_green_g_5' value='12' />"			
+			"<setting name='Software_green_g_50' value='127' />"			
+	    "<setting name='Software_green_g_60' value='153' />"			
+	    "<setting name='Software_green_g_70' value='178' />"			
+	    "<setting name='Software_green_g_80' value='204' />"			
+	    "<setting name='Software_green_g_90' value='229' />"			
+	    "<setting name='Software_red_g_10' value='25' />"			
+	    "<setting name='Software_red_g_100' value='255' />"			    	   
+			"<setting name='Software_red_g_20' value='51' />"		
+	    "<setting name='Software_red_g_30' value='76' />"			
+	    "<setting name='Software_red_g_40' value='102' />"			
+	    "<setting name='Software_red_g_5' value='12' />"				    
+			"<setting name='Software_red_g_50' value='127' />"		
+	    "<setting name='Software_red_g_60' value='153' />"			
+	    "<setting name='Software_red_g_70' value='178' />"			
+	    "<setting name='Software_red_g_80' value='204' />"			
+	    "<setting name='Software_red_g_90' value='229' />"			
+	    "<setting name='StaticColor_Blue' value='255' />"			
+	    "<setting name='StaticColor_Green' value='192' />"			
+	    "<setting name='StaticColor_Red' value='127' />"			
+	    "<setting name='Use3dlut' value='0' />"			
+	    "<setting name='UseColorK' value='0' />"			
+	    "<setting name='UsePerChWhiteAdj' value='False' />"			
+	    "<setting name='UseSoftware2WhiteAdj' value='1' />"			
+	    "<setting name='UseSoftwareWhiteAdj' value='1' />"			
+	    "<setting name='WhiteAdjustment_Blue' value='255' />"		
+	    "<setting name='WhiteAdjustment_Green' value='255' />"			
+	    "<setting name='WhiteAdjustment_Red' value='255' />"			
+	    "<setting name='ZonesBottomCount' value='1' />"			
+	    "<setting name='ZonesLRCount' value='1' />"			
+	    "<setting name='ZonesTopCount' value='1' />"			
+	    "<setting name='ZoneSummary' value='False' />"						
+			"<setting name='IgnoreConnectionErrorOnStartup' value='0' />"			
 	  "</section>"
 	  "<section name='WhiteAdjPerChannel'>"
+		  "<setting name='count' value='0' />"	
 	  "</section>"
 	"</configuration>";
 
@@ -199,6 +195,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	{
 
 		InitCommonControls();
+
+		AllocConsole();
+	  freopen("CONIN$", "r",stdin);
+	  freopen("CONOUT$", "w",stdout);
+	  freopen("CONOUT$", "w",stderr);
+
+  	MyConfiguration O;
+
+  	O.FromXML(pXML2); 
+  	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
+	  O.ToXML( &strXMLStreamDestinationBuffer);
+		printf(strXMLStreamDestinationBuffer);
+  	
+		strXMLStreamDestinationBuffer.ToFile("AtmoWinX.xml");
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
 		{
@@ -347,17 +357,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		}
 
 		trayIcon->SetRestart(false);
-
-		AllocConsole();
-	  freopen("CONIN$", "r",stdin);
-	  freopen("CONOUT$", "w",stdout);
-	  freopen("CONOUT$", "w",stderr);
-
-  	MyConfiguration O;
-
-  	O.FromXML(pXML2); 
-  	O.ToXMLFile("Test.xml");
-  	printf(O.ToXML());
 
 		// Enter Mainmessage Loop.. infitely - will be stopped by the PostQuitmessage call in AtmoWinTrayIconHandler...
 		while (GetMessage(&msg, NULL, 0, 0))
