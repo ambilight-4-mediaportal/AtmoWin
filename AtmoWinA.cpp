@@ -25,143 +25,145 @@
 #include <Commctrl.h>
 #include "ObjectModel.h"
 
+using namespace std;
+
 #pragma comment (lib, "Comctl32.lib")
 
 // Do not Change.. Default configuration
 char pXML2[] = 
 	"<configuration>"
-	  "<section name='AtmoWinX'>"
-		  "<setting name='Ardu_BaudrateIndex' value='0' />"			
-	    "<setting name='Arducomport' value='1' />"			
-	    "<setting name='ColorChanger_iDelay' value='25' />"			
-	    "<setting name='ColorChanger_iSteps' value='50' />"		
-	    "<setting name='comport' value='1' />"			
-	    "<setting name='comport_1' value='1' />"			
-	    "<setting name='comport_2' value='1' />"			
-	    "<setting name='comport_3' value='1' />"			
-	    "<setting name='ConnectionType' value='0' />"			
-			"<setting name='CurrentChannelAssignment' value='0' />"		
-	    "<setting name='defaultprofile' value='' />"	    
-	    "<setting name='DMX_BaseChannels' value='NULL' />"	
-	    "<setting name='DMX_BaudrateIndex' value='0' />"				    
-			"<setting name='DMX_RGB_Channels' value='5' />"			
-	    "<setting name='EffectMode' value='0' />"						
-	    "<setting name='Fnordlicht_Amount' value='2' />"			
-	    "<setting name='Hardware_contrast_blue' value='100' />"			
-	    "<setting name='Hardware_contrast_green' value='100' />"			
-	    "<setting name='Hardware_contrast_red' value='100' />"			
-	    "<setting name='Hardware_gamma_blue' value='22' />"			
-	    "<setting name='Hardware_gamma_green' value='22' />"			
-	    "<setting name='Hardware_gamma_red' value='22' />"			
-	    "<setting name='Hardware_global_contrast' value='100' />"				    
-			"<setting name='Hardware_global_gamma' value='128' />"			
-	    "<setting name='hAtmoClLeds' value='32' />"			
-	    "<setting name='isSetShutdownColor' value='1' />"			
-	    "<setting name='lastprofile' value='' />"
-	    "<setting name='LiveView_BrightCorrect' value='100' />"			
-	    "<setting name='LiveView_DarknessLimit' value='5' />"	
-	    "<setting name='LiveView_DisplayNr' value='0' />"			
-	    "<setting name='LiveView_EdgeWeighting' value='8' />"		
-	    "<setting name='LiveView_FrameDelay' value='30' />"			
-	    "<setting name='LiveView_GDI_FrameRate' value='25' />"	
-	    "<setting name='LiveView_HOverscanBorder' value='0' />"			
-	    "<setting name='LiveView_HueWinSize' value='3' />"			
-	    "<setting name='LiveView_invert' value='0' />"			
-	    "<setting name='LiveView_Overlap' value='2' />"			
-	    "<setting name='LiveView_RowsPerFrame' value='1' />"			
-	    "<setting name='LiveView_Saturation' value='100' />"			
-	    "<setting name='LiveView_SatWinSize' value='3' />"			
-	    "<setting name='LiveView_Sensitivity' value='0' />"	
-	    "<setting name='LiveView_VOverscanBorder' value='0' />"	
-	    "<setting name='LiveView_WidescreenMode' value='0' />"			
-	    "<setting name='LiveViewFilter_MeanLength' value='300' />"			
-	    "<setting name='LiveViewFilter_MeanThreshold' value='40' />"			
-	    "<setting name='LiveViewFilter_PercentNew' value='50' />"	
-	    "<setting name='LiveViewFilterMode' value='1' />"			
-	    "<setting name='LrColorChanger_iDelay' value='25' />"		
-	    "<setting name='LrColorChanger_iSteps' value='50' />"			
-	    "<setting name='MoMo_Channels' value='3' />"			
-	    "<setting name='NumChannelAssignments' value='0' />"			
-			"<setting name='profiles' value='1' />"
-	    "<setting name='ShutdownColor_blue' value='0' />"			
-	    "<setting name='ShutdownColor_green' value='0' />"	
-	    "<setting name='ShutdownColor_red' value='0' />"			
-		  "<setting name='Software_blue_g_10' value='25' />"			
-	    "<setting name='Software_blue_g_100' value='255' />"		    
-			"<setting name='Software_blue_g_20' value='51' />"			
-	    "<setting name='Software_blue_g_30' value='76' />"	
-	    "<setting name='Software_blue_g_40' value='102' />"			
-	    "<setting name='Software_blue_g_5' value='12' />"				    
-			"<setting name='Software_blue_g_50' value='127' />"			
-	    "<setting name='Software_blue_g_60' value='153' />"	
-	    "<setting name='Software_blue_g_70' value='178' />"			
-	    "<setting name='Software_blue_g_80' value='204' />"			
-	    "<setting name='Software_blue_g_90' value='229' />"	
-	    "<setting name='Software_ColK_bb' value='255' />"			
-	    "<setting name='Software_ColK_bg' value='0' />"			
-	    "<setting name='Software_ColK_br' value='0' />"			
-	    "<setting name='Software_ColK_cb' value='255' />"			    
-			"<setting name='Software_ColK_cg' value='255' />"			
-	    "<setting name='Software_ColK_cr' value='0' />"			
-	    "<setting name='Software_ColK_gb' value='0' />"		
-	    "<setting name='Software_ColK_gg' value='255' />"			
-	    "<setting name='Software_ColK_gr' value='0' />"			
-	    "<setting name='Software_ColK_mb' value='255' />"			
-	    "<setting name='Software_ColK_mg' value='0' />"			
-	    "<setting name='Software_ColK_mr' value='255' />"			
-	    "<setting name='Software_ColK_rb' value='0' />"			
-	    "<setting name='Software_ColK_rr' value='255' />"			
-	    "<setting name='Software_ColK_rg' value='0' />"			
-	    "<setting name='Software_ColK_yb' value='0' />"				    
-			"<setting name='Software_ColK_yg' value='255' />"			
-	    "<setting name='Software_ColK_yr' value='255' />"			
-	    "<setting name='Software_gamma_blue' value='10' />"			
-	    "<setting name='Software_gamma_global' value='10' />"					  	   
-			"<setting name='Software_gamma_green' value='10' />"				    
-			"<setting name='Software_gamma_mode' value='0' />"			
-	    "<setting name='Software_gamma_red' value='10' />"			
-	    "<setting name='Software_green_g_10' value='25' />"			
-	    "<setting name='Software_green_g_100' value='255' />"							    
-			"<setting name='Software_green_g_20' value='51' />"			
-	    "<setting name='Software_green_g_30' value='76' />"			
-	    "<setting name='Software_green_g_40' value='102' />"			
-	    "<setting name='Software_green_g_5' value='12' />"			
-			"<setting name='Software_green_g_50' value='127' />"			
-	    "<setting name='Software_green_g_60' value='153' />"			
-	    "<setting name='Software_green_g_70' value='178' />"			
-	    "<setting name='Software_green_g_80' value='204' />"			
-	    "<setting name='Software_green_g_90' value='229' />"			
-	    "<setting name='Software_red_g_10' value='25' />"			
-	    "<setting name='Software_red_g_100' value='255' />"			    	   
-			"<setting name='Software_red_g_20' value='51' />"		
-	    "<setting name='Software_red_g_30' value='76' />"			
-	    "<setting name='Software_red_g_40' value='102' />"			
-	    "<setting name='Software_red_g_5' value='12' />"				    
-			"<setting name='Software_red_g_50' value='127' />"		
-	    "<setting name='Software_red_g_60' value='153' />"			
-	    "<setting name='Software_red_g_70' value='178' />"			
-	    "<setting name='Software_red_g_80' value='204' />"			
-	    "<setting name='Software_red_g_90' value='229' />"			
-	    "<setting name='StaticColor_Blue' value='255' />"			
-	    "<setting name='StaticColor_Green' value='192' />"			
-	    "<setting name='StaticColor_Red' value='127' />"			
-	    "<setting name='Use3dlut' value='0' />"			
-	    "<setting name='UseColorK' value='0' />"			
-	    "<setting name='UsePerChWhiteAdj' value='False' />"			
-	    "<setting name='UseSoftware2WhiteAdj' value='1' />"			
-	    "<setting name='UseSoftwareWhiteAdj' value='1' />"			
-	    "<setting name='WhiteAdjustment_Blue' value='255' />"		
-	    "<setting name='WhiteAdjustment_Green' value='255' />"			
-	    "<setting name='WhiteAdjustment_Red' value='255' />"			
-	    "<setting name='ZonesBottomCount' value='1' />"			
-	    "<setting name='ZonesLRCount' value='1' />"			
-	    "<setting name='ZonesTopCount' value='1' />"			
-	    "<setting name='ZoneSummary' value='False' />"						
-			"<setting name='IgnoreConnectionErrorOnStartup' value='0' />"			
-	  "</section>"
-	  "<section name='WhiteAdjPerChannel'>"
-		  "<setting name='count' value='0' />"	
-	  "</section>"
+	"<section name='AtmoWinX'>"
+	"<setting name='Ardu_BaudrateIndex' value='0' />"			
+	"<setting name='Arducomport' value='-1' />"			
+	"<setting name='ColorChanger_iDelay' value='25' />"			
+	"<setting name='ColorChanger_iSteps' value='50' />"		
+	"<setting name='comport' value='1' />"			
+	"<setting name='comport_1' value='1' />"			
+	"<setting name='comport_2' value='1' />"			
+	"<setting name='comport_3' value='1' />"			
+	"<setting name='ConnectionType' value='0' />"			
+	"<setting name='CurrentChannelAssignment' value='0' />"		
+	"<setting name='defaultprofile' value='' />"	    
+	"<setting name='DMX_BaseChannels' value='NULL' />"	
+	"<setting name='DMX_BaudrateIndex' value='0' />"				    
+	"<setting name='DMX_RGB_Channels' value='5' />"			
+	"<setting name='EffectMode' value='0' />"						
+	"<setting name='Fnordlicht_Amount' value='2' />"			
+	"<setting name='Hardware_contrast_blue' value='100' />"			
+	"<setting name='Hardware_contrast_green' value='100' />"			
+	"<setting name='Hardware_contrast_red' value='100' />"			
+	"<setting name='Hardware_gamma_blue' value='22' />"			
+	"<setting name='Hardware_gamma_green' value='22' />"			
+	"<setting name='Hardware_gamma_red' value='22' />"			
+	"<setting name='Hardware_global_contrast' value='100' />"				    
+	"<setting name='Hardware_global_gamma' value='128' />"			
+	"<setting name='hAtmoClLeds' value='32' />"			
+	"<setting name='isSetShutdownColor' value='1' />"			
+	"<setting name='lastprofile' value='' />"
+	"<setting name='LiveView_BrightCorrect' value='100' />"			
+	"<setting name='LiveView_DarknessLimit' value='5' />"	
+	"<setting name='LiveView_DisplayNr' value='0' />"			
+	"<setting name='LiveView_EdgeWeighting' value='8' />"		
+	"<setting name='LiveView_FrameDelay' value='30' />"			
+	"<setting name='LiveView_GDI_FrameRate' value='25' />"	
+	"<setting name='LiveView_HOverscanBorder' value='0' />"			
+	"<setting name='LiveView_HueWinSize' value='3' />"			
+	"<setting name='LiveView_invert' value='0' />"			
+	"<setting name='LiveView_Overlap' value='2' />"			
+	"<setting name='LiveView_RowsPerFrame' value='1' />"			
+	"<setting name='LiveView_Saturation' value='100' />"			
+	"<setting name='LiveView_SatWinSize' value='3' />"			
+	"<setting name='LiveView_Sensitivity' value='0' />"	
+	"<setting name='LiveView_VOverscanBorder' value='0' />"	
+	"<setting name='LiveView_WidescreenMode' value='0' />"			
+	"<setting name='LiveViewFilter_MeanLength' value='300' />"			
+	"<setting name='LiveViewFilter_MeanThreshold' value='40' />"			
+	"<setting name='LiveViewFilter_PercentNew' value='50' />"	
+	"<setting name='LiveViewFilterMode' value='1' />"			
+	"<setting name='LrColorChanger_iDelay' value='25' />"		
+	"<setting name='LrColorChanger_iSteps' value='50' />"			
+	"<setting name='MoMo_Channels' value='3' />"			
+	"<setting name='NumChannelAssignments' value='0' />"			
+	"<setting name='profiles' value='1' />"
+	"<setting name='ShutdownColor_blue' value='0' />"			
+	"<setting name='ShutdownColor_green' value='0' />"	
+	"<setting name='ShutdownColor_red' value='0' />"			
+	"<setting name='Software_blue_g_10' value='25' />"			
+	"<setting name='Software_blue_g_100' value='255' />"		    
+	"<setting name='Software_blue_g_20' value='51' />"			
+	"<setting name='Software_blue_g_30' value='76' />"	
+	"<setting name='Software_blue_g_40' value='102' />"			
+	"<setting name='Software_blue_g_5' value='12' />"				    
+	"<setting name='Software_blue_g_50' value='127' />"			
+	"<setting name='Software_blue_g_60' value='153' />"	
+	"<setting name='Software_blue_g_70' value='178' />"			
+	"<setting name='Software_blue_g_80' value='204' />"			
+	"<setting name='Software_blue_g_90' value='229' />"	
+	"<setting name='Software_ColK_bb' value='255' />"			
+	"<setting name='Software_ColK_bg' value='0' />"			
+	"<setting name='Software_ColK_br' value='0' />"			
+	"<setting name='Software_ColK_cb' value='255' />"			    
+	"<setting name='Software_ColK_cg' value='255' />"			
+	"<setting name='Software_ColK_cr' value='0' />"			
+	"<setting name='Software_ColK_gb' value='0' />"		
+	"<setting name='Software_ColK_gg' value='255' />"			
+	"<setting name='Software_ColK_gr' value='0' />"			
+	"<setting name='Software_ColK_mb' value='255' />"			
+	"<setting name='Software_ColK_mg' value='0' />"			
+	"<setting name='Software_ColK_mr' value='255' />"			
+	"<setting name='Software_ColK_rb' value='0' />"			
+	"<setting name='Software_ColK_rr' value='255' />"			
+	"<setting name='Software_ColK_rg' value='0' />"			
+	"<setting name='Software_ColK_yb' value='0' />"				    
+	"<setting name='Software_ColK_yg' value='255' />"			
+	"<setting name='Software_ColK_yr' value='255' />"			
+	"<setting name='Software_gamma_blue' value='10' />"			
+	"<setting name='Software_gamma_global' value='10' />"					  	   
+	"<setting name='Software_gamma_green' value='10' />"				    
+	"<setting name='Software_gamma_mode' value='0' />"			
+	"<setting name='Software_gamma_red' value='10' />"			
+	"<setting name='Software_green_g_10' value='25' />"			
+	"<setting name='Software_green_g_100' value='255' />"							    
+	"<setting name='Software_green_g_20' value='51' />"			
+	"<setting name='Software_green_g_30' value='76' />"			
+	"<setting name='Software_green_g_40' value='102' />"			
+	"<setting name='Software_green_g_5' value='12' />"			
+	"<setting name='Software_green_g_50' value='127' />"			
+	"<setting name='Software_green_g_60' value='153' />"			
+	"<setting name='Software_green_g_70' value='178' />"			
+	"<setting name='Software_green_g_80' value='204' />"			
+	"<setting name='Software_green_g_90' value='229' />"			
+	"<setting name='Software_red_g_10' value='25' />"			
+	"<setting name='Software_red_g_100' value='255' />"			    	   
+	"<setting name='Software_red_g_20' value='51' />"		
+	"<setting name='Software_red_g_30' value='76' />"			
+	"<setting name='Software_red_g_40' value='102' />"			
+	"<setting name='Software_red_g_5' value='12' />"				    
+	"<setting name='Software_red_g_50' value='127' />"		
+	"<setting name='Software_red_g_60' value='153' />"			
+	"<setting name='Software_red_g_70' value='178' />"			
+	"<setting name='Software_red_g_80' value='204' />"			
+	"<setting name='Software_red_g_90' value='229' />"			
+	"<setting name='StaticColor_Blue' value='255' />"			
+	"<setting name='StaticColor_Green' value='192' />"			
+	"<setting name='StaticColor_Red' value='127' />"			
+	"<setting name='Use3dlut' value='0' />"			
+	"<setting name='UseColorK' value='0' />"			
+	"<setting name='UsePerChWhiteAdj' value='0' />"			
+	"<setting name='UseSoftware2WhiteAdj' value='1' />"			
+	"<setting name='UseSoftwareWhiteAdj' value='1' />"			
+	"<setting name='WhiteAdjustment_Blue' value='255' />"		
+	"<setting name='WhiteAdjustment_Green' value='255' />"			
+	"<setting name='WhiteAdjustment_Red' value='255' />"			
+	"<setting name='ZonesBottomCount' value='1' />"			
+	"<setting name='ZonesLRCount' value='1' />"			
+	"<setting name='ZonesTopCount' value='1' />"			
+	"<setting name='ZoneSummary' value='-1' />"						
+	"<setting name='IgnoreConnectionErrorOnStartup' value='0' />"			
+	"</section>"
+	"<section name='WhiteAdjPerChannel'>"
+	"<setting name='count' value='0' />"	
+	"</section>"
 	"</configuration>";
 
 int RegistryKeyExists(HKEY mykey, char *path)
@@ -188,27 +190,40 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	UINT wTimerRes;
 
 	HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
-	bool gefunden=FALSE;
-	if(GetLastError() == ERROR_ALREADY_EXISTS) gefunden = TRUE;
-
-	if (!gefunden)	
+	if(GetLastError() != ERROR_ALREADY_EXISTS) 
 	{
 
 		InitCommonControls();
 
-		AllocConsole();
-	  freopen("CONIN$", "r",stdin);
-	  freopen("CONOUT$", "w",stdout);
-	  freopen("CONOUT$", "w",stderr);
+		CUtils *Utils = new CUtils;
+		
+		// GetSpecialFolder
+		Utils->szCurrentDir[Utils->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
+		if (!Utils->DirectoryExists(Utils->szCurrentDir ))
+		{
+			CreateDirectory(Utils->szCurrentDir, NULL);
+		}
 
-  	MyConfiguration O;
+		// Read Buffer from IniFile
+		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
 
-  	O.FromXML(pXML2); 
-  	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
-	  O.ToXML( &strXMLStreamDestinationBuffer);
-		printf(strXMLStreamDestinationBuffer);
-  	
-		strXMLStreamDestinationBuffer.ToFile("AtmoWinX.xml");
+		// Create Default Xml if not exists
+		ifstream FileExists(Utils->szTemp);
+		if (Utils->szTemp != "" && FileExists)
+		{
+			Utils->strConfigFromFile.FromFile(Utils->szTemp);
+			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+		}
+		else
+		{
+			MyConfiguration O;
+
+			O.FromXML(pXML2); 
+			GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
+			O.ToXML( &strXMLStreamDestinationBuffer);
+			printf(strXMLStreamDestinationBuffer);
+			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+		}		
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
 		{

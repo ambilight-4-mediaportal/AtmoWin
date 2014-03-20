@@ -5,8 +5,28 @@
 
 #include "xmlObject.h"
 #include "GString.h"
+#include "GProfile.h"
+#include "shlobj.h" 
+#include <fstream>
 
 extern int g_verify0ref;
+
+class CUtils
+{
+private:
+
+public:
+  static char szCurrentDir[MAX_PATH];
+  static char szTemp[512];
+	static char szName[MAX_PATH];
+	GString strConfigFromFile;
+		
+	char GetSpecialFolder(int CLSID);
+  bool DirectoryExists(const char* dirName);
+
+	CUtils(void);
+	virtual ~CUtils(void);
+};
 
 class MySection : public XMLObject
 {
@@ -51,6 +71,7 @@ public:
 	~MySetting(){}
 
 };
+
 
 #endif //_OBJECT_MODEL_H__
 

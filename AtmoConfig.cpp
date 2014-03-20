@@ -106,111 +106,89 @@ void CAtmoConfig::LoadDefaults() {
 
 #endif
 
-	profile = "";
-	d_profile = "";
-	//profiles.assign(1,"-1");
-
-
-	m_eEffectMode = emDisabled;
-
+	m_Ardu_BaudrateIndex             = 0; // Low 115kbaud 
+	m_ColorChanger_iSteps            = 50;
+	m_ColorChanger_iDelay            = 25;
+	m_CurrentChannelAssignment       = 0;
+	d_profile                        = "";
+	m_DMX_BaseChannels               = strdup("0");
+	m_DMX_BaudrateIndex              = 0; // Low 115kbaud 	
+	m_DMX_RGB_Channels               = 5; // so wie atmolight
+	m_eEffectMode                    = emDisabled;
+	m_Fnordlicht_Amount              = 2; // default fnordlicht, there are 2 fnordlicht's!
+	m_Hardware_contrast_blue         = 100;
+	m_Hardware_contrast_green        = 100;
+	m_Hardware_contrast_red          = 100;		
+	m_Hardware_gamma_blue            = 22;
+	m_Hardware_gamma_green           = 22;
+	m_Hardware_gamma_red             = 22;
+	m_Hardware_global_contrast       = 100;		
+	m_Hardware_global_gamma          = 128;
+	m_hAtmoClLeds                    = 32;
+	m_IsSetShutdownColor             = 1;
+	profile                          = "";
+	m_LiveView_BrightCorrect         = 100;
+	m_LiveView_DarknessLimit         = 5;
+	m_LiveView_DisplayNr             = 0;
+	m_LiveView_EdgeWeighting         = 8;
+	m_LiveView_FrameDelay            = 30;
+	m_LiveView_GDI_FrameRate         = 25;
+	m_LiveView_HOverscanBorder       = 0;
+	m_LiveView_HueWinSize            = 3;
+	m_Useinvert                      = 0;
+	m_LiveView_Overlap               = 2;
+	m_LiveView_RowsPerFrame          = 1;	
+	m_LiveView_SatWinSize            = 3;
+	m_LiveView_VOverscanBorder       = 0;
+	m_LiveView_WidescreenMode        = 0;
+	m_LiveViewFilter_MeanLength      = 300;
+	m_LiveViewFilter_MeanThreshold   = 40;
+	m_LiveViewFilter_PercentNew      = 50;
+	m_LiveViewFilterMode             = afmCombined;
+	m_LrColorChanger_iDelay          = 25;
+	m_LrColorChanger_iSteps          = 50;
+	m_MoMo_Channels                  = 3; // default momo, there exists also a 4 ch version!
+	m_ShutdownColor_Blue             = 0;		
+	m_ShutdownColor_Green            = 0;
+	m_ShutdownColor_Red              = 0;
+	m_Software_gamma_blue            = 10;
+	m_Software_gamma_global          = 10;
+	m_Software_gamma_green           = 10;
+	m_Software_gamma_mode            = agcNone;
+	m_Software_gamma_red             = 10;
+	m_StaticColor_Blue               = 255;	
+	m_StaticColor_Green              = 192;
+	m_StaticColor_Red                = 127; // ??
+	m_Use3dlut                       = 0;
+	m_UseColorKWhiteAdj              = 0;
+	m_WhiteAdjPerChannel             = ATMO_FALSE;
+	m_UseSoftware2WhiteAdj           = 1;
+	m_UseSoftwareWhiteAdj            = 1;
+	m_WhiteAdjustment_Blue           = 255;
+	m_WhiteAdjustment_Green          = 255;
+	m_WhiteAdjustment_Red            = 255;
+	m_ZonesBottomCount               = 1;
+	m_ZonesLRCount                   = 1;
+	m_ZonesTopCount                  = 1;
+	m_ZoneSummary                    = ATMO_FALSE;
 	m_IgnoreConnectionErrorOnStartup = ATMO_FALSE;
 
-	m_UpdateEdgeWeightningFlag = 0;
+	m_show_statistics                = ATMO_FALSE;
+  m_UpdateEdgeWeightningFlag       = 0;
 
-
-
-	m_Software_gamma_mode    = agcNone;
-	m_Software_gamma_red     = 10;
-	m_Software_gamma_green   = 10;
-	m_Software_gamma_blue    = 10;
-	m_Software_gamma_global  = 10;
-
-	m_WhiteAdjustment_Red    = 255;
-	m_WhiteAdjustment_Green  = 255;
-	m_WhiteAdjustment_Blue   = 255;
-	m_UseSoftwareWhiteAdj    = 1;
-	m_UseSoftware2WhiteAdj   = 1;
-	m_UseColorKWhiteAdj      = 0;
-	m_Use3dlut               = 0;
-	m_Useinvert              = 0;
-
-	m_WhiteAdjPerChannel = ATMO_FALSE;
-	m_chWhiteAdj_Count = 0;
-
+	m_chWhiteAdj_Count               = 0;
 	delete []m_chWhiteAdj_Red;
 	delete []m_chWhiteAdj_Green;
 	delete []m_chWhiteAdj_Blue;
+	m_chWhiteAdj_Red                = NULL;
+	m_chWhiteAdj_Green              = NULL;
+	m_chWhiteAdj_Blue               = NULL;
 
-	m_chWhiteAdj_Red   = NULL;
-	m_chWhiteAdj_Green = NULL;
-	m_chWhiteAdj_Blue  = NULL;
-
-	m_ColorChanger_iSteps    = 50;
-	m_ColorChanger_iDelay    = 25;
-
-	m_LrColorChanger_iSteps  = 50;
-	m_LrColorChanger_iDelay  = 25;
-
-	m_IsSetShutdownColor     = 1;
-	m_ShutdownColor_Red      = 0;
-	m_ShutdownColor_Green    = 0;
-	m_ShutdownColor_Blue     = 0;
-
-	m_StaticColor_Red        = 127; // ??
-	m_StaticColor_Green      = 192;
-	m_StaticColor_Blue       = 255;
-
-	m_LiveViewFilterMode         = afmCombined;
-	m_LiveViewFilter_PercentNew  = 50;
-	m_LiveViewFilter_MeanLength  = 300;
-	m_LiveViewFilter_MeanThreshold   = 40;
-	m_show_statistics = ATMO_FALSE;
-
-	m_LiveView_EdgeWeighting  = 8;
-	m_LiveView_BrightCorrect  = 100;
-	m_LiveView_DarknessLimit  = 5;
-	m_LiveView_HueWinSize     = 3;
-	m_LiveView_SatWinSize     = 3;
-	m_LiveView_Overlap        = 2;
-	m_LiveView_WidescreenMode = 0;
-
-	m_LiveView_HOverscanBorder  = 0;
-	m_LiveView_VOverscanBorder  = 0;
-	m_LiveView_DisplayNr        = 0;
-	m_LiveView_FrameDelay       = 30;
-	m_LiveView_GDI_FrameRate    = 25;
-	m_LiveView_RowsPerFrame     = 1;
-
-
-	m_Hardware_global_gamma    = 128;
-	m_Hardware_global_contrast = 100;
-	m_Hardware_contrast_red    = 100;
-	m_Hardware_contrast_green  = 100;
-	m_Hardware_contrast_blue   = 100;
-
-	m_Hardware_gamma_red       = 22;
-	m_Hardware_gamma_green     = 22;
-	m_Hardware_gamma_blue      = 22;
-
-	m_DMX_BaseChannels         = strdup("0");
-	m_DMX_RGB_Channels        = 5; // so wie atmolight
-	m_DMX_BaudrateIndex            = 0; // Low 115kbaud 
-	m_Ardu_BaudrateIndex            = 0; // Low 115kbaud 
-
-	m_MoMo_Channels           = 3; // default momo, there exists also a 4 ch version!
-	m_Fnordlicht_Amount       = 2; // default fnordlicht, there are 2 fnordlicht's!
-
-	m_ZonesTopCount            = 1;
-	m_ZonesBottomCount         = 1;
-	m_ZonesLRCount             = 1;
-	m_ZoneSummary              = ATMO_FALSE;
 	//atmoduino
-	m_hAtmoClLeds              = 32;
 	UpdateZoneCount();
 
-
 	clearAllChannelMappings();
-	m_CurrentChannelAssignment = 0;
+
 	CAtmoChannelAssignment *temp = new CAtmoChannelAssignment();
 	temp->system = true;
 	temp->setName( "Standard" );
