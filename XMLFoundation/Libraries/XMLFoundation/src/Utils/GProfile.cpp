@@ -522,7 +522,7 @@ long GProfile::WriteCurrentConfigHelper(const char *pzPathAndFileName, GString *
 	{
 		if (bWriteXML)
 		{
-		    *strConfigData << "<configuration>\n";
+		  *strConfigData << "<configuration>";
 		}
 
 		GListIterator itSections(&m_lstSections);
