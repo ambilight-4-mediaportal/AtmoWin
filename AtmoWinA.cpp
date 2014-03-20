@@ -190,9 +190,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	UINT wTimerRes;
 
 	HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
-	if(GetLastError() != ERROR_ALREADY_EXISTS) 
-	{
+  bool gefunden=FALSE;
+	if(GetLastError() == ERROR_ALREADY_EXISTS) gefunden = TRUE;
 
+	if (!gefunden)	
+	{
 		InitCommonControls();
 
 		CUtils *Utils = new CUtils;

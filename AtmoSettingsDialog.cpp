@@ -23,6 +23,7 @@
 #include "AtmoEditChannelAssignment.h"
 #include "AtmoGradients.h"
 #include "AtmoRegistryConfig.h"
+#include "ObjectModel.h"
 
 #include <string>
 #include <strsafe.h>
@@ -378,7 +379,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_STATIC18), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[48]));
 	SendMessage(getDlgItem(IDC_STATIC19), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[49]));
 	SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
-	SendMessage(getDlgItem(IDC_BUTTON4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
+	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
 	SendMessage(getDlgItem(IDC_STATIC20), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[52]));
 	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
 	SendMessage(getDlgItem(IDC_STATIC21), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[54]));
@@ -601,7 +602,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			break;
 		}
 		//delete profile
-	case IDC_BUTTON4: 
+	case IDC_BU_DELETE: 
 		{
 			hwndCtrl2 = this->getDlgItem(IDC_COMBO3);
 			Edit_GetText(hwndCtrl2,buffer2,200);
@@ -625,7 +626,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 
 				//profilename aus profile liste löschen
-				pAtmoConfig->WriteRegistryStringList(HKEY_CURRENT_USER,(char*)path.data(),"profiles","-1");
+				//pAtmoConfig->WriteRegistryStringList(HKEY_CURRENT_USER,(char*)path.data(),"profiles","-1");
+				GetProfile().SetConfig("AtmoWinX", "profiles", "-1" );
 
 				//profile Verzeichnis löschen
 				//path.append(key);

@@ -46,7 +46,9 @@ void CAtmoRegistryConfig::SaveSettings(HKEY mykey, std::string profile1)
 	}
 
 	// don't destroy config in that case..
-	if(m_eAtmoConnectionType != actNUL) WriteRegistryInt(mykey, configRootKey,"ConnectionType",(int)m_eAtmoConnectionType);
+	if(m_eAtmoConnectionType != actNUL) 
+		WriteRegistryInt(mykey, configRootKey,"ConnectionType",(int)m_eAtmoConnectionType);
+
 	WriteRegistryInt(mykey, configRootKey,"EffectMode",(int)m_eEffectMode);
 	WriteRegistryInt(mykey, configRootKey,"comport",this->m_Comport);
 	WriteRegistryInt(mykey, configRootKey,"Arducomport",this->m_ArduComport);
@@ -54,17 +56,23 @@ void CAtmoRegistryConfig::SaveSettings(HKEY mykey, std::string profile1)
 	WriteRegistryInt(mykey, configRootKey,"comport_2", m_Comports[1] );
 	WriteRegistryInt(mykey, configRootKey,"comport_3", m_Comports[2] );
 
-	WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Red",m_WhiteAdjustment_Red);
-	WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Green",m_WhiteAdjustment_Green);
-	WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Blue",m_WhiteAdjustment_Blue);
-	WriteRegistryInt(mykey, newconfigRootKey,"UseSoftwareWhiteAdj",(int)m_UseSoftwareWhiteAdj);
-	WriteRegistryInt(mykey, newconfigRootKey,"UseSoftware2WhiteAdj",(int)m_UseSoftware2WhiteAdj);
-	WriteRegistryInt(mykey, newconfigRootKey,"UseColorK",(int)m_UseColorKWhiteAdj);
-	WriteRegistryInt(mykey, newconfigRootKey,"Use3dlut",(int)m_Use3dlut);
-
-
-	WriteRegistryInt(mykey, newconfigRootKey,"UsePerChWhiteAdj",(int)m_WhiteAdjPerChannel);
-
+	//WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Red",m_WhiteAdjustment_Red);
+	GetProfile().SetConfig("AtmoWinX", "WhiteAdjustment_Red", m_WhiteAdjustment_Red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Green",m_WhiteAdjustment_Green);
+	GetProfile().SetConfig("AtmoWinX", "WhiteAdjustment_Green", m_WhiteAdjustment_Green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"WhiteAdjustment_Blue",m_WhiteAdjustment_Blue);
+	GetProfile().SetConfig("AtmoWinX", "WhiteAdjustment_Blue", m_WhiteAdjustment_Blue);
+	//WriteRegistryInt(mykey, newconfigRootKey,"UseSoftwareWhiteAdj",(int)m_UseSoftwareWhiteAdj);
+	GetProfile().SetConfig("AtmoWinX", "UseSoftwareWhiteAdj", (int)m_UseSoftwareWhiteAdj);
+	//WriteRegistryInt(mykey, newconfigRootKey,"UseSoftware2WhiteAdj",(int)m_UseSoftware2WhiteAdj);
+	GetProfile().SetConfig("AtmoWinX", "UseSoftware2WhiteAdj", (int)m_UseSoftware2WhiteAdj);
+	//WriteRegistryInt(mykey, newconfigRootKey,"UseColorK",(int)m_UseColorKWhiteAdj);
+	GetProfile().SetConfig("AtmoWinX", "UseColorK", (int)m_UseColorKWhiteAdj);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Use3dlut",(int)m_Use3dlut);
+	GetProfile().SetConfig("AtmoWinX", "Use3dlut", (int)m_Use3dlut);
+	
+	//WriteRegistryInt(mykey, newconfigRootKey,"UsePerChWhiteAdj",(int)m_WhiteAdjPerChannel);
+	GetProfile().SetConfig("AtmoWinX", "UsePerChWhiteAdj", (int)m_WhiteAdjPerChannel);	
 	sprintf(regKeyName,"%sWhiteAdjPerChannel\\",newconfigRootKey);
 	WriteRegistryInt(mykey, regKeyName,"count",(int)m_chWhiteAdj_Count);
 
@@ -80,143 +88,232 @@ void CAtmoRegistryConfig::SaveSettings(HKEY mykey, std::string profile1)
 		WriteRegistryInt(mykey, regKeyName, valueName, m_chWhiteAdj_Blue[i] );
 	}
 
+	//WriteRegistryInt(mykey, newconfigRootKey,"ColorChanger_iSteps",this->m_ColorChanger_iSteps);
+	GetProfile().SetConfig("AtmoWinX", "ColorChanger_iSteps", this->m_ColorChanger_iSteps);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ColorChanger_iDelay",this->m_ColorChanger_iDelay);
+	GetProfile().SetConfig("AtmoWinX", "ColorChanger_iDelay", this->m_ColorChanger_iDelay);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LrColorChanger_iSteps",this->m_LrColorChanger_iSteps);
+	GetProfile().SetConfig("AtmoWinX", "LrColorChanger_iSteps", this->m_LrColorChanger_iSteps);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LrColorChanger_iDelay",this->m_LrColorChanger_iDelay);
+	GetProfile().SetConfig("AtmoWinX", "LrColorChanger_iDelay", this->m_LrColorChanger_iDelay);
+	//WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Red",this->m_StaticColor_Red);
+	GetProfile().SetConfig("AtmoWinX", "StaticColor_Red", this->m_StaticColor_Red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Green",this->m_StaticColor_Green);
+	GetProfile().SetConfig("AtmoWinX", "StaticColor_Green", this->m_StaticColor_Green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Blue",this->m_StaticColor_Blue);
+	GetProfile().SetConfig("AtmoWinX", "StaticColor_Blue", this->m_StaticColor_Blue);
+	//WriteRegistryInt(mykey, newconfigRootKey,"isSetShutdownColor",m_IsSetShutdownColor);
+	GetProfile().SetConfig("AtmoWinX", "isSetShutdownColor", m_IsSetShutdownColor);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_red",m_ShutdownColor_Red);
+	GetProfile().SetConfig("AtmoWinX", "ShutdownColor_red", m_ShutdownColor_Red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_green",m_ShutdownColor_Green);
+	GetProfile().SetConfig("AtmoWinX", "ShutdownColor_green", m_ShutdownColor_Green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_blue",m_ShutdownColor_Blue);
+	GetProfile().SetConfig("AtmoWinX", "ShutdownColor_blue", m_ShutdownColor_Blue);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilterMode",(int)m_LiveViewFilterMode);
+	GetProfile().SetConfig("AtmoWinX", "LiveViewFilterMode", (int)m_LiveViewFilterMode);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_PercentNew",m_LiveViewFilter_PercentNew);
+	GetProfile().SetConfig("AtmoWinX", "LiveViewFilter_PercentNew", m_LiveViewFilter_PercentNew);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_MeanLength",m_LiveViewFilter_MeanLength);
+	GetProfile().SetConfig("AtmoWinX", "LiveViewFilter_MeanLength", m_LiveViewFilter_MeanLength);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_MeanThreshold",m_LiveViewFilter_MeanThreshold);
+	GetProfile().SetConfig("AtmoWinX", "LiveViewFilter_MeanThreshold", m_LiveViewFilter_MeanThreshold);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_EdgeWeighting",m_LiveView_EdgeWeighting);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_EdgeWeighting", m_LiveView_EdgeWeighting);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_RowsPerFrame",m_LiveView_RowsPerFrame);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_RowsPerFrame", m_LiveView_RowsPerFrame);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_BrightCorrect",m_LiveView_BrightCorrect);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_BrightCorrect", m_LiveView_BrightCorrect);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_DarknessLimit",m_LiveView_DarknessLimit);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_DarknessLimit", m_LiveView_DarknessLimit);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_HueWinSize",m_LiveView_HueWinSize);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_HueWinSize", m_LiveView_HueWinSize);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_SatWinSize",m_LiveView_SatWinSize);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_SatWinSize", m_LiveView_SatWinSize);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Overlap",m_LiveView_Overlap);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_Overlap", m_LiveView_Overlap);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_WidescreenMode",m_LiveView_WidescreenMode);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_WidescreenMode", m_LiveView_WidescreenMode);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Saturation",m_LiveView_Saturation);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_Saturation", m_LiveView_Saturation);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Sensitivity",m_LiveView_Sensitivity);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_Sensitivity", m_LiveView_Sensitivity);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_invert",m_Useinvert);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_invert", m_Useinvert);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_HOverscanBorder",m_LiveView_HOverscanBorder);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_HOverscanBorder", m_LiveView_HOverscanBorder);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_VOverscanBorder",m_LiveView_VOverscanBorder);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_VOverscanBorder", m_LiveView_VOverscanBorder);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_DisplayNr",m_LiveView_DisplayNr);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_DisplayNr", m_LiveView_DisplayNr);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_FrameDelay",m_LiveView_FrameDelay);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_FrameDelay", m_LiveView_FrameDelay);
+	//WriteRegistryInt(mykey, newconfigRootKey,"LiveView_GDI_FrameRate",m_LiveView_GDI_FrameRate);
+	GetProfile().SetConfig("AtmoWinX", "LiveView_GDI_FrameRate", m_LiveView_GDI_FrameRate);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ZonesTopCount",m_ZonesTopCount);
+	GetProfile().SetConfig("AtmoWinX", "ZonesTopCount", m_ZonesTopCount);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ZonesBottomCount",m_ZonesBottomCount);
+	GetProfile().SetConfig("AtmoWinX", "ZonesBottomCount", m_ZonesBottomCount);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ZonesLRCount",m_ZonesLRCount);
+	GetProfile().SetConfig("AtmoWinX", "ZonesLRCount", m_ZonesLRCount);
+	//WriteRegistryInt(mykey, newconfigRootKey,"ZoneSummary",m_ZoneSummary);
+	GetProfile().SetConfig("AtmoWinX", "ZoneSummary", m_ZoneSummary);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"ColorChanger_iSteps",this->m_ColorChanger_iSteps);
-	WriteRegistryInt(mykey, newconfigRootKey,"ColorChanger_iDelay",this->m_ColorChanger_iDelay);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_global_gamma",m_Hardware_global_gamma);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_global_gamma", m_Hardware_global_gamma);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_global_contrast",m_Hardware_global_contrast);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_global_contrast", m_Hardware_global_contrast);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_red",m_Hardware_contrast_red);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_contrast_red", m_Hardware_contrast_red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_green",m_Hardware_contrast_green);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_contrast_green", m_Hardware_contrast_green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_blue",m_Hardware_contrast_blue);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_contrast_blue", m_Hardware_contrast_blue);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_red",m_Hardware_gamma_red);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_gamma_red", m_Hardware_gamma_red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_green",m_Hardware_gamma_green);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_gamma_green", m_Hardware_gamma_green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_blue",m_Hardware_gamma_blue);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_gamma_blue", m_Hardware_gamma_blue);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"LrColorChanger_iSteps",this->m_LrColorChanger_iSteps);
-	WriteRegistryInt(mykey, newconfigRootKey,"LrColorChanger_iDelay",this->m_LrColorChanger_iDelay);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Red",this->m_StaticColor_Red);
-	WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Green",this->m_StaticColor_Green);
-	WriteRegistryInt(mykey, newconfigRootKey,"StaticColor_Blue",this->m_StaticColor_Blue);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"isSetShutdownColor",m_IsSetShutdownColor);
-	WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_red",m_ShutdownColor_Red);
-	WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_green",m_ShutdownColor_Green);
-	WriteRegistryInt(mykey, newconfigRootKey,"ShutdownColor_blue",m_ShutdownColor_Blue);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilterMode",(int)m_LiveViewFilterMode);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_PercentNew",m_LiveViewFilter_PercentNew);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_MeanLength",m_LiveViewFilter_MeanLength);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveViewFilter_MeanThreshold",m_LiveViewFilter_MeanThreshold);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_EdgeWeighting",m_LiveView_EdgeWeighting);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_RowsPerFrame",m_LiveView_RowsPerFrame);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_BrightCorrect",m_LiveView_BrightCorrect);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_DarknessLimit",m_LiveView_DarknessLimit);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_HueWinSize",m_LiveView_HueWinSize);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_SatWinSize",m_LiveView_SatWinSize);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Overlap",m_LiveView_Overlap);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_WidescreenMode",m_LiveView_WidescreenMode);
-	//
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Saturation",m_LiveView_Saturation);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_Sensitivity",m_LiveView_Sensitivity);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_invert",m_Useinvert);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_HOverscanBorder",m_LiveView_HOverscanBorder);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_VOverscanBorder",m_LiveView_VOverscanBorder);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_DisplayNr",m_LiveView_DisplayNr);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_FrameDelay",m_LiveView_FrameDelay);
-	WriteRegistryInt(mykey, newconfigRootKey,"LiveView_GDI_FrameRate",m_LiveView_GDI_FrameRate);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"ZonesTopCount",m_ZonesTopCount);
-	WriteRegistryInt(mykey, newconfigRootKey,"ZonesBottomCount",m_ZonesBottomCount);
-	WriteRegistryInt(mykey, newconfigRootKey,"ZonesLRCount",m_ZonesLRCount);
-	WriteRegistryInt(mykey, newconfigRootKey,"ZoneSummary",m_ZoneSummary);
-
-
-
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_global_gamma",m_Hardware_global_gamma);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_global_contrast",m_Hardware_global_contrast);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_red",m_Hardware_contrast_red);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_green",m_Hardware_contrast_green);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_contrast_blue",m_Hardware_contrast_blue);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_red",m_Hardware_gamma_red);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_green",m_Hardware_gamma_green);
-	WriteRegistryInt(mykey, newconfigRootKey,"Hardware_gamma_blue",m_Hardware_gamma_blue);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_mode",(int)m_Software_gamma_mode);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_red",m_Software_gamma_red);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_green",m_Software_gamma_green);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_blue",m_Software_gamma_blue);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_global",m_Software_gamma_global);
-
-	WriteRegistryInt(mykey, newconfigRootKey,"hAtmoClLeds", m_hAtmoClLeds); 
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_mode",(int)m_Software_gamma_mode);
+	GetProfile().SetConfig("AtmoWinX", "Software_gamma_mode", m_Software_gamma_mode);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_red",m_Software_gamma_red);
+	GetProfile().SetConfig("AtmoWinX", "Software_gamma_red", m_Software_gamma_red);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_green",m_Software_gamma_green);
+	GetProfile().SetConfig("AtmoWinX", "Software_gamma_green", m_Software_gamma_green);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_blue",m_Hardware_gamma_blue);
+	GetProfile().SetConfig("AtmoWinX", "Hardware_gamma_blue", m_Hardware_gamma_blue);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_gamma_global",m_Software_gamma_global);
+	GetProfile().SetConfig("AtmoWinX", "Software_gamma_global", m_Software_gamma_global);
+	//WriteRegistryInt(mykey, newconfigRootKey,"hAtmoClLeds", m_hAtmoClLeds); 
+	GetProfile().SetConfig("AtmoWinX", "hAtmoClLeds", m_hAtmoClLeds);
 
 	//calib
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rr",red_ColorK[256][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rg",red_ColorK[256][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rb",red_ColorK[256][2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gr",green_ColorK[256][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gg",green_ColorK[256][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gb",green_ColorK[256][2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_br",blue_ColorK[256][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_bg",blue_ColorK[256][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_bb",blue_ColorK[256][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rr",red_ColorK[256][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_rr", red_ColorK[256][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rg",red_ColorK[256][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_rg", red_ColorK[256][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_rb",red_ColorK[256][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_rb", red_ColorK[256][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gr",green_ColorK[256][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_gr", green_ColorK[256][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gg",green_ColorK[256][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_gg", green_ColorK[256][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_gb",green_ColorK[256][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_gb", green_ColorK[256][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_br",blue_ColorK[256][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_br", blue_ColorK[256][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_bg",blue_ColorK[256][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_bg", blue_ColorK[256][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_bb",blue_ColorK[256][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_bb", blue_ColorK[256][2]);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yr",red_ColorK[257][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yg",red_ColorK[257][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yb",red_ColorK[257][2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mr",green_ColorK[257][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mg",green_ColorK[257][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mb",green_ColorK[257][2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cr",blue_ColorK[257][0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cg",blue_ColorK[257][1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cb",blue_ColorK[257][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yr",red_ColorK[257][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_yr", red_ColorK[257][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yg",red_ColorK[257][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_yg", red_ColorK[257][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_yb",red_ColorK[257][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_yb", red_ColorK[257][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mr",green_ColorK[257][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_mr", green_ColorK[257][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mg",green_ColorK[257][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_mg", green_ColorK[257][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_mb",green_ColorK[257][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_mb", green_ColorK[257][2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cr",blue_ColorK[257][0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_cr", blue_ColorK[257][0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cg",blue_ColorK[257][1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_cg", blue_ColorK[257][1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_ColK_cb",blue_ColorK[257][2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_ColK_cb", blue_ColorK[257][2]);
 
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_5",red_grid[0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_5", red_grid[0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_10",red_grid[1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_10", red_grid[1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_20",red_grid[2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_20", red_grid[2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_30",red_grid[3]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_30", red_grid[3]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_40",red_grid[4]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_40", red_grid[4]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_50",red_grid[5]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_50", red_grid[5]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_60",red_grid[6]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_60", red_grid[6]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_70",red_grid[7]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_70", red_grid[7]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_80",red_grid[8]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_80", red_grid[8]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_90",red_grid[9]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_90", red_grid[9]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_100",red_grid[10]);
+	GetProfile().SetConfig("AtmoWinX", "Software_red_g_100", red_grid[10]);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_5",red_grid[0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_10",red_grid[1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_20",red_grid[2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_30",red_grid[3]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_40",red_grid[4]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_50",red_grid[5]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_60",red_grid[6]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_70",red_grid[7]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_80",red_grid[8]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_90",red_grid[9]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_red_g_100",red_grid[10]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_5",green_grid[0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_5", green_grid[0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_10",green_grid[1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_10", green_grid[1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_20",green_grid[2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_20", green_grid[2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_30",green_grid[3]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_30", green_grid[3]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_40",green_grid[4]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_40", green_grid[4]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_50",green_grid[5]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_50", green_grid[5]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_60",green_grid[6]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_60", green_grid[6]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_70",green_grid[7]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_70", green_grid[7]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_80",green_grid[8]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_80", green_grid[8]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_90",green_grid[9]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_90", green_grid[9]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_100",green_grid[10]);
+	GetProfile().SetConfig("AtmoWinX", "Software_green_g_100", green_grid[10]);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_5",green_grid[0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_10",green_grid[1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_20",green_grid[2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_30",green_grid[3]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_40",green_grid[4]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_50",green_grid[5]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_60",green_grid[6]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_70",green_grid[7]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_80",green_grid[8]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_90",green_grid[9]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_green_g_100",green_grid[10]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_5",blue_grid[0]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_5", blue_grid[0]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_10",blue_grid[1]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_10", blue_grid[1]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_20",blue_grid[2]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_20", blue_grid[2]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_30",blue_grid[3]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_30", blue_grid[3]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_40",blue_grid[4]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_40", blue_grid[4]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_50",blue_grid[5]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_50", blue_grid[5]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_60",blue_grid[6]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_60", blue_grid[6]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_70",blue_grid[7]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_70", blue_grid[7]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_80",blue_grid[8]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_80", blue_grid[8]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_90",blue_grid[9]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_90", blue_grid[9]);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_100",blue_grid[10]);
+	GetProfile().SetConfig("AtmoWinX", "Software_blue_g_100", blue_grid[10]);
 
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_5",blue_grid[0]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_10",blue_grid[1]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_20",blue_grid[2]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_30",blue_grid[3]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_40",blue_grid[4]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_50",blue_grid[5]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_60",blue_grid[6]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_70",blue_grid[7]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_80",blue_grid[8]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_90",blue_grid[9]);
-	WriteRegistryInt(mykey, newconfigRootKey,"Software_blue_g_100",blue_grid[10]);
-
-	//
-
-	WriteRegistryString(mykey,  newconfigRootKey, "DMX_BaseChannels", m_DMX_BaseChannels );
-	WriteRegistryInt(mykey, newconfigRootKey,"DMX_RGB_Channels",m_DMX_RGB_Channels);
-	WriteRegistryInt(mykey, newconfigRootKey,"DMX_BaudrateIndex", m_DMX_BaudrateIndex );  
-	WriteRegistryInt(mykey, newconfigRootKey,"Ardu_BaudrateIndex", m_Ardu_BaudrateIndex ); 
-
-	WriteRegistryInt(mykey, newconfigRootKey,"MoMo_Channels", m_MoMo_Channels );
-
-	WriteRegistryInt(mykey, newconfigRootKey,"Fnordlicht_Amount", m_Fnordlicht_Amount );
+	//WriteRegistryString(mykey,  newconfigRootKey, "DMX_BaseChannels", m_DMX_BaseChannels );
+	GetProfile().SetConfig("AtmoWinX", "DMX_BaseChannels", m_DMX_BaseChannels);
+	//WriteRegistryInt(mykey, newconfigRootKey,"DMX_RGB_Channels",m_DMX_RGB_Channels);
+	GetProfile().SetConfig("AtmoWinX", "DMX_RGB_Channels", m_DMX_RGB_Channels);
+	//WriteRegistryInt(mykey, newconfigRootKey,"DMX_BaudrateIndex", m_DMX_BaudrateIndex );  
+	GetProfile().SetConfig("AtmoWinX", "DMX_BaudrateIndex", m_DMX_BaudrateIndex);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Ardu_BaudrateIndex", m_Ardu_BaudrateIndex ); 
+	GetProfile().SetConfig("AtmoWinX", "Ardu_BaudrateIndex", m_Ardu_BaudrateIndex);
+	//WriteRegistryInt(mykey, newconfigRootKey,"MoMo_Channels", m_MoMo_Channels );
+	GetProfile().SetConfig("AtmoWinX", "MoMo_Channels", m_MoMo_Channels);
+	//WriteRegistryInt(mykey, newconfigRootKey,"Fnordlicht_Amount", m_Fnordlicht_Amount );
+	GetProfile().SetConfig("AtmoWinX", "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
 
 	WriteRegistryInt(mykey, configRootKey,"NumChannelAssignments",getNumChannelAssignments());
-	WriteRegistryInt(mykey, newconfigRootKey,"CurrentChannelAssignment",m_CurrentChannelAssignment);
+	//WriteRegistryInt(mykey, newconfigRootKey,"CurrentChannelAssignment",m_CurrentChannelAssignment);
+	GetProfile().SetConfig("AtmoWinX", "CurrentChannelAssignment", m_CurrentChannelAssignment);
 	for(int i=1;i<10;i++) 
 	{
 		CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
@@ -232,6 +329,11 @@ void CAtmoRegistryConfig::SaveSettings(HKEY mykey, std::string profile1)
 			}
 		}
 	}
+	CUtils *Utils = new CUtils;
+
+	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
+	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
+	strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
 }
 
 int CAtmoRegistryConfig::trilinear(int x, int y, int z, int col)
@@ -658,7 +760,7 @@ void CAtmoRegistryConfig::LoadSettings(HKEY mykey, std::string profile1)
 	ColorCube[0][1][1][0]=blue_ColorK[257][0];ColorCube[0][1][1][1]=blue_ColorK[257][1];ColorCube[0][1][1][2]=blue_ColorK[257][2]; //cyan
 	ColorCube[1][1][1][0]=red_grid[10] ;ColorCube[1][1][1][1]=green_grid[10];ColorCube[1][1][1][2]=blue_grid[10]; //white
 
-	//ReadRegistryInt(mykey, newconfigRootKey, "DMX_BaseChannel", 0 );
+	ReadRegistryInt(mykey, newconfigRootKey, "DMX_BaseChannel", 0 );
 	int tmpChannel          = GetProfile().GetIntOrDefault("AtmoWinX", "DMX_BaseChannel", 0);
 	if((tmpChannel < 0) || (tmpChannel>253)) tmpChannel = 0;
 	char buf[16];
