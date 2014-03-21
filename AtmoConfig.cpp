@@ -16,19 +16,6 @@
 
 #include "AtmoConfig.h"
 
-/* Import Hint
-
-if somebody Adds new config option this has to be done in the following
-files and includes!
-
-AtmoConfig.h  -- extend class definition!, and add get... and set... Methods!
-so that the real variables are still hidden inside the class!
-AtmoConfigRegistry.cpp --> SaveToRegistry();
-AtmoConfigRegistry.cpp --> LoadFromRegistry();
-AtmoConfig.cpp --> Assign( ... );
-
-*/
-
 CAtmoConfig::CAtmoConfig()
 {
 	// setup basic configruation structures...
@@ -55,7 +42,8 @@ CAtmoConfig::CAtmoConfig()
 	LoadDefaults();
 }
 
-CAtmoConfig::~CAtmoConfig() {
+CAtmoConfig::~CAtmoConfig() 
+{
 	// and finally cleanup...
 	clearAllChannelMappings();
 
@@ -81,9 +69,8 @@ CAtmoConfig::~CAtmoConfig() {
 #endif
 }
 
-void CAtmoConfig::LoadDefaults() {
-	//    m_eAtmoConnectionType = actSerialPort;
-	//    m_Comport
+void CAtmoConfig::LoadDefaults()
+{
 #if defined (_ATMO_VLC_PLUGIN_)
 
 	free( m_devicename );
@@ -174,7 +161,7 @@ void CAtmoConfig::LoadDefaults() {
 	m_IgnoreConnectionErrorOnStartup = ATMO_FALSE;
 
 	m_show_statistics                = ATMO_FALSE;
-  m_UpdateEdgeWeightningFlag       = 0;
+	m_UpdateEdgeWeightningFlag       = 0;
 
 	m_chWhiteAdj_Count               = 0;
 	delete []m_chWhiteAdj_Red;
@@ -197,8 +184,8 @@ void CAtmoConfig::LoadDefaults() {
 	UpdateZoneDefinitionCount();
 }
 
-void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc) {
-
+void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc) 
+{
 #if defined(_ATMO_VLC_PLUGIN_)
 	this->setSerialDevice(0, pAtmoConfigSrc->getSerialDevice(0));
 	this->setSerialDevice(1, pAtmoConfigSrc->getSerialDevice(1));
@@ -206,118 +193,122 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc) {
 	this->setSerialDevice(3, pAtmoConfigSrc->getSerialDevice(3));
 #else
 	this->m_ArduComport                  = pAtmoConfigSrc->m_ArduComport;
-	this->m_Comport                  = pAtmoConfigSrc->m_Comport;
-	this->m_Comports[0]              = pAtmoConfigSrc->m_Comports[0];
-	this->m_Comports[1]              = pAtmoConfigSrc->m_Comports[1];
-	this->m_Comports[2]              = pAtmoConfigSrc->m_Comports[2];
+	this->m_Comport                      = pAtmoConfigSrc->m_Comport;
+	this->m_Comports[0]                  = pAtmoConfigSrc->m_Comports[0];
+	this->m_Comports[1]                  = pAtmoConfigSrc->m_Comports[1];
+	this->m_Comports[2]                  = pAtmoConfigSrc->m_Comports[2];
 #endif
 
-	this->m_eAtmoConnectionType      = pAtmoConfigSrc->m_eAtmoConnectionType;
-	this->m_eEffectMode              = pAtmoConfigSrc->m_eEffectMode;
+	this->m_eAtmoConnectionType          = pAtmoConfigSrc->m_eAtmoConnectionType;
+	this->m_eEffectMode                  = pAtmoConfigSrc->m_eEffectMode;
 
-	this->m_WhiteAdjustment_Red      = pAtmoConfigSrc->m_WhiteAdjustment_Red;
-	this->m_WhiteAdjustment_Green    = pAtmoConfigSrc->m_WhiteAdjustment_Green;
-	this->m_WhiteAdjustment_Blue     = pAtmoConfigSrc->m_WhiteAdjustment_Blue;
-	this->m_UseSoftwareWhiteAdj      = pAtmoConfigSrc->m_UseSoftwareWhiteAdj;
-	this->m_UseSoftware2WhiteAdj      = pAtmoConfigSrc->m_UseSoftware2WhiteAdj;
-	this->m_UseColorKWhiteAdj      = pAtmoConfigSrc->m_UseColorKWhiteAdj;
-	this->m_Use3dlut		       = pAtmoConfigSrc->m_Use3dlut;
-	this->m_Useinvert		       = pAtmoConfigSrc->m_Useinvert;
-	this->profile				   = pAtmoConfigSrc->profile;
-	this->d_profile				   = pAtmoConfigSrc->d_profile;
-	this->profiles				   = pAtmoConfigSrc->profiles;
+	this->m_WhiteAdjustment_Red          = pAtmoConfigSrc->m_WhiteAdjustment_Red;
+	this->m_WhiteAdjustment_Green        = pAtmoConfigSrc->m_WhiteAdjustment_Green;
+	this->m_WhiteAdjustment_Blue         = pAtmoConfigSrc->m_WhiteAdjustment_Blue;
+	this->m_UseSoftwareWhiteAdj          = pAtmoConfigSrc->m_UseSoftwareWhiteAdj;
+	this->m_UseSoftware2WhiteAdj         = pAtmoConfigSrc->m_UseSoftware2WhiteAdj;
+	this->m_UseColorKWhiteAdj            = pAtmoConfigSrc->m_UseColorKWhiteAdj;
+	this->m_Use3dlut		                 = pAtmoConfigSrc->m_Use3dlut;
+	this->m_Useinvert		                 = pAtmoConfigSrc->m_Useinvert;
+	this->profile				                 = pAtmoConfigSrc->profile;
+	this->d_profile				               = pAtmoConfigSrc->d_profile;
+	this->profiles				               = pAtmoConfigSrc->profiles;
 
-	this->m_WhiteAdjPerChannel       = pAtmoConfigSrc->m_WhiteAdjPerChannel;
-	this->m_chWhiteAdj_Count         = pAtmoConfigSrc->m_chWhiteAdj_Count;
+	this->m_WhiteAdjPerChannel           = pAtmoConfigSrc->m_WhiteAdjPerChannel;
+	this->m_chWhiteAdj_Count             = pAtmoConfigSrc->m_chWhiteAdj_Count;
 	delete []m_chWhiteAdj_Red;
 	delete []m_chWhiteAdj_Green;
 	delete []m_chWhiteAdj_Blue;
+	
 	if(m_chWhiteAdj_Count > 0)
 	{
-		m_chWhiteAdj_Red   = new int[ m_chWhiteAdj_Count ];
-		m_chWhiteAdj_Green = new int[ m_chWhiteAdj_Count ];
-		m_chWhiteAdj_Blue  = new int[ m_chWhiteAdj_Count ];
+		m_chWhiteAdj_Red                   = new int[ m_chWhiteAdj_Count ];
+		m_chWhiteAdj_Green                 = new int[ m_chWhiteAdj_Count ];
+		m_chWhiteAdj_Blue                  = new int[ m_chWhiteAdj_Count ];
 		memcpy(m_chWhiteAdj_Red, pAtmoConfigSrc->m_chWhiteAdj_Red, sizeof(int) * m_chWhiteAdj_Count);
 		memcpy(m_chWhiteAdj_Green, pAtmoConfigSrc->m_chWhiteAdj_Green, sizeof(int) * m_chWhiteAdj_Count);
 		memcpy(m_chWhiteAdj_Blue, pAtmoConfigSrc->m_chWhiteAdj_Blue, sizeof(int) * m_chWhiteAdj_Count);
-	} else {
+	}
+	else 
+	{
 		m_chWhiteAdj_Red   = NULL;
 		m_chWhiteAdj_Green = NULL;
 		m_chWhiteAdj_Blue  = NULL;
 	}
 
+	this->m_IsSetShutdownColor           = pAtmoConfigSrc->m_IsSetShutdownColor;
+	this->m_ShutdownColor_Red            = pAtmoConfigSrc->m_ShutdownColor_Red;
+	this->m_ShutdownColor_Green          = pAtmoConfigSrc->m_ShutdownColor_Green;
+	this->m_ShutdownColor_Blue           = pAtmoConfigSrc->m_ShutdownColor_Blue;
 
-	this->m_IsSetShutdownColor       = pAtmoConfigSrc->m_IsSetShutdownColor;
-	this->m_ShutdownColor_Red        = pAtmoConfigSrc->m_ShutdownColor_Red;
-	this->m_ShutdownColor_Green      = pAtmoConfigSrc->m_ShutdownColor_Green;
-	this->m_ShutdownColor_Blue       = pAtmoConfigSrc->m_ShutdownColor_Blue;
+	this->m_ColorChanger_iSteps          = pAtmoConfigSrc->m_ColorChanger_iSteps;
+	this->m_ColorChanger_iDelay          = pAtmoConfigSrc->m_ColorChanger_iDelay;
 
-	this->m_ColorChanger_iSteps      = pAtmoConfigSrc->m_ColorChanger_iSteps;
-	this->m_ColorChanger_iDelay      = pAtmoConfigSrc->m_ColorChanger_iDelay;
+	this->m_LrColorChanger_iSteps        = pAtmoConfigSrc->m_LrColorChanger_iSteps;
+	this->m_LrColorChanger_iDelay        = pAtmoConfigSrc->m_LrColorChanger_iDelay;
 
-	this->m_LrColorChanger_iSteps    = pAtmoConfigSrc->m_LrColorChanger_iSteps;
-	this->m_LrColorChanger_iDelay    = pAtmoConfigSrc->m_LrColorChanger_iDelay;
+	this->m_StaticColor_Red              = pAtmoConfigSrc->m_StaticColor_Red;
+	this->m_StaticColor_Green            = pAtmoConfigSrc->m_StaticColor_Green;
+	this->m_StaticColor_Blue             = pAtmoConfigSrc->m_StaticColor_Blue;
 
-	this->m_StaticColor_Red          = pAtmoConfigSrc->m_StaticColor_Red;
-	this->m_StaticColor_Green        = pAtmoConfigSrc->m_StaticColor_Green;
-	this->m_StaticColor_Blue         = pAtmoConfigSrc->m_StaticColor_Blue;
+	this->m_LiveViewFilterMode           = pAtmoConfigSrc->m_LiveViewFilterMode;
+	this->m_LiveViewFilter_PercentNew    = pAtmoConfigSrc->m_LiveViewFilter_PercentNew;
+	this->m_LiveViewFilter_MeanLength    = pAtmoConfigSrc->m_LiveViewFilter_MeanLength;
+	this->m_LiveViewFilter_MeanThreshold = pAtmoConfigSrc->m_LiveViewFilter_MeanThreshold;
 
-	this->m_LiveViewFilterMode             = pAtmoConfigSrc->m_LiveViewFilterMode;
-	this->m_LiveViewFilter_PercentNew      = pAtmoConfigSrc->m_LiveViewFilter_PercentNew;
-	this->m_LiveViewFilter_MeanLength      = pAtmoConfigSrc->m_LiveViewFilter_MeanLength;
-	this->m_LiveViewFilter_MeanThreshold   = pAtmoConfigSrc->m_LiveViewFilter_MeanThreshold;
+	this->m_show_statistics              = pAtmoConfigSrc->m_show_statistics;
 
-	this->m_show_statistics               = pAtmoConfigSrc->m_show_statistics;
+	this->m_LiveView_EdgeWeighting       =  pAtmoConfigSrc->m_LiveView_EdgeWeighting;
+	this->m_LiveView_BrightCorrect       =  pAtmoConfigSrc->m_LiveView_BrightCorrect;
+	this->m_LiveView_DarknessLimit       =  pAtmoConfigSrc->m_LiveView_DarknessLimit;
+	this->m_LiveView_HueWinSize          =  pAtmoConfigSrc->m_LiveView_HueWinSize;
+	this->m_LiveView_SatWinSize          =  pAtmoConfigSrc->m_LiveView_SatWinSize;
+	this->m_LiveView_Overlap             =  pAtmoConfigSrc->m_LiveView_Overlap;
+	this->m_LiveView_WidescreenMode      =  pAtmoConfigSrc->m_LiveView_WidescreenMode;
 
+	this->m_LiveView_HOverscanBorder     = pAtmoConfigSrc->m_LiveView_HOverscanBorder;
+	this->m_LiveView_VOverscanBorder     = pAtmoConfigSrc->m_LiveView_VOverscanBorder;
+	this->m_LiveView_DisplayNr           = pAtmoConfigSrc->m_LiveView_DisplayNr;
+	this->m_LiveView_FrameDelay          = pAtmoConfigSrc->m_LiveView_FrameDelay;
+	this->m_LiveView_GDI_FrameRate       = pAtmoConfigSrc->m_LiveView_GDI_FrameRate;
+	this->m_LiveView_RowsPerFrame        =  pAtmoConfigSrc->m_LiveView_RowsPerFrame;
 
-	this->m_LiveView_EdgeWeighting  =  pAtmoConfigSrc->m_LiveView_EdgeWeighting;
-	this->m_LiveView_BrightCorrect  =  pAtmoConfigSrc->m_LiveView_BrightCorrect;
-	this->m_LiveView_DarknessLimit  =  pAtmoConfigSrc->m_LiveView_DarknessLimit;
-	this->m_LiveView_HueWinSize     =  pAtmoConfigSrc->m_LiveView_HueWinSize;
-	this->m_LiveView_SatWinSize     =  pAtmoConfigSrc->m_LiveView_SatWinSize;
-	this->m_LiveView_Overlap     =  pAtmoConfigSrc->m_LiveView_Overlap;
-	this->m_LiveView_WidescreenMode =  pAtmoConfigSrc->m_LiveView_WidescreenMode;
-
-	this->m_LiveView_HOverscanBorder  = pAtmoConfigSrc->m_LiveView_HOverscanBorder;
-	this->m_LiveView_VOverscanBorder  = pAtmoConfigSrc->m_LiveView_VOverscanBorder;
-	this->m_LiveView_DisplayNr        = pAtmoConfigSrc->m_LiveView_DisplayNr;
-	this->m_LiveView_FrameDelay       = pAtmoConfigSrc->m_LiveView_FrameDelay;
-	this->m_LiveView_GDI_FrameRate    = pAtmoConfigSrc->m_LiveView_GDI_FrameRate;
-	this->m_LiveView_RowsPerFrame   =  pAtmoConfigSrc->m_LiveView_RowsPerFrame;
-
-	this->m_ZonesTopCount             = pAtmoConfigSrc->m_ZonesTopCount;
-	this->m_ZonesBottomCount          = pAtmoConfigSrc->m_ZonesBottomCount;
-	this->m_ZonesLRCount              = pAtmoConfigSrc->m_ZonesLRCount;
-	this->m_ZoneSummary               = pAtmoConfigSrc->m_ZoneSummary;
+	this->m_ZonesTopCount                = pAtmoConfigSrc->m_ZonesTopCount;
+	this->m_ZonesBottomCount             = pAtmoConfigSrc->m_ZonesBottomCount;
+	this->m_ZonesLRCount                 = pAtmoConfigSrc->m_ZonesLRCount;
+	this->m_ZoneSummary                  = pAtmoConfigSrc->m_ZoneSummary;
 	UpdateZoneCount();
 
 	//Set atmo leds
-	this->m_hAtmoClLeds				  = pAtmoConfigSrc->m_hAtmoClLeds; 
-	this->m_Software_gamma_mode      =  pAtmoConfigSrc->m_Software_gamma_mode;
-	this->m_Software_gamma_red       =  pAtmoConfigSrc->m_Software_gamma_red;
-	this->m_Software_gamma_green     =  pAtmoConfigSrc->m_Software_gamma_green;
-	this->m_Software_gamma_blue      =  pAtmoConfigSrc->m_Software_gamma_blue;
-	this->m_Software_gamma_global    =  pAtmoConfigSrc->m_Software_gamma_global;
+	this->m_hAtmoClLeds				           = pAtmoConfigSrc->m_hAtmoClLeds; 
+	this->m_Software_gamma_mode          =  pAtmoConfigSrc->m_Software_gamma_mode;
+	this->m_Software_gamma_red           =  pAtmoConfigSrc->m_Software_gamma_red;
+	this->m_Software_gamma_green         =  pAtmoConfigSrc->m_Software_gamma_green;
+	this->m_Software_gamma_blue          =  pAtmoConfigSrc->m_Software_gamma_blue;
+	this->m_Software_gamma_global        =  pAtmoConfigSrc->m_Software_gamma_global;
 
 	this->setDMX_BaseChannels( pAtmoConfigSrc->getDMX_BaseChannels() );
 
-	this->m_DMX_RGB_Channels         = pAtmoConfigSrc->m_DMX_RGB_Channels;
-	this->m_DMX_BaudrateIndex        = pAtmoConfigSrc->m_DMX_BaudrateIndex;
+	this->m_DMX_RGB_Channels             = pAtmoConfigSrc->m_DMX_RGB_Channels;
+	this->m_DMX_BaudrateIndex            = pAtmoConfigSrc->m_DMX_BaudrateIndex;
 
-	this->m_Ardu_BaudrateIndex        = pAtmoConfigSrc->m_Ardu_BaudrateIndex;
+	this->m_Ardu_BaudrateIndex           = pAtmoConfigSrc->m_Ardu_BaudrateIndex;
 
-	this->m_MoMo_Channels            = pAtmoConfigSrc->m_MoMo_Channels;
+	this->m_MoMo_Channels                = pAtmoConfigSrc->m_MoMo_Channels;
 
-	this->m_Fnordlicht_Amount        = pAtmoConfigSrc->m_Fnordlicht_Amount;
+	this->m_Fnordlicht_Amount            = pAtmoConfigSrc->m_Fnordlicht_Amount;
 
-	this->m_CurrentChannelAssignment = pAtmoConfigSrc->m_CurrentChannelAssignment;
+	this->m_CurrentChannelAssignment     = pAtmoConfigSrc->m_CurrentChannelAssignment;
 
 	clearChannelMappings();
-	for(int i=1;i<pAtmoConfigSrc->getNumChannelAssignments();i++) {
+	for(int i=1;i<pAtmoConfigSrc->getNumChannelAssignments();i++) 
+	{
 		CAtmoChannelAssignment *ta = pAtmoConfigSrc->m_ChannelAssignments[i];
-		if(ta!=NULL) {
+		if(ta!=NULL) 
+		{
 			CAtmoChannelAssignment *dest = this->m_ChannelAssignments[i];
-			if(dest == NULL) {
+			if(dest == NULL)
+			{
 				dest = new CAtmoChannelAssignment();
 				this->m_ChannelAssignments[i] = dest;
 			}
@@ -333,16 +324,16 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc) {
 	UpdateZoneDefinitionCount();
 }
 
-
-
-int CAtmoConfig::getNumChannelAssignments() {
+int CAtmoConfig::getNumChannelAssignments() 
+{
 	int z=0;
 	for(int i=0;i<10;i++)
 		if(this->m_ChannelAssignments[i]!=NULL) z++;
 	return z;
 }
 
-void CAtmoConfig::clearChannelMappings() {
+void CAtmoConfig::clearChannelMappings() 
+{
 	for(int i=1;i<10;i++) {
 		CAtmoChannelAssignment *ca = m_ChannelAssignments[i];
 		if(ca!=NULL)
@@ -351,8 +342,10 @@ void CAtmoConfig::clearChannelMappings() {
 	}
 }
 
-void CAtmoConfig::clearAllChannelMappings() {
-	for(int i=0;i<10;i++) {
+void CAtmoConfig::clearAllChannelMappings() 
+{
+	for(int i=0;i<10;i++) 
+	{
 		CAtmoChannelAssignment *ca = m_ChannelAssignments[i];
 		if(ca!=NULL)
 			delete ca;
@@ -360,26 +353,34 @@ void CAtmoConfig::clearAllChannelMappings() {
 	}
 }
 
-void CAtmoConfig::AddChannelAssignment(CAtmoChannelAssignment *ta) {
-	for(int i=0;i<10;i++) {
-		if(m_ChannelAssignments[i] == NULL) {
+void CAtmoConfig::AddChannelAssignment(CAtmoChannelAssignment *ta) 
+{
+	for(int i=0;i<10;i++) 
+	{
+		if(m_ChannelAssignments[i] == NULL) 
+		{
 			m_ChannelAssignments[i] = ta;
 			break;
 		}
 	}
 }
 
-void CAtmoConfig::SetChannelAssignment(int index, CAtmoChannelAssignment *ta) {
+void CAtmoConfig::SetChannelAssignment(int index, CAtmoChannelAssignment *ta) 
+{
 	if(m_ChannelAssignments[index]!=NULL)
 		delete m_ChannelAssignments[index];
+
 	m_ChannelAssignments[index] = ta;
 }
 
-CAtmoZoneDefinition *CAtmoConfig::getZoneDefinition(int zoneIndex) {
+CAtmoZoneDefinition *CAtmoConfig::getZoneDefinition(int zoneIndex) 
+{
 	if(zoneIndex < 0)
 		return NULL;
+
 	if(zoneIndex >= m_AtmoZoneDefCount)
 		return NULL;
+
 	return m_ZoneDefinitions[zoneIndex];
 
 }
@@ -408,6 +409,7 @@ void CAtmoConfig::UpdateZoneDefinitionCount()
 		{
 			for(int zone=0; zone<m_AtmoZoneDefCount; zone++)
 				delete m_ZoneDefinitions[zone];
+
 			delete m_ZoneDefinitions;
 			m_ZoneDefinitions = NULL;
 		}
@@ -415,7 +417,8 @@ void CAtmoConfig::UpdateZoneDefinitionCount()
 		if(m_AtmoZoneDefCount > 0)
 		{
 			m_ZoneDefinitions = new CAtmoZoneDefinition*[m_AtmoZoneDefCount];
-			for(int zone=0; zone< m_AtmoZoneDefCount; zone++) {
+			for(int zone=0; zone< m_AtmoZoneDefCount; zone++) 
+			{
 				m_ZoneDefinitions[zone] = new CAtmoZoneDefinition();
 				m_ZoneDefinitions[zone]->Fill(255);
 			}
@@ -429,7 +432,8 @@ char *CAtmoConfig::getSerialDevice(int i)
 {
 	if(i == 0)
 		return m_devicename;
-	else  {
+	else  
+	{
 		i--;
 		return m_devicenames[i];
 	}
@@ -439,7 +443,8 @@ void CAtmoConfig::setSerialDevice(int i,const char *pszNewDevice)
 {
 	if(i == 0)
 		setSerialDevice(pszNewDevice);
-	else {
+	else 
+	{
 		i--;
 		free( m_devicenames[i] );
 		if(pszNewDevice)
@@ -455,7 +460,8 @@ int CAtmoConfig::getComport(int i)
 {
 	if(i == 0)
 		return this->m_Comport;
-	else {
+	else
+	{
 		i--;
 		return this->m_Comports[i];
 	}
@@ -465,7 +471,8 @@ int CAtmoConfig::getArduComport(int i)
 {
 	if(i == 0)
 		return this->m_ArduComport;
-	else {
+	else 
+	{
 		i--;
 		return this->m_Comports[i];
 	}
@@ -475,7 +482,8 @@ void CAtmoConfig::setComport(int i, int nr)
 {
 	if(i == 0)
 		this->m_Comport = nr;
-	else {
+	else 
+	{
 		this->m_Comports[i-1] = nr;
 	}
 }
@@ -484,14 +492,15 @@ void CAtmoConfig::setArduComport(int i, int nr)
 {
 	if(i == 0)
 		this->m_ArduComport = nr;
-	else {
+	else 
+	{
 		this->m_Comports[i-1] = nr;
 	}
 }
 
 #endif
 
-void CAtmoConfig::setDMX_BaseChannels(char *channels)
+void CAtmoConfig::setDMX_BaseChannels(const char *channels)
 {
 	free(m_DMX_BaseChannels);
 	m_DMX_BaseChannels = strdup(channels);
@@ -504,13 +513,12 @@ void CAtmoConfig::getChannelWhiteAdj(int channel,int &red,int &green,int &blue)
 		red = 256;
 		green = 256;
 		blue = 256;
-
-	} else {
-
+	} 
+	else 
+	{
 		red   = m_chWhiteAdj_Red[ channel ];
 		green = m_chWhiteAdj_Green[ channel ];
 		blue  = m_chWhiteAdj_Blue[ channel ];
-
 	}
 }
 
@@ -521,18 +529,21 @@ void CAtmoConfig::setChannelWhiteAdj(int channel,int red,int green,int blue)
 		int *tmp = new int[channel+1];
 		if(m_chWhiteAdj_Red)
 			memcpy( tmp, m_chWhiteAdj_Red, m_chWhiteAdj_Count * sizeof(int) );
+		
 		delete []m_chWhiteAdj_Red;
 		m_chWhiteAdj_Red = tmp;
 
 		tmp = new int[channel + 1];
 		if(m_chWhiteAdj_Green)
 			memcpy( tmp, m_chWhiteAdj_Green, m_chWhiteAdj_Count * sizeof(int) );
+		
 		delete []m_chWhiteAdj_Green;
 		m_chWhiteAdj_Green = tmp;
 
 		tmp = new int[channel + 1];
 		if(m_chWhiteAdj_Blue)
 			memcpy( tmp, m_chWhiteAdj_Blue, m_chWhiteAdj_Count * sizeof(int) );
+		
 		delete []m_chWhiteAdj_Blue;
 		m_chWhiteAdj_Blue = tmp;
 

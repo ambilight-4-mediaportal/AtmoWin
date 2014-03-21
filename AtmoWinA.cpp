@@ -11,7 +11,7 @@
 #include <mmsystem.h>
 #include "AtmoWinA.h"
 #include "AtmoConfig.h"
-#include "AtmoRegistryConfig.h"
+#include "AtmoXMLConfig.h"
 #include "AtmoConnection.h"
 #include "AtmoWinTrayIconHandler.h"
 #include "AtmoSettingsDialog.h"
@@ -84,7 +84,7 @@ char pXML2[] =
 	"<setting name='LrColorChanger_iSteps' value='50' />"			
 	"<setting name='MoMo_Channels' value='3' />"			
 	"<setting name='NumChannelAssignments' value='0' />"			
-	"<setting name='profiles' value='1' />"
+	"<setting name='profiles' value='' />"
 	"<setting name='ShutdownColor_blue' value='0' />"			
 	"<setting name='ShutdownColor_green' value='0' />"	
 	"<setting name='ShutdownColor_red' value='0' />"			
@@ -261,16 +261,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		hAccelTable = LoadAccelerators(hInstance, (LPCTSTR)IDC_ATMOWIN);
 
 
-		// this Objects load the configuration of atmoWin from registry, and stores its values back to registry!
-		CAtmoRegistryConfig *atmoConfig = new CAtmoRegistryConfig("SOFTWARE\\AtmoWinX\\");
+		// this Objects load the configuration of atmoWin from XML, and stores its values back to XML!
+		CAtmoXMLConfig *atmoConfig = new CAtmoXMLConfig("AtmoWinX");
 
 		// load configuration from registry...
-		if ((RegistryKeyExists(HKEY_CURRENT_USER, "SOFTWARE\\AtmoWinX\\" )==0) && (RegistryKeyExists(HKEY_LOCAL_MACHINE, "SOFTWARE\\AtmoWinX\\" )==1))
-		{
+		//if ((RegistryKeyExists(HKEY_CURRENT_USER, "SOFTWARE\\AtmoWinX\\" )==0) && (RegistryKeyExists(HKEY_LOCAL_MACHINE, "SOFTWARE\\AtmoWinX\\" )==1))
+		//{
 			//MessageBox(0,"Loading old registry settings...","info",MB_ICONERROR | MB_OK);
-			atmoConfig->LoadSettings(HKEY_LOCAL_MACHINE, "startup");
-		}
-		else atmoConfig->LoadSettings(HKEY_CURRENT_USER, "startup");
+		//	atmoConfig->LoadSettings(HKEY_LOCAL_MACHINE, "startup");
+		//}
+		//else 
+		atmoConfig->LoadSettings("", "startup");
 
 		// try loading Zone images from Bitmaps in the current folder...
 		char workdir[MAX_PATH];
@@ -285,10 +286,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			}
 		}
 
-		char langDll[MAX_PATH];
-		sprintf( langDll , "%sAtmoWin_%s.dll", workdir, atmoConfig->getLanguage() );
-		hResInstance = LoadLibraryEx( langDll, 0, LOAD_LIBRARY_AS_DATAFILE );
-		if(hResInstance == 0)
+		//char langDll[MAX_PATH];
+		//sprintf( langDll , "%sAtmoWin_%s.dll", workdir, atmoConfig->getLanguage() );
+		//hResInstance = LoadLibraryEx( langDll, 0, LOAD_LIBRARY_AS_DATAFILE );
+		//if(hResInstance == 0)
 			hResInstance = hInstance;
 		hAtmo_ResInstance = hResInstance;
 		hAtmo_Instance    = hInstance;

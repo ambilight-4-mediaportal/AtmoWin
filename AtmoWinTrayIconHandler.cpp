@@ -195,12 +195,9 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 				}
 
 			case WM_LBUTTONDOWN:
-				// MessageBox(0,"WM_LBUTTONDOWN","",0);
 				break;
 
 			case WM_LBUTTONDBLCLK:
-				// MessageBox(0,"WM_LBUTTONDBLCLK","",0);
-				// Show Config Dialog?
 				ShowSettingsDialog();
 				break;
 			}
@@ -335,7 +332,7 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 	if((wmId>=MENUID_FIRST_LANGUAGE) && (wmId<=MENUID_LAST_LANGUAGE)) 
 	{
 		CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-		pAtmoConfig->SaveSettings(HKEY_CURRENT_USER, pAtmoConfig->profile);
+		pAtmoConfig->SaveSettings("AtmoWinX", pAtmoConfig->profile);
 		CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 		if(pAtmoConnection) pAtmoConnection->CloseConnection(); 
 
@@ -355,7 +352,7 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 	case MENUID_QUITATMO:
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			pAtmoConfig->SaveSettings(HKEY_CURRENT_USER, pAtmoConfig->profile);
+			pAtmoConfig->SaveSettings("AtmoWinX", pAtmoConfig->profile);
 			CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 			if(pAtmoConnection) pAtmoConnection->CloseConnection();  			 
 			PostMessage(m_hWindow, WM_QUIT, 0, 0); 		
@@ -405,8 +402,6 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 
 void CTrayIconWindow::HandleWmDestroy()
 {
-	// Do nothing or AutoRestart not work
-	//PostQuitMessage(0);
 }
 
 

@@ -192,9 +192,6 @@
     <ClCompile Include="AtmoDynData.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
-    <ClCompile Include="AtmoRegistryConfig.cpp">
-      <Filter>Quelldateien\settings</Filter>
-    </ClCompile>
     <ClCompile Include="AtmoZoneDefinition.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
@@ -245,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="ObjectModel.cpp">
       <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoXMLConfig.cpp">
+      <Filter>Quelldateien\settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -421,9 +421,6 @@
     <ClInclude Include="AtmoDynData.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="AtmoRegistryConfig.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoZoneDefinition.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
@@ -438,6 +435,9 @@
     </ClInclude>
     <ClInclude Include="ObjectModel.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoXMLConfig.h">
+      <Filter>Headerdateien\settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

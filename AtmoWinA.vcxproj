@@ -302,7 +302,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="AtmoRegistryConfig.cpp" />
+    <ClCompile Include="AtmoXMLConfig.cpp" />
     <ClCompile Include="AtmoZoneDefinition.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -455,7 +455,7 @@
     <ClInclude Include="basics\AtmoDisplays.h" />
     <ClInclude Include="AtmoDisplays.h" />
     <ClInclude Include="AtmoDynData.h" />
-    <ClInclude Include="AtmoRegistryConfig.h" />
+    <ClInclude Include="AtmoXMLConfig.h" />
     <ClInclude Include="AtmoZoneDefinition.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />

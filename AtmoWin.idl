@@ -1,28 +1,31 @@
 import "unknwn.idl";
 
 
-enum ComLiveViewSource {
+enum ComLiveViewSource 
+{
 	lvsGDI = 0,
 	lvsExternal = 1
 } ;
 
-enum ComEffectMode {
-  cemUndefined = -1,
-  cemDisabled = 0,
-  cemStaticColor = 1,
-  cemLivePicture = 2,
-  cemColorChange = 3,
-  cemLrColorChange = 4,
-  cemColorMode = 5
+enum ComEffectMode 
+{
+	cemUndefined = -1,
+	cemDisabled = 0,
+	cemStaticColor = 1,
+	cemLivePicture = 2,
+	cemColorChange = 3,
+	cemLrColorChange = 4,
+	cemColorMode = 5
 };
 
 [
 	object,
 	uuid(e01e2044-5afc-11d3-8e80-00805f91cdd9),
-    helpstring("dieses interface steht immer zur Verfuegung solange AtmoWin laeuft"),
-    oleautomation
+	helpstring("dieses interface steht immer zur Verfuegung solange AtmoWin laeuft"),
+	oleautomation
 ]
-interface IAtmoRemoteControl: IUnknown {
+interface IAtmoRemoteControl: IUnknown 
+{
 	[helpstring("Set Current Effect Mode")]
 	HRESULT setEffect([in] enum ComEffectMode dwEffect, [out] enum ComEffectMode *dwOldEffect);
 
@@ -42,10 +45,11 @@ interface IAtmoRemoteControl: IUnknown {
 [
 	object,
 	uuid(e01e2044-5bfc-11d4-8e80-00805f91cdd9),
-    helpstring("Erweiterungsinterface..."),
-    oleautomation
+	helpstring("Erweiterungsinterface..."),
+	oleautomation
 ]
-interface IAtmoRemoteControl2: IAtmoRemoteControl {
+interface IAtmoRemoteControl2: IAtmoRemoteControl
+{
 	[helpstring("Get Live View resolution")]
 	HRESULT getLiveViewRes([out] int *Width, [out] int *Height);
 }
@@ -53,18 +57,19 @@ interface IAtmoRemoteControl2: IAtmoRemoteControl {
 [
 	object,
 	uuid(e01e2047-5afc-11d3-8e80-00805f91cdd9),
-    helpstring("Steuerung des Live Modus nur wenn Modus=emLivePicture"),
-    oleautomation
+	helpstring("Steuerung des Live Modus nur wenn Modus=emLivePicture"),
+	oleautomation
 ]
-interface IAtmoLiveViewControl: IUnknown {
-     [helpstring("Setzt den LiveViewModus auf GDI oder extern")]
- 	 HRESULT setLiveViewSource([in] enum ComLiveViewSource dwModus);
+interface IAtmoLiveViewControl: IUnknown 
+{
+	[helpstring("Setzt den LiveViewModus auf GDI oder extern")]
+	HRESULT setLiveViewSource([in] enum ComLiveViewSource dwModus);
 
-     [helpstring("Liefert den aktuellen Live View Source")]
-     HRESULT getCurrentLiveViewSource([out] enum ComLiveViewSource *modus);
+	[helpstring("Liefert den aktuellen Live View Source")]
+	HRESULT getCurrentLiveViewSource([out] enum ComLiveViewSource *modus);
 
-  	 [helpstring("transfers new pixeldata as source for processing")]
-     HRESULT setPixelData([in] SAFEARRAY(BYTE) bitmapInfoHeader,[in] SAFEARRAY(BYTE) pixelData);
+	[helpstring("transfers new pixeldata as source for processing")]
+	HRESULT setPixelData([in] SAFEARRAY(BYTE) bitmapInfoHeader,[in] SAFEARRAY(BYTE) pixelData);
 }
 
 
@@ -79,21 +84,21 @@ library AtmoWinRemoteControl
 {
 	importlib("stdole.tlb");
 
-    interface IAtmoLiveViewControl;
-    interface IAtmoRemoteControl;
-    interface IAtmoRemoteControl2;
+	interface IAtmoLiveViewControl;
+	interface IAtmoRemoteControl;
+	interface IAtmoRemoteControl2;
 
-    [
+	[
 		uuid(e01e2045-5afc-11d3-8e80-00805f91cee9),
 		helpstring("AtmoRemoteControl Object.")
 	]
 	coclass AtmoRemoteControl
 	{
 		[default] interface IAtmoRemoteControl;
-        interface IAtmoRemoteControl2;
+		interface IAtmoRemoteControl2;
 	}
 
-    [
+	[
 		uuid(e01e2044-5afc-11d3-8e80-00805f91cee9),
 		helpstring("AtmoLiveViewControl Object.")
 	]

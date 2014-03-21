@@ -57,6 +57,7 @@ BEGIN
     LTEXT           "Controlsoftware for a PC Atmo Light...",IDC_STATIC,7,22,135,8
     LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,8,32,202,8
     LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,44,205,29
+		LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle http://about.me/brian.aberle", IDC_STATIC,8,44,205,29
     LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,10,72,184,16
     ICON            IDI_ATMOICON,IDC_STATIC,4,3,21,20
 END

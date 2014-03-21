@@ -198,12 +198,8 @@ protected:
 	int m_Software_gamma_red;
 	int m_Software_gamma_green;
 	int m_Software_gamma_blue;
-
 	int m_Software_gamma_global;
-
 	int m_hAtmoClLeds;
-
-
 
 public:
 	volatile int m_UpdateEdgeWeightningFlag;
@@ -223,17 +219,11 @@ public:
 
 	std::vector<std::string> profiles;
 
-
-
-
 public:
 	CAtmoConfig();
 	virtual ~CAtmoConfig();
-	virtual void SaveSettings(HKEY mykey, std::string profile) {};
-	virtual void LoadSettings(HKEY mykey, std::string profile) {};
-	virtual void fastLoadSettings(HKEY mykey, std::string profile) {};
-	virtual void ReadRegistryStringList(HKEY mykey, char *path, char *valueName, char *default_value) {};
-	virtual void WriteRegistryStringList(HKEY mykey, char *path, char *valueName, char *default_value){};
+	virtual void SaveSettings(char *section, std::string profile) {};
+	virtual void LoadSettings(char *section, std::string profile) {};
 	void LoadDefaults();
 
 	/*
@@ -453,7 +443,7 @@ public:
 	void setZoneSummary(ATMO_BOOL summary) { m_ZoneSummary = summary; UpdateZoneCount(); }
 
 	char *getDMX_BaseChannels() { return m_DMX_BaseChannels; }
-	void setDMX_BaseChannels(char *channels);
+	void setDMX_BaseChannels(const char *channels);
 
 	int getDMX_RGB_Channels() { return m_DMX_RGB_Channels; }
 	void setDMX_RGB_Channels(int ch) { m_DMX_RGB_Channels = ch; }
