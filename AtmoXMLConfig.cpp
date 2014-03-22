@@ -24,6 +24,7 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 {
 	char XMLSectionName[100],valueName[32];
 	std::string path(configSection);
+	CUtils *Utils = new CUtils;
 
 	if (profile1 != "")
 	{
@@ -32,11 +33,50 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	}
 
 	// that write only to AtmoWinX.xml
-	if (path == "AtmoWinX")
+	if (profile1 != "AtmoWinX" && (profile1 != ""))
 	{
+		// Save current File
+		GString s;
+		GetProfile().WriteCurrentConfig(&s, 1);
+		s.ToFile(Utils->szTemp);
+		delete SetProfile(new GProfile(s._str, s._len, 0));	
+
+		// Change FilePath to AtmoWinX
+		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
+
+		// Load AtmoWinX.xml for set Values which not used in Profiles
+		Utils->strConfigFromFile.FromFile(Utils->szTemp);
+		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+
 		WriteXMLStringList("profiles","-1");
 
 		// don't destroy config in that case..
+		if(m_eAtmoConnectionType != actNUL) 
+			GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
+
+		GetProfile().SetConfig(configSection, "lastprofile", (char*)profile1.data());
+		GetProfile().SetConfig(configSection, "defaultprofile", (char*)d_profile.data());
+		GetProfile().SetConfig(configSection, "EffectMode", (int)m_eEffectMode);
+		GetProfile().SetConfig(configSection, "comport", this->m_Comport);
+		GetProfile().SetConfig(configSection, "Arducomport", this->m_ArduComport);
+		GetProfile().SetConfig(configSection, "comport_1", m_Comports[0]);
+		GetProfile().SetConfig(configSection, "comport_2",  m_Comports[1]);
+		GetProfile().SetConfig(configSection, "comport_3", m_Comports[2]);
+
+		// Save Setting in to AtmoWinX.xml
+		GString strConfigData;
+		GetProfile().WriteCurrentConfig(&strConfigData, 1);
+		strConfigData.ToFile(Utils->szTemp);
+		delete SetProfile(new GProfile(strConfigData._str, strConfigData._len, 0));	
+
+		// set Filepath to _Profile
+		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, newconfigSection);
+		Utils->strConfigFromFile.FromFile(Utils->szTemp);
+		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+	}
+	else
+	{
+		// FilePath is AtmoWinX
 		if(m_eAtmoConnectionType != actNUL) 
 			GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
 
@@ -190,8 +230,6 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	GetProfile().SetConfig(newconfigSection, "MoMo_Channels", m_MoMo_Channels);
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
-	CUtils *Utils = new CUtils;
-
 	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
 	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
 	strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
@@ -266,10 +304,9 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	CUtils *Utils = new CUtils;
 
 	//profilenames
-	profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", "");
-	
-	ReadXMLStringList(profile1, "-1");
-	
+	//profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", "-1");	
+	ReadXMLStringList(configSection, profile1, "-1");
+
 	if (profile1 == "startup") 
 	{
 		profile = GetProfile().GetStringOrDefault(configSection, "lastprofile", "");
@@ -283,74 +320,97 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	if (configSection!=NULL) 
 		strcpy(newconfigSection, configSection);
 
-	char * buffer = new char[profile1.length()];
-	strcpy(buffer, profile1.c_str());
-
-	newpath = this->newconfigSection;
-	if (path != newpath)
-		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer);
-
-	ifstream FileExists(Utils->szTemp);
-	if (profile1 != "" && FileExists)
+	if (profile1 != "")
 	{
-		char tmpPath[512];
-		sprintf(tmpPath, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer);
-		ifstream FileExists(tmpPath);
-		if (FileExists)
+		std::string key(configSection);
+		key.assign(profile1);
+
+		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, key.data());
+		ifstream FileExists(Utils->szTemp);
+		if (profile1 != "" && FileExists) 
 		{
 			std::string path(configSection);
 			path.assign(profile1);
-			//path.append("\\");
-			strcpy(this->newconfigSection, path.data());	
-			newpath = this->newconfigSection;
+			strcpy(this->newconfigSection, path.data());
+		}
+		else
+		{
+			profile="";
 		}
 	}
-	else profile="";
 
-	if (GetProfile().GetIntOrDefault(configSection, "IgnoreConnectionErrorOnStartup", 0) ==1)
-		m_IgnoreConnectionErrorOnStartup = ATMO_TRUE;  
-
-	m_eAtmoConnectionType = (AtmoConnectionType)(GetProfile().GetIntOrDefault(configSection, "ConnectionType", (int)actClassicAtmo));
-
-	m_Comport  = GetProfile().GetIntOrDefault(configSection, "comport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
-	if(m_Comport < 1) 
-	{ 
-		m_IsShowConfigDialog = 1; 
-		m_Comport=1; 
-	} 
-	// die Variable beim Laden der Settings immer setzen wenn ein key uns nicht gefällt - so das der Setup Dialog
-	// zwanghaft gezeigt wird - dafür sparen wir uns das Flag minimiert - solange die Config Ok ist - brauchen
-	// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
-
-	m_Comports[0] = GetProfile().GetIntOrDefault(configSection, "comport_1", -1);
-	m_Comports[1] = GetProfile().GetIntOrDefault(configSection, "comport_2", -1);
-	m_Comports[2] = GetProfile().GetIntOrDefault(configSection, "comport_3", -1);
-
-	m_ArduComport = GetProfile().GetIntOrDefault(configSection, "Arducomport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
-	//ReadRegistryInt(section, configSection,"Arducomport",-1); 
-	if(m_ArduComport < 1) 
+	// that write only to AtmoWinX.xml
+	if (profile1 != "AtmoWinX" && (profile1 != ""))
 	{
-		m_IsShowConfigDialog = 1; 
-		m_ArduComport=1; 
-	} 
-	// die Variable beim Laden der Settings immer setzen wenn ein key uns nicht gefällt - so das der Setup Dialog
-	// zwanghaft gezeigt wird - dafür sparen wir uns das Flag minimiert - solange die Config Ok ist - brauchen
-	// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
+		// Change FilePath to AtmoWinX
+		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
 
-	m_eEffectMode = (EffectMode)GetProfile().GetIntOrDefault(configSection, "EffectMode", (int)m_eEffectMode);
+		// Load AtmoWinX.xml for set Values which not used in Profiles
+		Utils->strConfigFromFile.FromFile(Utils->szTemp);
+		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
 
-	if (path != newpath)
-	{	
-		// Read Buffer from IniFile
-		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, this->newconfigSection);
+		if (GetProfile().GetIntOrDefault(configSection, "IgnoreConnectionErrorOnStartup", 0) ==1)
+			m_IgnoreConnectionErrorOnStartup = ATMO_TRUE;  
 
-		ifstream FileExists(Utils->szTemp);
-		if (Utils->szTemp != "" && FileExists)
+		m_eAtmoConnectionType = (AtmoConnectionType)(GetProfile().GetIntOrDefault(configSection, "ConnectionType", (int)actClassicAtmo));
+
+		m_Comport  = GetProfile().GetIntOrDefault(configSection, "comport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
+		if(m_Comport < 1) 
+		{ 
+			m_IsShowConfigDialog = 1; 
+			m_Comport=1; 
+		} 
+		// die Variable beim Laden der Settings immer setzen wenn ein key uns nicht gefällt - so das der Setup Dialog
+		// zwanghaft gezeigt wird - dafür sparen wir uns das Flag minimiert - solange die Config Ok ist - brauchen
+		// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
+
+		m_Comports[0] = GetProfile().GetIntOrDefault(configSection, "comport_1", -1);
+		m_Comports[1] = GetProfile().GetIntOrDefault(configSection, "comport_2", -1);
+		m_Comports[2] = GetProfile().GetIntOrDefault(configSection, "comport_3", -1);
+
+		m_ArduComport = GetProfile().GetIntOrDefault(configSection, "Arducomport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
+		//ReadRegistryInt(section, configSection,"Arducomport",-1); 
+		if(m_ArduComport < 1) 
 		{
-			delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 0));
-			Utils->strConfigFromFile.FromFile(Utils->szTemp);
-			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
-		}
+			m_IsShowConfigDialog = 1; 
+			m_ArduComport=1; 
+		} 
+		m_eEffectMode = (EffectMode)GetProfile().GetIntOrDefault(configSection, "EffectMode", (int)m_eEffectMode);
+		
+		// set Filepath to _Profile
+		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, newconfigSection);
+		Utils->strConfigFromFile.FromFile(Utils->szTemp);
+		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+	}
+	else
+	{
+		if (GetProfile().GetIntOrDefault(configSection, "IgnoreConnectionErrorOnStartup", 0) ==1)
+			m_IgnoreConnectionErrorOnStartup = ATMO_TRUE;  
+
+		m_eAtmoConnectionType = (AtmoConnectionType)(GetProfile().GetIntOrDefault(configSection, "ConnectionType", (int)actClassicAtmo));
+
+		m_Comport  = GetProfile().GetIntOrDefault(configSection, "comport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
+		if(m_Comport < 1) 
+		{ 
+			m_IsShowConfigDialog = 1; 
+			m_Comport=1; 
+		} 
+		// die Variable beim Laden der Settings immer setzen wenn ein key uns nicht gefällt - so das der Setup Dialog
+		// zwanghaft gezeigt wird - dafür sparen wir uns das Flag minimiert - solange die Config Ok ist - brauchen
+		// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
+
+		m_Comports[0] = GetProfile().GetIntOrDefault(configSection, "comport_1", -1);
+		m_Comports[1] = GetProfile().GetIntOrDefault(configSection, "comport_2", -1);
+		m_Comports[2] = GetProfile().GetIntOrDefault(configSection, "comport_3", -1);
+
+		m_ArduComport = GetProfile().GetIntOrDefault(configSection, "Arducomport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
+		//ReadRegistryInt(section, configSection,"Arducomport",-1); 
+		if(m_ArduComport < 1) 
+		{
+			m_IsShowConfigDialog = 1; 
+			m_ArduComport=1; 
+		} 
+		m_eEffectMode = (EffectMode)GetProfile().GetIntOrDefault(configSection, "EffectMode", (int)m_eEffectMode);
 	}
 
 	m_WhiteAdjustment_Red    = CheckByteValue(GetProfile().GetIntOrDefault(newconfigSection, "WhiteAdjustment_Red", m_WhiteAdjustment_Red));
@@ -363,7 +423,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	m_Use3dlut		           = (GetProfile().GetIntOrDefault(newconfigSection, "Use3dlut", m_Use3dlut) != 0);
 
 	m_WhiteAdjPerChannel     = (GetProfile().GetIntOrDefault(newconfigSection, "UsePerChWhiteAdj", m_WhiteAdjPerChannel) != 0);
-	sprintf(XMLSectionName,"%sWhiteAdjPerChannel\\",newconfigSection);
+	sprintf(XMLSectionName,"%sWhiteAdjPerChannel", "");
 	m_chWhiteAdj_Count       = GetProfile().GetIntOrDefault(XMLSectionName, "count", m_WhiteAdjPerChannel);
 
 	delete []m_chWhiteAdj_Red;
@@ -648,25 +708,40 @@ int CAtmoXMLConfig::Check8BitValue(int value)
 	return value;
 }
 
-void CAtmoXMLConfig::ReadXMLStringList(std::string valueName, char *default_value)
+void CAtmoXMLConfig::ReadXMLStringList(char *section, std::string valueName, char *default_value)
 {
 	std::vector<std::string> target;
 	DWORD size;
+	CUtils *Utils = new CUtils;
 
-	profiles.clear();	
-
-	size_t index = 0;
-	size_t len = strlen( &valueName[0] );
-	int size2 =valueName.size();
-	while (  index < size2-1 )
+	sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, section);
+	string profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", default_value);
+	// Create Default Xml if not exists
+	ifstream FileExists(Utils->szTemp);
+	if (FileExists && profile1 != "")
 	{
-		target.push_back(&valueName[index]);
-		index += len + 1;
-		if ( index < size2-1 ) len = strlen( &valueName[index] );
+		profiles.clear();	
+
+		size_t index = 0;
+		size_t len = strlen( &valueName[0] );
+		int size2 =valueName.size();
+		while (  index < size2-1 )
+		{
+			target.push_back(&valueName[index]);
+			index += len + 1;
+			if ( index < size2-1 ) len = strlen( &valueName[index] );
+		}
+
+		for (int i=0; i<target.size();i++) 
+			profiles.push_back (target[i]);	
 	}
 
-	for (int i=0; i<target.size();i++) 
-		profiles.push_back (target[i]);	
+	if(target.size() == 0)  {
+		// wenn tempValue nicht aus registry gelesen wurde dafür sorgen das ein neuer String mit der Kopie von DefaultValue
+		// geliefert wird - das macht das Handling des Rückgabewertes der Funktion einfacher - immer schön mit free freigeben!
+		default_value = strdup(default_value);
+	}
+	return;
 
 }
 

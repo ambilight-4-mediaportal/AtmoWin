@@ -22,7 +22,7 @@ public:
 
 	void SaveSettings(char *section, std::string profile);
 	void LoadSettings(char *section, std::string profile);
-	void ReadXMLStringList(std::string, char *default_value);
+	void ReadXMLStringList(char *section, std::string, char *default_value);
 	void WriteXMLStringList(char *section, char *default_value);
 
 	int trilinear(int x, int y, int z, int col);

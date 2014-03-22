@@ -223,8 +223,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			O.FromXML(pXML2); 
 			GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
 			O.ToXML( &strXMLStreamDestinationBuffer);
-			printf(strXMLStreamDestinationBuffer);
 			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+			Utils->strConfigFromFile.FromFile(Utils->szTemp);
+			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
 		}		
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
@@ -264,13 +265,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		// this Objects load the configuration of atmoWin from XML, and stores its values back to XML!
 		CAtmoXMLConfig *atmoConfig = new CAtmoXMLConfig("AtmoWinX");
 
-		// load configuration from registry...
-		//if ((RegistryKeyExists(HKEY_CURRENT_USER, "SOFTWARE\\AtmoWinX\\" )==0) && (RegistryKeyExists(HKEY_LOCAL_MACHINE, "SOFTWARE\\AtmoWinX\\" )==1))
-		//{
-			//MessageBox(0,"Loading old registry settings...","info",MB_ICONERROR | MB_OK);
-		//	atmoConfig->LoadSettings(HKEY_LOCAL_MACHINE, "startup");
-		//}
-		//else 
 		atmoConfig->LoadSettings("", "startup");
 
 		// try loading Zone images from Bitmaps in the current folder...

@@ -621,12 +621,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
 			CUtils *Utils = new CUtils;
-			
-			// save settings before XML Changed
-			GetProfile().SetConfig("AtmoWinX", "profiles", buffer1);
-			GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
-			GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
-			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
 
 			// Read Buffer from IniFile
 			sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer1);
