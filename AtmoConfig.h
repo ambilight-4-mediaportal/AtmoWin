@@ -224,6 +224,8 @@ public:
 	virtual ~CAtmoConfig();
 	virtual void SaveSettings(char *section, std::string profile) {};
 	virtual void LoadSettings(char *section, std::string profile) {};
+	virtual void ReadXMLStringList(std::string, char *default_value) {};
+  virtual void WriteXMLStringList(char *section, char *default_value){};
 	void LoadDefaults();
 
 	/*

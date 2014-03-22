@@ -1,18 +1,18 @@
 
 #include "StdAfx.h"
+#include "ObjectModel.h"
 #include "AtmoXMLConfig.h"
 #include "AtmoTools.h"
-#include "ObjectModel.h"
 #include "AtmoRegistry.h"
 
 CAtmoXMLConfig::CAtmoXMLConfig(char *section) : CAtmoConfig()
 {
 	// Speicher Strukturen wenns welche gibt mit new holen
 	configSection[0] = 0;
-	
+
 	if(section!=NULL)
 		strcpy(this->configSection, section);
-	
+
 	m_IsShowConfigDialog = 0;
 }
 
@@ -23,35 +23,32 @@ CAtmoXMLConfig::~CAtmoXMLConfig(void)
 void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1) 
 {
 	char XMLSectionName[100],valueName[32];
-
-	GetProfile().SetConfig(configSection, "lastprofile", (char*)profile1.data());
-	GetProfile().SetConfig(configSection, "defaultprofile", (char*)d_profile.data());
-	//profilenames
-	//WriteRegistryStringList(section, configSection,"profiles","-1");
-//	GetProfile().SetConfig(configSection, "profiles", "-1");
-
-
-	if (configSection!=NULL) strcpy(newconfigSection, configSection);
+	std::string path(configSection);
 
 	if (profile1 != "")
 	{
-		std::string key(configSection);
-		std::string path(configSection);
-		path.append(profile1);
-		path.append("\\");
+		path.assign(profile1);
 		strcpy(this->newconfigSection, path.data());
 	}
 
-	// don't destroy config in that case..
-	if(m_eAtmoConnectionType != actNUL) 
-    GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
+	// that write only to AtmoWinX.xml
+	if (path == "AtmoWinX")
+	{
+		WriteXMLStringList("profiles","-1");
 
-	GetProfile().SetConfig(configSection, "EffectMode", (int)m_eEffectMode);
-	GetProfile().SetConfig(configSection, "comport", this->m_Comport);
-	GetProfile().SetConfig(configSection, "Arducomport", this->m_ArduComport);
-	GetProfile().SetConfig(configSection, "comport_1", m_Comports[0]);
-	GetProfile().SetConfig(configSection, "comport_2",  m_Comports[1]);
-	GetProfile().SetConfig(configSection, "comport_3", m_Comports[2]);
+		// don't destroy config in that case..
+		if(m_eAtmoConnectionType != actNUL) 
+			GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
+
+		GetProfile().SetConfig(configSection, "lastprofile", (char*)profile1.data());
+		GetProfile().SetConfig(configSection, "defaultprofile", (char*)d_profile.data());
+		GetProfile().SetConfig(configSection, "EffectMode", (int)m_eEffectMode);
+		GetProfile().SetConfig(configSection, "comport", this->m_Comport);
+		GetProfile().SetConfig(configSection, "Arducomport", this->m_ArduComport);
+		GetProfile().SetConfig(configSection, "comport_1", m_Comports[0]);
+		GetProfile().SetConfig(configSection, "comport_2",  m_Comports[1]);
+		GetProfile().SetConfig(configSection, "comport_3", m_Comports[2]);
+	}
 
 	GetProfile().SetConfig(newconfigSection, "WhiteAdjustment_Red", m_WhiteAdjustment_Red);
 	GetProfile().SetConfig(newconfigSection, "WhiteAdjustment_Green", m_WhiteAdjustment_Green);
@@ -60,9 +57,9 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	GetProfile().SetConfig(newconfigSection, "UseSoftware2WhiteAdj", (int)m_UseSoftware2WhiteAdj);
 	GetProfile().SetConfig(newconfigSection, "UseColorK", (int)m_UseColorKWhiteAdj);
 	GetProfile().SetConfig(newconfigSection, "Use3dlut", (int)m_Use3dlut);
-	
+
 	GetProfile().SetConfig(newconfigSection, "UsePerChWhiteAdj", (int)m_WhiteAdjPerChannel);	
-	sprintf(XMLSectionName,"%sWhiteAdjPerChannel\\",newconfigSection);
+	sprintf(XMLSectionName,"%sWhiteAdjPerChannel", "");
 	GetProfile().SetConfig(XMLSectionName, "count", (int)m_chWhiteAdj_Count);
 
 	for(int i=0; (i<m_chWhiteAdj_Count) && m_chWhiteAdj_Red && m_chWhiteAdj_Blue && m_chWhiteAdj_Green; i++) 
@@ -74,7 +71,7 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 		GetProfile().SetConfig(XMLSectionName, valueName, m_chWhiteAdj_Green[i]);
 
 		sprintf(valueName,"blue_%d",i);
-    GetProfile().SetConfig(XMLSectionName, valueName, m_chWhiteAdj_Blue[i]);
+		GetProfile().SetConfig(XMLSectionName, valueName, m_chWhiteAdj_Blue[i]);
 	}
 
 	GetProfile().SetConfig(newconfigSection, "ColorChanger_iSteps", this->m_ColorChanger_iSteps);
@@ -193,29 +190,33 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	GetProfile().SetConfig(newconfigSection, "MoMo_Channels", m_MoMo_Channels);
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
-
-	GetProfile().SetConfig(configSection, "NumChannelAssignments", getNumChannelAssignments());
-	GetProfile().SetConfig(newconfigSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
-	for(int i=1;i<10;i++) 
-	{
-		CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
-		if(ta!=NULL) 
-		{
-			sprintf(XMLSectionName,"%sChannelAssignment_%d\\",configSection,i);
-			GetProfile().SetConfig(XMLSectionName, "name", ta->getName());
-			GetProfile().SetConfig(XMLSectionName, "count", ta->getSize());
-			for(int c=0;c<ta->getSize();c++)
-			{
-				sprintf(valueName,"channel_%d",c);
-				GetProfile().SetConfig(XMLSectionName, valueName, ta->getZoneIndex(c));
-			}
-		}
-	}
 	CUtils *Utils = new CUtils;
 
 	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
 	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
 	strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+
+	/*
+	GetProfile().SetConfig(configSection, "NumChannelAssignments", getNumChannelAssignments());
+	GetProfile().SetConfig(configSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
+	for(int i=1;i<10;i++) 
+	{
+	CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
+	if(ta!=NULL) 
+	{
+	sprintf(XMLSectionName,"%sChannelAssignment_%d\\",configSection,i);
+	GetProfile().SetConfig(XMLSectionName, "name", ta->getName());
+	GetProfile().SetConfig(XMLSectionName, "count", ta->getSize());
+	for(int c=0;c<ta->getSize();c++)
+	{
+	sprintf(valueName,"channel_%d",c);
+	GetProfile().SetConfig(XMLSectionName, valueName, ta->getZoneIndex(c));
+	}
+	}
+	}*/
+
+
+
 }
 
 int CAtmoXMLConfig::trilinear(int x, int y, int z, int col)
@@ -258,37 +259,57 @@ int CAtmoXMLConfig::trilinear(int x, int y, int z, int col)
 void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1) 
 {
 	// alle Variabel etc. aus Registry lesen
-	char XMLSectionName[100],valueName[32];
+	char XMLSectionName[100], valueName[32];
+	std::string path(configSection);
+	std::string newpath(newconfigSection);
+
+	CUtils *Utils = new CUtils;
 
 	//profilenames
-	//ReadRegistryStringList(section, configSection,"profiles","-1");
-//	GetProfile().GetStringListOrDefault(configSection, "profiles", "-1");
-
+	profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", "");
+	
+	ReadXMLStringList(profile1, "-1");
+	
 	if (profile1 == "startup") 
 	{
 		profile = GetProfile().GetStringOrDefault(configSection, "lastprofile", "");
 		d_profile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
-		if (d_profile!="") profile=d_profile;
-		profile1=profile;
+		if (d_profile!="") 
+			profile = d_profile;
+
+		profile1 = profile;
 	}
 
 	if (configSection!=NULL) 
 		strcpy(newconfigSection, configSection);
 
-	std::string key(configSection);
-	key.append(profile1);
-	if (profile1 != "") // && RegistryKeyExists(section,(char*)key.data())==1) 
+	char * buffer = new char[profile1.length()];
+	strcpy(buffer, profile1.c_str());
+
+	newpath = this->newconfigSection;
+	if (path != newpath)
+		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer);
+
+	ifstream FileExists(Utils->szTemp);
+	if (profile1 != "" && FileExists)
 	{
-		std::string path(configSection);
-		path.append(profile1);
-		path.append("\\");
-		strcpy(this->newconfigSection, path.data());
+		char tmpPath[512];
+		sprintf(tmpPath, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer);
+		ifstream FileExists(tmpPath);
+		if (FileExists)
+		{
+			std::string path(configSection);
+			path.assign(profile1);
+			//path.append("\\");
+			strcpy(this->newconfigSection, path.data());	
+			newpath = this->newconfigSection;
+		}
 	}
 	else profile="";
-	
+
 	if (GetProfile().GetIntOrDefault(configSection, "IgnoreConnectionErrorOnStartup", 0) ==1)
 		m_IgnoreConnectionErrorOnStartup = ATMO_TRUE;  
-	
+
 	m_eAtmoConnectionType = (AtmoConnectionType)(GetProfile().GetIntOrDefault(configSection, "ConnectionType", (int)actClassicAtmo));
 
 	m_Comport  = GetProfile().GetIntOrDefault(configSection, "comport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
@@ -302,7 +323,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
 
 	m_Comports[0] = GetProfile().GetIntOrDefault(configSection, "comport_1", -1);
-	m_Comports[1] =  GetProfile().GetIntOrDefault(configSection, "comport_2", -1);
+	m_Comports[1] = GetProfile().GetIntOrDefault(configSection, "comport_2", -1);
 	m_Comports[2] = GetProfile().GetIntOrDefault(configSection, "comport_3", -1);
 
 	m_ArduComport = GetProfile().GetIntOrDefault(configSection, "Arducomport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
@@ -317,11 +338,26 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	// wir den Dialog ja nicht - dafür gibts ja das Trayicon?
 
 	m_eEffectMode = (EffectMode)GetProfile().GetIntOrDefault(configSection, "EffectMode", (int)m_eEffectMode);
-	
+
+	if (path != newpath)
+	{	
+		// Read Buffer from IniFile
+		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, this->newconfigSection);
+
+		ifstream FileExists(Utils->szTemp);
+		if (Utils->szTemp != "" && FileExists)
+		{
+			delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 0));
+			Utils->strConfigFromFile.FromFile(Utils->szTemp);
+			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+		}
+	}
+
 	m_WhiteAdjustment_Red    = CheckByteValue(GetProfile().GetIntOrDefault(newconfigSection, "WhiteAdjustment_Red", m_WhiteAdjustment_Red));
 	m_WhiteAdjustment_Green  = CheckByteValue(GetProfile().GetIntOrDefault(newconfigSection, "WhiteAdjustment_Green", m_WhiteAdjustment_Green));
 	m_WhiteAdjustment_Blue   = CheckByteValue(GetProfile().GetIntOrDefault(newconfigSection, "WhiteAdjustment_Blue", m_WhiteAdjustment_Blue));
-	m_UseSoftwareWhiteAdj    =  (GetProfile().GetIntOrDefault(newconfigSection, "UseSoftwareWhiteAdj", m_UseSoftwareWhiteAdj) != 0);
+
+	m_UseSoftwareWhiteAdj    = (GetProfile().GetIntOrDefault(newconfigSection, "UseSoftwareWhiteAdj", m_UseSoftwareWhiteAdj) != 0);
 	m_UseSoftware2WhiteAdj   = 0;
 	m_UseColorKWhiteAdj		   = (GetProfile().GetIntOrDefault(newconfigSection, "UseColorK", m_UseColorKWhiteAdj) != 0);
 	m_Use3dlut		           = (GetProfile().GetIntOrDefault(newconfigSection, "Use3dlut", m_Use3dlut) != 0);
@@ -329,7 +365,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	m_WhiteAdjPerChannel     = (GetProfile().GetIntOrDefault(newconfigSection, "UsePerChWhiteAdj", m_WhiteAdjPerChannel) != 0);
 	sprintf(XMLSectionName,"%sWhiteAdjPerChannel\\",newconfigSection);
 	m_chWhiteAdj_Count       = GetProfile().GetIntOrDefault(XMLSectionName, "count", m_WhiteAdjPerChannel);
-	
+
 	delete []m_chWhiteAdj_Red;
 	delete []m_chWhiteAdj_Green;
 	delete []m_chWhiteAdj_Blue; 
@@ -350,13 +386,13 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	for(int i=0; (i<m_chWhiteAdj_Count); i++) 
 	{
 		sprintf(valueName,"red_%d",i);
-		m_chWhiteAdj_Red[i] = Check8BitValue(GetProfile().GetIntOrDefault(XMLSectionName, "valueName", 256));
+		m_chWhiteAdj_Red[i]   = Check8BitValue(GetProfile().GetIntOrDefault(XMLSectionName, "valueName", 256));
 
 		sprintf(valueName,"green_%d",i);
 		m_chWhiteAdj_Green[i] = Check8BitValue(GetProfile().GetIntOrDefault(XMLSectionName, "valueName", 256));
 
 		sprintf(valueName,"blue_%d",i);
-		m_chWhiteAdj_Blue[i] = Check8BitValue(GetProfile().GetIntOrDefault(XMLSectionName, "valueName", 256));
+		m_chWhiteAdj_Blue[i]  = Check8BitValue(GetProfile().GetIntOrDefault(XMLSectionName, "valueName", 256));
 	}
 
 	m_ColorChanger_iSteps            = GetProfile().GetIntOrDefault(newconfigSection, "ColorChanger_iSteps", m_ColorChanger_iSteps);
@@ -375,7 +411,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	m_LiveViewFilter_MeanLength      = GetProfile().GetIntOrDefault(newconfigSection, "LiveViewFilter_MeanLength", m_LiveViewFilter_MeanLength);
 	m_LiveViewFilter_MeanThreshold   = GetProfile().GetIntOrDefault(newconfigSection, "LiveViewFilter_MeanThreshold", m_LiveViewFilter_MeanThreshold);
 	m_show_statistics                = (GetProfile().GetIntOrDefault(newconfigSection, "show_statistics", ATMO_FALSE) !=0);
-	
+
 	m_LiveView_RowsPerFrame          = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_RowsPerFrame", m_LiveView_RowsPerFrame);
 	if(m_LiveView_RowsPerFrame < 1) m_LiveView_RowsPerFrame = 1;
 	if(m_LiveView_RowsPerFrame >= CAP_HEIGHT) m_LiveView_RowsPerFrame = CAP_HEIGHT - 1;
@@ -395,12 +431,12 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	m_LiveView_DisplayNr             = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_DisplayNr", m_LiveView_DisplayNr);
 	m_LiveView_FrameDelay            = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_FrameDelay", m_LiveView_FrameDelay);
 	m_LiveView_GDI_FrameRate         = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_GDI_FrameRate", m_LiveView_GDI_FrameRate);
-	
+
 	m_ZonesTopCount                  = GetProfile().GetIntOrDefault(newconfigSection, "ZonesTopCount", m_ZonesTopCount);
 	m_ZonesBottomCount               = GetProfile().GetIntOrDefault(newconfigSection, "ZonesBottomCount", m_ZonesBottomCount);
 	m_ZonesLRCount                   = GetProfile().GetIntOrDefault(newconfigSection, "ZonesLRCount", m_ZonesLRCount);
 	m_ZoneSummary                    = (GetProfile().GetIntOrDefault(newconfigSection, "ZoneSummary", m_ZoneSummary) != 0);
-	
+
 	UpdateZoneCount();
 	m_Hardware_global_gamma          = GetProfile().GetIntOrDefault(newconfigSection, "Hardware_global_gamma", m_Hardware_global_gamma);
 	m_Hardware_global_contrast       = GetProfile().GetIntOrDefault(newconfigSection, "Hardware_global_contrast", m_Hardware_global_contrast);
@@ -412,7 +448,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	m_Hardware_gamma_blue            = GetProfile().GetIntOrDefault(newconfigSection, "Hardware_gamma_blue", m_Hardware_gamma_blue);
 
 	m_Software_gamma_mode            = (AtmoGammaCorrect)GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_mode", (int)m_Software_gamma_mode);
-  m_Software_gamma_red             = GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_red", m_Software_gamma_red);
+	m_Software_gamma_red             = GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_red", m_Software_gamma_red);
 	m_Software_gamma_green           = GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_green", m_Software_gamma_green);
 	m_Software_gamma_blue            = GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_blue", m_Software_gamma_blue);
 	m_Software_gamma_global          = GetProfile().GetIntOrDefault(newconfigSection, "Software_gamma_global", m_Software_gamma_global);
@@ -423,9 +459,9 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 
 	char workdir[MAX_PATH];
 	char _lut[10] = "3Dlut.3dl";
-	
+
 	GetModuleFileName(GetModuleHandle(NULL),workdir,MAX_PATH);
-	
+
 	// strip of everything after last "\"
 	for(size_t i=(strlen(workdir)-1); i > 1 ; i--) 
 	{  /*  c:\*/
@@ -435,7 +471,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 			break;
 		}
 	}
-	
+
 	int pathlength = strlen(workdir);
 	for(size_t i=0; i <10 ; ++i)
 	{
@@ -531,7 +567,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	ColorCube[0][1][1][0]=blue_ColorK[257][0];ColorCube[0][1][1][1]=blue_ColorK[257][1];ColorCube[0][1][1][2]=blue_ColorK[257][2]; //cyan
 	ColorCube[1][1][1][0]=red_grid[10] ;ColorCube[1][1][1][1]=green_grid[10];ColorCube[1][1][1][2]=blue_grid[10]; //white
 
-  GetProfile().GetIntOrDefault(newconfigSection, "DMX_BaseChannel", 0);
+	GetProfile().GetIntOrDefault(newconfigSection, "DMX_BaseChannel", 0);
 	int tmpChannel          = GetProfile().GetIntOrDefault(newconfigSection, "DMX_BaseChannel", 0);
 	if((tmpChannel < 0) || (tmpChannel>253)) tmpChannel = 0;
 	char buf[16];
@@ -564,7 +600,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	clearChannelMappings(); // clear channel mappings except default!
 	m_CurrentChannelAssignment = GetProfile().GetIntOrDefault(newconfigSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
 	int numChannels = GetProfile().GetIntOrDefault(configSection, "NumChannelAssignments", 0);
-	
+
 	if(m_CurrentChannelAssignment>=numChannels)
 		m_CurrentChannelAssignment = 0;
 
@@ -582,7 +618,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 		name = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
 		ta->setName(name);
 		ta->system = ATMO_FALSE;
-//		free(name);
+		//		free(name);
 
 		int chCount = GetProfile().GetIntOrDefault(XMLSectionName, "count", 0);
 
@@ -612,4 +648,54 @@ int CAtmoXMLConfig::Check8BitValue(int value)
 	return value;
 }
 
+void CAtmoXMLConfig::ReadXMLStringList(std::string valueName, char *default_value)
+{
+	std::vector<std::string> target;
+	DWORD size;
 
+	profiles.clear();	
+
+	size_t index = 0;
+	size_t len = strlen( &valueName[0] );
+	int size2 =valueName.size();
+	while (  index < size2-1 )
+	{
+		target.push_back(&valueName[index]);
+		index += len + 1;
+		if ( index < size2-1 ) len = strlen( &valueName[index] );
+	}
+
+	for (int i=0; i<target.size();i++) 
+		profiles.push_back (target[i]);	
+
+}
+
+void CAtmoXMLConfig::WriteXMLStringList(char *section, char *default_value) 
+{
+	DWORD valueType, size;
+	std::vector<std::string> target;
+	std::string vals;
+	int len=1;
+	LONG ConfigurationStringSize = 512;
+	CHAR *ConfigurationString = new CHAR[ConfigurationStringSize];
+	memset(ConfigurationString,'\0',512);
+
+	for (int i=0; i<profiles.size();i++)
+	{
+		len += profiles[i].length()+1;
+		strcat(ConfigurationString, (char*)profiles[i].data());
+		strcat(ConfigurationString, (char*)("$"));
+	}
+
+	int ConfigStringLen = strlen(ConfigurationString);
+	for(int x = 0; x < ConfigStringLen; ++x)
+	{
+		if(ConfigurationString[x] == '$')
+			ConfigurationString[x] = '\0';
+	}
+
+	GetProfile().SetConfig(configSection, section, &ConfigurationString[0]);
+
+	delete [] ConfigurationString;
+
+}

@@ -265,9 +265,6 @@
     <ClInclude Include="AtmoTools.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="AtmoWin_h.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoWinA.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -410,9 +407,6 @@
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoConfig.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
-    <ClInclude Include="basics\AtmoDisplays.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoDisplays.h">

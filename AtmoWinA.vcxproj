@@ -401,7 +401,6 @@
     <ClInclude Include="AtmoDefs.h" />
     <ClInclude Include="AtmoRes.h" />
     <ClInclude Include="AtmoTools.h" />
-    <ClInclude Include="AtmoWin_h.h" />
     <ClInclude Include="AtmoWinA.h" />
     <ClInclude Include="AtmoWinTrayIconHandler.h" />
     <ClInclude Include="DmxTools.h" />
@@ -452,7 +451,6 @@
     <ClInclude Include="AtmoChannelAssignment.h" />
     <ClInclude Include="AtmoComRegistry.h" />
     <ClInclude Include="AtmoConfig.h" />
-    <ClInclude Include="basics\AtmoDisplays.h" />
     <ClInclude Include="AtmoDisplays.h" />
     <ClInclude Include="AtmoDynData.h" />
     <ClInclude Include="AtmoXMLConfig.h" />

@@ -10,14 +10,10 @@ private:
 	int CheckByteValue(int value);
 	int Check8BitValue(int value);
 
-private:
-	//char *psz_language; 
-
-private:
 	// zwei Möglichkeiten alle Variablen Private und nur über Methoden darauf zugreifen
 	// wäre zwar sauberer find ich - aber weniger performant wenn man bedenkt wie häufig
 	// darauf zugegriffen wird - daher lieber alle Variablen Public lassen...?
-	char configSection[80]; /* "AtmoWinX" */
+	char configSection[100]; /* "AtmoWinX" */
 	char newconfigSection[100]; /* "AtmoWinX" */
 
 public:
@@ -26,9 +22,10 @@ public:
 
 	void SaveSettings(char *section, std::string profile);
 	void LoadSettings(char *section, std::string profile);
+	void ReadXMLStringList(std::string, char *default_value);
+	void WriteXMLStringList(char *section, char *default_value);
 
 	int trilinear(int x, int y, int z, int col);
-
 
 };
 

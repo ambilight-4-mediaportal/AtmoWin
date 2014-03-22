@@ -26,7 +26,6 @@
 #include "GString.h"
 
 
-
 // there is only 1 instance of this class.
 class GenericStringAbstract : public StringAbstraction
 {
@@ -474,5 +473,16 @@ public:
 		Iterator = 0;
 	}
 };
+
+// The one and only instance exists in xmlObject.cpp - there is no AbstractionsGeneric.cpp
+extern GenericListAbstraction gGListHandler; 
+extern GenericStringAbstract gGenericStrHandler;
+extern GStringListAbstraction gGStringListHandler;
+extern GArrayAbstraction gGArrayHandler;
+extern GenericListAbstraction gGListHandler;
+extern GHashAbstraction gGHashHandler;
+extern GQSortAbstraction gGQSortHandler;
+extern GBTreeAbstraction gGBTreeHandler;
+
 
 #endif //_XML_GENERIC_LIST_ABSTRACTION

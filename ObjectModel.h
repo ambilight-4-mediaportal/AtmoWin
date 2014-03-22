@@ -7,18 +7,19 @@
 #include "GString.h"
 #include "GProfile.h"
 #include "shlobj.h" 
-#include <fstream>
 
 extern int g_verify0ref;
 
+using namespace std;
+
 class CUtils
 {
-private:
 
 public:
   static char szCurrentDir[MAX_PATH];
   static char szTemp[512];
 	static char szName[MAX_PATH];
+	
 	GString strConfigFromFile;
 		
 	char GetSpecialFolder(int CLSID);

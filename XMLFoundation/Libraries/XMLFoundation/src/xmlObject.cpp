@@ -27,14 +27,12 @@ static char SOURCE_FILE[] = __FILE__;
 #include "RelationshipWrapper.h"
 #include "AbstractionsGeneric.h"
 #include <stdio.h> // for sprintf() / sscanf()
-
+#include <string.h> // for: strlen()
 #ifdef _IOS
 	#include <stdlib.h> // for malloc()
 #else
 	#include <malloc.h> // for malloc()
 #endif
-
-
 
 #ifdef _WIN32
 	#define strcasecmp	_stricmp
@@ -43,22 +41,26 @@ static char SOURCE_FILE[] = __FILE__;
 	#include <strings.h> // for strcasecmp()
 	#define LONG_ONE 1LL
 #endif
-
-#include <string.h> // for: strlen()
-
 #ifndef ASSERT
 	#define ASSERT(f)    ((void)0)
 #endif
 
+GlobalKeyPartLists g_KeyPartsListCleanup;
+
+
+
 // Global, stateless, thread-safe,  abstraction handlers:
+// -------------------------------
 GenericStringAbstract gGenericStrHandler;
 GStringListAbstraction gGStringListHandler;
 GArrayAbstraction gGArrayHandler;
 GenericListAbstraction gGListHandler;
-
 GHashAbstraction gGHashHandler;
 GQSortAbstraction gGQSortHandler;
 GBTreeAbstraction gGBTreeHandler;
+// -------------------------------
+
+
 
 
 class DefaultDataHandler : public XMLObjectDataHandler
@@ -2035,7 +2037,10 @@ void XMLObject::LoadMemberMappings()
 				
 				nArraySize = GetMemberMapCount(0);
 			}
-			
+			if (m_pMemberDescriptorArray)
+			{
+				free(m_pMemberDescriptorArray);			
+			}
 			// now rather than calling new() once for each MapMember called, we will only call malloc() 1 time.
 			// The single allocation will hold an array of 1 MemberDescriptor for each call to MapMember()
 			m_pMemberDescriptorArray = malloc(sizeof(MemberDescriptor) * nArraySize);
@@ -2075,7 +2080,10 @@ void XMLObject::UnMapMembers( MemberDescriptor* btRoot/* = 0*/, bool bRealloc/* 
 
 	if (bRealloc)
 	{
-		free(m_pMemberDescriptorArray);
+		if (m_pMemberDescriptorArray)
+		{
+			free(m_pMemberDescriptorArray);
+		}
 		m_pMemberDescriptorArray = 0;
 		GetMemberMapCount(2);
 	}
@@ -2651,17 +2659,14 @@ XMLObject::~XMLObject()
 		delete m_TimeStamp; m_TimeStamp = 0;
 	if (m_pToXMLStorage)
 		delete m_pToXMLStorage; m_pToXMLStorage = 0;
-
 	if (m_pMemberDescriptorArray)
 		free(m_pMemberDescriptorArray); m_pMemberDescriptorArray = 0;
-	
-
 	if (m_pAttributes)
 		delete m_pAttributes; m_pAttributes = 0;
 	if (m_strXMLTag)
 		delete m_strXMLTag; m_strXMLTag = 0;
-//	if (m_strObjectType)
-//		delete m_strObjectType; m_strObjectType = 0;
+	if (m_strObjectType)
+		delete m_strObjectType; m_strObjectType = 0;
 	if (m_pDefaultDataHandler)
 		delete m_pDefaultDataHandler;
 

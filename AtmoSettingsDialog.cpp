@@ -216,10 +216,10 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	// Achtung - dazu muss die Reihenfolge der Enum Deklaration in AtmoConfig.h mit obiger Liste Synchron sein*g*
 	ComboBox_SetCurSel(m_hCbxEffects, (int)config->getEffectMode());
 
-	hwndCtrl = getDlgItem(IDC_COMBO2);
+	hwndCtrl = getDlgItem(IDC_CB_PROVILES);
 	for (int i=0; i<(int)config->profiles.size();i++)
 		ComboBox_AddString(hwndCtrl, config->profiles[i].data());
-	Edit_SetText(hwndCtrl, config->profile.data());
+	Edit_SetText(hwndCtrl, config->profile.data());	
 
 	hwndCtrl = getDlgItem(IDC_COMBO3);
 	for (int i=0; i<(int)config->profiles.size();i++)
@@ -382,7 +382,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_GRADIENT_EDIT), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[47]));
 	SendMessage(getDlgItem(IDC_STATIC18), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[48]));
 	SendMessage(getDlgItem(IDC_STATIC19), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[49]));
-	SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
+	SendMessage(getDlgItem(IDC_BU_SAVEPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
 	SendMessage(getDlgItem(IDC_STATIC20), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[52]));
 	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
@@ -599,10 +599,10 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	switch(wmId) 
 	{
 		//save or add profile
-	case IDC_BUTTON1: 
+	case IDC_BU_SAVEPROVILE: 
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			// check ob eintrag existiert
 			bool found = false;
@@ -615,13 +615,37 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			//combobox eintrag
 			if (!found) 
 			{
-				hwndCtrl = this->getDlgItem(IDC_COMBO2);
+				hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
 				hwndCtrl = this->getDlgItem(IDC_COMBO3);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
+			CUtils *Utils = new CUtils;
+			
+			// save settings before XML Changed
+			GetProfile().SetConfig("AtmoWinX", "profiles", buffer1);
+			GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
+			GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
+			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
 
-			pAtmoConfig->SaveSettings("AtmoWinX", buffer1);
+			// Read Buffer from IniFile
+			sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer1);
+
+			// Create Default Xml if not exists
+			ifstream FileExists(Utils->szTemp);
+			if (!FileExists)
+			{
+				MyConfiguration O;
+
+				GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
+				delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 0));
+				O.FromXML(Utils->strConfigFromFile);
+				O.ToXML( &strXMLStreamDestinationBuffer);
+
+				GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
+				strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+			}		
+			pAtmoConfig->SaveSettings(buffer1, buffer1);
 			break;
 		}
 		//delete profile
@@ -629,7 +653,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		{
 			hwndCtrl2 = this->getDlgItem(IDC_COMBO3);
 			Edit_GetText(hwndCtrl2,buffer2,200);
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			std::string key(buffer1);
 			if (key !="")
@@ -658,7 +682,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				{
 					//combobox eintrag bearbeiten
 					pAtmoConfig->profile="";
-					hwndCtrl = this->getDlgItem(IDC_COMBO2);
+					hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 					ComboBox_ResetContent(hwndCtrl);
 					Edit_SetText(hwndCtrl,pAtmoConfig->profile.data());	
 					for (int i=0; i<pAtmoConfig->profiles.size();++i)
@@ -678,10 +702,11 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		//load profile
 	case IDC_BUTTON5: 
 		{
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 			pAtmoConfig->profile=buffer1;
+			// TODO
 			pAtmoConfig->LoadSettings("AtmoWinX", buffer1);
 
 			EndDialog(this->m_hDialog, wmId);	

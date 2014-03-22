@@ -44,18 +44,20 @@ public:
 	// is NOT equal to 777 - because all other numbers indicate corruption - and we cant have that.
 	int m_ValidObjectBeg;
 private:
-
-	// Runtime type information
-	GString *m_strObjectType;		// derived class name.
+	// Private member string storage
+	// Storage is allocated only when necessary to keep the XMLObject lightweight
+	// Note: these variable names are misleading, m_strObjectType should be m_pstrObjectType
+	// Long ago, these variables were not pointers.  They added construction overhead for the
+	// majority of cases where these were never used.
+	GString *m_strObjectType;		// derived class name - Runtime type information
 	GString *m_strXMLTag;			// default tag for this instance
+	GString *m_oid;
+	//GList   *m_lstOIDKeyParts; // in 2014 this was moved to static storage.
 
 	// MemberDescriptor is a structure that describes each member
 	friend class MemberDescriptor;
 
-	// Storage is allocated only when necessary to keep the XMLObject lightweight.
-	GString *m_oid;
 
-	//GList   *m_lstOIDKeyParts; // in 2014 this was moved to static storage.
 
 	bool m_bCountingMemberMaps;
 	int m_nMappedCount;
@@ -678,6 +680,23 @@ public:
 #define XSPRINTF sprintf
 #endif
 
+class GlobalKeyPartLists
+{
+public:
+	GList m_lst;
+	GlobalKeyPartLists(){}
+	~GlobalKeyPartLists()
+	{
+		GListIterator it(&m_lst);
+		while (it())
+		{
+			delete (GList *)it++;
+		}
+	}
+};
+
+extern GlobalKeyPartLists g_KeyPartsListCleanup; // in xmlObject.cpp
+
 
 #define IMPLEMENT_FACTORY_NO_REG(class_name, xml_tag)					\
 int class_name::GetMemberMapCount(char bIncrement)						\
@@ -694,7 +713,10 @@ GList *class_name::GetOIDKeyPartList(bool bNew)							\
 {																		\
 	static GList *class_name##OIDList = 0;								\
 	if (bNew && class_name##OIDList == 0)								\
+	{																	\
 		class_name##OIDList = new GList();								\
+		g_KeyPartsListCleanup.m_lst.AddLast(class_name##OIDList);		\
+	}																	\
 	return class_name##OIDList;											\
 }																		\
 class_name * class_name::Attach(int nOid)								\

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ObjectModel.h"
 #include "MemberDescriptor.h"
+#include <fstream>
 
 IMPLEMENT_FACTORY(MyConfiguration, configuration)
 IMPLEMENT_FACTORY(MySection, section)
@@ -67,7 +68,7 @@ char CUtils::GetSpecialFolder(int CLSID)
 			// return is true if success 
 			if(SHGetPathFromIDList(pidl, (char*)szCurrentDir)) 
 			{ 
-				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin");
+				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Settings");
 				return *szCurrentDir;
 			} 
 
