@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <mmsystem.h>
+#include "ObjectModel.h"
 #include "AtmoWinA.h"
 #include "AtmoConfig.h"
 #include "AtmoXMLConfig.h"
@@ -23,7 +24,6 @@
 #include "AtmoRes.h"
 #include <string>
 #include <Commctrl.h>
-#include "ObjectModel.h"
 
 using namespace std;
 
@@ -214,7 +214,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		if (Utils->szTemp != "" && FileExists)
 		{
 			Utils->strConfigFromFile.FromFile(Utils->szTemp);
-			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
 		}
 		else
 		{
@@ -225,7 +225,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			O.ToXML( &strXMLStreamDestinationBuffer);
 			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
 			Utils->strConfigFromFile.FromFile(Utils->szTemp);
-			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
 		}		
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
@@ -265,7 +265,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		// this Objects load the configuration of atmoWin from XML, and stores its values back to XML!
 		CAtmoXMLConfig *atmoConfig = new CAtmoXMLConfig("AtmoWinX");
 
-		atmoConfig->LoadSettings("", "startup");
+		atmoConfig->LoadSettings("startup");
 
 		// try loading Zone images from Bitmaps in the current folder...
 		char workdir[MAX_PATH];

@@ -2,8 +2,8 @@
 #include "StdAfx.h"
 #include "ObjectModel.h"
 #include "AtmoXMLConfig.h"
-#include "AtmoTools.h"
-#include "AtmoRegistry.h"
+
+using namespace std;
 
 CAtmoXMLConfig::CAtmoXMLConfig(char *section) : CAtmoConfig()
 {
@@ -20,7 +20,7 @@ CAtmoXMLConfig::~CAtmoXMLConfig(void)
 {
 }
 
-void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1) 
+void CAtmoXMLConfig::SaveSettings(std::string profile1) 
 {
 	char XMLSectionName[100],valueName[32];
 	std::string path(configSection);
@@ -33,20 +33,19 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	}
 
 	// that write only to AtmoWinX.xml
-	if (profile1 != "AtmoWinX" && (profile1 != ""))
+	if (profile1 != "AtmoWinX" & (profile1 != ""))
 	{
 		// Save current File
 		GString s;
 		GetProfile().WriteCurrentConfig(&s, 1);
 		s.ToFile(Utils->szTemp);
-		delete SetProfile(new GProfile(s._str, s._len, 0));	
 
 		// Change FilePath to AtmoWinX
 		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
 
-		// Load AtmoWinX.xml for set Values which not used in Profiles
+		// Load AtmoWinX.xml for set Values which not used in Profiles		
 		Utils->strConfigFromFile.FromFile(Utils->szTemp);
-		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), false));
 
 		WriteXMLStringList("profiles","-1");
 
@@ -65,14 +64,13 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 
 		// Save Setting in to AtmoWinX.xml
 		GString strConfigData;
-		GetProfile().WriteCurrentConfig(&strConfigData, 1);
+		GetProfile().WriteCurrentConfig(&strConfigData, true);
 		strConfigData.ToFile(Utils->szTemp);
-		delete SetProfile(new GProfile(strConfigData._str, strConfigData._len, 0));	
 
 		// set Filepath to _Profile
 		sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, newconfigSection);
 		Utils->strConfigFromFile.FromFile(Utils->szTemp);
-		SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 1));
+		//delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
 	}
 	else
 	{
@@ -231,8 +229,12 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
 	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
-	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
+	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, true);
 	strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+	
+	Utils->strConfigFromFile.FromFile(Utils->szTemp);
+	//delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
+
 
 	/*
 	GetProfile().SetConfig(configSection, "NumChannelAssignments", getNumChannelAssignments());
@@ -252,9 +254,6 @@ void CAtmoXMLConfig::SaveSettings(char *section, std::string profile1)
 	}
 	}
 	}*/
-
-
-
 }
 
 int CAtmoXMLConfig::trilinear(int x, int y, int z, int col)
@@ -294,7 +293,7 @@ int CAtmoXMLConfig::trilinear(int x, int y, int z, int col)
 
 };
 
-void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1) 
+void CAtmoXMLConfig::LoadSettings(std::string profile1) 
 {
 	// alle Variabel etc. aus Registry lesen
 	char XMLSectionName[100], valueName[32];
@@ -340,7 +339,7 @@ void CAtmoXMLConfig::LoadSettings(char *section, std::string profile1)
 	}
 
 	// that write only to AtmoWinX.xml
-	if (profile1 != "AtmoWinX" && (profile1 != ""))
+	if (profile1 != "AtmoWinX" & (profile1 != ""))
 	{
 		// Change FilePath to AtmoWinX
 		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");

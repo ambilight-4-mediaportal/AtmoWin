@@ -332,7 +332,7 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 	if((wmId>=MENUID_FIRST_LANGUAGE) && (wmId<=MENUID_LAST_LANGUAGE)) 
 	{
 		CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-		pAtmoConfig->SaveSettings("AtmoWinX", pAtmoConfig->profile);
+		pAtmoConfig->SaveSettings(pAtmoConfig->profile);
 		CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 		if(pAtmoConnection) pAtmoConnection->CloseConnection(); 
 
@@ -352,7 +352,7 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 	case MENUID_QUITATMO:
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			pAtmoConfig->SaveSettings("AtmoWinX", pAtmoConfig->profile);
+			pAtmoConfig->SaveSettings(pAtmoConfig->profile);
 			CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 			if(pAtmoConnection) pAtmoConnection->CloseConnection();  			 
 			PostMessage(m_hWindow, WM_QUIT, 0, 0); 		

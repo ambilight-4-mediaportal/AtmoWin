@@ -1,13 +1,9 @@
 #include "stdafx.h"
 #include "ObjectModel.h"
-#include "MemberDescriptor.h"
-#include <fstream>
 
 IMPLEMENT_FACTORY(MyConfiguration, configuration)
 IMPLEMENT_FACTORY(MySection, section)
 IMPLEMENT_FACTORY(MySetting ,	setting)
-
-int g_verify0ref = 0;
 
 char CUtils::szCurrentDir[MAX_PATH];
 char CUtils::szTemp[512];

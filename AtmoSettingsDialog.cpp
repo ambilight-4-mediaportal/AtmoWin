@@ -10,6 +10,7 @@
 #include "StdAfx.h"
 #include "windowsx.h"
 #include "Winreg.h"
+#include "ObjectModel.h"
 
 #include "Atmosettingsdialog.h"
 #include "AtmoConfig.h"
@@ -23,7 +24,6 @@
 #include "AtmoEditChannelAssignment.h"
 #include "AtmoGradients.h"
 #include "AtmoXMLConfig.h"
-#include "ObjectModel.h"
 
 #include <string>
 #include <strsafe.h>
@@ -279,14 +279,6 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	LoadDisplayList();
 
-	/*
-	enum AtmoFilterMode { --> AtmoDefs.h!!
-	afmNoFilter,
-	afmCombined,
-	afmPercent
-	};
-	*/
-
 	SendMessage(getDlgItem(IDC_BU_CONFIG_DEVICE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[6]));
 	SendMessage(getDlgItem(IDC_CBX_ZONESUM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[7]));
 	SendMessage(getDlgItem(IDC_BU_CHANNELASSIGNMENTS), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[8]));
@@ -385,7 +377,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_BU_SAVEPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
 	SendMessage(getDlgItem(IDC_STATIC20), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[52]));
-	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
+	SendMessage(getDlgItem(IDC_BU_LOADPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
 	SendMessage(getDlgItem(IDC_STATIC21), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[54]));
 
 	return ATMO_FALSE;
@@ -632,14 +624,16 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				MyConfiguration O;
 
 				GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
-				delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), 0));
 				O.FromXML(Utils->strConfigFromFile);
 				O.ToXML( &strXMLStreamDestinationBuffer);
 
-				GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, 1);
+				GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, true);
 				strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
+
+	      Utils->strConfigFromFile.FromFile(Utils->szTemp);
+	      delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
 			}		
-			pAtmoConfig->SaveSettings(buffer1, buffer1);
+			pAtmoConfig->SaveSettings(pAtmoConfig->profile);
 			break;
 		}
 		//delete profile
@@ -694,14 +688,13 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			break;
 		}
 		//load profile
-	case IDC_BUTTON5: 
+	case IDC_BU_LOADPROVILE: 
 		{
 			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 			pAtmoConfig->profile=buffer1;
-			// TODO
-			pAtmoConfig->LoadSettings("AtmoWinX", buffer1);
+			pAtmoConfig->LoadSettings(pAtmoConfig->profile);
 
 			EndDialog(this->m_hDialog, wmId);	
 			CAtmoSettingsDialog *pSetupDlg = new CAtmoSettingsDialog(this->m_hInst,this->m_hDialog, this->m_pDynData);
@@ -754,7 +747,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
 
-			pAtmoConfig->SaveSettings("AtmoWinX",pAtmoConfig->profile);
+			pAtmoConfig->SaveSettings(pAtmoConfig->profile);
 
 			pAtmoConfig->m_UpdateEdgeWeightningFlag = 1;
 
