@@ -14,6 +14,7 @@
 #include "AtmoDefs.h"
 #include "AtmoZoneDefinition.h"
 #include "AtmoChannelAssignment.h"
+#include <XMLFoundation.h>
 #include <string>
 #include <vector>
 #include <fstream>
@@ -114,7 +115,7 @@ protected:
 public:
 	int getZoneCount();
 	ATMO_BOOL m_3dlut;
-	std::string profile;
+	std::string lastprofile;
 	std::string d_profile;
 
 
@@ -222,10 +223,9 @@ public:
 public:
 	CAtmoConfig();
 	virtual ~CAtmoConfig();
-	virtual void SaveSettings(std::string profile) {};
+	virtual void SaveSettings(std::string Profile1) {};
 	virtual void LoadSettings(std::string profile) {};
-	virtual void ReadXMLStringList(char *section, std::string, char *default_value) {};
-  virtual void WriteXMLStringList(char *section, char *default_value){};
+	virtual void ReadXMLStringList(char *section, char *default_value) {};
 	void LoadDefaults();
 
 	/*

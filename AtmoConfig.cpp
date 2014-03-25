@@ -113,7 +113,7 @@ void CAtmoConfig::LoadDefaults()
 	m_Hardware_global_gamma          = 128;
 	m_hAtmoClLeds                    = 32;
 	m_IsSetShutdownColor             = 1;
-	profile                          = "";
+	lastprofile                      = "";
 	m_LiveView_BrightCorrect         = 100;
 	m_LiveView_DarknessLimit         = 5;
 	m_LiveView_DisplayNr             = 0;
@@ -210,7 +210,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_UseColorKWhiteAdj            = pAtmoConfigSrc->m_UseColorKWhiteAdj;
 	this->m_Use3dlut		                 = pAtmoConfigSrc->m_Use3dlut;
 	this->m_Useinvert		                 = pAtmoConfigSrc->m_Useinvert;
-	this->profile				                 = pAtmoConfigSrc->profile;
+	this->lastprofile				             = pAtmoConfigSrc->lastprofile;
 	this->d_profile				               = pAtmoConfigSrc->d_profile;
 	this->profiles				               = pAtmoConfigSrc->profiles;
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __LANGUAGE_H__
+#define __LANGUAGE_H__
 
 #include "atlstr.h"
 #include "shlobj.h" 
@@ -79,3 +80,4 @@ public:
 
 };
 
+#endif // __LANGUAGE_H__

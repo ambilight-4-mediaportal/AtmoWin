@@ -8,17 +8,21 @@ private:
 	int CheckByteValue(int value);
 	int Check8BitValue(int value);
 
-	char configSection[100]; 
+private:
+   char *psz_language; 
+private:
+	char configSection[80]; 
 	char newconfigSection[100];
 
 public:
 	CAtmoXMLConfig(char *section);
 	virtual ~CAtmoXMLConfig(void);
 
-	void SaveSettings(std::string profile);
+	void SaveSettings(std::string Profile1);
 	void LoadSettings(std::string profile);
-	void ReadXMLStringList(char *section, std::string, char *default_value);
-	void WriteXMLStringList(char *section, char *default_value);
+	void ReadXMLStringList(char *section, char *default_value);
+
+	char *getLanguage() { return(psz_language); }
 
 	int trilinear(int x, int y, int z, int col);
 

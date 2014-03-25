@@ -32,22 +32,25 @@ using namespace std;
 // Do not Change.. Default configuration
 char pXML2[] = 
 	"<configuration>"
-	"<section name='AtmoWinX'>"
-	"<setting name='Ardu_BaudrateIndex' value='0' />"			
+	"<section name='Default'>"
 	"<setting name='Arducomport' value='-1' />"			
-	"<setting name='ColorChanger_iDelay' value='25' />"			
-	"<setting name='ColorChanger_iSteps' value='50' />"		
 	"<setting name='comport' value='1' />"			
 	"<setting name='comport_1' value='1' />"			
 	"<setting name='comport_2' value='1' />"			
 	"<setting name='comport_3' value='1' />"			
-	"<setting name='ConnectionType' value='0' />"			
-	"<setting name='CurrentChannelAssignment' value='0' />"		
-	"<setting name='defaultprofile' value='' />"	    
-	"<setting name='DMX_BaseChannels' value='NULL' />"	
+	"<setting name='ConnectionType' value='0' />"	
+	"<setting name='EffectMode' value='0' />"		
+	"<setting name='defaultprofile' value='' />"	
+	"<setting name='lastprofile' value='' />"
+	"<setting name='profiles' value='' />"
+	"</section>"
+	"<section name='AtmoWinX'>"
+	"<setting name='Ardu_BaudrateIndex' value='0' />"			
+	"<setting name='ColorChanger_iDelay' value='25' />"			
+	"<setting name='ColorChanger_iSteps' value='50' />"		
+	"<setting name='DMX_BaseChannels' value='0' />"	
 	"<setting name='DMX_BaudrateIndex' value='0' />"				    
 	"<setting name='DMX_RGB_Channels' value='5' />"			
-	"<setting name='EffectMode' value='0' />"						
 	"<setting name='Fnordlicht_Amount' value='2' />"			
 	"<setting name='Hardware_contrast_blue' value='100' />"			
 	"<setting name='Hardware_contrast_green' value='100' />"			
@@ -59,7 +62,6 @@ char pXML2[] =
 	"<setting name='Hardware_global_gamma' value='128' />"			
 	"<setting name='hAtmoClLeds' value='32' />"			
 	"<setting name='isSetShutdownColor' value='1' />"			
-	"<setting name='lastprofile' value='' />"
 	"<setting name='LiveView_BrightCorrect' value='100' />"			
 	"<setting name='LiveView_DarknessLimit' value='5' />"	
 	"<setting name='LiveView_DisplayNr' value='0' />"			
@@ -83,8 +85,6 @@ char pXML2[] =
 	"<setting name='LrColorChanger_iDelay' value='25' />"		
 	"<setting name='LrColorChanger_iSteps' value='50' />"			
 	"<setting name='MoMo_Channels' value='3' />"			
-	"<setting name='NumChannelAssignments' value='0' />"			
-	"<setting name='profiles' value='' />"
 	"<setting name='ShutdownColor_blue' value='0' />"			
 	"<setting name='ShutdownColor_green' value='0' />"	
 	"<setting name='ShutdownColor_red' value='0' />"			
@@ -190,7 +190,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	UINT wTimerRes;
 
 	HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
-  bool gefunden=FALSE;
+	bool gefunden=FALSE;
 	if(GetLastError() == ERROR_ALREADY_EXISTS) gefunden = TRUE;
 
 	if (!gefunden)	
@@ -198,7 +198,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		InitCommonControls();
 
 		CUtils *Utils = new CUtils;
-		
+
 		// GetSpecialFolder
 		Utils->szCurrentDir[Utils->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 		if (!Utils->DirectoryExists(Utils->szCurrentDir ))
@@ -215,6 +215,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		{
 			Utils->strConfigFromFile.FromFile(Utils->szTemp);
 			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
+			Utils->firststart = true;
 		}
 		else
 		{
@@ -226,6 +227,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
 			Utils->strConfigFromFile.FromFile(Utils->szTemp);
 			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
+			Utils->firststart = true;
 		}		
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
@@ -280,13 +282,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			}
 		}
 
-		//char langDll[MAX_PATH];
-		//sprintf( langDll , "%sAtmoWin_%s.dll", workdir, atmoConfig->getLanguage() );
-		//hResInstance = LoadLibraryEx( langDll, 0, LOAD_LIBRARY_AS_DATAFILE );
-		//if(hResInstance == 0)
-			hResInstance = hInstance;
-		hAtmo_ResInstance = hResInstance;
-		hAtmo_Instance    = hInstance;
+//  char langDll[MAX_PATH];
+//  sprintf( langDll , "%sAtmoWin_%s.dll", workdir, atmoConfig->getLanguage() );
+//  hResInstance = LoadLibraryEx( langDll, 0, LOAD_LIBRARY_AS_DATAFILE );
+//  if(hResInstance == 0)
+    hResInstance = hInstance;
+    hAtmo_ResInstance = hResInstance;
+    hAtmo_Instance    = hInstance;
 
 		/*
 		char zone_bitmap[MAX_PATH];

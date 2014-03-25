@@ -170,6 +170,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 			ListBox_SetItemData(this->getDlgItem(IDC_LST_MAPPINGS),index,(LPARAM)temp);
 		}
 	}
+				
 
 	CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
 
@@ -278,10 +279,11 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 
 	EditAssignment( pAtmoConfig->getChannelAssignment(0) );
 
-	// [TF] bugfix: initialization necessary
-	HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
-	ListBox_SetCurSel(listBox,0);
-
+	int selIndex = GetProfile().GetIntOrDefault("Default", "CurrentChannelAssignment", 0);
+	HWND ListBox	= getDlgItem(IDC_LST_MAPPINGS);
+	ListBox_SetCurSel(ListBox, selIndex);
+	ExecuteCommand(ListBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+	
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[6]));
 	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[7]));
 	SendMessage(getDlgItem(IDC_BU_ADD), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[8]));
@@ -444,11 +446,16 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
 	case IDC_LST_MAPPINGS: 
 		{
+			CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
+			pAtmoConfig->clearAllChannelMappings();
 			if(wmEvent == LBN_SELCHANGE) 
 			{
 				int selIndex = ListBox_GetCurSel(hControl);
-				if(selIndex >= 0) 
+				if(selIndex >= 0)
+				{
 					EditAssignment( (CAtmoChannelAssignment *)ListBox_GetItemData(hControl, selIndex) );
+					pAtmoConfig->setCurrentChannelAssignment(selIndex);
+				}
 			}
 			break;
 		}

@@ -216,15 +216,26 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	// Achtung - dazu muss die Reihenfolge der Enum Deklaration in AtmoConfig.h mit obiger Liste Synchron sein*g*
 	ComboBox_SetCurSel(m_hCbxEffects, (int)config->getEffectMode());
 
+	CUtils *Utils = new CUtils;
+
 	hwndCtrl = getDlgItem(IDC_CB_PROVILES);
-	for (int i=0; i<(int)config->profiles.size();i++)
-		ComboBox_AddString(hwndCtrl, config->profiles[i].data());
-	Edit_SetText(hwndCtrl, config->profile.data());	
+
+	int count = Utils->profiles.GetCount();	
+	GString rslt;
+	for (int i=0; i<count;i++)
+	{
+		rslt = Utils->profiles.Serialize("|", i, 0);
+		ComboBox_AddString(hwndCtrl, rslt);
+		Edit_SetText(hwndCtrl, config->lastprofile.data());
+	}
 
 	hwndCtrl = getDlgItem(IDC_COMBO3);
-	for (int i=0; i<(int)config->profiles.size();i++)
-		ComboBox_AddString(hwndCtrl, config->profiles[i].data());
-	Edit_SetText(hwndCtrl, config->d_profile.data());
+	for (int i=0; i<count;i++)
+	{
+		rslt = Utils->profiles.Serialize("|", i, 0);
+		ComboBox_AddString(hwndCtrl, rslt);
+		Edit_SetText(hwndCtrl, config->d_profile.data());
+	}
 
 	hwndCtrl = this->getDlgItem(IDC_ED_COLORCHANGE_DELAY);
 	sprintf(buffer,"%d",config->getColorChanger_iDelay());
@@ -543,42 +554,6 @@ void remove(std::vector<T>& vec, size_t pos)
 }
 
 
-BOOL RegDelnodeRecurse (LPTSTR lpSubKey)
-{
-	LPTSTR lpEnd;
-	LONG lResult;
-	DWORD dwSize;
-	TCHAR szName[MAX_PATH];
-	HKEY hKey;
-	FILETIME ftWrite;
-
-	// First, see if we can delete the key without having
-	// to recurse.
-
-	lResult = RegOpenKeyEx (HKEY_CURRENT_USER, _T("SOFTWARE\\AtmoWinX\\"), 0, KEY_ALL_ACCESS|KEY_WOW64_64KEY, &hKey);
-
-	if (lResult != ERROR_SUCCESS) 
-	{
-		if (lResult == ERROR_FILE_NOT_FOUND)
-		{
-			//printf("Key not found.\n");
-			return TRUE;
-		} 
-		else
-		{
-			//printf("Error opening key.\n");
-			return FALSE;
-		}
-	}
-
-	LONG retw;
-	retw = RegDeleteTree(hKey,lpSubKey);
-	// Check for an ending slash and add one if it is missing.
-	RegCloseKey (hKey);
-
-	return TRUE;
-}
-
 // WM_COMMAND handler...
 ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent) 
 {
@@ -587,6 +562,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	char buffer1[200];
 	char buffer2[200];
 	CLanguage *Lng;
+	CUtils *Utils = new CUtils;
 
 	switch(wmId) 
 	{
@@ -594,17 +570,44 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	case IDC_BU_SAVEPROVILE: 
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+			GString rslt;
+
 			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
-			// check ob eintrag existiert
 			bool found = false;
-			for (int i=0;i<pAtmoConfig->profiles.size();++i)
-				if ( pAtmoConfig->profiles[i]==buffer1) found=true;
-			if (!found)
+
+			const char *ptr =  buffer1;
+
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			char *buffer = new char[Profile1.length()];
+			strcpy(buffer, Profile1.c_str());
+
+			// serialize buffer
+			GStringList lst("|", buffer);
+			int count = lst.GetCount();
+
+			// check for entry if exist
+			if (count >> 0)
 			{
-				pAtmoConfig->profiles.push_back(buffer1);pAtmoConfig->profile=buffer1;
+				for (int i=0; i<count;i++)
+				{		
+					rslt = lst.Serialize("|", i, 0);
+					if (rslt == buffer1)
+						found=true;
+				}
 			}
-			//combobox eintrag
+			// if found do nothing
+			if (!found) 
+			{
+				pAtmoConfig->profiles.push_back(buffer1);pAtmoConfig->lastprofile = buffer1;
+
+				Profile1 = Profile1 + "|" + string(buffer1);
+				strcpy(buffer, Profile1.c_str());
+
+				GetProfile().SetConfig("Default", "profiles", buffer);
+			}
+
+			//combobox entry
 			if (!found) 
 			{
 				hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
@@ -612,79 +615,73 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				hwndCtrl = this->getDlgItem(IDC_COMBO3);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
-			CUtils *Utils = new CUtils;
-
-			// Read Buffer from IniFile
-			sprintf(Utils->szTemp, "%s\\%s_Profile.xml\0", Utils->szCurrentDir, buffer1);
-
-			// Create Default Xml if not exists
-			ifstream FileExists(Utils->szTemp);
-			if (!FileExists)
-			{
-				MyConfiguration O;
-
-				GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
-				O.FromXML(Utils->strConfigFromFile);
-				O.ToXML( &strXMLStreamDestinationBuffer);
-
-				GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, true);
-				strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
-
-	      Utils->strConfigFromFile.FromFile(Utils->szTemp);
-	      delete SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
-			}		
-			pAtmoConfig->SaveSettings(pAtmoConfig->profile);
+			// should be saved now
+			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
 			break;
 		}
 		//delete profile
-	case IDC_BU_DELETE: 
+	case IDC_BU_PROFDELETE: 
 		{
 			hwndCtrl2 = this->getDlgItem(IDC_COMBO3);
 			Edit_GetText(hwndCtrl2,buffer2,200);
 			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
-			std::string key(buffer1);
-			if (key !="")
-			{	
-				std::string path("SOFTWARE\\AtmoWinX\\");
 
-				CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-				//profilename aus vector löschen
+			GString rslt;
 
-				int iii;
-				for (int i=0;i<pAtmoConfig->profiles.size();++i)
-				{
-					if ( pAtmoConfig->profiles.at(i)==buffer1)iii=i; 
+			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
-				}
-				remove( pAtmoConfig->profiles,iii);
+			// section remove
+			GetProfile().RemoveSection(buffer1);
 
-				// TODO
-				//profilename aus profile liste löschen
-				//pAtmoConfig->WriteRegistryStringList(HKEY_CURRENT_USER,(char*)path.data(),"profiles","-1");
-				GetProfile().SetConfig("AtmoWinX", "profiles", "-1" );
+			//edit combobox entry
+			pAtmoConfig->lastprofile="";
+			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+			ComboBox_ResetContent(hwndCtrl);
+			Edit_SetText(hwndCtrl,pAtmoConfig->lastprofile.data());	
 
-				//profile Verzeichnis löschen
-				//path.append(key);
-				if (RegDelnodeRecurse ((char*)key.data()))
-				{
-					//combobox eintrag bearbeiten
-					pAtmoConfig->profile="";
-					hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
-					ComboBox_ResetContent(hwndCtrl);
-					Edit_SetText(hwndCtrl,pAtmoConfig->profile.data());	
-					for (int i=0; i<pAtmoConfig->profiles.size();++i)
-						ComboBox_AddString(hwndCtrl, pAtmoConfig->profiles[i].data());
-					ComboBox_ResetContent(hwndCtrl2);
-					for (int i=0; i<pAtmoConfig->profiles.size();++i)
-						ComboBox_AddString(hwndCtrl2, pAtmoConfig->profiles[i].data());
-					if (buffer1==buffer2) 
-					{
-						Edit_SetText(hwndCtrl2,"");
-						pAtmoConfig->d_profile="";
-					}	
-				}
+			//get profiles from XML
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			char *buffer = new char[Profile1.length()];
+			strcpy(buffer, Profile1.c_str());
+
+			//serialize the buffer
+			GStringList lst("|", buffer);
+			int count = lst.GetCount();
+
+			// if entry same as buffer then delete it
+			for (int i=0; i<count;i++)
+			{		
+				rslt = lst.Serialize("|", i, 0);
+				if (rslt == buffer1)
+					lst.Remove(rslt, 1, 1);
 			}
+			
+			// Get new count after delete one
+			// add to Combobox to
+			count = lst.GetCount();
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				ComboBox_AddString(hwndCtrl, rslt);
+			}
+			ComboBox_ResetContent(hwndCtrl2);
+			
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				ComboBox_AddString(hwndCtrl2, rslt);
+			}
+
+			if (buffer1==buffer2) 				
+			{
+				Edit_SetText(hwndCtrl2,"");
+				pAtmoConfig->d_profile="";
+			}	
+			// execute Default profile 
+			pAtmoConfig->lastprofile = "AtmoWinX";
+			// should be saved now 
+			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);			
 			break;
 		}
 		//load profile
@@ -693,8 +690,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			pAtmoConfig->profile=buffer1;
-			pAtmoConfig->LoadSettings(pAtmoConfig->profile);
+			pAtmoConfig->lastprofile=buffer1;
+			pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
 
 			EndDialog(this->m_hDialog, wmId);	
 			CAtmoSettingsDialog *pSetupDlg = new CAtmoSettingsDialog(this->m_hInst,this->m_hDialog, this->m_pDynData);
@@ -710,11 +707,13 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
 			pAtmoConfig->setConnectionType( conType );
-
+			
+			//that will overwritten old profile to
+			/*
 			hwndCtrl = this->getDlgItem(IDC_COMBO3);
 			Edit_GetText(hwndCtrl,buffer2,200);
 			pAtmoConfig->d_profile = buffer2;
-
+			*/
 			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
 			pAtmoConfig->setEffectMode(newEffectMode);
 
@@ -747,7 +746,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
 
-			pAtmoConfig->SaveSettings(pAtmoConfig->profile);
+			pAtmoConfig->SaveSettings(pAtmoConfig->d_profile);
 
 			pAtmoConfig->m_UpdateEdgeWeightningFlag = 1;
 

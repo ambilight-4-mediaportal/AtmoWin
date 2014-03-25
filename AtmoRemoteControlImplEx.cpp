@@ -101,6 +101,7 @@ STDMETHODIMP CAtmoRemoteControlImplEx::setEffect(enum ComEffectMode dwEffect, en
 		{
 			CAtmoConfig *pConfig = m_pAtmoDynData->getAtmoConfig();
 			//modeswitch...
+/*
 			for (int i=0;i<pConfig->profiles.size();++i)
 				if ( pConfig->profiles[i]==pConfig->profile) 
 				{
@@ -109,7 +110,7 @@ STDMETHODIMP CAtmoRemoteControlImplEx::setEffect(enum ComEffectMode dwEffect, en
 				}
 				if  ( pConfig->profile=="" && pConfig->profiles.size()>0) newprofile=pConfig->profiles[0];
 				pConfig->profile=newprofile;
-
+*/
 				//pConfig->fastLoadSettings(HKEY_CURRENT_USER, newprofile); 
 		}
 		m_pAtmoDynData->UnLockCriticalSection();

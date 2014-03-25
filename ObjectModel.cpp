@@ -7,8 +7,10 @@ IMPLEMENT_FACTORY(MySetting ,	setting)
 
 char CUtils::szCurrentDir[MAX_PATH];
 char CUtils::szTemp[512];
+bool CUtils::firststart;
 
 GString strConfigFromFile;
+GStringList CUtils::profiles;
 
 void MyConfiguration::MapXMLTagsToMembers()
 {
