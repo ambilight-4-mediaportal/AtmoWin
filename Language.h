@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define MAX_MENU_STRINGS 11
+#define MAX_MENU_STRINGS 13
 extern char *sTextMenu[MAX_MENU_STRINGS];
 
 #define MAX_CHANNELASSIGNMENT_STRINGS 15

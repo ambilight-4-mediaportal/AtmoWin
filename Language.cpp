@@ -109,6 +109,8 @@ char *sTextMenu[MAX_MENU_STRINGS] =
 "channel assignment",      //8
 "Info",                    //9
 "Exit",                    //10
+"Profiles",                //11
+"Nothing",                 //12
 };
 
 char *sTextColorPicker[MAX_COLORPICKER_STRINGS] = 

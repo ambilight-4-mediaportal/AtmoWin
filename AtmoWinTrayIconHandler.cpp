@@ -128,9 +128,14 @@ void CTrayIconWindow::createWindow()
 		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
 	}
 
+
 	this->m_hTrayIconPopupMenu = CreatePopupMenu();
 	lstrcpyn(data, Lng->sMenuText[0], 1023);
 	AddMenuItem(this->m_hTrayIconPopupMenu, 0, data, ATMO_TRUE, ATMO_TRUE, ATMO_FALSE, MENUID_SETTINGS);
+
+	this->m_hProfileSubMenu = CreatePopupMenu();
+	lstrcpyn(data, Lng->sMenuText[11], 1023);
+	AddMenuItem(this->m_hTrayIconPopupMenu, this->m_hProfileSubMenu, data, ATMO_TRUE, ATMO_FALSE, ATMO_FALSE, MENUID_PROFILE_SUBMENU);
 
 	lstrcpyn(data, Lng->sMenuText[1], 1023);
 	AddMenuItem(this->m_hTrayIconPopupMenu, this->m_hLanguageSubMenu, data, ATMO_TRUE, ATMO_FALSE, ATMO_FALSE, MENUID_LANGUAGE_SUBMENU);
@@ -347,6 +352,16 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 		return 0;
 	}
 
+	if((wmId>=MENUID_FIRST_PROFILES) && (wmId<=MENUID_LAST_PROFILES)) 
+	{
+		CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+		int index = wmId - MENUID_FIRST_PROFILES;
+		GetMenuString(this->m_hProfileSubMenu, index, data, 1023, MF_BYPOSITION);
+		pAtmoConfig->lastprofile = data;
+		GetProfile().SetConfig("Default", "lastprofile", data);
+		pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+	}
+
 	switch (wmId) 
 	{
 	case MENUID_QUITATMO:
@@ -501,6 +516,7 @@ void CTrayIconWindow::UpdatePopupMenu()
 	// before show the menu...
 	CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	CLanguage *Lng = new CLanguage;
 	if((pAtmoConnection == NULL) || (pAtmoConnection->isOpen()==ATMO_FALSE)) 
 	{
 		// disable change effect submenu!
@@ -539,4 +555,41 @@ void CTrayIconWindow::UpdatePopupMenu()
 			CheckMenuItem(this->m_hChannelMappingSubMenu,MENUID_CHANNELMAPPING+1+i, MF_BYCOMMAND | MF_CHECKED);
 		}
 	}
+
+	// Submenu Profiles
+	// delete all
+	for(int i=0;i<10;i++)
+		if(DeleteMenu(this->m_hProfileSubMenu, MENUID_PROFILE_SUBMENU + 1 +i, MF_BYCOMMAND) == ATMO_FALSE) break;
+	
+	// Get active Profile
+	CurrentProfile = GetProfile().GetStringOrDefault("Default", "lastprofile", "");
+
+	//get profiles from XML
+	string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+	char *buffer = new char[Profile1.length()];
+	strcpy(buffer, Profile1.c_str());
+
+	//serialize the buffer
+	GStringList lst("|", buffer);
+	int count = lst.GetCount();
+	if (!count == 0)
+	{
+		for (int i=0; i<count;i++)
+		{		
+			GString rslt = lst.Serialize("|", i, 0);
+			if (rslt != "")
+			{
+				char *buffer = new char[rslt._len];
+				strcpy(buffer, rslt);
+
+				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_PROFILE_SUBMENU+1+i);
+			}
+			if(rslt == CurrentProfile) 
+			{
+				CheckMenuItem(this->m_hProfileSubMenu, MENUID_PROFILE_SUBMENU + 1 +i, MF_BYCOMMAND | MF_CHECKED);
+			}
+		}
+	}	
+	else
+		AppendMenu(this->m_hProfileSubMenu, MF_STRING, MENUID_PROFILE_SUBMENU, Lng->sMenuText[12]);
 }

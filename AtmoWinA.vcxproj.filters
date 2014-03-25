@@ -225,9 +225,6 @@
     <ClCompile Include="MondolightConnection.cpp">
       <Filter>Quelldateien\devices</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectModel.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Language.cpp">
       <Filter>Quelldateien\language</Filter>
     </ClCompile>
@@ -245,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="tinyxmlparser.cpp">
       <Filter>Quelldateien\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectModel.cpp">
+      <Filter>Quelldateien\settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -418,9 +418,6 @@
     <ClInclude Include="AtmoZoneDefinition.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectModel.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Language.h">
       <Filter>Headerdateien\language</Filter>
     </ClInclude>
@@ -432,6 +429,9 @@
     </ClInclude>
     <ClInclude Include="tinystr.h">
       <Filter>Headerdateien\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel.h">
+      <Filter>Headerdateien\settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

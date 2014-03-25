@@ -12,6 +12,8 @@
 		<setting name="8" value="Kanal Zuordung" />
 		<setting name="9" value="Information" />
 		<setting name="10" value="Beenden" />
+		<setting name="11" value="Profile..." />
+		<setting name="12" value="Kein Eintrag" />
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="Deaktiviert" />

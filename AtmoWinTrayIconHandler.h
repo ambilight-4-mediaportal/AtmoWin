@@ -36,18 +36,23 @@
 #define MENUID_FIRST_LANGUAGE       22
 #define MENUID_LAST_LANGUAGE        32
 #define MENUID_LANGUAGE_SUBMENU     33
+#define MENUID_PROFILE_SUBMENU      34
+#define MENUID_FIRST_PROFILES       35
+#define MENUID_LAST_PROFILES        45
 
 class CTrayIconWindow : public CBasicWindow 
 {
 private:
 	HMENU m_hTrayIconPopupMenu;
 	HMENU m_hLanguageSubMenu;
+	HMENU m_hProfileSubMenu;
 	HMENU m_hModusSubMenu;
 	HMENU m_hChannelMappingSubMenu;
 	EffectMode m_eEffectModeBeforeSuspend;
 
   int nCurrentLanguage;
   int nLanguages;
+	GString CurrentProfile;
 	TCHAR data[1024];
 	CAtmoDynData *m_pDynData;
 

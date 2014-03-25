@@ -12,6 +12,8 @@
 		<setting name="8" value="Kanaaltoewijzing" />
 		<setting name="9" value="Info" />
 		<setting name="10" value="Afsluiten" />
+		<setting name="11" value="Profiel" />
+		<setting name="12" value="" />
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="Uit" />

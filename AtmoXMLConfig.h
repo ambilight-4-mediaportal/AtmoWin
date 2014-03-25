@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __ATMOXMLCONFIG_H__
+#define __ATMOXMLCONFIG_H__
 
 #include "AtmoConfig.h"
 
@@ -27,3 +28,5 @@ public:
 	int trilinear(int x, int y, int z, int col);
 
 };
+
+#endif // __ATMOXMLCONFIG_H__

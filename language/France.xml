@@ -12,6 +12,8 @@
 		<setting name="8" value="Attribution des canaux" />
 		<setting name="9" value="Info" />
 		<setting name="10" value="Quitter" />
+		<setting name="11" value="profiles" />
+		<setting name="12" value="" />		
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="OFF" />

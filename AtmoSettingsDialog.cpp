@@ -510,6 +510,7 @@ void CAtmoSettingsDialog::HandleHorzScroll(int code,int position,HWND scrollBarH
 
 	}
 }
+
 void CAtmoSettingsDialog::HandleVertScroll(int code,int position,HWND scrollBarHandle) 
 {
 }
