@@ -226,16 +226,16 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	{
 		rslt = Utils->profiles.Serialize("|", i, 0);
 		ComboBox_AddString(hwndCtrl, rslt);
-		Edit_SetText(hwndCtrl, config->lastprofile.data());
 	}
+	Edit_SetText(hwndCtrl, config->lastprofile.data());
 
-	hwndCtrl = getDlgItem(IDC_COMBO3);
+	hwndCtrl = getDlgItem(IDC_CB_DEVPROVILES);
 	for (int i=0; i<count;i++)
 	{
 		rslt = Utils->profiles.Serialize("|", i, 0);
 		ComboBox_AddString(hwndCtrl, rslt);
-		Edit_SetText(hwndCtrl, config->d_profile.data());
 	}
+	Edit_SetText(hwndCtrl, config->defaultprofile.data());
 
 	hwndCtrl = this->getDlgItem(IDC_ED_COLORCHANGE_DELAY);
 	sprintf(buffer,"%d",config->getColorChanger_iDelay());
@@ -602,7 +602,11 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{
 				pAtmoConfig->profiles.push_back(buffer1);pAtmoConfig->lastprofile = buffer1;
 
-				Profile1 = Profile1 + "|" + string(buffer1);
+				if (Profile1 != "")
+				  Profile1 = Profile1 + "|" + string(buffer1);
+				else
+        Profile1 = string(buffer1);
+
 				strcpy(buffer, Profile1.c_str());
 
 				GetProfile().SetConfig("Default", "profiles", buffer);
@@ -613,7 +617,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{
 				hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
-				hwndCtrl = this->getDlgItem(IDC_COMBO3);
+				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROVILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
 			// should be saved now
@@ -623,7 +627,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		//delete profile
 	case IDC_BU_PROFDELETE: 
 		{
-			hwndCtrl2 = this->getDlgItem(IDC_COMBO3);
+			hwndCtrl2 = this->getDlgItem(IDC_CB_DEVPROVILES);
 			Edit_GetText(hwndCtrl2,buffer2,200);
 			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
@@ -677,7 +681,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			if (buffer1==buffer2) 				
 			{
 				Edit_SetText(hwndCtrl2,"");
-				pAtmoConfig->d_profile="";
+				pAtmoConfig->defaultprofile="";
 			}	
 			// execute Default profile 
 			pAtmoConfig->lastprofile = "AtmoWinX";
@@ -695,11 +699,18 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
 
 			EndDialog(this->m_hDialog, wmId);	
+			EffectMode backupEffectMode = pAtmoConfig->getEffectMode();
+			// Effect Thread Stoppen der gerade läuft...
+			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
+
+			// schnittstelle neu öffnen... könne ja testweise geändert wurden sein?
+			CAtmoTools::RecreateConnection(this->m_pDynData);
+			// Effect Programm wieder starten...
+			CAtmoTools::SwitchEffect(this->m_pDynData, backupEffectMode);
+			pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+
 			CAtmoSettingsDialog *pSetupDlg = new CAtmoSettingsDialog(this->m_hInst,this->m_hDialog, this->m_pDynData);
 			pSetupDlg->ShowModal();
-			delete pSetupDlg;
-
-			CAtmoTools::RecreateConnection(this->m_pDynData);
 			break;
 		}
 	case IDOK: 
@@ -707,14 +718,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
-			pAtmoConfig->setConnectionType( conType );
+			pAtmoConfig->setConnectionType( conType );			
 			
-			//that will overwritten old profile to
-			/*
-			hwndCtrl = this->getDlgItem(IDC_COMBO3);
-			Edit_GetText(hwndCtrl,buffer2,200);
-			pAtmoConfig->d_profile = buffer2;
-			*/
 			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
 			pAtmoConfig->setEffectMode(newEffectMode);
 
@@ -746,8 +751,11 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
-
-			pAtmoConfig->SaveSettings(pAtmoConfig->d_profile);
+			
+			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROVILES);
+			Edit_GetText(hwndCtrl,buffer2, 200);
+			pAtmoConfig->defaultprofile = buffer2;
+			pAtmoConfig->SaveSettings(pAtmoConfig->defaultprofile);
 
 			pAtmoConfig->m_UpdateEdgeWeightningFlag = 1;
 

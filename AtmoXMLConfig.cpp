@@ -41,7 +41,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 		GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
 
 	GetProfile().SetConfig(configSection, "lastprofile", (char*)lastprofile.data());
-	GetProfile().SetConfig(configSection, "defaultprofile", (char*)d_profile.data());
+	GetProfile().SetConfig(configSection, "defaultprofile", (char*)defaultprofile.data());
 	GetProfile().SetConfig(configSection, "EffectMode", (int)m_eEffectMode);
 	GetProfile().SetConfig(configSection, "comport", this->m_Comport);
 	GetProfile().SetConfig(configSection, "Arducomport", this->m_ArduComport);
@@ -271,9 +271,9 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	if (profile1 == "startup") 
 	{
 		lastprofile = GetProfile().GetStringOrDefault(configSection, "lastprofile", "");
-		d_profile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
-		if (d_profile!="") 
-			lastprofile = d_profile;
+		defaultprofile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
+		if (defaultprofile!="") 
+			lastprofile = defaultprofile;
 
 		profile1 = lastprofile;
 	}
@@ -304,7 +304,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	  strcpy(this->newconfigSection, buffer);
 	}
 
-	d_profile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
+	defaultprofile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
 
 	if (GetProfile().GetIntOrDefault(configSection, "IgnoreConnectionErrorOnStartup", 0) ==1)
 		m_IgnoreConnectionErrorOnStartup = ATMO_TRUE;  

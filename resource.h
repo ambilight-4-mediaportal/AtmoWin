@@ -227,6 +227,7 @@
 #define IDC_CB_PROVILES                 1207
 #define IDC_BU_LOADPROVILE              1208
 #define IDC_BU_PROFDELETE               1209
+#define IDC_CB_DEVPROVILES              1210
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416

@@ -97,7 +97,7 @@ void CAtmoConfig::LoadDefaults()
 	m_ColorChanger_iSteps            = 50;
 	m_ColorChanger_iDelay            = 25;
 	m_CurrentChannelAssignment       = 0;
-	d_profile                        = "";
+	defaultprofile                   = "";
 	m_DMX_BaseChannels               = strdup("0");
 	m_DMX_BaudrateIndex              = 0; // Low 115kbaud 	
 	m_DMX_RGB_Channels               = 5; // so wie atmolight
@@ -211,7 +211,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_Use3dlut		                 = pAtmoConfigSrc->m_Use3dlut;
 	this->m_Useinvert		                 = pAtmoConfigSrc->m_Useinvert;
 	this->lastprofile				             = pAtmoConfigSrc->lastprofile;
-	this->d_profile				               = pAtmoConfigSrc->d_profile;
+	this->defaultprofile				               = pAtmoConfigSrc->defaultprofile;
 	this->profiles				               = pAtmoConfigSrc->profiles;
 
 	this->m_WhiteAdjPerChannel           = pAtmoConfigSrc->m_WhiteAdjPerChannel;

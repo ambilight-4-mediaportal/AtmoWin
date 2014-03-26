@@ -116,7 +116,7 @@ public:
 	int getZoneCount();
 	ATMO_BOOL m_3dlut;
 	std::string lastprofile;
-	std::string d_profile;
+	std::string defaultprofile;
 
 
 protected:

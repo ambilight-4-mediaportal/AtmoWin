@@ -359,7 +359,21 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 		GetMenuString(this->m_hProfileSubMenu, index, data, 1023, MF_BYPOSITION);
 		pAtmoConfig->lastprofile = data;
 		GetProfile().SetConfig("Default", "lastprofile", data);
-		pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+		string profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");	
+		// only save any if provile available
+		if (profile1 != "")
+		{
+		  pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+			EffectMode backupEffectMode = pAtmoConfig->getEffectMode();
+			// Effect Thread Stoppen der gerade läuft...
+			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
+
+			// schnittstelle neu öffnen... könne ja testweise geändert wurden sein?
+			CAtmoTools::RecreateConnection(this->m_pDynData);
+			// Effect Programm wieder starten...
+			CAtmoTools::SwitchEffect(this->m_pDynData, backupEffectMode);
+		}
+
 	}
 
 	switch (wmId) 
@@ -591,5 +605,9 @@ void CTrayIconWindow::UpdatePopupMenu()
 		}
 	}	
 	else
-		AppendMenu(this->m_hProfileSubMenu, MF_STRING, MENUID_PROFILE_SUBMENU, Lng->sMenuText[12]);
+	{
+		buffer = new char[strlen(Lng->sMenuText[12])];
+	  strcpy(buffer, Lng->sMenuText[12]);
+		AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_PROFILE_SUBMENU+1);
+	}
 }
