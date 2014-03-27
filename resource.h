@@ -223,11 +223,11 @@
 #define IDC_TXT_GDICAFRAM               1203
 #define IDC_TXT_FILMODE                 1204
 #define IDC_BU_DELETE                   1205
-#define IDC_BU_SAVEPROVILE              1206
-#define IDC_CB_PROVILES                 1207
+#define IDC_BU_SAVEPROFILE              1206
+#define IDC_CB_PROFILES                 1207
 #define IDC_BU_LOADPROVILE              1208
 #define IDC_BU_PROFDELETE               1209
-#define IDC_CB_DEVPROVILES              1210
+#define IDC_CB_DEVPROFILES              1210
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416

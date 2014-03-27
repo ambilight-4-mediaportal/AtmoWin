@@ -35,7 +35,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 		strcpy(this->newconfigSection, "AtmoWinX");
 
 	strcpy(this->configSection, "Default");
-	
+
 	// don't destroy config in that case..
 	if(m_eAtmoConnectionType != actNUL) 
 		GetProfile().SetConfig(configSection, "ConnectionType", (int)m_eAtmoConnectionType);
@@ -189,24 +189,31 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "MoMo_Channels", m_MoMo_Channels);
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
-	GetProfile().SetConfig(configSection, "NumChannelAssignments", getNumChannelAssignments());
-	GetProfile().SetConfig(configSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
-	
-	for(int i=1;i<10;i++) 
+	GetProfile().SetConfig(newconfigSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
+	GetProfile().SetConfig(newconfigSection, "NumChannelAssignments", getNumChannelAssignments());
+
+	if (!ChannelDelete())
 	{
-		CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
-		if(ta!=NULL) 
+		for(int i=1;i<10;i++) 
 		{
-			sprintf(XMLSectionName,"%sChannelAssignment_%d","",i);
-			GetProfile().SetConfig(XMLSectionName, "name", ta->getName());
-			GetProfile().SetConfig(XMLSectionName, "count", ta->getSize());
-			for(int c=0;c<ta->getSize();c++)
+			CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
+			if(ta!=NULL) 
 			{
-				sprintf(valueName,"channel_%d",c);
-				GetProfile().SetConfig(XMLSectionName, valueName, ta->getZoneIndex(c));
+				string name = string(newconfigSection) + "_ChannelAssignment_" + string(ta->getName());				
+	      strcpy(XMLSectionName, name.c_str());
+				
+				GetProfile().SetConfig(XMLSectionName, "name", ta->getName());
+				GetProfile().SetConfig(XMLSectionName, "count", ta->getSize());
+				for(int c=0;c<ta->getSize();c++)
+				{
+					sprintf(valueName,"channel_%d", c);
+					GetProfile().SetConfig(XMLSectionName, valueName, ta->getZoneIndex(c));
+				}
 			}
 		}
+		m_ChannelDelete = false;
 	}
+
 	GString strXMLStreamDestinationBuffer = "<?xml version=\"1.0\" encoding='ISO-8859-1'?>\r\n";
 	GetProfile().WriteCurrentConfig(&strXMLStreamDestinationBuffer, true);
 	strXMLStreamDestinationBuffer.ToFile(Utils->szTemp);
@@ -262,9 +269,9 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	strcpy(this->configSection, "Default");
 
 	profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", "");	
-  
+
 	char *buffer = new char[profile1.length()];
-  strcpy(buffer, profile1.c_str());
+	strcpy(buffer, profile1.c_str());
 
 	ReadXMLStringList(configSection, buffer);
 
@@ -291,17 +298,17 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 		strcpy(this->newconfigSection, "AtmoWinX");
 
 	if (Utils->firststart)
-	lastprofile = GetProfile().GetStringOrDefault(configSection, "lastprofile", "");
+		lastprofile = GetProfile().GetStringOrDefault(configSection, "lastprofile", "");
 	else
-  lastprofile = lastprofile.data();
+		lastprofile = lastprofile.data();
 
 	Utils->firststart = false;
 
 	if (lastprofile != "")
 	{
-	  buffer = new char[lastprofile.length()];
-	  strcpy(buffer, lastprofile.c_str());
-	  strcpy(this->newconfigSection, buffer);
+		buffer = new char[lastprofile.length()];
+		strcpy(buffer, lastprofile.c_str());
+		strcpy(this->newconfigSection, buffer);
 	}
 
 	defaultprofile = GetProfile().GetStringOrDefault(configSection, "defaultprofile", "");
@@ -575,39 +582,65 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 		m_Fnordlicht_Amount = 1;
 
 	clearChannelMappings(); // clear channel mappings except default!
-	m_CurrentChannelAssignment = GetProfile().GetIntOrDefault(configSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
+	m_CurrentChannelAssignment = GetProfile().GetIntOrDefault(newconfigSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
 	setCurrentChannelAssignment(m_CurrentChannelAssignment);
-	int numChannels = GetProfile().GetIntOrDefault(configSection, "NumChannelAssignments", 0);
+	int numChannels = GetProfile().GetIntOrDefault(newconfigSection, "NumChannelAssignments", 1);
 
 	if(m_CurrentChannelAssignment>=numChannels)
 		m_CurrentChannelAssignment = 0;
 
-	for(int i=1;i<numChannels;i++) 
+
+	GStringList *lstFind = new GStringList;
+	GStringList *lstFound = new GStringList;
+	GString *gsfound = new GString;
+
+	GString name = GString(newconfigSection) + "_ChannelAssignment_";
+
+	GetProfile().GetSectionNames(lstFind);
+
+	int count = lstFind->GetCount();	
+	for(int i=0;i<count;i++) 
 	{
-		CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];
-		if(ta==NULL) 
+		gsfound = lstFind->GetStrAt(i);
+
+		if (gsfound->Left(strlen(name._str)) == name._str)
+			lstFound->AddLast(gsfound->_str);
+	}
+
+	count = lstFound->GetCount() + 1;
+	for(int i=0;i<count;i++) 
+	{
+		gsfound = lstFound->GetStrAt(i);
+
+		if ( gsfound->Left(strlen(name._str)) == name._str)
 		{
-			ta = new CAtmoChannelAssignment();
-			this->m_ChannelAssignments[i] = ta;
-		}
+			CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i+1];
+			if(ta==NULL) 
+			{
+				ta = new CAtmoChannelAssignment();
+				this->m_ChannelAssignments[i+1] = ta;
+			}		
 
-		sprintf(XMLSectionName,"%sChannelAssignment_%d", "", i);
-		const char *name;
-		name = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
-		ta->setName(name);
-		ta->system = ATMO_FALSE;
-		//		free(name);
+			strcpy(XMLSectionName, gsfound->_str);
+			const char *secname;
+			secname = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
 
-		int chCount = GetProfile().GetIntOrDefault(XMLSectionName, "count", 0);
+			ta->setName(secname);
+			ta->system = ATMO_FALSE;
 
-		ta->setSize(chCount);
+			int chCount = GetProfile().GetIntOrDefault(XMLSectionName, "count", 0);
 
-		for(int c=0;c<chCount;c++) 
-		{
-			sprintf(valueName,"channel_%d",c);
-			ta->setZoneIndex(c, GetProfile().GetIntOrDefault(XMLSectionName, valueName, c));
+			ta->setSize(chCount);
+
+			for(int c=0;c<chCount;c++) 
+			{
+				sprintf(valueName,"channel_%d",c);
+				ta->setZoneIndex(c, GetProfile().GetIntOrDefault(XMLSectionName, valueName, c));
+			}
 		}
 	}
+  lstFind->RemoveAll();
+	lstFound->RemoveAll();
 
 	UpdateZoneDefinitionCount();
 }
@@ -634,7 +667,7 @@ void CAtmoXMLConfig::ReadXMLStringList(char *section, char *default_value)
 
 	string Profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", default_value);
 	char *buffer = new char[Profile1.length()];
-  strcpy(buffer, Profile1.c_str());
+	strcpy(buffer, Profile1.c_str());
 
 	GStringList lst("|", buffer);
 	count = lst.GetCount();
@@ -643,11 +676,11 @@ void CAtmoXMLConfig::ReadXMLStringList(char *section, char *default_value)
 	{
 		Utils->profiles.RemoveAll();
 
-	  for (int i=0; i<count;i++)
-	  {		
-		  rslt = lst.Serialize("|", i, 0);
+		for (int i=0; i<count;i++)
+		{		
+			rslt = lst.Serialize("|", i, 0);
 			Utils->profiles.AddFirst(rslt, rslt._len);
-	  }
+		}
 	}
 
 	count = Utils->profiles.GetCount();

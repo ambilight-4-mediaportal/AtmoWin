@@ -85,14 +85,14 @@ protected:
 	int m_StaticColor_Green;
 	int m_StaticColor_Blue;
 
-protected:
+public:
 	/*
 	one for System + 9 for userdefined channel
 	assignments (will it be enough?)
 	*/
 	CAtmoChannelAssignment *m_ChannelAssignments[10];
 	int m_CurrentChannelAssignment;
-
+	
 protected:
 	CAtmoZoneDefinition **m_ZoneDefinitions;
 	int m_AtmoZoneDefCount;
@@ -117,7 +117,7 @@ public:
 	ATMO_BOOL m_3dlut;
 	std::string lastprofile;
 	std::string defaultprofile;
-
+	bool m_ChannelDelete;
 
 protected:
 	/* Live View Parameters (most interesting) */
@@ -447,6 +447,7 @@ public:
 	char *getDMX_BaseChannels() { return m_DMX_BaseChannels; }
 	void setDMX_BaseChannels(const char *channels);
 
+	bool ChannelDelete() { return m_ChannelDelete; }
 	int getDMX_RGB_Channels() { return m_DMX_RGB_Channels; }
 	void setDMX_RGB_Channels(int ch) { m_DMX_RGB_Channels = ch; }
 

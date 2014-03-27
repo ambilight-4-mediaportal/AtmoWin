@@ -30,6 +30,7 @@
 
 #include "Resource.h"
 #include "Language.h"
+#pragma comment(lib, "user32.lib")
 
 CAtmoSettingsDialog::CAtmoSettingsDialog(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) : CBasicDialog(hInst,IDD_SETUP,parent)
 {
@@ -218,7 +219,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	CUtils *Utils = new CUtils;
 
-	hwndCtrl = getDlgItem(IDC_CB_PROVILES);
+	hwndCtrl = getDlgItem(IDC_CB_PROFILES);
 
 	int count = Utils->profiles.GetCount();	
 	GString rslt;
@@ -229,7 +230,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	}
 	Edit_SetText(hwndCtrl, config->lastprofile.data());
 
-	hwndCtrl = getDlgItem(IDC_CB_DEVPROVILES);
+	hwndCtrl = getDlgItem(IDC_CB_DEVPROFILES);
 	for (int i=0; i<count;i++)
 	{
 		rslt = Utils->profiles.Serialize("|", i, 0);
@@ -385,11 +386,13 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_GRADIENT_EDIT), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[47]));
 	SendMessage(getDlgItem(IDC_STATIC18), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[48]));
 	SendMessage(getDlgItem(IDC_STATIC19), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[49]));
-	SendMessage(getDlgItem(IDC_BU_SAVEPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
+	SendMessage(getDlgItem(IDC_BU_SAVEPROFILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
 	SendMessage(getDlgItem(IDC_STATIC20), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[52]));
 	SendMessage(getDlgItem(IDC_BU_LOADPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
 	SendMessage(getDlgItem(IDC_STATIC21), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[54]));
+  
+	SetWindowPos(this->m_hDialog, HWND_TOPMOST, 0, 0, 0, 0,SWP_NOMOVE|SWP_NOSIZE);
 
 	return ATMO_FALSE;
 }
@@ -568,12 +571,12 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	switch(wmId) 
 	{
 		//save or add profile
-	case IDC_BU_SAVEPROVILE: 
+	case IDC_BU_SAVEPROFILE: 
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 			GString rslt;
 
-			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			bool found = false;
 
@@ -600,7 +603,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			// if found do nothing
 			if (!found) 
 			{
-				pAtmoConfig->profiles.push_back(buffer1);pAtmoConfig->lastprofile = buffer1;
 
 				if (Profile1 != "")
 				  Profile1 = Profile1 + "|" + string(buffer1);
@@ -610,16 +612,22 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				strcpy(buffer, Profile1.c_str());
 
 				GetProfile().SetConfig("Default", "profiles", buffer);
+				pAtmoConfig->profiles.push_back(buffer1);
+				pAtmoConfig->lastprofile = buffer1;
 			}
 
 			//combobox entry
 			if (!found) 
 			{
-				hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+				hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
-				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROVILES);
+				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
+			// cleanup ChannelAssignment
+	    for(int i=1;i<10;i++)
+		    pAtmoConfig->m_ChannelAssignments[i] = NULL;
+
 			// should be saved now
 			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
 			break;
@@ -627,9 +635,9 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		//delete profile
 	case IDC_BU_PROFDELETE: 
 		{
-			hwndCtrl2 = this->getDlgItem(IDC_CB_DEVPROVILES);
+			hwndCtrl2 = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl2,buffer2,200);
-			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 
 			GString rslt;
@@ -641,7 +649,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			//edit combobox entry
 			pAtmoConfig->lastprofile="";
-			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			ComboBox_ResetContent(hwndCtrl);
 			Edit_SetText(hwndCtrl,pAtmoConfig->lastprofile.data());	
 
@@ -692,7 +700,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		//load profile
 	case IDC_BU_LOADPROVILE: 
 		{
-			hwndCtrl = this->getDlgItem(IDC_CB_PROVILES);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 			pAtmoConfig->lastprofile=buffer1;
@@ -715,6 +723,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		}
 	case IDOK: 
 		{
+			SetWindowPos(this->m_hDialog, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE|SWP_NOSIZE);
+
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
@@ -752,10 +762,12 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
 			
-			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROVILES);
+			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl,buffer2, 200);
 			pAtmoConfig->defaultprofile = buffer2;
-			pAtmoConfig->SaveSettings(pAtmoConfig->defaultprofile);
+			
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			pAtmoConfig->SaveSettings(Profile1);
 
 			pAtmoConfig->m_UpdateEdgeWeightningFlag = 1;
 
@@ -795,10 +807,15 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 	case IDC_BU_CHANNELASSIGNMENTS: 
 		{
-			CAtmoEditChannelAssignment *editChannels = new CAtmoEditChannelAssignment(this->m_hInst, this->m_hDialog, this->m_pDynData);
-			editChannels->ShowModal();
-
+			CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
+			if (pAtmoConnection != NULL)
+			{
+			  CAtmoEditChannelAssignment *editChannels = new CAtmoEditChannelAssignment(this->m_hInst, this->m_hDialog, this->m_pDynData);
+			  editChannels->ShowModal();
+			
+				 SetForegroundWindow(this->m_hDialog); 
 			delete editChannels;
+			}
 			break;
 		}
 

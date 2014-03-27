@@ -2,6 +2,7 @@
 #include "AtmoEditChannelAssignment.h"
 #include "Resource.h"
 #include "Language.h"
+#include "ObjectModel.h"
 
 CAtmoEditChannelAssignment::CAtmoEditChannelAssignment(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) :
 	CBasicDialog(hInst,IDD_CHANNELASSIGNMENT,parent) 
@@ -170,7 +171,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 			ListBox_SetItemData(this->getDlgItem(IDC_LST_MAPPINGS),index,(LPARAM)temp);
 		}
 	}
-				
+
 
 	CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
 
@@ -189,7 +190,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	int bottom     = rScroller.bottom - rScroller.top;
 
 	m_iChCount = pAtmoConnection->getNumChannels();
-	if(m_iChCount > 0) {
+	if(m_iChCount > 0) 
+	{
 		m_pZoneBoxes = new HWND[m_iChCount];
 		m_pChannelNames = new HWND[m_iChCount];
 
@@ -224,7 +226,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 
 				// Read Buffer from IniFile
 				sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
-				
+
 				Lng->XMLParse(Lng->szTemp, Lng->sChannelAssigmentText, "ChannelAssignment");
 
 				ComboBox_AddString(m_pZoneBoxes[ch],Lng->sChannelAssigmentText[0]);
@@ -278,12 +280,14 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	}
 
 	EditAssignment( pAtmoConfig->getChannelAssignment(0) );
+	char *buffer = new char[pAtmoConfig->lastprofile.length()];
+	strcpy(buffer, pAtmoConfig->lastprofile.c_str());
 
-	int selIndex = GetProfile().GetIntOrDefault("Default", "CurrentChannelAssignment", 0);
+	int selIndex = GetProfile().GetIntOrDefault(buffer, "CurrentChannelAssignment", 0);
 	HWND ListBox	= getDlgItem(IDC_LST_MAPPINGS);
 	ListBox_SetCurSel(ListBox, selIndex);
 	ExecuteCommand(ListBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
-	
+
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[6]));
 	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[7]));
 	SendMessage(getDlgItem(IDC_BU_ADD), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[8]));
@@ -501,6 +505,23 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 			} else 
 			{
 				CAtmoChannelAssignment *ca = new CAtmoChannelAssignment();
+				int count = ListBox_GetCount(listBox);
+				char buffer[64], buffer2[64];
+
+				ctrl = getDlgItem(IDC_EDT_NAME);
+
+				for(int i=0; i<count; i++) 
+				{
+					ListBox_GetText(listBox, i, buffer2);
+					Edit_GetText(ctrl, buffer, sizeof(buffer));
+
+					if (string(buffer) == string(buffer2))
+					{
+						MessageBox( this->m_hDialog, "Name already exist", "Info", MB_ICONINFORMATION);
+						return ATMO_FALSE;
+						break;
+					}
+				}
 
 				SaveAssignment(ca);
 
@@ -534,17 +555,34 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
 			int listIndex = ListBox_GetCurSel(listBox);
-			CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
-			if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
-			{
-				delete ca;
-				ListBox_DeleteString(listBox, listIndex);
-				ListBox_SetCurSel(listBox, 0);
-				ExecuteCommand(listBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+			CUtils *Utils = new CUtils;
 
-				// weil dann nich mehr klar ist auf was der alte Index der dort gespeichert war verwiess
-				this->m_pDynData->getAtmoConfig()->setCurrentChannelAssignment(0);
+			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+			char buffer2[64];
+
+			char *XMLSectionName = new char[pAtmoConfig->lastprofile.length()];
+			strcpy(XMLSectionName, pAtmoConfig->lastprofile.c_str());
+
+			int numChannels = GetProfile().GetIntOrDefault(XMLSectionName, "NumChannelAssignments", 1);
+
+			ListBox_GetText(listBox, listIndex, buffer2);
+			string name = string(XMLSectionName) + "_ChannelAssignment_" + string(buffer2);				
+			strcpy(XMLSectionName, name.c_str());
+
+			GString section = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
+
+			if (string(buffer2) == section._str)
+			{
+				GetProfile().RemoveSection(XMLSectionName);
+				pAtmoConfig->m_ChannelDelete = true;
 			}
+
+			ListBox_DeleteString(listBox, listIndex);
+			ListBox_SetCurSel(listBox, 0);
+			ExecuteCommand(listBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+
+			this->m_pDynData->getAtmoConfig()->setCurrentChannelAssignment(0);
+			GetProfile().WriteCurrentConfig((const char *)Utils->strConfigFromFile, true);
 			break;
 		}
 	default:

@@ -159,7 +159,7 @@ void CAtmoConfig::LoadDefaults()
 	m_ZonesTopCount                  = 1;
 	m_ZoneSummary                    = ATMO_FALSE;
 	m_IgnoreConnectionErrorOnStartup = ATMO_FALSE;
-
+	m_ChannelDelete                  = ATMO_FALSE;
 	m_show_statistics                = ATMO_FALSE;
 	m_UpdateEdgeWeightningFlag       = 0;
 
