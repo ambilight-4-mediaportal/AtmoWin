@@ -206,7 +206,7 @@
 		<setting name="1" value="Information" />
 		<setting name="2" value="Verbunden." />
 		<setting name="3" value="Fehler" />
-		<setting name="4" value="Ausgewähltes Diplay nicht mehr in der Liste" />
+		<setting name="4" value="Ausgewähltes Display nicht mehr in der Liste" />
 		<setting name="5" value="Verzögerung sollte mehr als 10ms für den Farbwähler betragen" />
 		<setting name="6" value="Schritte sollten mehr als 0 für den Farbwähler betragen" />
 		<setting name="7" value="Verzögerung sollte mehr als 10ms für den LR Farbwähler betragen" />
