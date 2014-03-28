@@ -425,9 +425,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			delete atmoConnection;
 		}
 
-		// save settings finally to registry... must/should move to config dialog!
-		// no longer required is done by setup dialog (in case of IDOK)
-		// atmoConfig->SaveToRegistry();
 		atmoDynData->UnLockCriticalSection();
 
 		CoUninitialize(); // Wait For Last Calls... now incoming Com Calls will fail in case of critical section!

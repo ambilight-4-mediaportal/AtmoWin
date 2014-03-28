@@ -3,6 +3,7 @@
 #include "Resource.h"
 #include "Language.h"
 #include "ObjectModel.h"
+#include "AtmoTools.h"
 
 CAtmoEditChannelAssignment::CAtmoEditChannelAssignment(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) :
 	CBasicDialog(hInst,IDD_CHANNELASSIGNMENT,parent) 
@@ -280,13 +281,19 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	}
 
 	EditAssignment( pAtmoConfig->getChannelAssignment(0) );
-	char *buffer = new char[pAtmoConfig->lastprofile.length()];
-	strcpy(buffer, pAtmoConfig->lastprofile.c_str());
-
-	int selIndex = GetProfile().GetIntOrDefault(buffer, "CurrentChannelAssignment", 0);
+	
 	HWND ListBox	= getDlgItem(IDC_LST_MAPPINGS);
-	ListBox_SetCurSel(ListBox, selIndex);
-	ExecuteCommand(ListBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+	if (pAtmoConfig->lastprofile != "")
+	{
+		char *buffer = new char[pAtmoConfig->lastprofile.length()];
+		strcpy(buffer, pAtmoConfig->lastprofile.c_str());
+
+		int selIndex = GetProfile().GetIntOrDefault(buffer, "CurrentChannelAssignment", 0);
+		ListBox_SetCurSel(ListBox, selIndex);
+		ExecuteCommand(ListBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+	}
+	else
+		ListBox_SetCurSel(ListBox, 0);
 
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[6]));
 	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[7]));
@@ -451,14 +458,14 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 	case IDC_LST_MAPPINGS: 
 		{
 			CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
-			pAtmoConfig->clearAllChannelMappings();
 			if(wmEvent == LBN_SELCHANGE) 
 			{
 				int selIndex = ListBox_GetCurSel(hControl);
 				if(selIndex >= 0)
 				{
 					EditAssignment( (CAtmoChannelAssignment *)ListBox_GetItemData(hControl, selIndex) );
-					pAtmoConfig->setCurrentChannelAssignment(selIndex);
+					CAtmoTools::SetChannelAssignment(m_pDynData, selIndex);		
+					pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);				
 				}
 			}
 			break;

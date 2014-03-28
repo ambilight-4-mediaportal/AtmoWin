@@ -559,7 +559,6 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	const char *dmx_ch;
 	dmx_ch = GetProfile().GetStringOrDefault(newconfigSection, "DMX_BaseChannels", buf);
 	this->setDMX_BaseChannels( dmx_ch );
-	//free( *dmx_ch );
 
 	//atmoduino
 	m_hAtmoClLeds            = GetProfile().GetIntOrDefault(newconfigSection, "hAtmoClLeds", m_hAtmoClLeds);
