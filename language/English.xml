@@ -201,4 +201,20 @@
 		<setting name="5" value="Number of channels out of range 1 &gt; 255" />
 		<setting name="6" value="Error" />
 	</section>
+	<section name="Messages">
+		<setting name="0" value="This device doesn't have a special config dialog" />
+		<setting name="1" value="Info" />
+		<setting name="2" value="connected." />
+		<setting name="3" value="Error" />
+		<setting name="4" value="Selected display no longer in the list" />
+		<setting name="5" value="Delay should be more than 10ms for ColorChanger" />
+		<setting name="6" value="Steps should be more than zero for ColorChanger" />
+		<setting name="7" value="Delay should be more than 10ms for LR ColorChanger" />
+		<setting name="8" value="Steps should be more than zero for LR ColorChanger" />
+		<setting name="9" value="Sorry, no more than 10 settings possible." />
+		<setting name="10" value="This Profil allready exist in the List" />
+		<setting name="11" value="valid range is 1..256" />
+		<setting name="12" value="Would you really want to delete the profile?" />
+		<setting name="13" value="All configured channel will be lost" />
+	</section>	
 </configuration>

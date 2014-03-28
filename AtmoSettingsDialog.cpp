@@ -32,6 +32,51 @@
 #include "Language.h"
 #pragma comment(lib, "user32.lib")
 
+void CAtmoSettingsDialog::DeleteAllChannel()
+{
+	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	char *newconfigSection;
+
+	GStringList *lstFind = new GStringList;
+	GStringList *lstFound = new GStringList;
+	GString *gsfound = new GString;
+	char XMLSectionName[100], valueName[32];
+	CUtils *Utils = new CUtils;
+
+	string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
+	newconfigSection = new char[tmpStr.length()];
+	strcpy(newconfigSection, tmpStr.c_str());
+
+	GString name = GString(newconfigSection);
+
+	GetProfile().GetSectionNames(lstFind);
+
+	int count = lstFind->GetCount();	
+	for(int i=0;i<count;i++) 
+	{
+		gsfound = lstFind->GetStrAt(i);
+
+		if (gsfound->Left(strlen(name._str)) == name._str)
+			lstFound->AddLast(gsfound->_str);
+	}
+
+	count = lstFound->GetCount() + 1;
+	for(int i=0;i<count;i++) 
+	{
+		gsfound = lstFound->GetStrAt(i);
+
+		if ( gsfound->Left(strlen(name._str)) == name._str)
+		{
+			strcpy(XMLSectionName, gsfound->_str);
+			GetProfile().RemoveSection(XMLSectionName);
+		}
+	}
+  lstFind->RemoveAll();
+	lstFound->RemoveAll();
+	pAtmoConfig->m_ChannelDelete = true;
+	GetProfile().WriteCurrentConfig((const char *)Utils->strConfigFromFile, true);
+}
+
 CAtmoSettingsDialog::CAtmoSettingsDialog(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) : CBasicDialog(hInst,IDD_SETUP,parent)
 {
 	this->m_pDynData = pDynData;
@@ -66,6 +111,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLiveViewValues(ATMO_BOOL showPreview)
 	HWND hwndCtrl;
 	CAtmoDisplays *pAtmoDisplays = this->m_pDynData->getAtmoDisplays();
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	CLanguage *Lng = new CLanguage;
 
 	pAtmoDisplays->ReloadList(); // auf nummer sicher!
 
@@ -76,7 +122,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLiveViewValues(ATMO_BOOL showPreview)
 	{
 		pAtmoConfig->setLiveView_DisplayNr(0);
 		LoadDisplayList();
-		MessageBox(this->m_hDialog,"Ausgewähltes Display nicht mehr in der Liste ;-)","Fehler",MB_ICONERROR | MB_OK);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[4],Lng->sMessagesText[3],MB_ICONERROR | MB_OK);
 		return ATMO_FALSE;
 	}
 	pAtmoConfig->setLiveView_DisplayNr(i);
@@ -97,12 +143,14 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateColorChangeValues(ATMO_BOOL showPreview)
 {
 	HWND hEditDelay = this->getDlgItem(IDC_ED_COLORCHANGE_DELAY);
 	HWND hEditSteps = this->getDlgItem(IDC_ED_COLORCHANGE_STEPS);
+	CLanguage *Lng = new CLanguage;
+
 	char buffer[256];
 	Edit_GetText(hEditDelay,buffer,255);
 	int iDelay = atoi(buffer);
 	if(iDelay < 10) 
 	{
-		MessageBox(this->m_hDialog,"Delay should be more than 10ms for ColorChanger","Error",MB_OK | MB_ICONERROR);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[5], Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -111,7 +159,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateColorChangeValues(ATMO_BOOL showPreview)
 	int iSteps = atoi(buffer);
 	if(iSteps < 1) 
 	{
-		MessageBox(this->m_hDialog,"Steps should be more than zero for ColorChanger","Error",MB_OK | MB_ICONERROR);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[6],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -138,13 +186,14 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 {
 	HWND hEditDelay = this->getDlgItem(IDC_ED_LRCOLORCHANGE_DELAY);
 	HWND hEditSteps = this->getDlgItem(IDC_ED_LRCOLORCHANGE_STEPS);
+	CLanguage *Lng = new CLanguage;
 
 	char buffer[256];
 	Edit_GetText(hEditDelay,buffer,255);
 	int iDelay = atoi(buffer);
 	if(iDelay < 10) 
 	{
-		MessageBox(this->m_hDialog,"Delay should be more than 10ms for LR ColorChanger","Error",MB_OK | MB_ICONERROR);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[7],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -153,7 +202,7 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 	int iSteps = atoi(buffer);
 	if(iSteps < 1) 
 	{
-		MessageBox(this->m_hDialog,"Steps should be more than zero for LR ColorChanger","Error",MB_OK | MB_ICONERROR);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[8],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -206,6 +255,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
 	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
+	Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
 
 	m_hCbxEffects = getDlgItem(IDC_EFFECTS);
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[0] );
@@ -521,6 +571,7 @@ void CAtmoSettingsDialog::HandleVertScroll(int code,int position,HWND scrollBarH
 void CAtmoSettingsDialog::UpdateDeviceConnection(AtmoConnectionType conType)
 {
 	EffectMode oldEffect = CAtmoTools::SwitchEffect(m_pDynData, emDisabled);
+	CLanguage *Lng = new CLanguage;
 
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 	pAtmoConfig->setConnectionType(conType);
@@ -541,7 +592,7 @@ void CAtmoSettingsDialog::UpdateDeviceConnection(AtmoConnectionType conType)
 				if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) 
 				{
 					CAtmoTools::SwitchEffect(m_pDynData, oldEffect);
-					MessageBox( this->m_hDialog, "connected.", "Info", MB_ICONINFORMATION);
+					MessageBox( this->m_hDialog, Lng->sMessagesText[2], Lng->sMessagesText[1], MB_ICONINFORMATION);
 				}
 			}
 		}
@@ -635,6 +686,14 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 		//delete profile
 	case IDC_BU_PROFDELETE: 
 		{
+			char msg[MAX_PATH+128];
+			ATMO_BOOL r = ATMO_FALSE;
+			sprintf(msg, Lng->sMessagesText[12] + "\n\r" + Lng->sMessagesText[13], "");
+			if(MessageBox(this->m_hDialog, msg ,Lng->sMessagesText[1],MB_ICONQUESTION | MB_YESNO) == IDNO)
+			  return(r);
+
+			DeleteAllChannel();
+
 			hwndCtrl2 = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl2,buffer2,200);
 			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
@@ -691,6 +750,20 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				Edit_SetText(hwndCtrl2,"");
 				pAtmoConfig->defaultprofile="";
 			}	
+			// Set new Profile
+			count = lst.GetCount();
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				Profile1 = rslt;
+				if (count >> 1)
+          Profile1 = Profile1 + "|";
+			}
+			strcpy(buffer, Profile1.c_str());
+			GetProfile().SetConfig("Default", "profiles", buffer);
+
+			// do not save any Channel settings if Profile deleted
+			pAtmoConfig->m_ChannelDelete = true;
 			// execute Default profile 
 			pAtmoConfig->lastprofile = "AtmoWinX";
 			// should be saved now 
@@ -835,7 +908,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) 
 				{
 					CAtmoTools::SwitchEffect(m_pDynData, oldEffect);
-					MessageBox( this->m_hDialog, "connected.", "Info", MB_ICONINFORMATION);
+					MessageBox( this->m_hDialog, Lng->sMessagesText[2], Lng->sMessagesText[1], MB_ICONINFORMATION);
 				}
 			}
 			break;

@@ -201,4 +201,20 @@
 		<setting name="5" value="Anzahl der Kanäle wurden überschritten 1..255" />
 		<setting name="6" value="Fehler" />
 	</section>
+	<section name="Messages">
+		<setting name="0" value="Dieses Gerät benötigt keine Einstellungen" />
+		<setting name="1" value="Information" />
+		<setting name="2" value="Verbunden." />
+		<setting name="3" value="Fehler" />
+		<setting name="4" value="Ausgewähltes Diplay nicht mehr in der Liste" />
+		<setting name="5" value="Verzögerung sollte mehr als 10ms für den Farbwähler betragen" />
+		<setting name="6" value="Schritte sollten mehr als 0 für den Farbwähler betragen" />
+		<setting name="7" value="Verzögerung sollte mehr als 10ms für den LR Farbwähler betragen" />
+		<setting name="8" value="Schritte sollten mehr als 0 für den LR Farbwähler betragen" />
+		<setting name="9" value="Tut mir leid, nicht mehr als 10 Einstellungen möglich." />
+		<setting name="10" value="Dieses Profil befindet sich schon in der Liste" />
+		<setting name="11" value="der zulässige Bereich geht von 1..256" />
+		<setting name="12" value="Möchten sie das Profil wirklich löschen?" />
+		<setting name="13" value="Alle vorkonfigurierte Kanäle gehen dann unweigerlich verloren!" />		
+	</section>		
 </configuration>

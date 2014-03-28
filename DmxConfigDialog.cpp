@@ -83,6 +83,7 @@ ATMO_BOOL CDmxConfigDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 	char channels[1000];
 	int  rgb;
 	int chc;
+	CLanguage *Lng = new CLanguage;
 
 	switch(wmId) 
 	{
@@ -97,7 +98,7 @@ ATMO_BOOL CDmxConfigDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 
 			if((rgb<1) || (rgb>256))  
 			{
-				MessageBox(m_hDialog,"valid range is 1..256","error",MB_ICONERROR);
+				MessageBox(m_hDialog,Lng->sMessagesText[11], Lng->sMessagesText[3],MB_ICONERROR);
 				break;
 			}
 

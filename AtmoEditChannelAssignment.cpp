@@ -499,9 +499,10 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 	case IDC_BU_ADD: 
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
+			CLanguage *Lng = new CLanguage;
 			if(ListBox_GetCount(listBox)>=10) 
 			{
-				MessageBox(this->m_hDialog,"Sorry maximal 10 Settings möglich.","Hinweis",MB_ICONINFORMATION | MB_OK);
+				MessageBox(this->m_hDialog,Lng->sMessagesText[9], Lng->sMessagesText[1],MB_ICONINFORMATION | MB_OK);
 			} else 
 			{
 				CAtmoChannelAssignment *ca = new CAtmoChannelAssignment();
@@ -517,7 +518,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
 					if (string(buffer) == string(buffer2))
 					{
-						MessageBox( this->m_hDialog, "Name already exist", "Info", MB_ICONINFORMATION);
+						MessageBox( this->m_hDialog, Lng->sMessagesText[10], Lng->sMessagesText[1], MB_ICONINFORMATION);
 						return ATMO_FALSE;
 						break;
 					}
@@ -563,7 +564,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 			char *XMLSectionName = new char[pAtmoConfig->lastprofile.length()];
 			strcpy(XMLSectionName, pAtmoConfig->lastprofile.c_str());
 
-			int numChannels = GetProfile().GetIntOrDefault(XMLSectionName, "NumChannelAssignments", 1);
+			//int numChannels = GetProfile().GetIntOrDefault(XMLSectionName, "NumChannelAssignments", 1);
 
 			ListBox_GetText(listBox, listIndex, buffer2);
 			string name = string(XMLSectionName) + "_ChannelAssignment_" + string(buffer2);				

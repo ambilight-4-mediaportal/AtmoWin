@@ -13,7 +13,7 @@
 
 #include <string.h>
 #include "AtmoConnection.h"
-
+#include "Language.h"
 
 CAtmoConnection::CAtmoConnection(CAtmoConfig *cfg)
 {
@@ -54,7 +54,8 @@ void CAtmoConnection::SetChannelAssignment(CAtmoChannelAssignment *ca)
 #if !defined(_ATMO_VLC_PLUGIN_)
 ATMO_BOOL CAtmoConnection::ShowConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *cfg)
 {
-    MessageBox(parent, "This device doesn't have a special config dialog", "Info", 0);
+    CLanguage *Lng = new CLanguage;
+	  MessageBox(parent, Lng->sMessagesText[0], Lng->sMessagesText[1], 0);
     return ATMO_FALSE;
 }
 #endif

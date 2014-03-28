@@ -19,6 +19,24 @@ char *sSection[MAX_SECTION_STRINGS] =
 "MultiAtmoLightsetup", //9
 "Momosetup",           //10
 "FNordLightsetup",     //11
+"Messages",            //12
+};
+
+char *sMessages[MAX_MESSAGE_STRINGS] =
+{"This device doesn't have a special config dialog",  //0
+"Info",                                               //1
+"connected.",                                         //2
+"Error",                                              //3
+"Selected display no longer in the list",             //4 
+"Delay should be more than 10ms for ColorChanger",    //5
+"Steps should be more than zero for ColorChanger",    //6
+"Delay should be more than 10ms for LR ColorChanger", //7
+"Steps should be more than zero for LR ColorChanger"  //8
+"Sorry maximal 10 Settings möglich.",                 //9
+"Name already exist",                                 //10
+"valid range is 1..256",                              //11
+"Would you really want to delete the profile?",       //12
+"All configured channel will be lost",                //13                
 };
 
 char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] = 
@@ -246,6 +264,7 @@ CString CLanguage::sDmxDlgText[MAX_DMXDLG_STRINGS];
 CString CLanguage::sMultiAtmoLightDlgText[MAX_MULTIATMOLIGHTDLG_STRINGS];
 CString CLanguage::sMomoDlgText[MAX_MOMODLG_STRINGS];
 CString CLanguage::sNordLightSetupText[MAX_NORDLIGHTSETUP_STRINGS];
+CString CLanguage::sMessagesText[MAX_MESSAGE_STRINGS];
 
 char CLanguage::szCurrentDir[MAX_PATH];
 char CLanguage::szFileINI[MAX_PATH];
@@ -410,6 +429,10 @@ void CLanguage::CreateDefaultXML(const char* FileName, char* Section[])
 		case 11:
 			memcpy(sInText, sTextNordLightSetup, sizeof(sTextNordLightSetup));
 			Count = MAX_NORDLIGHTSETUP_STRINGS;
+			break;
+		case 12:
+			memcpy(sInText, sMessages, sizeof(sMessages));
+			Count = MAX_MESSAGE_STRINGS;
 			break;
 		}
 

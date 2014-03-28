@@ -190,10 +190,10 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
 	GetProfile().SetConfig(newconfigSection, "CurrentChannelAssignment", m_CurrentChannelAssignment);
-	GetProfile().SetConfig(newconfigSection, "NumChannelAssignments", getNumChannelAssignments());
 
 	if (!ChannelDelete())
 	{
+		GetProfile().SetConfig(newconfigSection, "NumChannelAssignments", getNumChannelAssignments());
 		for(int i=1;i<10;i++) 
 		{
 			CAtmoChannelAssignment *ta = this->m_ChannelAssignments[i];

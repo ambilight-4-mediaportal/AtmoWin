@@ -36,6 +36,7 @@ protected:
     ATMO_BOOL UpdateLiveViewValues(ATMO_BOOL showPreview);
 
     void LoadDisplayList();
+		void DeleteAllChannel();
     void UpdateDeviceConnection(AtmoConnectionType conType);
 
 public:

@@ -12,8 +12,8 @@
 		<setting name="8" value="Kanaaltoewijzing" />
 		<setting name="9" value="Info" />
 		<setting name="10" value="Afsluiten" />
-		<setting name="11" value="Profiel" />
-		<setting name="12" value="" />
+    <setting name="11" value="Profiel" />
+    <setting name="12" value="Niks" />
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="Uit" />
@@ -201,4 +201,20 @@
 		<setting name="5" value="Aantal kanalen buiten bereik 1 &gt; 255" />
 		<setting name="6" value="Fout" />
 	</section>
+	<section name="Messages">
+		<setting name="0" value="" />
+		<setting name="1" value="" />
+		<setting name="2" value="" />
+		<setting name="3" value="" />
+		<setting name="4" value="" />
+		<setting name="5" value="" />
+		<setting name="6" value="" />
+		<setting name="7" value="" />
+		<setting name="8" value="" />
+		<setting name="9" value="" />
+		<setting name="10" value="" />
+		<setting name="11" value="" />
+		<setting name="12" value="" />
+		<setting name="13" value="" />
+	</section>		
 </configuration>
