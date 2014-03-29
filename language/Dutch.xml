@@ -216,20 +216,20 @@
 		<setting name="11" value="Het toegestane bereik loopt van 1 > 256" />
 		<setting name="12" value="Wil je dit profiel daadwerkelijk verwijderen?" />
 		<setting name="13" value="Alle geconfigureerde Kanalen gaan onvermijdelijk verloren!" />
-		<setting name="14" value="" />
-		<setting name="15" value="" />
-		<setting name="16" value="" />
-		<setting name="17" value="" />
-		<setting name="18" value="" />
-		<setting name="19" value="" />
-		<setting name="20" value="" />
-		<setting name="21" value="" />
-		<setting name="22" value="" />
-		<setting name="23" value="" />
-		<setting name="24" value="" />
-		<setting name="25" value="" />
-		<setting name="26" value="" />
-		<setting name="27" value="" />
-		<setting name="28" value="" />
+		<setting name="14" value="timeGetDevCaps mislukt. Beëindigen." />
+		<setting name="15" value="CoInitialize mislukt. Beëindigen." />
+		<setting name="16" value="Common Controls Initialisatie mislukt." />
+		<setting name="17" value="Programma wordt beëindigd." />
+		<setting name="18" value="Controleer de weergave-instellingen" />
+		<setting name="19" value="Open Device LastError" />
+		<setting name="20" value="Apparaat openen mislukt" />
+		<setting name="21" value="RegisterActiveObject mislukt." />
+		<setting name="22" value="LoadTypeLib mislukt. Code:" />
+		<setting name="23" value="RegisterTypeLib mislukt. Code:" />
+		<setting name="24" value="COM Server goed geregistreerd" />
+		<setting name="25" value="Fout tijdens laden, controleer Format en Size." />
+		<setting name="26" value="Fout tijdens het openen van de seriële poort" />
+		<setting name="27" value="met foutcode:" />
+		<setting name="28" value="Weergave-instellingen veranderd. Controleer de instellingen." />
 	</section>
 </configuration>
