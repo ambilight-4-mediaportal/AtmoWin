@@ -250,6 +250,7 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 	case WM_DISPLAYCHANGE: 
 		{
 			CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
+      CLanguage *Lng = new CLanguage;
 
 			CAtmoDisplays *pAtmoDisplays = m_pDynData->getAtmoDisplays();
 			pAtmoDisplays->ReloadList();
@@ -263,8 +264,12 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 			if(pAtmoConfig->getLiveView_DisplayNr()>=pAtmoDisplays->getCount()) 
 			{
 				// show Setup.. dialog?
-				res_buffer1 = getResStr( IDS_DISPLAY_SETCHANGED, "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen.");
-				res_buffer2 = getResStr( IDS_INFO, "Info");
+				char *value;
+				char *value2;
+				strcpy(value, Lng->sMessagesText[28]);
+				res_buffer1 = getResStr( IDS_DISPLAY_SETCHANGED, value);
+				strcpy(value2, Lng->sMessagesText[1]);
+				res_buffer2 = getResStr( IDS_INFO, value2);
 
 				MessageBox(this->m_hWindow, res_buffer1, res_buffer2 ,MB_ICONWARNING | MB_OK);
 

@@ -255,7 +255,6 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
 	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
-	Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
 
 	m_hCbxEffects = getDlgItem(IDC_EFFECTS);
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[0] );

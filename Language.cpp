@@ -36,7 +36,22 @@ char *sMessages[MAX_MESSAGE_STRINGS] =
 "Name already exist",                                 //10
 "valid range is 1..256",                              //11
 "Would you really want to delete the profile?",       //12
-"All configured channel will be lost",                //13                
+"All configured channel will be lost",                //13   
+"timeGetDevCaps failed. Terminate.",                  //14
+"CoInitialize failed. Terminate.",                    //15
+"Common Controls Initialization failed.",             //16
+"Programm will be terminated.",                       //17
+"Check the display settings.",                        //18
+"Open Device LastError",                              //19
+"Failed to open device",                              //20
+"RegisterActiveObject failed.",                       //21
+"LoadTypeLib failed. Code:",                          //22
+"RegisterTypeLib failed. Code:",                      //23
+"COM Server registered Ok!",                          //24
+"Failed to load, Check Format, Check Size.",          //25
+"Failed to open serial port",                         //26
+"with errorcode:",                                    //27 
+"Display Settings changed. check settings.",          //28
 };
 
 char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] = 

@@ -22,6 +22,7 @@
 #include "atmoremotecontrolimplex.h"
 #include "AtmoComRegistry.h"
 #include "AtmoRes.h"
+#include "Language.h"
 #include <string>
 #include <Commctrl.h>
 
@@ -188,6 +189,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	DWORD activeObjectID;
 	TIMECAPS tc;
 	UINT wTimerRes;
+	CLanguage *Lng = new CLanguage;
 
 	HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
 	bool gefunden=FALSE;
@@ -230,9 +232,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Utils->firststart = true;
 		}		
 
+		Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
+
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
 		{
-			MessageBox(0,"timeGetDevCaps failed. Terminate.","Error",MB_OK | MB_ICONERROR);
+			MessageBox(0,Lng->sMessagesText[14], Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 			return 0;
 		}
 
@@ -240,7 +244,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		HRESULT r = CoInitialize(NULL);
 		if(r != S_OK)
 		{
-			MessageBox(0,"CoInitialize failed. Terminate.","Error",MB_OK | MB_ICONERROR);
+			MessageBox(0, Lng->sMessagesText[15],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 			return 0;
 		}
 
@@ -254,7 +258,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		comCtrlSettings.dwICC  = ICC_BAR_CLASSES | ICC_WIN95_CLASSES; // reicht das?
 		if(!InitCommonControlsEx(&comCtrlSettings))
 		{
-			MessageBox(0,"Common Controls Initialization failed. Programm will be terminated.","Error",MB_OK | MB_ICONERROR);
+			MessageBox(0,Lng->sMessagesText[16] + "\n\r" + Lng->sMessagesText[17],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 			return 0;
 		}
 
@@ -282,30 +286,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			}
 		}
 
-//  char langDll[MAX_PATH];
-//  sprintf( langDll , "%sAtmoWin_%s.dll", workdir, atmoConfig->getLanguage() );
-//  hResInstance = LoadLibraryEx( langDll, 0, LOAD_LIBRARY_AS_DATAFILE );
-//  if(hResInstance == 0)
     hResInstance = hInstance;
     hAtmo_ResInstance = hResInstance;
     hAtmo_Instance    = hInstance;
 
-		/*
-		char zone_bitmap[MAX_PATH];
-		for(int i=0; i < CAP_MAX_NUM_ZONES; i++) {
-		sprintf(zone_bitmap,"%szone_%d.bmp",workdir, i);
-		int i_res = atmoConfig->getZoneDefinition(i)->LoadGradientFromBitmap(zone_bitmap);
-		if(i_res != ATMO_LOAD_GRADIENT_OK && i_res!=ATMO_LOAD_GRADIENT_FILENOTFOND)
-		{
-		MessageBox(0,zone_bitmap,"Failed to load, Check Format, Check Size.",MB_ICONERROR);
-		}
-		}
-		*/
-
 		atmoDisplays = new CAtmoDisplays();
 		if(atmoConfig->getLiveView_DisplayNr()>=atmoDisplays->getCount()) 
 		{
-			MessageBox(0,"Displayseinstellungen prüfen.","Fehler",MB_ICONERROR | MB_OK);
+			MessageBox(0,Lng->sMessagesText[18], Lng->sMessagesText[3],MB_ICONERROR | MB_OK);
 			atmoConfig->setShowConfigDialog(1);
 		}
 
@@ -334,8 +322,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 					if(lastError) 
 					{
 						char lerror[500]; 
-						sprintf( lerror,"Open Device LastError 0x%x (%d)", lastError, lastError);
-						MessageBox(0, lerror,"Failed to open device",MB_ICONERROR | MB_OK);
+						sprintf( lerror,Lng->sMessagesText[19] + "0x%x (%d)", lastError, lastError);
+						MessageBox(0, lerror,Lng->sMessagesText[20],MB_ICONERROR | MB_OK);
 					}
 				}
 				atmoConfig->setShowConfigDialog(1);
@@ -367,7 +355,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		HRESULT res = RegisterActiveObject(atmoComRemoteControlex, CLSID_AtmoRemoteControl, ACTIVEOBJECT_STRONG, &activeObjectID);
 		if(res != S_OK) 
 		{
-			MessageBox(0,"RegisterActiveObject failed.","Error",MB_ICONERROR);
+			MessageBox(0,Lng->sMessagesText[21], Lng->sMessagesText[3],MB_ICONERROR);
 		}
 
 		trayIcon->SetRestart(false);

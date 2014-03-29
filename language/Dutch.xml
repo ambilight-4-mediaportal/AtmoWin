@@ -216,5 +216,20 @@
 		<setting name="11" value="Het toegestane bereik loopt van 1 > 256" />
 		<setting name="12" value="Wil je dit profiel daadwerkelijk verwijderen?" />
 		<setting name="13" value="Alle geconfigureerde Kanalen gaan onvermijdelijk verloren!" />
+		<setting name="14" value="" />
+		<setting name="15" value="" />
+		<setting name="16" value="" />
+		<setting name="17" value="" />
+		<setting name="18" value="" />
+		<setting name="19" value="" />
+		<setting name="20" value="" />
+		<setting name="21" value="" />
+		<setting name="22" value="" />
+		<setting name="23" value="" />
+		<setting name="24" value="" />
+		<setting name="25" value="" />
+		<setting name="26" value="" />
+		<setting name="27" value="" />
+		<setting name="28" value="" />
 	</section>
 </configuration>

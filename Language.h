@@ -45,7 +45,7 @@ extern char *sTextNordLightSetup[MAX_NORDLIGHTSETUP_STRINGS];
 #define MAX_SECTION_STRINGS 13
 extern char *sSection[MAX_SECTION_STRINGS];
 
-#define MAX_MESSAGE_STRINGS 14
+#define MAX_MESSAGE_STRINGS 29
 extern char *sMessages[MAX_MESSAGE_STRINGS];
 
 class CLanguage

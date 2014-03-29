@@ -216,5 +216,20 @@
 		<setting name="11" value="valid range is 1..256" />
 		<setting name="12" value="Would you really want to delete the profile?" />
 		<setting name="13" value="All configured channel will be lost" />
+		<setting name="14" value="timeGetDevCaps failed. Terminate." />
+		<setting name="15" value="CoInitialize failed. Terminate." />
+		<setting name="16" value="Common Controls Initialization failed." />
+		<setting name="17" value="Programm will be terminated." />
+		<setting name="18" value="Check the display settings." />
+		<setting name="19" value="Open Device LastError" />
+		<setting name="20" value="Failed to open device" />
+		<setting name="21" value="RegisterActiveObject failed." />
+		<setting name="22" value="LoadTypeLib failed. Code:" />
+		<setting name="23" value="RegisterTypeLib failed. Code:" />
+		<setting name="24" value="COM Server registered Ok!" />
+		<setting name="25" value="Failed to load, Check Format, Check Size." />
+		<setting name="26" value="Failed to open serial port" />
+		<setting name="27" value="with errorcode:" />
+		<setting name="28" value="Display Settings changed. check settings." />
 	</section>	
 </configuration>

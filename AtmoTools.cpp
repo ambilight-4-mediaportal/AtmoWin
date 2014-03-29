@@ -21,6 +21,7 @@
 #include "FnordlichtConnection.h"
 #include "AtmoExternalCaptureInput.h"
 #include <math.h>
+#include "Language.h"
 
 #if !defined(_ATMO_VLC_PLUGIN_)
 #   include "AtmoColorChanger.h"
@@ -287,6 +288,7 @@ LivePictureSource CAtmoTools::SwitchLiveSource(CAtmoDynData *pDynData, LivePictu
 ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
 {
 	pDynData->LockCriticalSection();
+	CLanguage *Lng = new CLanguage;
 
 	CAtmoConnection *current = pDynData->getAtmoConnection();
 	CAtmoConfig *atmoConfig = pDynData->getAtmoConfig();
@@ -309,12 +311,12 @@ ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
 				if(atmoConfig->getIgnoreConnectionErrorOnStartup() == ATMO_FALSE)
 				{
 					char errorMsgBuf[200];
-					sprintf(errorMsgBuf,"Failed to open serial port com%d with errorcode: %d (0x%x)",
+					sprintf(errorMsgBuf,Lng->sMessagesText[26] + "com%d" + Lng->sMessagesText[26] + "%d (0x%x)",
 						pDynData->getAtmoConfig()->getArduComport(),
 						tempConnection->getLastError(),
 						tempConnection->getLastError()
 						);
-					MessageBox(0,errorMsgBuf,"Error",MB_ICONERROR | MB_OK);
+					MessageBox(0,errorMsgBuf,Lng->sMessagesText[3] ,MB_ICONERROR | MB_OK);
 				}
 #endif
 				pDynData->setAtmoConnection(tempConnection);

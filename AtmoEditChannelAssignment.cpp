@@ -491,7 +491,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 						ctrl = getDlgItem(IDC_BU_MODIFY);
 						EnableWindow(ctrl, (ca->system == ATMO_FALSE));
 					}
-				} else 
+				} 
+				else 
 				{
 					ctrl = getDlgItem(IDC_BU_MODIFY);
 					EnableWindow(ctrl, ATMO_FALSE);
@@ -510,7 +511,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 			if(ListBox_GetCount(listBox)>=10) 
 			{
 				MessageBox(this->m_hDialog,Lng->sMessagesText[9], Lng->sMessagesText[1],MB_ICONINFORMATION | MB_OK);
-			} else 
+			} 
+			else 
 			{
 				CAtmoChannelAssignment *ca = new CAtmoChannelAssignment();
 				int count = ListBox_GetCount(listBox);
@@ -544,7 +546,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
 			int listIndex = ListBox_GetCurSel(listBox);
-			if (listIndex < 0) listIndex = 0; // [TF] bugfix for no selection
+			if (listIndex < 0) 
+				listIndex = 0; 
 			CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
 			if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
 			{
@@ -570,8 +573,6 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
 			char *XMLSectionName = new char[pAtmoConfig->lastprofile.length()];
 			strcpy(XMLSectionName, pAtmoConfig->lastprofile.c_str());
-
-			//int numChannels = GetProfile().GetIntOrDefault(XMLSectionName, "NumChannelAssignments", 1);
 
 			ListBox_GetText(listBox, listIndex, buffer2);
 			string name = string(XMLSectionName) + "_ChannelAssignment_" + string(buffer2);				
