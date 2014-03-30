@@ -6,7 +6,9 @@
  *
  * $Id$
  */
-#pragma once
+#ifndef _AtmoGdiDisplayCaptureInput_h_
+#define _AtmoGdiDisplayCaptureInput_h_
+
 #include "atmoinput.h"
 #include "atmothread.h"
 #include "atmoconfig.h"
@@ -60,3 +62,5 @@ public:
     // Returns true if the input-device was closed successfully.
     virtual ATMO_BOOL Close(void);
 };
+
+#endif

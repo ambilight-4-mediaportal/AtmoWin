@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoClassicConfigDialog_h_
+#define _AtmoClassicConfigDialog_h_
+
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 
@@ -21,4 +23,4 @@ public:
     ~CAtmoClassicConfigDialog(void);
 };
 
-
+#endif

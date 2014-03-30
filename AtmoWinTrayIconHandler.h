@@ -7,7 +7,8 @@
 * $Id$
 */
 
-#pragma once
+#ifndef _TrayIconWindow_h_
+#define _TrayIconWindow_h_
 
 #include "AtmoDynData.h"
 #include "AtmoConfig.h"
@@ -84,3 +85,4 @@ public:
 
 };
 
+#endif

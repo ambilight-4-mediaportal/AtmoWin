@@ -6,7 +6,8 @@
  * $Id$
  */
 
-#pragma once
+#ifndef _AtmoCustomColorPicker_h_
+#define _AtmoCustomColorPicker_h_
 
 #include "basicdialog.h"
 #include "AtmoDynData.h"
@@ -45,3 +46,5 @@ public:
     CAtmoCustomColorPicker(HINSTANCE hInst, HWND parent, WORD dlgRessourceID, CAtmoDynData *pAtmoDynData, int red, int green, int blue);
     virtual ~CAtmoCustomColorPicker(void);
 };
+
+#endif

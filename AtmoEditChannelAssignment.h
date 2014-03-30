@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoEditChannelAssignment_h_
+#define _AtmoEditChannelAssignment_h_
+
 #include "basicdialog.h"
 #include "atmodyndata.h"
 #include "atmodefs.h"
@@ -33,3 +35,5 @@ public:
     virtual ~CAtmoEditChannelAssignment(void);
 
 };
+
+#endif
