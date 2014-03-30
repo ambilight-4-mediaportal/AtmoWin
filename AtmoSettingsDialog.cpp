@@ -800,10 +800,11 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
-			pAtmoConfig->setConnectionType( conType );			
+			pAtmoConfig->setConnectionType( conType );		
 
-//			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
-//			pAtmoConfig->setEffectMode(newEffectMode);
+      LivePictureSource backupLivePictureSource = m_pDynData->getLivePictureSource();
+			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
+			pAtmoConfig->setEffectMode(newEffectMode);
 
 			if(UpdateColorChangeValues(ATMO_FALSE) == ATMO_FALSE)   return 0;
 			if(UpdateLrColorChangeValues(ATMO_FALSE) == ATMO_FALSE) return 0;
@@ -815,7 +816,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				pAtmoConfig->SetSetShutdownColor(0);
 
 
-//			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
+			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
 			// schnittstelle neu öffnen... könne ja testweise geändert wurden sein?
 			CAtmoTools::RecreateConnection(this->m_pDynData);
 
@@ -832,7 +833,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				}
 			}
 
-//			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
+			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
+      CAtmoTools::SwitchLiveSource(this->m_pDynData, backupLivePictureSource);
 
 			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl,buffer2, 200);
