@@ -13,7 +13,7 @@
 		<setting name="9" value="Info" />
 		<setting name="10" value="Quitter" />
 		<setting name="11" value="profiles" />
-		<setting name="12" value="" />		
+		<setting name="12" value="Vide" />		
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="OFF" />
@@ -85,9 +85,9 @@
 		<setting name="49" value="Nom" />
 		<setting name="50" value="Enreg." />
 		<setting name="51" value="Suppr." />
-		<setting name="52" value="profiles" />
+		<setting name="52" value="profils" />
 		<setting name="53" value="Charg." />
-		<setting name="54" value="default" />
+		<setting name="54" value="Default" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />
@@ -202,34 +202,34 @@
 		<setting name="6" value="Erreur" />
 	</section>
 	<section name="Messages">
-		<setting name="0" value="" />
-		<setting name="1" value="" />
-		<setting name="2" value="" />
-		<setting name="3" value="" />
-		<setting name="4" value="" />
-		<setting name="5" value="" />
-		<setting name="6" value="" />
-		<setting name="7" value="" />
-		<setting name="8" value="" />
-		<setting name="9" value="" />
-		<setting name="10" value="" />
-		<setting name="11" value="" />
-		<setting name="12" value="" />
-		<setting name="13" value="" />
-		<setting name="14" value="" />
-		<setting name="15" value="" />
-		<setting name="16" value="" />
-		<setting name="17" value="" />
-		<setting name="18" value="" />
-		<setting name="19" value="" />
-		<setting name="20" value="" />
-		<setting name="21" value="" />
-		<setting name="22" value="" />
-		<setting name="23" value="" />
-		<setting name="24" value="" />
-		<setting name="25" value="" />
-		<setting name="26" value="" />
-		<setting name="27" value="" />
-		<setting name="28" value="" />
+		<setting name="0" value="Ce périphérique n'a pas de config. spécifique." />
+		<setting name="1" value="Info" />
+		<setting name="2" value="Connecté" />
+		<setting name="3" value="Erreur" />
+		<setting name="4" value="L'affichage sélectionné n'est plus disponible" />
+		<setting name="5" value="Délai doit être supérieur à 10ms pour chang. de couleur" />
+		<setting name="6" value="Etape doit être supérieur à 0 pour chang. de couleur" />
+		<setting name="7" value="Délai doit être supérieur à 10ms pour chang. de couleur GD" />
+		<setting name="8" value="Etape doit être supérieur à 0 pour chang. de couleur GD" />
+		<setting name="9" value="Désolé, pas plus de 10 paramètres." />
+		<setting name="10" value="Ce Profil existe déjà." />
+		<setting name="11" value="Vauleur possible : 1 -> 256" />
+		<setting name="12" value="Voulez-vous vraiment supprimer ce profil ?" />
+		<setting name="13" value="Toutes les zones configurés seront perdu !" />
+		<setting name="14" value="timeGetDevCaps échec. Terminé." />
+		<setting name="15" value="CoInitialize échec : Terminé" />
+		<setting name="16" value="Initialisation des contrôles commun : échec" />
+		<setting name="17" value="Programme va être fermé" />
+		<setting name="18" value="Vérifier les paramètres d'affichage" />
+		<setting name="19" value="Utilisation du périph. dernière erreur" />
+		<setting name="20" value="Echec d'utilisation du périph." />
+		<setting name="21" value="RegisterActiveObject  échec." />
+		<setting name="22" value="LoadTypeLib échec. Code:" />
+		<setting name="23" value="RegisterTypeLib échec. Code:" />
+		<setting name="24" value="COM Server enregistrement : Ok!" />
+		<setting name="25" value="Échec de chargement, Vérifiez Format et Taille." />
+		<setting name="26" value="Echec d'ouverture du port Série" />
+		<setting name="27" value="avec code-erreur:" />
+		<setting name="28" value="Paramètre Affichage modifié, vérifiez paramètre." />
 	</section>			
 </configuration>
