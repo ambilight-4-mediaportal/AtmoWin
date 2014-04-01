@@ -1,3 +1,8 @@
+Version 1.0.0.5
+Moved setting from registry to XML file. ( thanks to BassFan :-] )
+Fix Enum display (needed fix for Win8 use) ( From NevCairiel fork "thanks" )
+Fix various small bug
+
 Version 1.0.0.4
 Moved Language files to language folder.
 Replacement of Lng files by XML.
