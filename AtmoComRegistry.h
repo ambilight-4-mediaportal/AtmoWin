@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoComRegistry_h_
+#define _AtmoComRegistry_h_
+
 #include <comdef.h>		
 #include "AtmoWin_h.h"
 #include "AtmoDefs.h"
@@ -14,3 +16,5 @@ public:
     static void SaveComSettings(ATMO_BOOL force);
     static void DeleteComSettings();
 };
+
+#endif

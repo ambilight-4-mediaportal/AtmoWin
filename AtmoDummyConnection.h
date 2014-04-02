@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoDummyConnection_h_
+#define _AtmoDummyConnection_h_
+
 #include "atmoconnection.h"
 #include "atmoconfig.h"
 #include "atmodefs.h"
@@ -34,3 +36,5 @@ public:
 
     virtual ATMO_BOOL CreateDefaultMapping(CAtmoChannelAssignment *ca);
 };
+
+#endif

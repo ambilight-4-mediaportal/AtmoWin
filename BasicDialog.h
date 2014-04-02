@@ -7,7 +7,9 @@
  * $Id$
  */
 
-#pragma once
+//#pragma once
+#ifndef _BASICDIALOG_h_
+#define _BASICDIALOG_h_
 
 #include "StdAfx.h"
 #include "AtmoDefs.h"
@@ -55,3 +57,5 @@ public:
 
     virtual INT_PTR ShowModal();
 };
+
+#endif

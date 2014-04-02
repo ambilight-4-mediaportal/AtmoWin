@@ -19,6 +19,39 @@ char *sSection[MAX_SECTION_STRINGS] =
 "MultiAtmoLightsetup", //9
 "Momosetup",           //10
 "FNordLightsetup",     //11
+"Messages",            //12
+};
+
+char *sMessages[MAX_MESSAGE_STRINGS] =
+{"This device doesn't have a special config dialog",  //0
+"Info",                                               //1
+"connected.",                                         //2
+"Error",                                              //3
+"Selected display no longer in the list",             //4 
+"Delay should be more than 10ms for ColorChanger",    //5
+"Steps should be more than zero for ColorChanger",    //6
+"Delay should be more than 10ms for LR ColorChanger", //7
+"Steps should be more than zero for LR ColorChanger"  //8
+"Sorry maximal 10 Settings möglich.",                 //9
+"Name already exist",                                 //10
+"valid range is 1..256",                              //11
+"Would you really want to delete the profile?",       //12
+"All configured channel will be lost",                //13   
+"timeGetDevCaps failed. Terminate.",                  //14
+"CoInitialize failed. Terminate.",                    //15
+"Common Controls Initialization failed.",             //16
+"Programm will be terminated.",                       //17
+"Check the display settings.",                        //18
+"Open Device LastError",                              //19
+"Failed to open device",                              //20
+"RegisterActiveObject failed.",                       //21
+"LoadTypeLib failed. Code:",                          //22
+"RegisterTypeLib failed. Code:",                      //23
+"COM Server registered Ok!",                          //24
+"Failed to load, Check Format, Check Size.",          //25
+"Failed to open serial port",                         //26
+"with errorcode:",                                    //27 
+"Display Settings changed. check settings.",          //28
 };
 
 char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] = 
@@ -110,6 +143,8 @@ char *sTextMenu[MAX_MENU_STRINGS] =
 "channel assignment",      //8
 "Info",                    //9
 "Exit",                    //10
+"Profiles",                //11
+"Nothing",                 //12
 };
 
 char *sTextColorPicker[MAX_COLORPICKER_STRINGS] = 
@@ -245,6 +280,7 @@ CString CLanguage::sDmxDlgText[MAX_DMXDLG_STRINGS];
 CString CLanguage::sMultiAtmoLightDlgText[MAX_MULTIATMOLIGHTDLG_STRINGS];
 CString CLanguage::sMomoDlgText[MAX_MOMODLG_STRINGS];
 CString CLanguage::sNordLightSetupText[MAX_NORDLIGHTSETUP_STRINGS];
+CString CLanguage::sMessagesText[MAX_MESSAGE_STRINGS];
 
 char CLanguage::szCurrentDir[MAX_PATH];
 char CLanguage::szFileINI[MAX_PATH];
@@ -409,6 +445,10 @@ void CLanguage::CreateDefaultXML(const char* FileName, char* Section[])
 		case 11:
 			memcpy(sInText, sTextNordLightSetup, sizeof(sTextNordLightSetup));
 			Count = MAX_NORDLIGHTSETUP_STRINGS;
+			break;
+		case 12:
+			memcpy(sInText, sMessages, sizeof(sMessages));
+			Count = MAX_MESSAGE_STRINGS;
 			break;
 		}
 

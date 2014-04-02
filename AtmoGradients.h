@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoGradients_h_
+#define _AtmoGradients_h_
+
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 #include "AtmoConnection.h"
@@ -7,34 +9,36 @@
 #include "AtmoZoneDefinition.h"
 
 class CAtmoGradients :
-    public CBasicDialog
+	public CBasicDialog
 {
 private:
-    CAtmoDynData *m_pDynData;
-    CAtmoConfig *m_pConfig;
-    HWND *m_ZoneRadios;
-    int m_active_zone;
-    int m_edge_weight;
-    HBITMAP m_current_gradient;
+	CAtmoDynData *m_pDynData;
+	CAtmoConfig *m_pConfig;
+	HWND *m_ZoneRadios;
+	int m_active_zone;
+	int m_edge_weight;
+	HBITMAP m_current_gradient;
 
-    WNDPROC OrgGroupBoxProc;
-
-protected:
-    static INT_PTR CALLBACK GroupBoxProc(HWND hwnd,UINT uMsg, WPARAM wParam, LPARAM lParam);
-
+	WNDPROC OrgGroupBoxProc;
 
 protected:
-    void SetActiveZone(int zone);
+	static INT_PTR CALLBACK GroupBoxProc(HWND hwnd,UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 
-    virtual ATMO_BOOL InitDialog(WPARAM wParam);
-    virtual ATMO_BOOL ExecuteCommand(HWND hControl,int wmId, int wmEvent);
-    virtual ATMO_BOOL HandleMessage(HWND hwnd,UINT uMsg, WPARAM wParam, LPARAM lParam);
-    virtual void HandleHorzScroll(int code,int position,HWND scrollBarHandle);
+protected:
+	void SetActiveZone(int zone);
+
+
+	virtual ATMO_BOOL InitDialog(WPARAM wParam);
+	virtual ATMO_BOOL ExecuteCommand(HWND hControl,int wmId, int wmEvent);
+	virtual ATMO_BOOL HandleMessage(HWND hwnd,UINT uMsg, WPARAM wParam, LPARAM lParam);
+	virtual void HandleHorzScroll(int code,int position,HWND scrollBarHandle);
 
 public:
-    CAtmoGradients(HINSTANCE hInst, HWND parent, CAtmoDynData *pAtmoDynData);
-    ~CAtmoGradients(void);
+	CAtmoGradients(HINSTANCE hInst, HWND parent, CAtmoDynData *pAtmoDynData);
+	~CAtmoGradients(void);
 
-    static ATMO_BOOL Execute(HINSTANCE hInst, HWND parent, CAtmoDynData *pAtmoDynData);
+	static ATMO_BOOL Execute(HINSTANCE hInst, HWND parent, CAtmoDynData *pAtmoDynData);
 };
+
+#endif

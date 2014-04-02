@@ -1,11 +1,12 @@
-#pragma once
+#ifndef __LANGUAGE_H__
+#define __LANGUAGE_H__
 
 #include "atlstr.h"
 #include "shlobj.h" 
 
 using namespace std;
 
-#define MAX_MENU_STRINGS 11
+#define MAX_MENU_STRINGS 13
 extern char *sTextMenu[MAX_MENU_STRINGS];
 
 #define MAX_CHANNELASSIGNMENT_STRINGS 15
@@ -41,8 +42,11 @@ extern char *sTextMomoDlg[MAX_MOMODLG_STRINGS];
 #define MAX_NORDLIGHTSETUP_STRINGS 7
 extern char *sTextNordLightSetup[MAX_NORDLIGHTSETUP_STRINGS];
 
-#define MAX_SECTION_STRINGS 12
+#define MAX_SECTION_STRINGS 13
 extern char *sSection[MAX_SECTION_STRINGS];
+
+#define MAX_MESSAGE_STRINGS 29
+extern char *sMessages[MAX_MESSAGE_STRINGS];
 
 class CLanguage
 {
@@ -63,6 +67,7 @@ public:
 	static CString sMultiAtmoLightDlgText[MAX_MULTIATMOLIGHTDLG_STRINGS];
   static CString sMomoDlgText[MAX_MOMODLG_STRINGS];
 	static CString sNordLightSetupText[MAX_NORDLIGHTSETUP_STRINGS];
+	static CString sMessagesText[MAX_MESSAGE_STRINGS];
 
 	static char szCurrentDir[MAX_PATH];
   static char szFileINI[MAX_PATH];
@@ -79,3 +84,4 @@ public:
 
 };
 
+#endif // __LANGUAGE_H__

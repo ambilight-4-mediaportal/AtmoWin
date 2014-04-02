@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AtmoWinA", "AtmoWinA.vcxproj", "{70294792-414F-437A-8275-AD605D54D690}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLFoundationLib", "XMLFoundation\Libraries\XMLFoundation\Builds\XMLFoundationLib.vcxproj", "{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,8 +21,8 @@ Global
 		Template|x64 = Template|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.ActiveCfg = Release|Win32
-		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.Build.0 = Release|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.Debug|Win32.Build.0 = Debug|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Debug|x64.ActiveCfg = Debug|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.DebugStaticCRT|Win32.ActiveCfg = Debug|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.DebugStaticCRT|Win32.Build.0 = Debug|Win32
@@ -31,12 +33,36 @@ Global
 		{70294792-414F-437A-8275-AD605D54D690}.Release|Win32.ActiveCfg = Release|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Release|Win32.Build.0 = Release|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Release|x64.ActiveCfg = Release|Win32
-		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|Win32.ActiveCfg = Release_16x9|Win32
-		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|Win32.Build.0 = Release_16x9|Win32
-		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|x64.ActiveCfg = Release_16x9|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|Win32.ActiveCfg = ReleaseStaticCRT|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|Win32.Build.0 = ReleaseStaticCRT|Win32
+		{70294792-414F-437A-8275-AD605D54D690}.ReleaseStaticCRT|x64.ActiveCfg = ReleaseStaticCRT|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Template|Win32.ActiveCfg = Template|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Template|Win32.Build.0 = Template|Win32
 		{70294792-414F-437A-8275-AD605D54D690}.Template|x64.ActiveCfg = Template|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Debug|Win32.Build.0 = Debug|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Debug|x64.ActiveCfg = Debug|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Debug|x64.Build.0 = Debug|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.DebugStaticCRT|Win32.ActiveCfg = DebugStaticCRT|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.DebugStaticCRT|Win32.Build.0 = DebugStaticCRT|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.DebugStaticCRT|x64.ActiveCfg = DebugStaticCRT|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.DebugStaticCRT|x64.Build.0 = DebugStaticCRT|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release_16x9|Win32.ActiveCfg = Release|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release_16x9|Win32.Build.0 = Release|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release_16x9|x64.ActiveCfg = Release|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release_16x9|x64.Build.0 = Release|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release|Win32.ActiveCfg = Release|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release|Win32.Build.0 = Release|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release|x64.ActiveCfg = Release|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Release|x64.Build.0 = Release|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.ReleaseStaticCRT|Win32.ActiveCfg = ReleaseStaticCRT|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.ReleaseStaticCRT|Win32.Build.0 = ReleaseStaticCRT|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.ReleaseStaticCRT|x64.ActiveCfg = ReleaseStaticCRT|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.ReleaseStaticCRT|x64.Build.0 = ReleaseStaticCRT|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Template|Win32.ActiveCfg = Template|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Template|Win32.Build.0 = Template|Win32
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Template|x64.ActiveCfg = Template|x64
+		{2A98FD5A-64E4-4DAD-9855-E99FC73533E9}.Template|x64.Build.0 = Template|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

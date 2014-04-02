@@ -2,6 +2,8 @@
 #include "AtmoEditChannelAssignment.h"
 #include "Resource.h"
 #include "Language.h"
+#include "ObjectModel.h"
+#include "AtmoTools.h"
 
 CAtmoEditChannelAssignment::CAtmoEditChannelAssignment(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) :
 	CBasicDialog(hInst,IDD_CHANNELASSIGNMENT,parent) 
@@ -171,6 +173,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 		}
 	}
 
+
 	CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
 
 	m_hScrollbox = getDlgItem(IDC_SCROLL);
@@ -188,7 +191,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	int bottom     = rScroller.bottom - rScroller.top;
 
 	m_iChCount = pAtmoConnection->getNumChannels();
-	if(m_iChCount > 0) {
+	if(m_iChCount > 0) 
+	{
 		m_pZoneBoxes = new HWND[m_iChCount];
 		m_pChannelNames = new HWND[m_iChCount];
 
@@ -223,7 +227,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 
 				// Read Buffer from IniFile
 				sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
-				
+
 				Lng->XMLParse(Lng->szTemp, Lng->sChannelAssigmentText, "ChannelAssignment");
 
 				ComboBox_AddString(m_pZoneBoxes[ch],Lng->sChannelAssigmentText[0]);
@@ -277,10 +281,19 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	}
 
 	EditAssignment( pAtmoConfig->getChannelAssignment(0) );
+	
+	HWND ListBox	= getDlgItem(IDC_LST_MAPPINGS);
+	if (pAtmoConfig->lastprofile != "")
+	{
+		char *buffer = new char[pAtmoConfig->lastprofile.length()];
+		strcpy(buffer, pAtmoConfig->lastprofile.c_str());
 
-	// [TF] bugfix: initialization necessary
-	HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
-	ListBox_SetCurSel(listBox,0);
+		int selIndex = GetProfile().GetIntOrDefault(buffer, "CurrentChannelAssignment", 0);
+		ListBox_SetCurSel(ListBox, selIndex);
+		ExecuteCommand(ListBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+	}
+	else
+		ListBox_SetCurSel(ListBox, 0);
 
 	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[6]));
 	SendMessage(getDlgItem(IDC_BU_MODIFY), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sChannelAssigmentText[7]));
@@ -444,11 +457,16 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
 	case IDC_LST_MAPPINGS: 
 		{
+			CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
 			if(wmEvent == LBN_SELCHANGE) 
 			{
 				int selIndex = ListBox_GetCurSel(hControl);
-				if(selIndex >= 0) 
+				if(selIndex >= 0)
+				{
 					EditAssignment( (CAtmoChannelAssignment *)ListBox_GetItemData(hControl, selIndex) );
+					CAtmoTools::SetChannelAssignment(m_pDynData, selIndex);		
+					pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);				
+				}
 			}
 			break;
 		}
@@ -473,7 +491,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 						ctrl = getDlgItem(IDC_BU_MODIFY);
 						EnableWindow(ctrl, (ca->system == ATMO_FALSE));
 					}
-				} else 
+				} 
+				else 
 				{
 					ctrl = getDlgItem(IDC_BU_MODIFY);
 					EnableWindow(ctrl, ATMO_FALSE);
@@ -488,12 +507,31 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 	case IDC_BU_ADD: 
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
+			CLanguage *Lng = new CLanguage;
 			if(ListBox_GetCount(listBox)>=10) 
 			{
-				MessageBox(this->m_hDialog,"Sorry maximal 10 Settings möglich.","Hinweis",MB_ICONINFORMATION | MB_OK);
-			} else 
+				MessageBox(this->m_hDialog,Lng->sMessagesText[9], Lng->sMessagesText[1],MB_ICONINFORMATION | MB_OK);
+			} 
+			else 
 			{
 				CAtmoChannelAssignment *ca = new CAtmoChannelAssignment();
+				int count = ListBox_GetCount(listBox);
+				char buffer[64], buffer2[64];
+
+				ctrl = getDlgItem(IDC_EDT_NAME);
+
+				for(int i=0; i<count; i++) 
+				{
+					ListBox_GetText(listBox, i, buffer2);
+					Edit_GetText(ctrl, buffer, sizeof(buffer));
+
+					if (string(buffer) == string(buffer2))
+					{
+						MessageBox( this->m_hDialog, Lng->sMessagesText[10], Lng->sMessagesText[1], MB_ICONINFORMATION);
+						return ATMO_FALSE;
+						break;
+					}
+				}
 
 				SaveAssignment(ca);
 
@@ -508,7 +546,8 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
 			int listIndex = ListBox_GetCurSel(listBox);
-			if (listIndex < 0) listIndex = 0; // [TF] bugfix for no selection
+			if (listIndex < 0) 
+				listIndex = 0; 
 			CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
 			if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
 			{
@@ -527,17 +566,32 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 		{
 			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
 			int listIndex = ListBox_GetCurSel(listBox);
-			CAtmoChannelAssignment *ca = (CAtmoChannelAssignment *)ListBox_GetItemData(listBox, listIndex);
-			if((ca!=NULL) && (ca->system == ATMO_FALSE)) 
-			{
-				delete ca;
-				ListBox_DeleteString(listBox, listIndex);
-				ListBox_SetCurSel(listBox, 0);
-				ExecuteCommand(listBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+			CUtils *Utils = new CUtils;
 
-				// weil dann nich mehr klar ist auf was der alte Index der dort gespeichert war verwiess
-				this->m_pDynData->getAtmoConfig()->setCurrentChannelAssignment(0);
+			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+			char buffer2[64];
+
+			char *XMLSectionName = new char[pAtmoConfig->lastprofile.length()];
+			strcpy(XMLSectionName, pAtmoConfig->lastprofile.c_str());
+
+			ListBox_GetText(listBox, listIndex, buffer2);
+			string name = string(XMLSectionName) + "_ChannelAssignment_" + string(buffer2);				
+			strcpy(XMLSectionName, name.c_str());
+
+			GString section = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
+
+			if (string(buffer2) == section._str)
+			{
+				GetProfile().RemoveSection(XMLSectionName);
+				pAtmoConfig->m_ChannelDelete = true;
 			}
+
+			ListBox_DeleteString(listBox, listIndex);
+			ListBox_SetCurSel(listBox, 0);
+			ExecuteCommand(listBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
+
+			this->m_pDynData->getAtmoConfig()->setCurrentChannelAssignment(0);
+			GetProfile().WriteCurrentConfig((const char *)Utils->strConfigFromFile, true);
 			break;
 		}
 	default:

@@ -128,9 +128,14 @@ void CTrayIconWindow::createWindow()
 		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
 	}
 
+
 	this->m_hTrayIconPopupMenu = CreatePopupMenu();
 	lstrcpyn(data, Lng->sMenuText[0], 1023);
 	AddMenuItem(this->m_hTrayIconPopupMenu, 0, data, ATMO_TRUE, ATMO_TRUE, ATMO_FALSE, MENUID_SETTINGS);
+
+	this->m_hProfileSubMenu = CreatePopupMenu();
+	lstrcpyn(data, Lng->sMenuText[11], 1023);
+	AddMenuItem(this->m_hTrayIconPopupMenu, this->m_hProfileSubMenu, data, ATMO_TRUE, ATMO_FALSE, ATMO_FALSE, MENUID_PROFILE_SUBMENU);
 
 	lstrcpyn(data, Lng->sMenuText[1], 1023);
 	AddMenuItem(this->m_hTrayIconPopupMenu, this->m_hLanguageSubMenu, data, ATMO_TRUE, ATMO_FALSE, ATMO_FALSE, MENUID_LANGUAGE_SUBMENU);
@@ -195,12 +200,9 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 				}
 
 			case WM_LBUTTONDOWN:
-				// MessageBox(0,"WM_LBUTTONDOWN","",0);
 				break;
 
 			case WM_LBUTTONDBLCLK:
-				// MessageBox(0,"WM_LBUTTONDBLCLK","",0);
-				// Show Config Dialog?
 				ShowSettingsDialog();
 				break;
 			}
@@ -248,6 +250,7 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 	case WM_DISPLAYCHANGE: 
 		{
 			CAtmoConfig *pAtmoConfig = m_pDynData->getAtmoConfig();
+      CLanguage *Lng = new CLanguage;
 
 			CAtmoDisplays *pAtmoDisplays = m_pDynData->getAtmoDisplays();
 			pAtmoDisplays->ReloadList();
@@ -261,8 +264,12 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 			if(pAtmoConfig->getLiveView_DisplayNr()>=pAtmoDisplays->getCount()) 
 			{
 				// show Setup.. dialog?
-				res_buffer1 = getResStr( IDS_DISPLAY_SETCHANGED, "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen.");
-				res_buffer2 = getResStr( IDS_INFO, "Info");
+				char *value;
+				char *value2;
+				strcpy(value, Lng->sMessagesText[28]);
+				res_buffer1 = getResStr( IDS_DISPLAY_SETCHANGED, value);
+				strcpy(value2, Lng->sMessagesText[1]);
+				res_buffer2 = getResStr( IDS_INFO, value2);
 
 				MessageBox(this->m_hWindow, res_buffer1, res_buffer2 ,MB_ICONWARNING | MB_OK);
 
@@ -335,7 +342,7 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 	if((wmId>=MENUID_FIRST_LANGUAGE) && (wmId<=MENUID_LAST_LANGUAGE)) 
 	{
 		CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-		pAtmoConfig->SaveSettings(HKEY_CURRENT_USER, pAtmoConfig->profile);
+		pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
 		CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 		if(pAtmoConnection) pAtmoConnection->CloseConnection(); 
 
@@ -350,12 +357,36 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 		return 0;
 	}
 
+	if((wmId>=MENUID_FIRST_PROFILES) && (wmId<=MENUID_LAST_PROFILES)) 
+	{
+		CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+		int index = wmId - MENUID_FIRST_PROFILES;
+		GetMenuString(this->m_hProfileSubMenu, index, data, 1023, MF_BYPOSITION);
+		pAtmoConfig->lastprofile = data;
+		GetProfile().SetConfig("Default", "lastprofile", data);
+		string profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");	
+		// only save any if provile available
+		if (profile1 != "")
+		{
+		  pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+			EffectMode backupEffectMode = pAtmoConfig->getEffectMode();
+			// Effect Thread Stoppen der gerade läuft...
+			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
+
+			// schnittstelle neu öffnen... könne ja testweise geändert wurden sein?
+			CAtmoTools::RecreateConnection(this->m_pDynData);
+			// Effect Programm wieder starten...
+			CAtmoTools::SwitchEffect(this->m_pDynData, backupEffectMode);
+		}
+
+	}
+
 	switch (wmId) 
 	{
 	case MENUID_QUITATMO:
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			pAtmoConfig->SaveSettings(HKEY_CURRENT_USER, pAtmoConfig->profile);
+			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
 			CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 			if(pAtmoConnection) pAtmoConnection->CloseConnection();  			 
 			PostMessage(m_hWindow, WM_QUIT, 0, 0); 		
@@ -405,8 +436,6 @@ LRESULT CTrayIconWindow::HandleWmCommand(HWND control, int wmId, int wmEvent)
 
 void CTrayIconWindow::HandleWmDestroy()
 {
-	// Do nothing or AutoRestart not work
-	//PostQuitMessage(0);
 }
 
 
@@ -506,6 +535,7 @@ void CTrayIconWindow::UpdatePopupMenu()
 	// before show the menu...
 	CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	CLanguage *Lng = new CLanguage;
 	if((pAtmoConnection == NULL) || (pAtmoConnection->isOpen()==ATMO_FALSE)) 
 	{
 		// disable change effect submenu!
@@ -543,5 +573,46 @@ void CTrayIconWindow::UpdatePopupMenu()
 		{
 			CheckMenuItem(this->m_hChannelMappingSubMenu,MENUID_CHANNELMAPPING+1+i, MF_BYCOMMAND | MF_CHECKED);
 		}
+	}
+
+	// Submenu Profiles
+	// delete all
+	for(int i=0;i<10;i++)
+		if(DeleteMenu(this->m_hProfileSubMenu, MENUID_PROFILE_SUBMENU + 1 +i, MF_BYCOMMAND) == ATMO_FALSE) break;
+	
+	// Get active Profile
+	CurrentProfile = GetProfile().GetStringOrDefault("Default", "lastprofile", "");
+
+	//get profiles from XML
+	string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+	char *buffer = new char[Profile1.length()];
+	strcpy(buffer, Profile1.c_str());
+
+	//serialize the buffer
+	GStringList lst("|", buffer);
+	int count = lst.GetCount();
+	if (!count == 0)
+	{
+		for (int i=0; i<count;i++)
+		{		
+			GString rslt = lst.Serialize("|", i, 0);
+			if (rslt != "")
+			{
+				char *buffer = new char[rslt._len];
+				strcpy(buffer, rslt);
+
+				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_PROFILE_SUBMENU+1+i);
+			}
+			if(rslt == CurrentProfile) 
+			{
+				CheckMenuItem(this->m_hProfileSubMenu, MENUID_PROFILE_SUBMENU + 1 +i, MF_BYCOMMAND | MF_CHECKED);
+			}
+		}
+	}	
+	else
+	{
+		buffer = new char[strlen(Lng->sMenuText[12])];
+	  strcpy(buffer, Lng->sMenuText[12]);
+		AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_PROFILE_SUBMENU+1);
 	}
 }

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _BASICWINDOW_h_
+#define _BASICWINDOW_h_
+
 #include "stdafx.h"
 #include "AtmoDefs.h"
 
@@ -42,3 +44,5 @@ public:
     virtual void invalidate(ATMO_BOOL erase);
     virtual void destroyWindow();
 };
+
+#endif

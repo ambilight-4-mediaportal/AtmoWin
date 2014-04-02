@@ -57,6 +57,7 @@ BEGIN
     LTEXT           "Controlsoftware for a PC Atmo Light...",IDC_STATIC,7,22,135,8
     LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,8,32,202,8
     LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,44,205,29
+    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle http://about.me/brian.aberle",IDC_STATIC,8,44,205,29
     LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,10,72,184,16
     ICON            IDI_ATMOICON,IDC_STATIC,4,3,21,20
 END
@@ -134,14 +135,14 @@ BEGIN
     CONTROL         "",IDC_Sensitivity,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,90,291,90,16
     LTEXT           "Sensitivity [5]",IDC_TXT_SENSITIVITY,8,296,65,8,NOT WS_GROUP
     LTEXT           "name",IDC_STATIC19,198,270,23,8
-    COMBOBOX        IDC_COMBO2,225,269,46,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "save",IDC_BUTTON1,264,286,50,14
-    PUSHBUTTON      "delete",IDC_BUTTON4,315,286,50,14
+    COMBOBOX        IDC_CB_PROFILES,225,269,46,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "save",IDC_BU_SAVEPROFILE,264,286,50,14
+    PUSHBUTTON      "delete",IDC_BU_PROFDELETE,315,286,50,14
     GROUPBOX        "profiles ",IDC_STATIC20,185,259,190,46
-    PUSHBUTTON      "load",IDC_BUTTON5,213,286,49,14
+    PUSHBUTTON      "load",IDC_BU_LOADPROVILE,213,286,49,14
     LTEXT           "default",IDC_STATIC21,280,271,34,8
-    COMBOBOX        IDC_COMBO3,319,269,48,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-	  CONTROL         "Enhanced Live view (Windows 8 or higher)",IDC_LIVEMODE, //Checkbox Select GDI or DesktropDuplication
+    COMBOBOX        IDC_CB_DEVPROFILES,319,269,48,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+	CONTROL         "Enhanced Live view (Windows 8 or higher)",IDC_LIVEMODE, //Checkbox Select GDI or DesktropDuplication
 					          "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,314,171,10
 END
 
@@ -579,7 +580,37 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+/*
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
 
+STRINGTABLE
+BEGIN
+    IDS_APP_TITLE           "AtmoWinX"
+    IDS_SETTINGS            "&settings"
+    IDS_MODUS               "mode"
+    IDS_EFFECT_NONE         "no effect"
+    IDS_EFFECT_LIVE         "Live"
+    IDS_EFFECT_STAT_COLOR   "static color"
+    IDC_ATMOWINA            "AtmoSetupDialog"
+    IDS_EFFECT_COLOR_CHANGE "color changer"
+    IDS_EFFECT_COLOR_CHLR   "color changer LR"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INFO                "Info"
+    IDS_QUIT                "exit"
+    IDS_CHANNELASSIGN       "channel assignment"
+    IDS_DISPLAY_SETCHANGED  "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen."
+    IDS_HINT                "hint"
+    IDS_EFFECT_COLOR_MODE   "ColorMode"
+END
+*/
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -594,8 +625,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,4
- PRODUCTVERSION 1,0,0,4
+ FILEVERSION 1,0,0,5
+ PRODUCTVERSION 1,0,0,5
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -612,12 +643,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Privat"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.4"
+            VALUE "FileVersion", "1.0.0.5"
             VALUE "InternalName", "AtmoWinA.exe"
             VALUE "LegalCopyright", "Copyright (C) 2014"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.4"
+            VALUE "ProductVersion", "1.0.0.5"
         END
     END
     BLOCK "VarFileInfo"
@@ -626,10 +657,7 @@ BEGIN
     END
 END
 
-#endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
-
-
 
 #ifndef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -640,4 +668,3 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
-

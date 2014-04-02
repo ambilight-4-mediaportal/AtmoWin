@@ -14,6 +14,7 @@
 #include "AtmoDefs.h"
 #include "AtmoZoneDefinition.h"
 #include "AtmoChannelAssignment.h"
+#include <XMLFoundation.h>
 #include <string>
 #include <vector>
 #include <fstream>
@@ -84,14 +85,14 @@ protected:
 	int m_StaticColor_Green;
 	int m_StaticColor_Blue;
 
-protected:
+public:
 	/*
 	one for System + 9 for userdefined channel
 	assignments (will it be enough?)
 	*/
 	CAtmoChannelAssignment *m_ChannelAssignments[10];
 	int m_CurrentChannelAssignment;
-
+	
 protected:
 	CAtmoZoneDefinition **m_ZoneDefinitions;
 	int m_AtmoZoneDefCount;
@@ -114,9 +115,9 @@ protected:
 public:
 	int getZoneCount();
 	ATMO_BOOL m_3dlut;
-	std::string profile;
-	std::string d_profile;
-
+	std::string lastprofile;
+	std::string defaultprofile;
+	bool m_ChannelDelete;
 
 protected:
 	/* Live View Parameters (most interesting) */
@@ -203,12 +204,8 @@ protected:
 	int m_Software_gamma_red;
 	int m_Software_gamma_green;
 	int m_Software_gamma_blue;
-
 	int m_Software_gamma_global;
-
 	int m_hAtmoClLeds;
-
-
 
 public:
 	volatile int m_UpdateEdgeWeightningFlag;
@@ -228,17 +225,12 @@ public:
 
 	std::vector<std::string> profiles;
 
-
-
-
 public:
 	CAtmoConfig();
 	virtual ~CAtmoConfig();
-	virtual void SaveSettings(HKEY mykey, std::string profile) {};
-	virtual void LoadSettings(HKEY mykey, std::string profile) {};
-	virtual void fastLoadSettings(HKEY mykey, std::string profile) {};
-	virtual void ReadRegistryStringList(HKEY mykey, char *path, char *valueName, char *default_value) {};
-	virtual void WriteRegistryStringList(HKEY mykey, char *path, char *valueName, char *default_value){};
+	virtual void SaveSettings(std::string Profile1) {};
+	virtual void LoadSettings(std::string profile) {};
+	virtual void ReadXMLStringList(char *section, char *default_value) {};
 	void LoadDefaults();
 
 	/*
@@ -460,8 +452,9 @@ public:
 	void setZoneSummary(ATMO_BOOL summary) { m_ZoneSummary = summary; UpdateZoneCount(); }
 
 	char *getDMX_BaseChannels() { return m_DMX_BaseChannels; }
-	void setDMX_BaseChannels(char *channels);
+	void setDMX_BaseChannels(const char *channels);
 
+	bool ChannelDelete() { return m_ChannelDelete; }
 	int getDMX_RGB_Channels() { return m_DMX_RGB_Channels; }
 	void setDMX_RGB_Channels(int ch) { m_DMX_RGB_Channels = ch; }
 

@@ -12,6 +12,7 @@
 #include <windowsx.h>
 #include <commctrl.h>
 #include <shellapi.h>
+#include <XMLFoundation.h>
 
 // C RunTime-Headerdateien
 #include <stdlib.h>

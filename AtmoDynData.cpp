@@ -13,6 +13,7 @@
 #endif
 
 #include "AtmoDynData.h"
+#include "Language.h"
 
 #if defined(_ATMO_VLC_PLUGIN_)
 CAtmoDynData::CAtmoDynData(vlc_object_t *p_atmo_filter, CAtmoConfig *pAtmoConfig) 
@@ -184,6 +185,8 @@ char *CAtmoDynData::getWorkDir()
 
 void CAtmoDynData::ReloadZoneDefinitionBitmaps()
 {
+	CLanguage *Lng = new CLanguage;
+
 	int i;
 	// suchlogik fuer die Farbverlaufs Bitmaps ...
 	// <WorkDir>\hardware\numchannels\zone..0..n.bmp
@@ -236,7 +239,7 @@ void CAtmoDynData::ReloadZoneDefinitionBitmaps()
 		i = zoneDef->LoadGradientFromBitmap( psz_filename );
 		if(i == ATMO_LOAD_GRADIENT_OK) continue;
 		if((i == ATMO_LOAD_GRADIENT_FAILED_SIZE) || (i == ATMO_LOAD_GRADIENT_FAILED_HEADER))
-			MessageBox(0,psz_filename,"Failed to load, Check Format, Check Size.",MB_ICONERROR);
+			MessageBox(0,psz_filename, Lng->sMessagesText[25],MB_ICONERROR);
 
 		sprintf(psz_filename,"%s%s\\zone_%d.bmp",
 			m_WorkDir,
@@ -246,7 +249,7 @@ void CAtmoDynData::ReloadZoneDefinitionBitmaps()
 		i = zoneDef->LoadGradientFromBitmap( psz_filename );
 		if(i == ATMO_LOAD_GRADIENT_OK) continue;
 		if((i == ATMO_LOAD_GRADIENT_FAILED_SIZE) || (i == ATMO_LOAD_GRADIENT_FAILED_HEADER))
-			MessageBox(0,psz_filename,"Failed to load, Check Format, Check Size.",MB_ICONERROR);
+			MessageBox(0,psz_filename, Lng->sMessagesText[25],MB_ICONERROR);
 
 		sprintf(psz_filename,"%szone_%d.bmp",
 			m_WorkDir,
@@ -255,7 +258,7 @@ void CAtmoDynData::ReloadZoneDefinitionBitmaps()
 		i = zoneDef->LoadGradientFromBitmap( psz_filename );
 		if(i == ATMO_LOAD_GRADIENT_OK) continue;
 		if((i == ATMO_LOAD_GRADIENT_FAILED_SIZE) || (i == ATMO_LOAD_GRADIENT_FAILED_HEADER))
-			MessageBox(0,psz_filename,"Failed to load, Check Format, Check Size.",MB_ICONERROR);
+			MessageBox(0,psz_filename, Lng->sMessagesText[25],MB_ICONERROR);
 	}
 
 	UnLockCriticalSection();

@@ -10,6 +10,7 @@
 #include "StdAfx.h"
 #include "windowsx.h"
 #include "Winreg.h"
+#include "ObjectModel.h"
 
 #include "Atmosettingsdialog.h"
 #include "AtmoConfig.h"
@@ -22,74 +23,115 @@
 #include "AtmoWhiteAdjHW.h"
 #include "AtmoEditChannelAssignment.h"
 #include "AtmoGradients.h"
-#include "AtmoRegistryConfig.h"
+#include "AtmoXMLConfig.h"
 
 #include <string>
 #include <strsafe.h>
 
 #include "Resource.h"
 #include "Language.h"
+#pragma comment(lib, "user32.lib")
 
-CAtmoSettingsDialog::CAtmoSettingsDialog(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) : CBasicDialog(hInst,IDD_SETUP,parent) {
+void CAtmoSettingsDialog::DeleteAllChannel()
+{
+	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	char *newconfigSection;
+
+	GStringList *lstFind = new GStringList;
+	GStringList *lstFound = new GStringList;
+	GString *gsfound = new GString;
+	char XMLSectionName[100], valueName[32];
+	CUtils *Utils = new CUtils;
+
+	string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
+	newconfigSection = new char[tmpStr.length()];
+	strcpy(newconfigSection, tmpStr.c_str());
+
+	GString name = GString(newconfigSection);
+
+	GetProfile().GetSectionNames(lstFind);
+
+	int count = lstFind->GetCount();	
+	for(int i=0;i<count;i++) 
+	{
+		gsfound = lstFind->GetStrAt(i);
+
+		if (gsfound->Left(strlen(name._str)) == name._str)
+			lstFound->AddLast(gsfound->_str);
+	}
+
+	count = lstFound->GetCount() + 1;
+	for(int i=0;i<count;i++) 
+	{
+		gsfound = lstFound->GetStrAt(i);
+
+		if ( gsfound->Left(strlen(name._str)) == name._str)
+		{
+			strcpy(XMLSectionName, gsfound->_str);
+			GetProfile().RemoveSection(XMLSectionName);
+		}
+	}
+	lstFind->RemoveAll();
+	lstFound->RemoveAll();
+	pAtmoConfig->m_ChannelDelete = true;
+	GetProfile().WriteCurrentConfig((const char *)Utils->strConfigFromFile, true);
+}
+
+CAtmoSettingsDialog::CAtmoSettingsDialog(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData) : CBasicDialog(hInst,IDD_SETUP,parent)
+{
 	this->m_pDynData = pDynData;
 	m_pBackupConfig = new CAtmoConfig();
 	m_pBackupConfig->Assign( m_pDynData->getAtmoConfig() );
 	m_SaveHardWhiteSetup = ATMO_FALSE;
 }
 
-CAtmoSettingsDialog::~CAtmoSettingsDialog(void) {
+CAtmoSettingsDialog::~CAtmoSettingsDialog(void) 
+{
 	delete m_pBackupConfig;
 }
 
-void CAtmoSettingsDialog::LoadDisplayList() {
+void CAtmoSettingsDialog::LoadDisplayList() 
+{
 	CAtmoDisplays *pAtmoDisplays = this->m_pDynData->getAtmoDisplays();
 	HWND hwndCtrl;
 	hwndCtrl = getDlgItem(IDC_DISPLAYS);
 
 	ComboBox_ResetContent(hwndCtrl);
 
-	for(int i=0;i<pAtmoDisplays->getCount();i++) {
+	for(int i=0;i<pAtmoDisplays->getCount();i++) 
+	{
 		TAtmoDisplayInfo nfo = pAtmoDisplays->getDisplayInfo(i);
 		ComboBox_AddString(hwndCtrl, nfo.infoText);
 	}
 	ComboBox_SetCurSel(hwndCtrl, m_pDynData->getAtmoConfig()->getLiveView_DisplayNr());
 }
 
-ATMO_BOOL CAtmoSettingsDialog::UpdateLiveViewValues(ATMO_BOOL showPreview) {
+ATMO_BOOL CAtmoSettingsDialog::UpdateLiveViewValues(ATMO_BOOL showPreview)
+{
 	HWND hwndCtrl;
 	CAtmoDisplays *pAtmoDisplays = this->m_pDynData->getAtmoDisplays();
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
+	CLanguage *Lng = new CLanguage;
 
 	pAtmoDisplays->ReloadList(); // auf nummer sicher!
 
 	hwndCtrl = getDlgItem(IDC_DISPLAYS);
 	int i = ComboBox_GetCurSel(hwndCtrl);
-	if(i>=pAtmoDisplays->getCount()) {
+
+	if(i>=pAtmoDisplays->getCount()) 
+	{
 		pAtmoConfig->setLiveView_DisplayNr(0);
 		LoadDisplayList();
-		MessageBox(this->m_hDialog,"Ausgewähltes Display nicht mehr in der Liste ;-)","Fehler",MB_ICONERROR | MB_OK);
+		MessageBox(this->m_hDialog,Lng->sMessagesText[4],Lng->sMessagesText[3],MB_ICONERROR | MB_OK);
 		return ATMO_FALSE;
 	}
 	pAtmoConfig->setLiveView_DisplayNr(i);
 
-
-	// wird durch ComboBox Change Event schon gesetzt...
-	//hwndCtrl = getDlgItem(IDC_FILTERMODE);
-	//i = ComboBox_GetCurSel(hwndCtrl);
-	//pAtmoConfig->setLiveViewFilterMode((AtmoFilterMode)i);
-
-
-	// wird durch ClickEvent schon geändert...
-	//hwndCtrl = getDlgItem(IDC_WIDESCREEN);
-	//if(Button_GetCheck(hwndCtrl) == BST_CHECKED)
-	//    pAtmoConfig->setLiveView_WidescreenMode(1);
-	// else
-	//    pAtmoConfig->setLiveView_WidescreenMode(0);
-
-
-	if(showPreview == ATMO_TRUE) {
+	if(showPreview == ATMO_TRUE)
+	{
 		CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
-		if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen()) {
+		if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen())
+		{
 			CAtmoTools::SwitchEffect(m_pDynData, emLivePicture);
 		}
 	}
@@ -101,19 +143,23 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateColorChangeValues(ATMO_BOOL showPreview)
 {
 	HWND hEditDelay = this->getDlgItem(IDC_ED_COLORCHANGE_DELAY);
 	HWND hEditSteps = this->getDlgItem(IDC_ED_COLORCHANGE_STEPS);
+	CLanguage *Lng = new CLanguage;
+
 	char buffer[256];
 	Edit_GetText(hEditDelay,buffer,255);
 	int iDelay = atoi(buffer);
-	if(iDelay < 10) {
-		MessageBox(this->m_hDialog,"Delay should be more than 10ms for ColorChanger","Error",MB_OK | MB_ICONERROR);
+	if(iDelay < 10) 
+	{
+		MessageBox(this->m_hDialog,Lng->sMessagesText[5], Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
 	Edit_GetText(hEditSteps,buffer,255);
 	atoi(buffer);
 	int iSteps = atoi(buffer);
-	if(iSteps < 1) {
-		MessageBox(this->m_hDialog,"Steps should be more than zero for ColorChanger","Error",MB_OK | MB_ICONERROR);
+	if(iSteps < 1) 
+	{
+		MessageBox(this->m_hDialog,Lng->sMessagesText[6],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -121,10 +167,13 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateColorChangeValues(ATMO_BOOL showPreview)
 	pAtmoConfig->setColorChanger_iDelay(iDelay);
 	pAtmoConfig->setColorChanger_iSteps(iSteps);
 
-	if(showPreview == ATMO_TRUE) {
+	if(showPreview == ATMO_TRUE) 
+	{
 		CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
-		if ((m_pDynData->getEffectThread()==NULL) || (pAtmoConfig->getEffectMode()!=emColorChange))  {
-			if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen()) {
+		if ((m_pDynData->getEffectThread()==NULL) || (pAtmoConfig->getEffectMode()!=emColorChange))  
+		{
+			if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen())
+			{
 				CAtmoTools::SwitchEffect(m_pDynData, emColorChange);
 			}
 		}
@@ -137,20 +186,23 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 {
 	HWND hEditDelay = this->getDlgItem(IDC_ED_LRCOLORCHANGE_DELAY);
 	HWND hEditSteps = this->getDlgItem(IDC_ED_LRCOLORCHANGE_STEPS);
+	CLanguage *Lng = new CLanguage;
 
 	char buffer[256];
 	Edit_GetText(hEditDelay,buffer,255);
 	int iDelay = atoi(buffer);
-	if(iDelay < 10) {
-		MessageBox(this->m_hDialog,"Delay should be more than 10ms for LR ColorChanger","Error",MB_OK | MB_ICONERROR);
+	if(iDelay < 10) 
+	{
+		MessageBox(this->m_hDialog,Lng->sMessagesText[7],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
 	Edit_GetText(hEditSteps,buffer,255);
 	atoi(buffer);
 	int iSteps = atoi(buffer);
-	if(iSteps < 1) {
-		MessageBox(this->m_hDialog,"Steps should be more than zero for LR ColorChanger","Error",MB_OK | MB_ICONERROR);
+	if(iSteps < 1) 
+	{
+		MessageBox(this->m_hDialog,Lng->sMessagesText[8],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);
 		return ATMO_FALSE;
 	}
 
@@ -158,10 +210,13 @@ ATMO_BOOL CAtmoSettingsDialog::UpdateLrColorChangeValues(ATMO_BOOL showPreview)
 	pAtmoConfig->setLrColorChanger_iDelay(iDelay);
 	pAtmoConfig->setLrColorChanger_iSteps(iSteps);
 
-	if(showPreview == ATMO_TRUE) {
+	if(showPreview == ATMO_TRUE)
+	{
 		CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
-		if ((m_pDynData->getEffectThread()==NULL) || (pAtmoConfig->getEffectMode()!=emLrColorChange))  {
-			if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen()) {
+		if ((m_pDynData->getEffectThread()==NULL) || (pAtmoConfig->getEffectMode()!=emLrColorChange))  
+		{
+			if((pAtmoConnection!=NULL) && pAtmoConnection->isOpen())
+			{
 				CAtmoTools::SwitchEffect(m_pDynData, emLrColorChange);
 			}
 		}
@@ -200,7 +255,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
 	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
-	
+
 	m_hCbxEffects = getDlgItem(IDC_EFFECTS);
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[0] );
 	ComboBox_AddString(m_hCbxEffects, Lng->sSettingText[1] );
@@ -211,15 +266,26 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	// Achtung - dazu muss die Reihenfolge der Enum Deklaration in AtmoConfig.h mit obiger Liste Synchron sein*g*
 	ComboBox_SetCurSel(m_hCbxEffects, (int)config->getEffectMode());
 
-	hwndCtrl = getDlgItem(IDC_COMBO2);
-	for (int i=0; i<(int)config->profiles.size();i++)
-		ComboBox_AddString(hwndCtrl, config->profiles[i].data());
-	Edit_SetText(hwndCtrl, config->profile.data());
+	CUtils *Utils = new CUtils;
 
-	hwndCtrl = getDlgItem(IDC_COMBO3);
-	for (int i=0; i<(int)config->profiles.size();i++)
-		ComboBox_AddString(hwndCtrl, config->profiles[i].data());
-	Edit_SetText(hwndCtrl, config->d_profile.data());
+	hwndCtrl = getDlgItem(IDC_CB_PROFILES);
+
+	int count = Utils->profiles.GetCount();	
+	GString rslt;
+	for (int i=0; i<count;i++)
+	{
+		rslt = Utils->profiles.Serialize("|", i, 0);
+		ComboBox_AddString(hwndCtrl, rslt);
+	}
+	Edit_SetText(hwndCtrl, config->lastprofile.data());
+
+	hwndCtrl = getDlgItem(IDC_CB_DEVPROFILES);
+	for (int i=0; i<count;i++)
+	{
+		rslt = Utils->profiles.Serialize("|", i, 0);
+		ComboBox_AddString(hwndCtrl, rslt);
+	}
+	Edit_SetText(hwndCtrl, config->defaultprofile.data());
 
 	hwndCtrl = this->getDlgItem(IDC_ED_COLORCHANGE_DELAY);
 	sprintf(buffer,"%d",config->getColorChanger_iDelay());
@@ -273,14 +339,6 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	Button_SetCheck(hwndCtrl, config->isSetShutdownColor());
 
 	LoadDisplayList();
-
-	/*
-	enum AtmoFilterMode { --> AtmoDefs.h!!
-	afmNoFilter,
-	afmCombined,
-	afmPercent
-	};
-	*/
 
 	SendMessage(getDlgItem(IDC_BU_CONFIG_DEVICE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[6]));
 	SendMessage(getDlgItem(IDC_CBX_ZONESUM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[7]));
@@ -381,118 +439,134 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	SendMessage(getDlgItem(IDC_GRADIENT_EDIT), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[47]));
 	SendMessage(getDlgItem(IDC_STATIC18), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[48]));
 	SendMessage(getDlgItem(IDC_STATIC19), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[49]));
-	SendMessage(getDlgItem(IDC_BUTTON1), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
-	SendMessage(getDlgItem(IDC_BUTTON4), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
+	SendMessage(getDlgItem(IDC_BU_SAVEPROFILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[50]));
+	SendMessage(getDlgItem(IDC_BU_DELETE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[51]));
 	SendMessage(getDlgItem(IDC_STATIC20), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[52]));
-	SendMessage(getDlgItem(IDC_BUTTON5), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
+	SendMessage(getDlgItem(IDC_BU_LOADPROVILE), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[53]));
 	SendMessage(getDlgItem(IDC_STATIC21), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sSettingText[54]));
+
+	SetWindowPos(this->m_hDialog, HWND_TOPMOST, 0, 0, 0, 0,SWP_NOMOVE|SWP_NOSIZE);
 
 	return ATMO_FALSE;
 }
 
-void CAtmoSettingsDialog::HandleHorzScroll(int code,int position,HWND scrollBarHandle) {
+void CAtmoSettingsDialog::HandleHorzScroll(int code,int position,HWND scrollBarHandle) 
+{
 	// slider handling...
 	char buffer[100];
 	int dlgItemId = GetDlgCtrlID(scrollBarHandle);
 	CLanguage *Lng;
 
-	switch(dlgItemId) {
-	case IDC_EdgeWeighting: {
-		int EdgeWeighting = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[31] + "[%d]",EdgeWeighting);
-		SetStaticText(IDC_TXT_EDGEWEIGHTNING, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_EdgeWeighting(EdgeWeighting);
-		break;
-													}
+	switch(dlgItemId) 
+	{
+	case IDC_EdgeWeighting: 
+		{
+			int EdgeWeighting = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[31] + "[%d]",EdgeWeighting);
+			SetStaticText(IDC_TXT_EDGEWEIGHTNING, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_EdgeWeighting(EdgeWeighting);
+			break;
+		}
 
-	case IDC_BrightCorrect: {
-		int BrightCorrect = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[32] + "[%d%%]",BrightCorrect);
-		SetStaticText(IDC_TXT_BRIGHTCORRECT, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_BrightCorrect(BrightCorrect);
-		break;
-													}
-	case IDC_DarknessLimit: {
-		int DarknessLimit = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[33] + "[%d]",DarknessLimit);
-		SetStaticText(IDC_TXT_DARKNESSLIMIT, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_DarknessLimit(DarknessLimit);
-		break;
-													}
+	case IDC_BrightCorrect: 
+		{
+			int BrightCorrect = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[32] + "[%d%%]",BrightCorrect);
+			SetStaticText(IDC_TXT_BRIGHTCORRECT, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_BrightCorrect(BrightCorrect);
+			break;
+		}
+	case IDC_DarknessLimit:
+		{
+			int DarknessLimit = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[33] + "[%d]",DarknessLimit);
+			SetStaticText(IDC_TXT_DARKNESSLIMIT, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_DarknessLimit(DarknessLimit);
+			break;
+		}
 
-	case IDC_HueWinSize: {
-		int HueWinSize = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[34] + "[%d]",HueWinSize);
-		SetStaticText(IDC_TXT_HUEWINSIZE, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_HueWinSize(HueWinSize);
-		break;
-											 }
+	case IDC_HueWinSize: 
+		{
+			int HueWinSize = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[34] + "[%d]",HueWinSize);
+			SetStaticText(IDC_TXT_HUEWINSIZE, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_HueWinSize(HueWinSize);
+			break;
+		}
 
-	case IDC_SatWinSize: {
-		int SatWinSize = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[35] + "[%d]",SatWinSize);
-		SetStaticText(IDC_TXT_SATWINSIZE, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_SatWinSize(SatWinSize);
-		break;
-											 }
+	case IDC_SatWinSize: 
+		{
+			int SatWinSize = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[35] + "[%d]",SatWinSize);
+			SetStaticText(IDC_TXT_SATWINSIZE, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_SatWinSize(SatWinSize);
+			break;
+		}
 
-	case IDC_Overlap: {
-		int Overlap = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[36] + "[%d]",Overlap);
-		SetStaticText(IDC_TXT_OVERLAP, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_Overlap(Overlap);
-		//int  CAP_ZONE_OVERLAP = m_pAtmoConfig->getLiveView_Overlap();
-		this->m_pDynData->CalculateDefaultZones();
-		break;
-										}
+	case IDC_Overlap: 
+		{
+			int Overlap = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[36] + "[%d]",Overlap);
+			SetStaticText(IDC_TXT_OVERLAP, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_Overlap(Overlap);
+			//int  CAP_ZONE_OVERLAP = m_pAtmoConfig->getLiveView_Overlap();
+			this->m_pDynData->CalculateDefaultZones();
+			break;
+		}
 
-	case IDC_Saturation: {
-		int Saturation = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[37] + "[%d]",Saturation);
-		SetStaticText(IDC_TXT_SATURATION, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_Saturation(Saturation);
-		this->m_pDynData->CalculateDefaultZones();
-		break;
-											 }
+	case IDC_Saturation:
+		{
+			int Saturation = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[37] + "[%d]",Saturation);
+			SetStaticText(IDC_TXT_SATURATION, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_Saturation(Saturation);
+			this->m_pDynData->CalculateDefaultZones();
+			break;
+		}
 
-	case IDC_Sensitivity: {
-		int Sensitivity = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer, Lng->sSettingText[38] + "[%d]",Sensitivity);
-		SetStaticText(IDC_TXT_SENSITIVITY, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveView_Sensitivity(Sensitivity);
-		this->m_pDynData->CalculateDefaultZones();
-		break;
-												}
+	case IDC_Sensitivity:
+		{
+			int Sensitivity = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer, Lng->sSettingText[38] + "[%d]",Sensitivity);
+			SetStaticText(IDC_TXT_SENSITIVITY, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveView_Sensitivity(Sensitivity);
+			this->m_pDynData->CalculateDefaultZones();
+			break;
+		}
 
-	case IDC_Filter_MeanLength: {
-		int Filter_MeanLength = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[39] + "[%d ms]",Filter_MeanLength);
-		SetStaticText(IDC_TXT_Filter_MeanLength, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveViewFilter_MeanLength(Filter_MeanLength);
-		break;
-															}
+	case IDC_Filter_MeanLength: 
+		{
+			int Filter_MeanLength = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[39] + "[%d ms]",Filter_MeanLength);
+			SetStaticText(IDC_TXT_Filter_MeanLength, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveViewFilter_MeanLength(Filter_MeanLength);
+			break;
+		}
 
-	case IDC_Filter_MeanThreshold: {
-		int Filter_MeanThreshold = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer,Lng->sSettingText[40] + "[%d%%]",Filter_MeanThreshold);
-		SetStaticText(IDC_TXT_Filter_MeanThreshold, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveViewFilter_MeanThreshold(Filter_MeanThreshold);
-		break;
-																 }
+	case IDC_Filter_MeanThreshold:
+		{
+			int Filter_MeanThreshold = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer,Lng->sSettingText[40] + "[%d%%]",Filter_MeanThreshold);
+			SetStaticText(IDC_TXT_Filter_MeanThreshold, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveViewFilter_MeanThreshold(Filter_MeanThreshold);
+			break;
+		}
 
-	case IDC_Filter_PercentNew: {
-		int Filter_PercentNew = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
-		sprintf(buffer, Lng->sSettingText[41] + "[%d%%]",Filter_PercentNew);
-		SetStaticText(IDC_TXT_Filter_PercentNew, buffer);
-		this->m_pDynData->getAtmoConfig()->setLiveViewFilter_PercentNew(Filter_PercentNew);
-		break;
-															}
+	case IDC_Filter_PercentNew: 
+		{
+			int Filter_PercentNew = (int)SendMessage(scrollBarHandle, TBM_GETPOS, 0, 0);
+			sprintf(buffer, Lng->sSettingText[41] + "[%d%%]",Filter_PercentNew);
+			SetStaticText(IDC_TXT_Filter_PercentNew, buffer);
+			this->m_pDynData->getAtmoConfig()->setLiveViewFilter_PercentNew(Filter_PercentNew);
+			break;
+		}
 
 	default:
 		return;
 
 	}
 }
+
 void CAtmoSettingsDialog::HandleVertScroll(int code,int position,HWND scrollBarHandle) 
 {
 }
@@ -500,22 +574,28 @@ void CAtmoSettingsDialog::HandleVertScroll(int code,int position,HWND scrollBarH
 void CAtmoSettingsDialog::UpdateDeviceConnection(AtmoConnectionType conType)
 {
 	EffectMode oldEffect = CAtmoTools::SwitchEffect(m_pDynData, emDisabled);
+	CLanguage *Lng = new CLanguage;
 
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 	pAtmoConfig->setConnectionType(conType);
 
-	if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) {
+	if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE)
+	{
 
 		CAtmoTools::SwitchEffect(m_pDynData, oldEffect);
 
-	} else {
+	} 
+	else 
+	{
 		CAtmoConnection *connection = m_pDynData->getAtmoConnection();
-		if(connection) {
+		if(connection) 
+		{
 			if(connection->ShowConfigDialog( m_hInst, m_hDialog, pAtmoConfig))
 			{
-				if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) {
+				if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) 
+				{
 					CAtmoTools::SwitchEffect(m_pDynData, oldEffect);
-					MessageBox( this->m_hDialog, "connected.", "Info", MB_ICONINFORMATION);
+					MessageBox( this->m_hDialog, Lng->sMessagesText[2], Lng->sMessagesText[1], MB_ICONINFORMATION);
 				}
 			}
 		}
@@ -532,41 +612,6 @@ void remove(std::vector<T>& vec, size_t pos)
 }
 
 
-BOOL RegDelnodeRecurse (LPTSTR lpSubKey)
-{
-	LPTSTR lpEnd;
-	LONG lResult;
-	DWORD dwSize;
-	TCHAR szName[MAX_PATH];
-	HKEY hKey;
-	FILETIME ftWrite;
-
-	// First, see if we can delete the key without having
-	// to recurse.
-
-
-	lResult = RegOpenKeyEx (HKEY_CURRENT_USER, _T("SOFTWARE\\AtmoWinX\\"), 0, KEY_ALL_ACCESS|KEY_WOW64_64KEY, &hKey);
-
-	if (lResult != ERROR_SUCCESS) 
-	{
-		if (lResult == ERROR_FILE_NOT_FOUND) {
-			//printf("Key not found.\n");
-			return TRUE;
-		} 
-		else {
-			//printf("Error opening key.\n");
-			return FALSE;
-		}
-	}
-
-
-	LONG retw;
-	retw = RegDeleteTree(hKey,lpSubKey);
-	// Check for an ending slash and add one if it is missing.
-	RegCloseKey (hKey);
-
-	return TRUE;
-}
 // WM_COMMAND handler...
 ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent) 
 {
@@ -575,123 +620,193 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	char buffer1[200];
 	char buffer2[200];
 	CLanguage *Lng;
+	CUtils *Utils = new CUtils;
 
 	switch(wmId) 
 	{
 		//save or add profile
-	case IDC_BUTTON1: 
+	case IDC_BU_SAVEPROFILE: 
 		{
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			GString rslt;
+
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
-			// check ob eintrag existiert
 			bool found = false;
-			for (int i=0;i<pAtmoConfig->profiles.size();++i)
-				if ( pAtmoConfig->profiles[i]==buffer1) found=true;
-			if (!found)
+
+			const char *ptr =  buffer1;
+
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			char *buffer = new char[Profile1.length()];
+			strcpy(buffer, Profile1.c_str());
+
+			// serialize buffer
+			GStringList lst("|", buffer);
+			int count = lst.GetCount();
+
+			// check for entry if exist
+			if (count >> 0)
 			{
-				pAtmoConfig->profiles.push_back(buffer1);pAtmoConfig->profile=buffer1;
+				for (int i=0; i<count;i++)
+				{		
+					rslt = lst.Serialize("|", i, 0);
+					if (rslt == buffer1)
+						found=true;
+				}
 			}
-			//combobox eintrag
+			// if found do nothing
 			if (!found) 
 			{
-				hwndCtrl = this->getDlgItem(IDC_COMBO2);
-				ComboBox_AddString(hwndCtrl, buffer1);
-				hwndCtrl = this->getDlgItem(IDC_COMBO3);
-				ComboBox_AddString(hwndCtrl, buffer1);
+
+				if (Profile1 != "")
+					Profile1 = Profile1 + "|" + string(buffer1);
+				else
+					Profile1 = string(buffer1);
+
+				strcpy(buffer, Profile1.c_str());
+
+				GetProfile().SetConfig("Default", "profiles", buffer);
+				pAtmoConfig->profiles.push_back(buffer1);
+				pAtmoConfig->lastprofile = buffer1;
 			}
 
-			pAtmoConfig->SaveSettings(HKEY_CURRENT_USER, buffer1);
+			//combobox entry
+			if (!found) 
+			{
+				hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
+				ComboBox_AddString(hwndCtrl, buffer1);
+				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
+				ComboBox_AddString(hwndCtrl, buffer1);
+			}
+			// cleanup ChannelAssignment
+			for(int i=1;i<10;i++)
+				pAtmoConfig->m_ChannelAssignments[i] = NULL;
+
+			// should be saved now
+			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
 			break;
 		}
 		//delete profile
-	case IDC_BUTTON4: 
+	case IDC_BU_PROFDELETE: 
 		{
-			hwndCtrl2 = this->getDlgItem(IDC_COMBO3);
+			char msg[MAX_PATH+128];
+			ATMO_BOOL r = ATMO_FALSE;
+			sprintf(msg, Lng->sMessagesText[12] + "\n\r" + Lng->sMessagesText[13], "");
+			if(MessageBox(this->m_hDialog, msg ,Lng->sMessagesText[1],MB_ICONQUESTION | MB_YESNO) == IDNO)
+				return(r);
+
+			DeleteAllChannel();
+
+			hwndCtrl2 = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl2,buffer2,200);
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
-			std::string key(buffer1);
-			if (key !="")
-			{	
-				std::string path("SOFTWARE\\AtmoWinX\\");
 
-				CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-				//profilename aus vector löschen
+			GString rslt;
 
-				int iii;
-				for (int i=0;i<pAtmoConfig->profiles.size();++i)
-				{
-					if ( pAtmoConfig->profiles.at(i)==buffer1)iii=i; 
+			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
-				}
-				remove( pAtmoConfig->profiles,iii);
+			// section remove
+			GetProfile().RemoveSection(buffer1);
 
+			//edit combobox entry
+			pAtmoConfig->lastprofile="";
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
+			ComboBox_ResetContent(hwndCtrl);
+			Edit_SetText(hwndCtrl,pAtmoConfig->lastprofile.data());	
 
-				//profilename aus profile liste löschen
-				pAtmoConfig->WriteRegistryStringList(HKEY_CURRENT_USER,(char*)path.data(),"profiles","-1");
+			//get profiles from XML
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			char *buffer = new char[Profile1.length()];
+			strcpy(buffer, Profile1.c_str());
 
-				//profile Verzeichnis löschen
-				//path.append(key);
-				if (RegDelnodeRecurse ((char*)key.data()))
-				{
-					//combobox eintrag bearbeiten
-					pAtmoConfig->profile="";
-					hwndCtrl = this->getDlgItem(IDC_COMBO2);
-					ComboBox_ResetContent(hwndCtrl);
-					Edit_SetText(hwndCtrl,pAtmoConfig->profile.data());	
-					for (int i=0; i<pAtmoConfig->profiles.size();++i)
-						ComboBox_AddString(hwndCtrl, pAtmoConfig->profiles[i].data());
-					ComboBox_ResetContent(hwndCtrl2);
-					for (int i=0; i<pAtmoConfig->profiles.size();++i)
-						ComboBox_AddString(hwndCtrl2, pAtmoConfig->profiles[i].data());
-					if (buffer1==buffer2) 
-					{
-						Edit_SetText(hwndCtrl2,"");
-						pAtmoConfig->d_profile="";
-					}	
-				}
+			//serialize the buffer
+			GStringList lst("|", buffer);
+			int count = lst.GetCount();
+
+			// if entry same as buffer then delete it
+			for (int i=0; i<count;i++)
+			{		
+				rslt = lst.Serialize("|", i, 0);
+				if (rslt == buffer1)
+					lst.Remove(rslt, 1, 1);
 			}
+
+			// Get new count after delete one
+			// add to Combobox to
+			count = lst.GetCount();
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				ComboBox_AddString(hwndCtrl, rslt);
+			}
+			ComboBox_ResetContent(hwndCtrl2);
+
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				ComboBox_AddString(hwndCtrl2, rslt);
+			}
+
+			if (buffer1==buffer2) 				
+			{
+				Edit_SetText(hwndCtrl2,"");
+				pAtmoConfig->defaultprofile="";
+			}	
+			// Set new Profile
+			count = lst.GetCount();
+			for (int i=0; i<count;++i)
+			{
+				rslt = lst.Serialize("|", i, 0);
+				Profile1 = rslt;
+				if (count >> 1)
+					Profile1 = Profile1 + "|";
+			}
+			strcpy(buffer, Profile1.c_str());
+			GetProfile().SetConfig("Default", "profiles", buffer);
+
+			// do not save any Channel settings if Profile deleted
+			pAtmoConfig->m_ChannelDelete = true;
+			// execute Default profile 
+			pAtmoConfig->lastprofile = "AtmoWinX";
+			// should be saved now 
+			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);			
 			break;
 		}
 		//load profile
-	case IDC_BUTTON5: 
+	case IDC_BU_LOADPROVILE: 
 		{
-			hwndCtrl = this->getDlgItem(IDC_COMBO2);
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 			Edit_GetText(hwndCtrl,buffer1,200);
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			pAtmoConfig->profile=buffer1;
-			pAtmoConfig->LoadSettings(HKEY_CURRENT_USER, buffer1);
+			pAtmoConfig->lastprofile=buffer1;
+			pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
 
 			EndDialog(this->m_hDialog, wmId);	
-			/* static ATMO_BOOL showing = ATMO_TRUE;
-			m_pDynData->LockCriticalSection();
-			if(showing == ATMO_FALSE) { m_pDynData->UnLockCriticalSection(); return; }
-			showing = ATMO_FALSE;
-			m_pDynData->UnLockCriticalSection();*/
+			EffectMode backupEffectMode = pAtmoConfig->getEffectMode();
+			// Effect Thread Stoppen der gerade läuft...
+			CAtmoTools::SwitchEffect(this->m_pDynData, emDisabled);
+
+			// schnittstelle neu öffnen... könne ja testweise geändert wurden sein?
+			CAtmoTools::RecreateConnection(this->m_pDynData);
+			// Effect Programm wieder starten...
+			CAtmoTools::SwitchEffect(this->m_pDynData, backupEffectMode);
+			pAtmoConfig->LoadSettings(pAtmoConfig->lastprofile);
+
 			CAtmoSettingsDialog *pSetupDlg = new CAtmoSettingsDialog(this->m_hInst,this->m_hDialog, this->m_pDynData);
 			pSetupDlg->ShowModal();
-			delete pSetupDlg;
-
-			CAtmoTools::RecreateConnection(this->m_pDynData);
-
-			/* m_pDynData->LockCriticalSection();
-			showing = ATMO_TRUE;
-			m_pDynData->UnLockCriticalSection();*/
-
 			break;
 		}
 	case IDOK: 
 		{
+			SetWindowPos(this->m_hDialog, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE|SWP_NOSIZE);
+
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
-			pAtmoConfig->setConnectionType( conType );
+			pAtmoConfig->setConnectionType( conType );		
 
-			hwndCtrl = this->getDlgItem(IDC_COMBO3);
-			Edit_GetText(hwndCtrl,buffer2,200);
-			pAtmoConfig->d_profile = buffer2;
-
+      LivePictureSource backupLivePictureSource = m_pDynData->getLivePictureSource();
 			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
 			pAtmoConfig->setEffectMode(newEffectMode);
 
@@ -723,8 +838,14 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
+      CAtmoTools::SwitchLiveSource(this->m_pDynData, backupLivePictureSource);
 
-			pAtmoConfig->SaveSettings(HKEY_CURRENT_USER,pAtmoConfig->profile);
+			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
+			Edit_GetText(hwndCtrl,buffer2, 200);
+			pAtmoConfig->defaultprofile = buffer2;
+
+			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+			pAtmoConfig->SaveSettings(Profile1);
 
 			pAtmoConfig->m_UpdateEdgeWeightningFlag = 1;
 
@@ -734,7 +855,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 	case IDCANCEL: 
 		{
-			// m_pBackupConfig --> wieder herstellen...
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 			pAtmoConfig->Assign(this->m_pBackupConfig);
 
@@ -765,10 +885,15 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 	case IDC_BU_CHANNELASSIGNMENTS: 
 		{
-			CAtmoEditChannelAssignment *editChannels = new CAtmoEditChannelAssignment(this->m_hInst, this->m_hDialog, this->m_pDynData);
-			editChannels->ShowModal();
+			CAtmoConnection *pAtmoConnection = m_pDynData->getAtmoConnection();
+			if (pAtmoConnection != NULL)
+			{
+				CAtmoEditChannelAssignment *editChannels = new CAtmoEditChannelAssignment(this->m_hInst, this->m_hDialog, this->m_pDynData);
+				editChannels->ShowModal();
 
-			delete editChannels;
+				SetForegroundWindow(this->m_hDialog); 
+				delete editChannels;
+			}
 			break;
 		}
 
@@ -788,7 +913,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				if(CAtmoTools::RecreateConnection(m_pDynData) == ATMO_TRUE) 
 				{
 					CAtmoTools::SwitchEffect(m_pDynData, oldEffect);
-					MessageBox( this->m_hDialog, "connected.", "Info", MB_ICONINFORMATION);
+					MessageBox( this->m_hDialog, Lng->sMessagesText[2], Lng->sMessagesText[1], MB_ICONINFORMATION);
 				}
 			}
 			break;
@@ -799,9 +924,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			if(wmEvent == CBN_SELCHANGE) 
 			{
 				EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(hControl);
-				// if(newEffectMode != m_pDynData->getAtmoConfig()->getEffectMode()) {
 				CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
-				//}
 			}
 			break;
 		}
@@ -936,7 +1059,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 	case IDC_FILTERMODE: 
 		{
-			/// CBN_SELCHANGE
 			if(wmEvent == CBN_SELCHANGE) 
 			{
 				CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
@@ -1180,15 +1302,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}
 			break;
 		}
-
-		/*
-		case IDC_BU_CONFIG_LIVE:  {
-		CAtmoLiveSettings *liveSettings = new CAtmoLiveSettings(this->m_hInst, this->m_hDialog, this->m_pDynData);
-		liveSettings->ShowModal();
-		delete liveSettings;
-		break;
-		}
-		*/
 
 	default:
 		return ATMO_FALSE;

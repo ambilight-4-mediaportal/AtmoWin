@@ -192,9 +192,6 @@
     <ClCompile Include="AtmoDynData.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
-    <ClCompile Include="AtmoRegistryConfig.cpp">
-      <Filter>Quelldateien\settings</Filter>
-    </ClCompile>
     <ClCompile Include="AtmoZoneDefinition.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
@@ -228,6 +225,12 @@
     <ClCompile Include="MondolightConnection.cpp">
       <Filter>Quelldateien\devices</Filter>
     </ClCompile>
+    <ClCompile Include="Language.cpp">
+      <Filter>Quelldateien\language</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoXMLConfig.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
     <ClCompile Include="tinystr.cpp">
       <Filter>Quelldateien\tinyxml</Filter>
     </ClCompile>
@@ -240,12 +243,12 @@
     <ClCompile Include="tinyxmlparser.cpp">
       <Filter>Quelldateien\tinyxml</Filter>
     </ClCompile>
-    <ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
-      <Filter>Quelldateien\pixelsources</Filter>
-    </ClCompile>
-    <ClCompile Include="Language.cpp">
-      <Filter>Quelldateien\language</Filter>
-    </ClCompile>
+    <ClCompile Include="ObjectModel.cpp">
+      <Filter>Quelldateien\settings</Filter>   
+    </ClCompile>	  
+	<ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>   
+	</ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -263,9 +266,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="AtmoTools.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="AtmoWin_h.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="AtmoWinA.h">
@@ -412,29 +412,29 @@
     <ClInclude Include="AtmoConfig.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="basics\AtmoDisplays.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoDisplays.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoDynData.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="AtmoRegistryConfig.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoZoneDefinition.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="tinystr.h">
-      <Filter>Headerdateien\tinyxml</Filter>
+    <ClInclude Include="Language.h">
+      <Filter>Headerdateien\language</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoXMLConfig.h">
+      <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="tinyxml.h">
       <Filter>Headerdateien\tinyxml</Filter>
     </ClInclude>
-    <ClInclude Include="Language.h">
-      <Filter>Headerdateien\language</Filter>
+    <ClInclude Include="tinystr.h">
+      <Filter>Headerdateien\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel.h">
+      <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
       <Filter>Headerdateien\pixelsources</Filter>

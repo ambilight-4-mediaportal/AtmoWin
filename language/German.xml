@@ -12,6 +12,8 @@
 		<setting name="8" value="Kanal Zuordung" />
 		<setting name="9" value="Information" />
 		<setting name="10" value="Beenden" />
+		<setting name="11" value="Profile..." />
+		<setting name="12" value="Kein Eintrag" />
 	</section>
 	<section name="ChannelAssignment">
 		<setting name="0" value="Deaktiviert" />
@@ -200,4 +202,35 @@
 		<setting name="5" value="Anzahl der Kanäle wurden überschritten 1..255" />
 		<setting name="6" value="Fehler" />
 	</section>
+	<section name="Messages">
+		<setting name="0" value="Dieses Gerät benötigt keine Einstellungen" />
+		<setting name="1" value="Information" />
+		<setting name="2" value="Verbunden." />
+		<setting name="3" value="Fehler" />
+		<setting name="4" value="Ausgewähltes Display nicht mehr in der Liste" />
+		<setting name="5" value="Verzögerung sollte mehr als 10ms für den Farbwähler betragen" />
+		<setting name="6" value="Schritte sollten mehr als 0 für den Farbwähler betragen" />
+		<setting name="7" value="Verzögerung sollte mehr als 10ms für den LR Farbwähler betragen" />
+		<setting name="8" value="Schritte sollten mehr als 0 für den LR Farbwähler betragen" />
+		<setting name="9" value="Tut mir leid, nicht mehr als 10 Einstellungen möglich." />
+		<setting name="10" value="Dieses Profil befindet sich schon in der Liste" />
+		<setting name="11" value="der zulässige Bereich geht von 1..256" />
+		<setting name="12" value="Möchten sie das Profil wirklich löschen?" />
+		<setting name="13" value="Alle vorkonfigurierte Kanäle gehen dann unweigerlich verloren!" />		
+		<setting name="14" value="timeGetDevCaps Fehler. Anwendung wird beendet." />
+		<setting name="15" value="CoInitialize Fehler. Anwendung wird beendet." />
+		<setting name="16" value="Common Controls Initialisierungs Fehler." />
+		<setting name="17" value="Anwendung wird beendet." />
+		<setting name="18" value="Display Einstellungen überprüfen." />
+		<setting name="19" value="Open Device Letzter Fehler" />
+		<setting name="20" value="Das Device kann nicht geöffnet werden" />
+		<setting name="21" value="RegisterActiveObject Fehler." />
+		<setting name="22" value="LoadTypeLib Fehler. Code:" />
+		<setting name="23" value="RegisterTypeLib Fehler. Code:" />
+		<setting name="24" value="Der COM Server wurde erfolgreich Registriert!" />
+		<setting name="25" value="Fehler beim laden, Prüfe das Format, Prüfe den sitz." />
+		<setting name="26" value="Serielle Schnittstelle kann nicht geöffnet werden" />
+		<setting name="27" value="mit Fehlercode:" />
+		<setting name="28" value="Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen." />
+	</section>		
 </configuration>
