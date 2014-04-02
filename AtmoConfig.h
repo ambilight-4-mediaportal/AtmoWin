@@ -363,11 +363,11 @@ public:
 	int getLiveView_Overlap() { return m_LiveView_Overlap; }
 	void setLiveView_Overlap(int value) { m_LiveView_Overlap=value; }
 
-	int getLiveView_WidescreenMode() { return m_LiveView_WidescreenMode; }
-	void setLiveView_WidescreenMode(int value) { m_LiveView_WidescreenMode=value; }
+  int getLiveView_WidescreenMode() { return m_LiveView_WidescreenMode; }
+  void setLiveView_WidescreenMode(int value) { m_LiveView_WidescreenMode=value; }
 		
-		int getLiveView_Mode() { return m_LiveView_Mode; }
-        void setLiveView_Mode(int value) { m_LiveView_Mode=value; }
+	int getLiveView_Mode() { return m_LiveView_Mode; }
+  void setLiveView_Mode(int value) { m_LiveView_Mode=value; }
 
 	int getLiveView_HOverscanBorder() { return m_LiveView_HOverscanBorder; }
 	void setLiveView_HOverscanBorder(int value) { m_LiveView_HOverscanBorder = value; }

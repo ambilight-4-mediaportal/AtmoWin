@@ -128,6 +128,7 @@ void CAtmoConfig::LoadDefaults()
 	m_LiveView_SatWinSize            = 3;
 	m_LiveView_VOverscanBorder       = 0;
 	m_LiveView_WidescreenMode        = 0;
+	m_LiveView_Mode                  = 0;
 	m_LiveViewFilter_MeanLength      = 300;
 	m_LiveViewFilter_MeanThreshold   = 40;
 	m_LiveViewFilter_PercentNew      = 50;
