@@ -1,19 +1,19 @@
 Version 1.0.0.5
 Moved setting from registry to XML file. ( thanks to BassFan :-] )
 Fix Enum display (needed fix for Win8 use) ( From NevCairiel fork "thanks" )
-Fix various small bug
+Fix various small bug (BassFan)
 
 Version 1.0.0.4
-Moved Language files to language folder.
-Replacement of Lng files by XML.
-Correct White adjustement Setting : only White or Color adjustement can be used. 
+Moved Language files to language folder. (BassFan)
+Replacement of Lng files by XML. (BassFan)
+Correct White adjustement Setting : only White or Color adjustement can be used. (BassFan)
 
 Version 1.0.0.3
-Add Multi-language support on GUI Screen,
+Add Multi-language support on GUI Screen, (BassFan)
 
 Version 1.0.0.2
 Add KarateLight device ( cloned from 0.51 )
-Add Visual Styles and changed any in Channel assignment Dialog
+Add Visual Styles and changed any in Channel assignment Dialog (BassFan)
 Correct Build with Comctl32.lib error link. 
 hidden not yet implemented Greyscale Setting )not removed in code only Change Window size)
 
