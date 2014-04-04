@@ -88,8 +88,8 @@ typedef struct
 // #define CAP_WIDTH    88
 
 #ifdef CAP_16x9
-# define CAP_WIDTH    88
-# define CAP_HEIGHT   48
+# define CAP_WIDTH    170 // 240 // 88
+# define CAP_HEIGHT   96 // 135 // 48
 #else
 # define CAP_WIDTH  64 //  46  // 128
 # define CAP_HEIGHT  48 // 26  // 64
