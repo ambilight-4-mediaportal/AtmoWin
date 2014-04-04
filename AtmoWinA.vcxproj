@@ -41,14 +41,14 @@
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStaticCRT|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -76,7 +76,7 @@
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <PlatformToolset>v110</PlatformToolset>
@@ -148,11 +148,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
-    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStaticCRT|Win32'">
     <GenerateManifest>false</GenerateManifest>
@@ -165,6 +165,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='StaticMT|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_16x9|Win32'">
+    <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -272,7 +275,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_16x9|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;CAP_16x9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -288,6 +291,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp" />
     <ClCompile Include="AtmoRes.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -681,6 +685,7 @@
   <ItemGroup>
     <ClInclude Include="AtmoCtrlMessages.h" />
     <ClInclude Include="AtmoDefs.h" />
+    <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h" />
     <ClInclude Include="AtmoRes.h" />
     <ClInclude Include="AtmoTools.h" />
     <ClInclude Include="AtmoWinA.h" />

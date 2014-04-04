@@ -88,6 +88,7 @@
         <setting name="52" value="Profielen" />
         <setting name="53" value="Laad" />
         <setting name="54" value="Standaard" />
+		<setting name="55" value="Enhanced Live view (Windows 8 or higher)" />
     </section>
     <section name="Gradients">
         <setting name="0" value="Zone" />
@@ -232,4 +233,5 @@
 				<setting name="27" value="met foutcode:" />
 				<setting name="28" value="Weergave-instellingen veranderd. Controleer de instellingen." />
 	  </section>
+
 </configuration>

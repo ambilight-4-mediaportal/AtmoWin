@@ -96,6 +96,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "LiveView_SatWinSize", m_LiveView_SatWinSize);
 	GetProfile().SetConfig(newconfigSection, "LiveView_Overlap", m_LiveView_Overlap);
 	GetProfile().SetConfig(newconfigSection, "LiveView_WidescreenMode", m_LiveView_WidescreenMode);
+	GetProfile().SetConfig(newconfigSection, "LiveView_Mode",m_LiveView_Mode);
 	GetProfile().SetConfig(newconfigSection, "LiveView_Saturation", m_LiveView_Saturation);
 	GetProfile().SetConfig(newconfigSection, "LiveView_Sensitivity", m_LiveView_Sensitivity);
 	GetProfile().SetConfig(newconfigSection, "LiveView_invert", m_Useinvert);
@@ -410,6 +411,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	m_LiveView_Sensitivity           = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Sensitivity", 0);
 	m_Useinvert                      = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_invert", 0);
 	m_LiveView_WidescreenMode        = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_WidescreenMode", m_LiveView_WidescreenMode);
+	m_LiveView_Mode                  = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Mode", m_LiveView_Mode);
 	m_LiveView_HOverscanBorder       = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_HOverscanBorder", m_LiveView_HOverscanBorder);
 	m_LiveView_VOverscanBorder       = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_VOverscanBorder", m_LiveView_VOverscanBorder);
 	m_LiveView_DisplayNr             = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_DisplayNr", m_LiveView_DisplayNr);

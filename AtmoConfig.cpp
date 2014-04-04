@@ -128,6 +128,7 @@ void CAtmoConfig::LoadDefaults()
 	m_LiveView_SatWinSize            = 3;
 	m_LiveView_VOverscanBorder       = 0;
 	m_LiveView_WidescreenMode        = 0;
+	m_LiveView_Mode                  = 0;
 	m_LiveViewFilter_MeanLength      = 300;
 	m_LiveViewFilter_MeanThreshold   = 40;
 	m_LiveViewFilter_PercentNew      = 50;
@@ -171,6 +172,7 @@ void CAtmoConfig::LoadDefaults()
 	m_chWhiteAdj_Green              = NULL;
 	m_chWhiteAdj_Blue               = NULL;
 
+	//m_LiveView_Mode		  = 0; //Win8 API checkbox
 	//atmoduino
 	UpdateZoneCount();
 
@@ -265,6 +267,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_LiveView_SatWinSize          =  pAtmoConfigSrc->m_LiveView_SatWinSize;
 	this->m_LiveView_Overlap             =  pAtmoConfigSrc->m_LiveView_Overlap;
 	this->m_LiveView_WidescreenMode      =  pAtmoConfigSrc->m_LiveView_WidescreenMode;
+	this->m_LiveView_Mode                =  pAtmoConfigSrc->m_LiveView_Mode; // Win8 API checkbox
 
 	this->m_LiveView_HOverscanBorder     = pAtmoConfigSrc->m_LiveView_HOverscanBorder;
 	this->m_LiveView_VOverscanBorder     = pAtmoConfigSrc->m_LiveView_VOverscanBorder;
@@ -277,6 +280,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_ZonesBottomCount             = pAtmoConfigSrc->m_ZonesBottomCount;
 	this->m_ZonesLRCount                 = pAtmoConfigSrc->m_ZonesLRCount;
 	this->m_ZoneSummary                  = pAtmoConfigSrc->m_ZoneSummary;
+
 	UpdateZoneCount();
 
 	//Set atmo leds

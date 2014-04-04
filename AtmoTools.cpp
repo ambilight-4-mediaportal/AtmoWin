@@ -32,6 +32,7 @@
 #   include "MondolightConnection.h"
 
 #   include "AtmoGdiDisplayCaptureInput.h"
+#   include "AtmoDesktopDuplicationCaptureInput.h"
 #endif
 
 
@@ -204,7 +205,17 @@ EffectMode CAtmoTools::SwitchEffect(CAtmoDynData *pDynData, EffectMode newEffect
 				}
 				currentPacketQueue = new CAtmoPacketQueue(packetMon);
 				pDynData->setLivePictureSource(lpsScreenCapture);
-				currentInput = new CAtmoGdiDisplayCaptureInput( pDynData );
+				//Atmo liveview option GDi <Win7 / DekstopDuplication >Win8
+				int AtmoSetup_Mode = atmoConfig->getLiveView_Mode();
+				if (AtmoSetup_Mode == 1)
+				{
+					 currentInput = new CAtmoDesktopDuplicationCaptureInput( pDynData );
+				}
+				else
+				{
+					 currentInput = new CAtmoGdiDisplayCaptureInput( pDynData );
+				}
+
 #else
 				currentPacketQueue = new CAtmoPacketQueue();
 				pDynData->setLivePictureSource(lpsExtern);

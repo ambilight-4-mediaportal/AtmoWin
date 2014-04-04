@@ -147,6 +147,11 @@ protected:
 	int m_LiveView_Saturation;
 	// Sensitivity Filter low color Values
 	int m_LiveView_Sensitivity;
+		
+		/*
+			Live view mode option (GDI or WINDOWSDESKTOPDUPLICATION)
+		*/
+		int m_LiveView_Mode; // 0 = GDI / 1 = WINDOWSDESKTOPDUPLICATION (>=Windows 8)
 
 	/*
 	special (hack) for ignorning black borders durring
@@ -349,7 +354,6 @@ public:
 	int getLiveView_Sensitivity() { return m_LiveView_Sensitivity; }
 	void setLiveView_Sensitivity(int value) { m_LiveView_Sensitivity=value; }
 
-
 	int getLiveView_HueWinSize() { return m_LiveView_HueWinSize; }
 	void setLiveView_HueWinSize(int value) { m_LiveView_HueWinSize=value; }
 
@@ -359,8 +363,11 @@ public:
 	int getLiveView_Overlap() { return m_LiveView_Overlap; }
 	void setLiveView_Overlap(int value) { m_LiveView_Overlap=value; }
 
-	int getLiveView_WidescreenMode() { return m_LiveView_WidescreenMode; }
-	void setLiveView_WidescreenMode(int value) { m_LiveView_WidescreenMode=value; }
+  int getLiveView_WidescreenMode() { return m_LiveView_WidescreenMode; }
+  void setLiveView_WidescreenMode(int value) { m_LiveView_WidescreenMode=value; }
+		
+	int getLiveView_Mode() { return m_LiveView_Mode; }
+  void setLiveView_Mode(int value) { m_LiveView_Mode=value; }
 
 	int getLiveView_HOverscanBorder() { return m_LiveView_HOverscanBorder; }
 	void setLiveView_HOverscanBorder(int value) { m_LiveView_HOverscanBorder = value; }

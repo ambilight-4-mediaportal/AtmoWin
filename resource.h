@@ -228,6 +228,7 @@
 #define IDC_BU_LOADPROVILE              1208
 #define IDC_BU_PROFDELETE               1209
 #define IDC_CB_DEVPROFILES              1210
+#define IDC_LIVEMODE                    1211
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416
