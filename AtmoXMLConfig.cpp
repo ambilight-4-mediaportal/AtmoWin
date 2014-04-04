@@ -183,6 +183,9 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "Software_blue_g_90", blue_grid[9]);
 	GetProfile().SetConfig(newconfigSection, "Software_blue_g_100", blue_grid[10]);
 
+	// AtmoduinoV2 proper setting 
+	GetProfile().SetConfig(newconfigSection, "hAtmoV2ClLeds", m_AtmoV2ClLeds);
+
 	GetProfile().SetConfig(newconfigSection, "DMX_BaseChannels", m_DMX_BaseChannels);
 	GetProfile().SetConfig(newconfigSection, "DMX_RGB_Channels", m_DMX_RGB_Channels);
 	GetProfile().SetConfig(newconfigSection, "DMX_BaudrateIndex", m_DMX_BaudrateIndex);
@@ -567,6 +570,11 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	m_DMX_RGB_Channels       = GetProfile().GetIntOrDefault(newconfigSection, "DMX_RGB_Channels", m_DMX_RGB_Channels);
 	m_DMX_BaudrateIndex      = GetProfile().GetIntOrDefault(newconfigSection, "DMX_BaudrateIndex", m_DMX_BaudrateIndex);
 	m_Ardu_BaudrateIndex     = GetProfile().GetIntOrDefault(newconfigSection, "Ardu_BaudrateIndex", m_Ardu_BaudrateIndex);
+
+	// AtmoduinoV2
+	m_AtmoV2ClLeds             = GetProfile().GetIntOrDefault(newconfigSection, "hAtmoV2ClLeds", m_AtmoV2ClLeds );
+	  if (m_AtmoV2ClLeds > 256) m_AtmoV2ClLeds = 256;
+    if (m_AtmoV2ClLeds < 1)   m_AtmoV2ClLeds = 1;
 
 	m_MoMo_Channels          = GetProfile().GetIntOrDefault(newconfigSection, "MoMo_Channels", m_MoMo_Channels);	
 	if(m_MoMo_Channels > 254) 

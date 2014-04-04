@@ -19,6 +19,7 @@
 #include "AtmoMultiConnection.h"
 #include "MoMoConnection.h"
 #include "FnordlichtConnection.h"
+#include "AtmoDuinoV2Connection.h"
 #include "AtmoExternalCaptureInput.h"
 #include <math.h>
 #include "Language.h"
@@ -515,6 +516,38 @@ ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
 			pDynData->UnLockCriticalSection();
 			return ATMO_TRUE;
 		}
+
+  case actAtmoDuinoV2: {
+    CAtmoDuinoV2Connection *tempConnection = new CAtmoDuinoV2Connection(atmoConfig);
+    if (tempConnection->OpenConnection() == ATMO_FALSE) {
+#if !defined(_ATMO_VLC_PLUGIN_)
+      if (atmoConfig->getIgnoreConnectionErrorOnStartup() == ATMO_FALSE)
+      {
+        char errorMsgBuf[200];
+        sprintf(errorMsgBuf, "Failed to open serial port com%d with errorcode: %d (0x%x)",
+          pDynData->getAtmoConfig()->getComport(),
+          tempConnection->getLastError(),
+          tempConnection->getLastError()
+          );
+        MessageBox(0, errorMsgBuf, "Error", MB_ICONERROR | MB_OK);
+      }
+#endif
+      pDynData->setAtmoConnection(tempConnection);
+
+      pDynData->UnLockCriticalSection();
+      return ATMO_FALSE;
+    }
+    pDynData->setAtmoConnection(tempConnection);
+    pDynData->ReloadZoneDefinitionBitmaps();
+
+    tempConnection->CreateDefaultMapping(atmoConfig->getChannelAssignment(0));
+
+    CAtmoTools::SetChannelAssignment(pDynData,
+      atmoConfig->getCurrentChannelAssignment());
+
+    pDynData->UnLockCriticalSection();
+    return ATMO_TRUE;
+  }
 
 
 	default: 

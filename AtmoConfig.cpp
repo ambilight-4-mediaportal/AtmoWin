@@ -112,6 +112,7 @@ void CAtmoConfig::LoadDefaults()
 	m_Hardware_global_contrast       = 100;		
 	m_Hardware_global_gamma          = 128;
 	m_hAtmoClLeds                    = 32;
+	m_AtmoV2ClLeds                   = 32; // AtmoduinoV2
 	m_IsSetShutdownColor             = 1;
 	lastprofile                      = "";
 	m_LiveView_BrightCorrect         = 100;
@@ -172,7 +173,6 @@ void CAtmoConfig::LoadDefaults()
 	m_chWhiteAdj_Green              = NULL;
 	m_chWhiteAdj_Blue               = NULL;
 
-	//m_LiveView_Mode		  = 0; //Win8 API checkbox
 	//atmoduino
 	UpdateZoneCount();
 
@@ -284,6 +284,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	UpdateZoneCount();
 
 	//Set atmo leds
+	this->m_AtmoV2ClLeds				           = pAtmoConfigSrc->m_AtmoV2ClLeds; 
 	this->m_hAtmoClLeds				           = pAtmoConfigSrc->m_hAtmoClLeds; 
 	this->m_Software_gamma_mode          =  pAtmoConfigSrc->m_Software_gamma_mode;
 	this->m_Software_gamma_red           =  pAtmoConfigSrc->m_Software_gamma_red;
@@ -301,6 +302,8 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_MoMo_Channels                = pAtmoConfigSrc->m_MoMo_Channels;
 
 	this->m_Fnordlicht_Amount            = pAtmoConfigSrc->m_Fnordlicht_Amount;
+
+  this->m_AtmoV2ClLeds = pAtmoConfigSrc->m_AtmoV2ClLeds;
 
 	this->m_CurrentChannelAssignment     = pAtmoConfigSrc->m_CurrentChannelAssignment;
 

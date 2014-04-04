@@ -249,6 +249,12 @@
 	<ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
       <Filter>Quelldateien\pixelsources</Filter>   
 	</ClCompile>
+    <ClCompile Include="AtmoDuinoV2ConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDuinoV2Connection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -437,7 +443,13 @@
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
-      <Filter>Headerdateien\pixelsources</Filter>
+      <Filter>Headerdateien\pixelsources</Filter>    
+	</ClInclude>
+	<ClInclude Include="AtmoDuinoV2Connection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDuinoV2ConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

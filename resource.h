@@ -58,7 +58,7 @@
 #define IDC_ED_COLORCHANGE_STEPS        1037
 #define IDC_ED_LRCOLORCHANGE_STEPS      1038
 #define IDC_ED_ZONETOPC                 1039
-#define IDC_COMBO1                      1040
+#define IDC_COMBO_COMPORT               1040
 #define IDC_DISPLAYS                    1041
 #define IDC_CHANNELS                    1042
 #define IDC_ED_ZONEBOTTOMC              1043
@@ -229,6 +229,8 @@
 #define IDC_BU_PROFDELETE               1209
 #define IDC_CB_DEVPROFILES              1210
 #define IDC_LIVEMODE                    1211
+#define IDD_CFG_ATMODUINOV2_DLG         1212
+#define IDC_ATMOCL_LED_AMOUNT           1213
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416
@@ -300,7 +302,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        146
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1210
+#define _APS_NEXT_CONTROL_VALUE         1214
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
 #endif

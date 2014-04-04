@@ -1,10 +1,10 @@
-#ifndef _AtmoClassicConfigDialog_h_
-#define _AtmoClassicConfigDialog_h_
+#ifndef _AtmoDuinoV2ConfigDialog_h_
+#define _AtmoDuinoV2ConfigDialog_h_
 
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 
-class CAtmoClassicConfigDialog :
+class CAtmoDuinoV2ConfigDialog :
     public CBasicDialog
 {
 private:
@@ -19,8 +19,8 @@ protected:
     virtual ATMO_BOOL ExecuteCommand(HWND hControl,int wmId, int wmEvent);
 
 public:
-    CAtmoClassicConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig);
-    ~CAtmoClassicConfigDialog(void);
+    CAtmoDuinoV2ConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig);
+    ~CAtmoDuinoV2ConfigDialog(void);
 };
 
 #endif

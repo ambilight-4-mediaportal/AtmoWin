@@ -292,6 +292,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp" />
+    <ClCompile Include="AtmoDuinoV2ConfigDialog.cpp" />
+    <ClCompile Include="AtmoDuinoV2Connection.cpp" />
     <ClCompile Include="AtmoRes.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -686,6 +688,8 @@
     <ClInclude Include="AtmoCtrlMessages.h" />
     <ClInclude Include="AtmoDefs.h" />
     <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h" />
+    <ClInclude Include="AtmoDuinoV2ConfigDialog.h" />
+    <ClInclude Include="AtmoDuinoV2Connection.h" />
     <ClInclude Include="AtmoRes.h" />
     <ClInclude Include="AtmoTools.h" />
     <ClInclude Include="AtmoWinA.h" />

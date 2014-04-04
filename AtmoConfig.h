@@ -199,6 +199,9 @@ protected:
 	int m_Fnordlicht_Amount;
 
 protected:
+  int m_AtmoV2ClLeds;
+
+protected:
 	AtmoGammaCorrect m_Software_gamma_mode;
 
 	int m_Software_gamma_red;
@@ -408,7 +411,11 @@ public:
 	int getHardware_gamma_blue() { return m_Hardware_gamma_blue; }
 	void setHardware_gamma_blue(int value) { m_Hardware_gamma_blue=value; }
 
-	//atmoduino
+	// atmoduinoV2 
+	int getAtmoV2ClLeds() { return m_AtmoV2ClLeds; }
+	void setAtmoV2ClLeds(int leds) { m_AtmoV2ClLeds = leds; } 
+
+	// Atmoduino
 	int getAtmoClLeds() { return m_hAtmoClLeds; }
 	void setAtmoClLeds(int leds) { m_hAtmoClLeds = leds; } 
 
