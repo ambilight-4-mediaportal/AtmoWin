@@ -18,7 +18,7 @@ CAtmoClassicConfigDialog::~CAtmoClassicConfigDialog(void)
 ATMO_BOOL CAtmoClassicConfigDialog::InitDialog(WPARAM wParam) 
 {
 
-	m_hCbxComports = getDlgItem(IDC_COMBO1);
+	m_hCbxComports = getDlgItem(IDC_COMBO_COMPORT);
 	InitDialog_ComPorts( m_hCbxComports );
 
 	int com = m_pConfig->getArduComport() - 1;
@@ -68,7 +68,7 @@ ATMO_BOOL CAtmoClassicConfigDialog::ExecuteCommand(HWND hControl,int wmId, int w
 	{
 	case IDOK: 
 		{
-			int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMBO1));
+			int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMBO_COMPORT));
 
 			HWND control = getDlgItem(IDC_EDIT1);
 			char buf[10];

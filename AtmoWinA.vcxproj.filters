@@ -246,6 +246,12 @@
     <ClCompile Include="ObjectModel.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
+    <ClCompile Include="AtmoDuinoV2ConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDuinoV2Connection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -432,6 +438,12 @@
     </ClInclude>
     <ClInclude Include="ObjectModel.h">
       <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDuinoV2Connection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDuinoV2ConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

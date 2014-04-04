@@ -62,6 +62,7 @@ char pXML2[] =
 	"<setting name='Hardware_global_contrast' value='100' />"				    
 	"<setting name='Hardware_global_gamma' value='128' />"			
 	"<setting name='hAtmoClLeds' value='32' />"			
+	"<setting name='hAtmoV2ClLeds' value='32' />"
 	"<setting name='isSetShutdownColor' value='1' />"			
 	"<setting name='LiveView_BrightCorrect' value='100' />"			
 	"<setting name='LiveView_DarknessLimit' value='5' />"	
