@@ -5,7 +5,7 @@
 #include "Language.h"
 
 CAtmoDuinoV2ConfigDialog::CAtmoDuinoV2ConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig) :
-CBasicDialog(hInst, IDD_CFG_ATMODUINO_DLG, parent)
+CBasicDialog(hInst, IDD_CFG_ATMODUINOV2_DLG, parent)
 {
     this->m_pConfig = pConfig;
 }
