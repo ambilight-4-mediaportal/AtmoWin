@@ -3,6 +3,8 @@
 #include "atmodefs.h"
 #include "AtmoTools.h"
 #include "atmoconnection.h"
+#include "atmoxmlconfig.h"
+#include "ObjectModel.h"
 
 #include "AtmoLiveView.h"
 
@@ -68,7 +70,7 @@ EffectMode CAtmoRemoteControlImplEx::ConvertEffectCom2Atmo(ComEffectMode cem)
 	case cemLivePicture: return emLivePicture;
 	case cemColorChange: return emColorChange;
 	case cemLrColorChange : return emLrColorChange;
-	case cemColorMode : return emColorMode;
+	//case cemColorMode : return emColorMode;
 
 	}
 	return emUndefined;
@@ -83,7 +85,7 @@ ComEffectMode CAtmoRemoteControlImplEx::ConvertEffectAtmo2Com(EffectMode em)
 	case emLivePicture:    return cemLivePicture;
 	case emColorChange:    return cemColorChange;
 	case emLrColorChange : return cemLrColorChange;
-	case emColorMode : return cemColorMode;
+	//case emColorMode : return cemColorMode;
 	}
 	return cemUndefined;
 }
@@ -100,18 +102,23 @@ STDMETHODIMP CAtmoRemoteControlImplEx::setEffect(enum ComEffectMode dwEffect, en
 		if((connection!=NULL) && (connection->isOpen())) 
 		{
 			CAtmoConfig *pConfig = m_pAtmoDynData->getAtmoConfig();
+			CUtils *Utils = new CUtils;
+			int count = Utils->profiles.GetCount();
+
 			//modeswitch...
-/*
-			for (int i=0;i<pConfig->profiles.size();++i)
-				if ( pConfig->profiles[i]==pConfig->profile) 
+			for (int i=0;i<count;++i)
+				if ( Utils->profiles[i]==pConfig->lastprofile) 
 				{
-					if (i==pConfig->profiles.size()-1) newprofile=pConfig->profiles[0];
-					else newprofile=pConfig->profiles[i+1];
+					if (i==count-1) 
+						newprofile=Utils->profiles[0];
+					else 
+					newprofile=Utils->profiles[i+1];
 				}
-				if  ( pConfig->profile=="" && pConfig->profiles.size()>0) newprofile=pConfig->profiles[0];
-				pConfig->profile=newprofile;
-*/
-				//pConfig->fastLoadSettings(HKEY_CURRENT_USER, newprofile); 
+				if  ( pConfig->lastprofile=="" && count>0) 
+					newprofile=Utils->profiles[0];
+				pConfig->lastprofile=newprofile;
+
+			pConfig->LoadSettings(pConfig->lastprofile); 
 		}
 		m_pAtmoDynData->UnLockCriticalSection();
 		return S_OK;
