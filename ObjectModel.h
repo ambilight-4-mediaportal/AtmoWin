@@ -15,7 +15,7 @@ public:
 	static GStringList profiles;
 	
 	char GetSpecialFolder(int CLSID);
-  bool DirectoryExists(const char* dirName);
+  int DirectoryExists(const char* dirName);
 
 	CUtils(void);
 	virtual ~CUtils(void);

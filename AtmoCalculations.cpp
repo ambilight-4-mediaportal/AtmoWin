@@ -119,7 +119,7 @@ pColorPacket CAtmoColorCalculator::AnalyzeHSV(tHSVColor *HSV_Img)
 
   int AtmoSetup_EdgeWeighting  = m_pAtmoConfig->getLiveView_EdgeWeighting();
   int AtmoSetup_WidescreenMode = m_pAtmoConfig->getLiveView_WidescreenMode();
-  int AtmoSetup_DarknessLimit  = m_pAtmoConfig->getLiveView_DarknessLimit();
+  unsigned int AtmoSetup_DarknessLimit  = m_pAtmoConfig->getLiveView_DarknessLimit();
   int AtmoSetup_BrightCorrect  = m_pAtmoConfig->getLiveView_BrightCorrect();
   int AtmoSetup_SatWinSize     = m_pAtmoConfig->getLiveView_SatWinSize();
 
@@ -363,7 +363,6 @@ pColorPacket CAtmoColorCalculator::AnalyzeHSV(tHSVColor *HSV_Img)
               (pixel_hue < m_most_used_hue[zone] + hue_windowsize))
           {
             // build histogram
-            // sat_hist[channel][HSV_Img[i].s] += Weight[i].channel[channel] * HSV_Img[i].v;
             m_sat_hist[zone * (s_MAX+1) + (*temp_Img).s ] += m_Zone_Weights[zone][i] * (*temp_Img).v;
 
           }
@@ -401,14 +400,6 @@ pColorPacket CAtmoColorCalculator::AnalyzeHSV(tHSVColor *HSV_Img)
 
        for (int zone = 0; zone < AtmoSetup_NumZones; zone++)
        {
-         /*
-            apply lite triangular window design with
-            gradient of 10% per discrete step
-         */
-         /*
-         w_sat_hist[channel][i] += sat_hist[channel][myidx] *
-                                  ((sat_windowsize+1)-abs(mywin)); // apply window
-         */
          m_windowed_sat_hist[zone * (s_MAX+1) + i] += m_sat_hist[zone* (h_MAX+1) + myidx] *
                                   ((sat_windowsize+1)-abs(mywin)); // apply window
        }
@@ -422,59 +413,6 @@ pColorPacket CAtmoColorCalculator::AnalyzeHSV(tHSVColor *HSV_Img)
   // int most_used_sat[CAP_MAX_NUM_ZONES];->m_most_used_sat
 
   FindMostUsed(AtmoSetup_NumZones, m_most_used_sat, m_windowed_sat_hist);
-  /*
-  memset(m_most_used_sat, 0, sizeof(int) * AtmoSetup_NumZones);
-
-  for (int zone = 0; zone < AtmoSetup_NumZones; zone++)
-  {
-    int value = 0;
-    // walk trough histogram
-    for (i = 0; i < s_MAX+1; i++)
-    {
-      // if new value bigger then old one
-      int tmp = m_windowed_sat_hist[zone * (s_MAX+1) + i];
-      // if (w_sat_hist[channel][i] > value)
-      if (tmp > value)
-      {
-        // remember index
-        m_most_used_sat[zone] = i;
-        // and value
-        value = tmp;
-      }
-    }
-  }
-  */
-
-
-  /*----------------------------------------------------------*/
-  /* calculate average brightness within HSV image            */
-  /* uniform Brightness for all channels is calculated        */
-  /*----------------------------------------------------------*/
-  /* code integrated into "hue histogram builtup" to save some looping time!
-  int l_counter = 0;
-  // average brightness (value)
-  long int value_avg = 0;
-  i = 0;
-  for (int row = 0; row < CAP_HEIGHT; row++)
-  {
-    for (int column = 0; column < CAP_WIDTH; column++)
-    {
-      // find average value: only use bright pixels for luminance average
-	  if (HSV_Img[i].v > AtmoSetup_DarknessLimit)
-      {
-        // build brightness average
-        value_avg += HSV_Img[i].v;
-        l_counter++;
-      }
-      i++;
-    }
-  }
-  // calculate brightness average
-  if (l_counter > 0) { value_avg = value_avg / l_counter; }
-    else { value_avg = AtmoSetup_DarknessLimit; }
-
-  */
-
 
   /*----------------------------*/
   /* adjust and copy results    */

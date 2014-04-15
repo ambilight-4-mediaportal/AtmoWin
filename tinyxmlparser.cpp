@@ -23,7 +23,7 @@ distribution.
 */
 
 #include <ctype.h>
-#include <stddef.h>
+//#include <stddef.h>
 #include "stdafx.h"
 #include "tinyxml.h"
 

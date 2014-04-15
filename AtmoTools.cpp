@@ -516,7 +516,6 @@ ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
 
 pColorPacket CAtmoTools::WhiteCalibration(CAtmoConfig *pAtmoConfig, pColorPacket ColorPacket)
 {
-	float s;  
 	if (pAtmoConfig->isUseSoftware2WhiteAdj())
 	{
 		for (int i = 0; i < ColorPacket->numColors; i++) 
@@ -604,17 +603,6 @@ int CAtmoTools::trilinear(CAtmoConfig *pAtmoConfig, int x, int y, int z, int col
 	double c1 = c01*(1-yd) + c11*yd;
 
 	return c0*(1-zd) + c1*zd + 0.5f;
-
-
-	//return m_pAtmoConfig->little_ColorCube[x1][y1][z1][col]*(1-xd)*(1-yd)*(1-zd)+ 
-	//       m_pAtmoConfig->little_ColorCube[x0][y1][z1][col]*(1-yd)*(1-zd)*xd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y0][z1][col]*(1-xd)*(1-zd)*yd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y1][z0][col]*(1-xd)*(1-yd)*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y1][z0][col]*xd*(1-yd)*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y0][z0][col]*(1-xd)*yd*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y0][z1][col]*(1-zd)*xd*yd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y0][z0][col]*xd*yd*zd;
-
 };
 
 
@@ -644,17 +632,6 @@ int CAtmoTools::trilinear3dl(CAtmoConfig *pAtmoConfig,int x, int y, int z, int c
 	double c1 = c01*(1-yd) + c11*yd;
 
 	return c0*(1-zd) + c1*zd + 0.5f;
-
-
-	//return m_pAtmoConfig->little_ColorCube[x1][y1][z1][col]*(1-xd)*(1-yd)*(1-zd)+ 
-	//       m_pAtmoConfig->little_ColorCube[x0][y1][z1][col]*(1-yd)*(1-zd)*xd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y0][z1][col]*(1-xd)*(1-zd)*yd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y1][z0][col]*(1-xd)*(1-yd)*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y1][z0][col]*xd*(1-yd)*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x1][y0][z0][col]*(1-xd)*yd*zd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y0][z1][col]*(1-zd)*xd*yd+
-	//	   m_pAtmoConfig->little_ColorCube[x0][y0][z0][col]*xd*yd*zd;
-
 };
 
 pColorPacket CAtmoTools::Apply3dlut(CAtmoConfig *pAtmoConfig, pColorPacket ColorPacket)

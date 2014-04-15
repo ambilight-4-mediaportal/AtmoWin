@@ -293,7 +293,7 @@ CLanguage::~CLanguage(void)
 {
 }
 
-bool CLanguage::DirectoryExists(const char* dirName) 
+int CLanguage::DirectoryExists(const char* dirName) 
 {
 	DWORD attribs = ::GetFileAttributesA(dirName);
 	if (attribs == INVALID_FILE_ATTRIBUTES) 

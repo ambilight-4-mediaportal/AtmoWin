@@ -103,7 +103,7 @@ STDMETHODIMP CAtmoRemoteControlImplEx::setEffect(enum ComEffectMode dwEffect, en
 		{
 			CAtmoConfig *pConfig = m_pAtmoDynData->getAtmoConfig();
 			CUtils *Utils = new CUtils;
-			int count = Utils->profiles.GetCount();
+			__int64 count = Utils->profiles.GetCount();
 
 			//modeswitch...
 			for (int i=0;i<count;++i)
