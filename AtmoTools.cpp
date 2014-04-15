@@ -602,7 +602,7 @@ int CAtmoTools::trilinear(CAtmoConfig *pAtmoConfig, int x, int y, int z, int col
 	double c0 = c00*(1-yd) + c10*yd;
 	double c1 = c01*(1-yd) + c11*yd;
 
-	return c0*(1-zd) + c1*zd + 0.5f;
+	return static_cast<int>(c0*(1-zd) + c1*zd + 0.5f);
 };
 
 
@@ -631,7 +631,7 @@ int CAtmoTools::trilinear3dl(CAtmoConfig *pAtmoConfig,int x, int y, int z, int c
 	double c0 = c00*(1-yd) + c10*yd;
 	double c1 = c01*(1-yd) + c11*yd;
 
-	return c0*(1-zd) + c1*zd + 0.5f;
+	return static_cast<int>(c0*(1-zd) + c1*zd + 0.5f);
 };
 
 pColorPacket CAtmoTools::Apply3dlut(CAtmoConfig *pAtmoConfig, pColorPacket ColorPacket)

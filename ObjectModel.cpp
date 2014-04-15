@@ -69,10 +69,15 @@ char CUtils::GetSpecialFolder(int CLSID)
 				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Settings");
 				return *szCurrentDir;
 			} 
+			else
+			return szCurrentDir[0];
 
 			pShellMalloc->Free(pidl); 
+			pShellMalloc->Release(); 
 		} 
-
-		pShellMalloc->Release(); 
+		else
+		return szCurrentDir[0];
 	} 
+	else
+	return szCurrentDir[0];
 }

@@ -5,8 +5,8 @@
 		<setting name="1" value="Language" />
 		<setting name="2" value="Mode" />
 		<setting name="3" value="No effect" />
-		<setting name="4" value="Live" />
-		<setting name="5" value="Static color" />
+		<setting name="4" value="Static color" />
+		<setting name="5" value="Live" />
 		<setting name="6" value="Color changer" />
 		<setting name="7" value="Color changer LR" />
 		<setting name="8" value="Channel assignment" />
@@ -34,8 +34,8 @@
 	</section>
 	<section name="SettingsDialog">
 		<setting name="0" value="No effect" />
-		<setting name="1" value="Live" />
-		<setting name="2" value="Static color" />
+		<setting name="1" value="Static color" />
+		<setting name="2" value="Live" />
 		<setting name="3" value="Color changer" />
 		<setting name="4" value="Color changer LR" />
 		<setting name="5" value="Connected successfully" />

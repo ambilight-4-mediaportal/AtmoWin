@@ -139,17 +139,26 @@ void CAtmoPacketQueue::AddPacket(pColorPacket newPacket)
 #else
 	temp->tickcount = GetTickCount();
 #endif
-
-	Lock();
-	if(m_last) {
-		m_last->next = temp;
-		m_last = temp;
-	} else {
-		m_last = temp;
-		m_first = temp;
+	try
+	{
+	  Lock();
+	  if(m_last) 
+		{
+		  m_last->next = temp;
+		  m_last = temp;
+	  } 
+		else 
+		{
+		  m_last = temp;
+		  m_first = temp;
+	  }
+	  Unlock();
+	  SignalEvent();
 	}
-	Unlock();
-	SignalEvent();
+	catch (...)
+	{
+		//
+	}
 }
 
 pColorPacketItem CAtmoPacketQueue::GetNextPacketContainer()

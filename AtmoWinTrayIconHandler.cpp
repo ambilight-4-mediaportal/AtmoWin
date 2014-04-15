@@ -148,11 +148,11 @@ void CTrayIconWindow::createWindow()
 	AddMenuItem(m_hModusSubMenu, 0, data, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_EFFECTS_OFF);
 
 	lstrcpyn(data, Lng->sMenuText[4], 1023);
-	AddMenuItem(m_hModusSubMenu, 0, data,  ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_EFFECT_LIVE);
-
-	lstrcpyn(data, Lng->sMenuText[5], 1023);
 	AddMenuItem(m_hModusSubMenu, 0, data, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_EFFECT_STATIC);
 
+	lstrcpyn(data, Lng->sMenuText[5], 1023);
+	AddMenuItem(m_hModusSubMenu, 0, data,  ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_EFFECT_LIVE);
+	
 	lstrcpyn(data, Lng->sMenuText[6], 1023);
 	AddMenuItem(m_hModusSubMenu, 0, data, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_EFFECT_CCHANGER);
 
@@ -595,17 +595,17 @@ void CTrayIconWindow::UpdatePopupMenu()
 	{
 		for (__int64 i=0; i<count;i++)
 		{		
-			GString rslt = lst.Serialize("|", __int64(i), 0);
+			GString rslt = lst.Serialize("|", (int)i, 0);
 			if (rslt != "")
 			{
-				char *buffer = new char[rslt._len];
+				char *buffer = new char[(int)rslt._len];
 				strcpy(buffer, rslt);
 
-				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, __int64(MENUID_PROFILE_SUBMENU) + 1 + i);
+				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, UINT(MENUID_PROFILE_SUBMENU + 1 + i));
 			}
 			if(rslt == CurrentProfile) 
 			{
-				CheckMenuItem(this->m_hProfileSubMenu, __int64(MENUID_PROFILE_SUBMENU) + 1 + i, MF_BYCOMMAND | MF_CHECKED);
+				CheckMenuItem(this->m_hProfileSubMenu, UINT(MENUID_PROFILE_SUBMENU + 1 + i), MF_BYCOMMAND | MF_CHECKED);
 			}
 		}
 	}	

@@ -5,8 +5,8 @@
         <setting name="1" value="Taal" />
         <setting name="2" value="Modus" />
         <setting name="3" value="Geen effect" />
-        <setting name="4" value="Live beeld" />
-        <setting name="5" value="Vaste kleur" />
+        <setting name="4" value="Vaste kleur" />
+        <setting name="5" value="Live beeld" />
         <setting name="6" value="Kleur wisselaar" />
         <setting name="7" value="Kleur wisselaar LR" />
         <setting name="8" value="Kanaaltoewijzing" />
@@ -34,8 +34,8 @@
     </section>
     <section name="SettingsDialog">
         <setting name="0" value="Geen effect" />
-        <setting name="1" value="Live beeld" />
-        <setting name="2" value="Vaste kleur" />
+        <setting name="1" value="Vaste kleur" />
+        <setting name="2" value="Live beeld" />
         <setting name="3" value="Kleur wisselaar" />
         <setting name="4" value="Kleur wisselaar LR" />
         <setting name="5" value="Verbonden!" />
@@ -202,34 +202,34 @@
         <setting name="6" value="Fout" />
     </section>
 		<section name="Messages">
-				<setting name="0" value="Dit apparaat heeft geen configuratie nodig" />
-				<setting name="1" value="Informatie" />
-				<setting name="2" value="Verbonden" />
-				<setting name="3" value="Fout" />
-				<setting name="4" value="Gekozen display niet meer in de lijst" />
-				<setting name="5" value="Vertraging voor de Kleur wisselaar moet minimaal 10ms zijn" />
-				<setting name="6" value="Stappen voor de Kleur wisselaar moeten groter dan 0 zijn" />
-				<setting name="7" value="Vertraging voor de Kleur wisselaar LR moet minimaal 10ms zijn" />
-				<setting name="8" value="Stappen voor de Kleur wisselaar LR moeten groter dan 0 zijn" />
-				<setting name="9" value="Sorry, niet meer dan 10 instellingen mogelijk." />
-				<setting name="10" value="Dit profiel staat al in de lijst" />
-				<setting name="11" value="Het toegestane bereik loopt van 1 > 256" />
-				<setting name="12" value="Wil je dit profiel daadwerkelijk verwijderen?" />
-				<setting name="13" value="Alle geconfigureerde Kanalen gaan onvermijdelijk verloren!" />
-				<setting name="14" value="timeGetDevCaps mislukt. Beëindigen." />
-				<setting name="15" value="CoInitialize mislukt. Beëindigen." />
-				<setting name="16" value="Common Controls Initialisatie mislukt." />
-				<setting name="17" value="Programma wordt beëindigd." />
-				<setting name="18" value="Controleer de weergave-instellingen" />
-				<setting name="19" value="Open Device LastError" />
-				<setting name="20" value="Apparaat openen mislukt" />
-				<setting name="21" value="RegisterActiveObject mislukt." />
-				<setting name="22" value="LoadTypeLib mislukt. Code:" />
-				<setting name="23" value="RegisterTypeLib mislukt. Code:" />
-				<setting name="24" value="COM Server goed geregistreerd" />
-				<setting name="25" value="Fout tijdens laden, controleer Format en Size." />
-				<setting name="26" value="Fout tijdens het openen van de seriële poort" />
-				<setting name="27" value="met foutcode:" />
-				<setting name="28" value="Weergave-instellingen veranderd. Controleer de instellingen." />
-	  </section>
+		<setting name="0" value="Dit apparaat heeft geen configuratie nodig" />
+		<setting name="1" value="Informatie" />
+		<setting name="2" value="Verbonden" />
+		<setting name="3" value="Fout" />
+		<setting name="4" value="Gekozen display niet meer in de lijst" />
+		<setting name="5" value="Vertraging voor de Kleur wisselaar moet minimaal 10ms zijn" />
+		<setting name="6" value="Stappen voor de Kleur wisselaar moeten groter dan 0 zijn" />
+		<setting name="7" value="Vertraging voor de Kleur wisselaar LR moet minimaal 10ms zijn" />
+		<setting name="8" value="Stappen voor de Kleur wisselaar LR moeten groter dan 0 zijn" />
+		<setting name="9" value="Sorry, niet meer dan 10 instellingen mogelijk." />
+		<setting name="10" value="Dit profiel staat al in de lijst" />
+		<setting name="11" value="Het toegestane bereik loopt van 1 > 256" />
+		<setting name="12" value="Wil je dit profiel daadwerkelijk verwijderen?" />
+		<setting name="13" value="Alle geconfigureerde Kanalen gaan onvermijdelijk verloren!" />
+		<setting name="14" value="timeGetDevCaps mislukt. Beëindigen." />
+		<setting name="15" value="CoInitialize mislukt. Beëindigen." />
+		<setting name="16" value="Common Controls Initialisatie mislukt." />
+		<setting name="17" value="Programma wordt beëindigd." />
+		<setting name="18" value="Controleer de weergave-instellingen" />
+		<setting name="19" value="Open Device LastError" />
+		<setting name="20" value="Apparaat openen mislukt" />
+		<setting name="21" value="RegisterActiveObject mislukt." />
+		<setting name="22" value="LoadTypeLib mislukt. Code:" />
+		<setting name="23" value="RegisterTypeLib mislukt. Code:" />
+		<setting name="24" value="COM Server goed geregistreerd" />
+		<setting name="25" value="Fout tijdens laden, controleer Format en Size." />
+		<setting name="26" value="Fout tijdens het openen van de seriële poort" />
+		<setting name="27" value="met foutcode:" />
+		<setting name="28" value="Weergave-instellingen veranderd. Controleer de instellingen." />
+	</section>
 </configuration>

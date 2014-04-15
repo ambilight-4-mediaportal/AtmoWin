@@ -630,6 +630,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	}
   lstFind->RemoveAll();
 	lstFound->RemoveAll();
+	delete gsfound;
 
 	UpdateZoneDefinitionCount();
 }

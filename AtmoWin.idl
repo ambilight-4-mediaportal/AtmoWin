@@ -82,7 +82,12 @@ interface IAtmoLiveViewControl: IUnknown
 ]
 library AtmoWinRemoteControl
 {
-	//importlib("stdole.tlb");
+ // #ifdef WIN32
+    importlib("stdole32.tlb");
+ // #else
+ //   importlib("stdole.tlb");
+ // #endif
+
 
 	interface IAtmoLiveViewControl;
 	interface IAtmoRemoteControl;

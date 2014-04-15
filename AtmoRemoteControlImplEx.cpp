@@ -119,6 +119,9 @@ STDMETHODIMP CAtmoRemoteControlImplEx::setEffect(enum ComEffectMode dwEffect, en
 				pConfig->lastprofile=newprofile;
 
 			pConfig->LoadSettings(pConfig->lastprofile); 
+			CAtmoTools::RecreateConnection(this->m_pAtmoDynData);
+			//CAtmoTools::SwitchEffect(this->m_pAtmoDynData, emLivePicture);
+
 		}
 		m_pAtmoDynData->UnLockCriticalSection();
 		return S_OK;
