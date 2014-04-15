@@ -74,7 +74,7 @@ public:
   static char szLang[MAX_PATH], szTemp[512], Buffer[1024], szParam[32];	
 
 	char GetSpecialFolder(int CLSID);
-	bool DirectoryExists(const char* dirName);
+	int DirectoryExists(const char* dirName);
 	void XMLParse(const char* FileName, CString* sInText, const char* Section);
 	void CreateDefaultXML(const char* FileName, char* Section[]);
 

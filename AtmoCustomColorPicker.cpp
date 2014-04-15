@@ -519,31 +519,8 @@ ATMO_BOOL CAtmoCustomColorPicker::InitDialog(WPARAM wParam)
 	this->m_cCyan[1] = config->blue_ColorK[257][1];
 	this->m_cCyan[2] = config->blue_ColorK[257][2];
 
-	/*hwndCtrl = this->getDlgItem(IDC_CHECK4);
-	if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)*/
 	if (config->isUseColorKWhiteAdj())
 	{
-		//normieren 255
-		/* int sum_r = config->red_ColorK[256][0]+config->green_ColorK[256][0]+config->blue_ColorK[256][0];
-		int sum_g = config->red_ColorK[256][1]+config->green_ColorK[256][1]+config->blue_ColorK[256][1];
-		int sum_b = config->red_ColorK[256][2]+config->green_ColorK[256][2]+config->blue_ColorK[256][2];
-		int c_max = sum_g;
-		if (sum_r > c_max){ c_max = sum_r;}
-		if (c_max < sum_b){ c_max = sum_b;}
-		if (c_max > 255) 
-		{
-		float fac = (float)255/(float)c_max;
-		config->red_ColorK[255][0] = config->red_ColorK[256][0]*fac;
-		config->red_ColorK[255][1] = config->red_ColorK[256][1]*fac;
-		config->red_ColorK[255][2] = config->red_ColorK[256][2]*fac;
-		config->green_ColorK[255][0] = config->green_ColorK[256][0]*fac;
-		config->green_ColorK[255][1] = config->green_ColorK[256][1]*fac;
-		config->green_ColorK[255][2] = config->green_ColorK[256][2]*fac;
-		config->blue_ColorK[255][0] = config->blue_ColorK[256][0]*fac;
-		config->blue_ColorK[255][1] = config->blue_ColorK[256][1]*fac;
-		config->blue_ColorK[255][2] = config->blue_ColorK[256][2]*fac;
-		}
-		else*/
 		{
 			config->red_ColorK[255][0] = config->red_ColorK[256][0];
 			config->red_ColorK[255][1] = config->red_ColorK[256][1];
@@ -555,12 +532,9 @@ ATMO_BOOL CAtmoCustomColorPicker::InitDialog(WPARAM wParam)
 			config->blue_ColorK[255][1] = config->blue_ColorK[256][1];
 			config->blue_ColorK[255][2] = config->blue_ColorK[256][2];
 		}
-		/*red   = max(max((float)m_cRed[0]*this->m_iRed/255.0f,(float)m_cGreen[0]*this->m_iGreen/255.0f),(float)m_cBlue[0]*this->m_iBlue/255.0f);
-		green =  max(max((float)m_cRed[1]*this->m_iRed/255.0f,(float)m_cGreen[1]*this->m_iGreen/255.0f),(float)m_cBlue[1]*this->m_iBlue/255.0f);
-		blue  = max(max((float)m_cRed[2]*this->m_iRed/255.0f,(float)m_cGreen[2]*this->m_iGreen/255.0f),(float)m_cBlue[2]*this->m_iBlue/255.0f);*/
-		red = min((float)m_cRed[0]*m_gRed[10]/255.0f+(float)m_cGreen[0]*m_gGreen[10]/255.0f+(float)m_cBlue[0]*m_gBlue[10]/255.0f,255);
-		green = min((float)m_cRed[1]*m_gRed[10]/255.0f+(float)m_cGreen[1]*m_gGreen[10]/255.0f+(float)m_cBlue[1]*m_gBlue[10]/255.0f,255);
-		blue = min((float)m_cRed[2]*m_gRed[10]/255.0f+(float)m_cGreen[2]*m_gGreen[10]/255.0f+(float)m_cBlue[2]*m_gBlue[10]/255.0f,255);
+		red = min((int)m_cRed[0]*m_gRed[10]/255+(int)m_cGreen[0]*m_gGreen[10]/255+(int)m_cBlue[0]*m_gBlue[10]/255,255);
+		green = min((int)m_cRed[1]*m_gRed[10]/255+(int)m_cGreen[1]*m_gGreen[10]/255+(int)m_cBlue[1]*m_gBlue[10]/255,255);
+		blue = min((int)m_cRed[2]*m_gRed[10]/255+(int)m_cGreen[2]*m_gGreen[10]/255+(int)m_cBlue[2]*m_gBlue[10]/255,255);
 
 	}
 

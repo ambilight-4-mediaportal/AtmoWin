@@ -22,7 +22,9 @@ CAtmoXMLConfig::~CAtmoXMLConfig(void)
 
 void CAtmoXMLConfig::SaveSettings(std::string Profile1) 
 {
-	char XMLSectionName[100],valueName[32];
+	char XMLSectionName[100];
+	char valueName[32];
+
 	std::string path(configSection);
 	CUtils *Utils = new CUtils;
 
@@ -99,7 +101,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "LiveView_Mode",m_LiveView_Mode);
 	GetProfile().SetConfig(newconfigSection, "LiveView_Saturation", m_LiveView_Saturation);
 	GetProfile().SetConfig(newconfigSection, "LiveView_Sensitivity", m_LiveView_Sensitivity);
-	GetProfile().SetConfig(newconfigSection, "LiveView_invert", m_Useinvert);
+	GetProfile().SetConfig(newconfigSection, "LiveView_invert", (int)m_Useinvert);
 	GetProfile().SetConfig(newconfigSection, "LiveView_HOverscanBorder", m_LiveView_HOverscanBorder);
 	GetProfile().SetConfig(newconfigSection, "LiveView_VOverscanBorder", m_LiveView_VOverscanBorder);
 	GetProfile().SetConfig(newconfigSection, "LiveView_DisplayNr", m_LiveView_DisplayNr);
@@ -245,9 +247,9 @@ int CAtmoXMLConfig::trilinear(int x, int y, int z, int col)
 		z1 = z0;
 	}
 
-	double xd = (x1-x/17.0f);
-	double yd = (y1-y/17.0f);
-	double zd = (z1-z/17.0f);
+	int xd = (x1-x/17);
+	int yd = (y1-y/17);
+	int zd = (z1-z/17);
 
 	return little_ColorCube[x0][y0][z0][col]*(1-xd)*(1-yd)*(1-zd)+ 
 		little_ColorCube[x1][y0][z0][col]*(1-yd)*(1-zd)*xd+
@@ -264,9 +266,6 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 {
 	// alle Variabel etc. aus Registry lesen
 	char XMLSectionName[100], valueName[32];
-	std::string path(configSection);
-	std::string newpath(newconfigSection);
-
 	CUtils *Utils = new CUtils;
 
 	//profilenames
@@ -289,15 +288,6 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 		profile1 = lastprofile;
 	}
 
-	if (profile1 != "")
-	{
-		std::string key(configSection);
-		key.assign(profile1);
-
-		std::string path(configSection);
-		path.assign(profile1);
-		strcpy(this->newconfigSection, path.data());
-	}
 	if (profile1 == "")
 		strcpy(this->newconfigSection, "AtmoWinX");
 
@@ -412,7 +402,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	m_LiveView_Overlap               = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Overlap", m_LiveView_Overlap);
 	m_LiveView_Saturation            = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Saturation", 100);
 	m_LiveView_Sensitivity           = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Sensitivity", 0);
-	m_Useinvert                      = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_invert", 0);
+	m_Useinvert                      = (GetProfile().GetIntOrDefault(newconfigSection,"LiveView_invert", m_Useinvert) != 0);
 	m_LiveView_WidescreenMode        = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_WidescreenMode", m_LiveView_WidescreenMode);
 	m_LiveView_Mode                  = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_Mode", m_LiveView_Mode);
 	m_LiveView_HOverscanBorder       = GetProfile().GetIntOrDefault(newconfigSection, "LiveView_HOverscanBorder", m_LiveView_HOverscanBorder);
@@ -607,7 +597,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 
 	GetProfile().GetSectionNames(lstFind);
 
-	int count = lstFind->GetCount();	
+	__int64 count = lstFind->GetCount();	
 	for(int i=0;i<count;i++) 
 	{
 		gsfound = lstFind->GetStrAt(i);
@@ -670,7 +660,7 @@ int CAtmoXMLConfig::Check8BitValue(int value)
 
 void CAtmoXMLConfig::ReadXMLStringList(char *section, char *default_value)
 {
-	int count;
+	__int64 count;
 	CUtils *Utils = new CUtils;
 	GString rslt;
 

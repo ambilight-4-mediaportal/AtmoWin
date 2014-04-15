@@ -38,7 +38,7 @@ CUtils::~CUtils(void)
 {
 }
 
-bool CUtils::DirectoryExists(const char* dirName) 
+int CUtils::DirectoryExists(const char* dirName) 
 {
 	DWORD attribs = ::GetFileAttributesA(dirName);
 	if (attribs == INVALID_FILE_ATTRIBUTES) 

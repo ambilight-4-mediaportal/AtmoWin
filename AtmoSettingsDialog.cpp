@@ -40,7 +40,7 @@ void CAtmoSettingsDialog::DeleteAllChannel()
 	GStringList *lstFind = new GStringList;
 	GStringList *lstFound = new GStringList;
 	GString *gsfound = new GString;
-	char XMLSectionName[100], valueName[32];
+	char XMLSectionName[100];
 	CUtils *Utils = new CUtils;
 
 	string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
@@ -51,7 +51,7 @@ void CAtmoSettingsDialog::DeleteAllChannel()
 
 	GetProfile().GetSectionNames(lstFind);
 
-	int count = lstFind->GetCount();	
+	__int64 count = lstFind->GetCount();	
 	for(int i=0;i<count;i++) 
 	{
 		gsfound = lstFind->GetStrAt(i);
@@ -270,7 +270,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	hwndCtrl = getDlgItem(IDC_CB_PROFILES);
 
-	int count = Utils->profiles.GetCount();	
+	__int64 count = Utils->profiles.GetCount();	
 	GString rslt;
 	for (int i=0; i<count;i++)
 	{
@@ -455,7 +455,7 @@ void CAtmoSettingsDialog::HandleHorzScroll(int code,int position,HWND scrollBarH
 	// slider handling...
 	char buffer[100];
 	int dlgItemId = GetDlgCtrlID(scrollBarHandle);
-	CLanguage *Lng;
+	CLanguage *Lng = new CLanguage;
 
 	switch(dlgItemId) 
 	{
@@ -619,8 +619,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 	HWND hwndCtrl2;
 	char buffer1[200];
 	char buffer2[200];
-	CLanguage *Lng;
 	CUtils *Utils = new CUtils;
+	CLanguage *Lng = new CLanguage;
 
 	switch(wmId) 
 	{
@@ -642,7 +642,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			// serialize buffer
 			GStringList lst("|", buffer);
-			int count = lst.GetCount();
+			__int64 count = lst.GetCount();
 
 			// check for entry if exist
 			if (count >> 0)
@@ -722,7 +722,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			//serialize the buffer
 			GStringList lst("|", buffer);
-			int count = lst.GetCount();
+			__int64 count = lst.GetCount();
 
 			// if entry same as buffer then delete it
 			for (int i=0; i<count;i++)
@@ -1029,7 +1029,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			if( CAtmoGradients::Execute( this->m_hInst, this->m_hDialog, this->m_pDynData ) == ATMO_TRUE)
 			{
 				// slide edge weightning anpassen?
-				char buffer[64];
+				char buffer[64];				
 				sprintf(buffer,Lng->sSettingText[31] + "[%d]",pAtmoConfig->getLiveView_EdgeWeighting());
 				SetStaticText(IDC_TXT_EDGEWEIGHTNING, buffer);
 				SendMessage(this->getDlgItem(IDC_EdgeWeighting), TBM_SETPOS, true, pAtmoConfig->getLiveView_EdgeWeighting() );

@@ -264,8 +264,8 @@ LRESULT CTrayIconWindow::HandleMessage(UINT message, WPARAM wParam, LPARAM lPara
 			if(pAtmoConfig->getLiveView_DisplayNr()>=pAtmoDisplays->getCount()) 
 			{
 				// show Setup.. dialog?
-				char *value;
-				char *value2;
+				char *value = 0;
+				char *value2 = 0;
 				strcpy(value, Lng->sMessagesText[28]);
 				res_buffer1 = getResStr( IDS_DISPLAY_SETCHANGED, value);
 				strcpy(value2, Lng->sMessagesText[1]);
@@ -590,22 +590,22 @@ void CTrayIconWindow::UpdatePopupMenu()
 
 	//serialize the buffer
 	GStringList lst("|", buffer);
-	int count = lst.GetCount();
+	__int64 count = lst.GetCount();
 	if (!count == 0)
 	{
-		for (int i=0; i<count;i++)
+		for (__int64 i=0; i<count;i++)
 		{		
-			GString rslt = lst.Serialize("|", i, 0);
+			GString rslt = lst.Serialize("|", __int64(i), 0);
 			if (rslt != "")
 			{
 				char *buffer = new char[rslt._len];
 				strcpy(buffer, rslt);
 
-				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, MENUID_PROFILE_SUBMENU+1+i);
+				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, __int64(MENUID_PROFILE_SUBMENU) + 1 + i);
 			}
 			if(rslt == CurrentProfile) 
 			{
-				CheckMenuItem(this->m_hProfileSubMenu, MENUID_PROFILE_SUBMENU + 1 +i, MF_BYCOMMAND | MF_CHECKED);
+				CheckMenuItem(this->m_hProfileSubMenu, __int64(MENUID_PROFILE_SUBMENU) + 1 + i, MF_BYCOMMAND | MF_CHECKED);
 			}
 		}
 	}	

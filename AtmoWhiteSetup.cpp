@@ -371,12 +371,9 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
-			/*int Red   = max(max((float)m_cRed[0]*this->m_iRed/255.0f,(float)m_cGreen[0]*this->m_iGreen/255.0f),(float)m_cBlue[0]*this->m_iBlue/255.0f);
-			int Green =  max(max((float)m_cRed[1]*this->m_iRed/255.0f,(float)m_cGreen[1]*this->m_iGreen/255.0f),(float)m_cBlue[1]*this->m_iBlue/255.0f);
-			int Blue  = max(max((float)m_cRed[2]*this->m_iRed/255.0f,(float)m_cGreen[2]*this->m_iGreen/255.0f),(float)m_cBlue[2]*this->m_iBlue/255.0f);*/
-			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-			int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-			int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+			int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+			int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+			int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 
 			outputColor(Red, Green, Blue);
 		}
@@ -396,9 +393,9 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
-			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-			int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-			int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+			int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+			int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+			int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 			outputColor(Red, Green, Blue);
 		}
 		else
@@ -417,9 +414,9 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
-			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-			int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-			int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+			int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+			int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+			int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 			outputColor(Red, Green, Blue);
 		}
 		else
@@ -438,9 +435,9 @@ void CAtmoWhiteSetup::HandleHorzScroll(int code,int position,HWND scrollBarHandl
 		hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 		if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 		{
-			int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-			int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-			int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+			int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+			int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+			int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 			outputColor(Red, Green, Blue);
 		}
 		else
@@ -559,9 +556,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 
 				if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 				{
-					int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-					int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-					int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+					int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+					int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+					int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 					outputColor(Red, Green, Blue);
 				}
 				else
@@ -638,9 +635,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
-						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-						int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-						int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+						int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+						int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+						int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 						outputColor(Red, Green, Blue);
 					}
 					else
@@ -667,9 +664,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
-						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-						int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-						int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+						int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+						int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+						int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 						outputColor(Red, Green, Blue);
 					}
 					else
@@ -702,9 +699,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
-						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-						int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-						int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+						int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+						int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+						int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 						outputColor(Red, Green, Blue);
 					}
 					else
@@ -737,9 +734,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
-						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-						int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-						int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+						int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+						int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+						int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 						outputColor(Red, Green, Blue);
 					}
 					else
@@ -772,9 +769,9 @@ ATMO_BOOL CAtmoWhiteSetup::ExecuteCommand(HWND hControl,int wmId, int wmEvent)
 					hwndCtrl = this->getDlgItem(IDC_CHK_COLORADJ);
 					if(SendMessage(hwndCtrl, BM_GETSTATE, 0, 0) == BST_CHECKED)
 					{
-						int Red   = min((float)m_cRed[0]*m_iRed/255.0f+(float)m_cGreen[0]*m_iGreen/255.0f+(float)m_cBlue[0]*m_iBlue/255.0f,255);
-						int Green = min((float)m_cRed[1]*m_iRed/255.0f+(float)m_cGreen[1]*m_iGreen/255.0f+(float)m_cBlue[1]*m_iBlue/255.0f,255);
-						int Blue  = min((float)m_cRed[2]*m_iRed/255.0f+(float)m_cGreen[2]*m_iGreen/255.0f+(float)m_cBlue[2]*m_iBlue/255.0f,255);
+						int Red   = min((int)m_cRed[0]*m_iRed/255+(int)m_cGreen[0]*m_iGreen/255+(int)m_cBlue[0]*m_iBlue/255,255);
+						int Green = min((int)m_cRed[1]*m_iRed/255+(int)m_cGreen[1]*m_iGreen/255+(int)m_cBlue[1]*m_iBlue/255,255);
+						int Blue  = min((int)m_cRed[2]*m_iRed/255+(int)m_cGreen[2]*m_iGreen/255+(int)m_cBlue[2]*m_iBlue/255,255);
 						outputColor(Red, Green, Blue);
 					}
 					else
