@@ -74,8 +74,8 @@ char *sTextChannelAssignment[MAX_CHANNELASSIGNMENT_STRINGS] =
 
 char *sTextSettingDialog[MAX_SETTINGSDIALOG_STRINGS] = 
 {"no effect",                    //0
-"life",                          //1
-"static color",                  //2
+"static color",                  //1
+"life",                          //2
 "color changer",                 //3
 "color changer LR",              //4
 "Connected successfully",        //5
@@ -136,8 +136,8 @@ char *sTextMenu[MAX_MENU_STRINGS] =
 "Language",                //1
 "Mode",                    //2
 "no effect",               //3
-"life",                    //4
-"static color",            //5
+"static color",            //4
+"life",                    //5
 "color changer",           //6
 "color changer LR",        //7
 "channel assignment",      //8
@@ -326,12 +326,17 @@ char CLanguage::GetSpecialFolder(int CLSID)
 				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Language");
 				return *szCurrentDir;
 			} 
+			else
+			  return szCurrentDir[0];
 
 			pShellMalloc->Free(pidl); 
+		  pShellMalloc->Release(); 
 		} 
-
-		pShellMalloc->Release(); 
+		else
+		  return szCurrentDir[0];
 	} 
+	else
+		return szCurrentDir[0];
 }
 
 void CLanguage::XMLParse(const char* FileName, CString *sInText, const char* Section)

@@ -5,8 +5,8 @@
 		<setting name="1" value="Langage" />
 		<setting name="2" value="Mode" />
 		<setting name="3" value="OFF" />
-		<setting name="4" value="Temps réel" />
-		<setting name="5" value="Couleur unique" />
+		<setting name="4" value="Couleur unique" />
+		<setting name="5" value="Temps réel" />
 		<setting name="6" value="Changement de couleur" />
 		<setting name="7" value="Changement de couleur G/D" />
 		<setting name="8" value="Attribution des canaux" />
@@ -34,8 +34,8 @@
 	</section>
 	<section name="SettingsDialog">
 		<setting name="0" value="OFF" />
-		<setting name="1" value="Temps réel" />
-		<setting name="2" value="Couleur unique" />
+		<setting name="1" value="Couleur unique" />
+		<setting name="2" value="Temps réel" />
 		<setting name="3" value="Changement de couleur" />
 		<setting name="4" value="Changement de couleur G/D" />
 		<setting name="5" value="Connexion réussi" />

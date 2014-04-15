@@ -11,7 +11,6 @@ CAtmoComRegistry::~CAtmoComRegistry(void)
 {
 }
 
-//typedef void (__stdcall *OaEnablePerUserTLibRegistration)(void); 
 
 void CAtmoComRegistry::SaveComSettings(ATMO_BOOL force) 
 {
@@ -20,7 +19,6 @@ void CAtmoComRegistry::SaveComSettings(ATMO_BOOL force)
 
 	char buffer[MAX_PATH];
 	char exe[MAX_PATH];
-	//    char tlb[MAX_PATH];
 	wchar_t widePath[MAX_PATH];
 
 	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	

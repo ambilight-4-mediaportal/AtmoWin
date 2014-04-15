@@ -169,8 +169,8 @@ enum LivePictureSource {
 enum EffectMode {
       emUndefined = -1,
       emDisabled = 0,
-      emLivePicture = 1,
-      emStaticColor = 2,
+      emStaticColor = 1,
+			emLivePicture = 2,
       emColorChange = 3,
       emLrColorChange = 4,
 	    emColorMode = 5
