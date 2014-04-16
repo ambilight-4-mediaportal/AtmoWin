@@ -199,7 +199,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DisableSpecificWarnings>4996; 4995</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996; 4995; 4244</DisableSpecificWarnings>
       <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>

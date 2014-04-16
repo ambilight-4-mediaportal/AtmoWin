@@ -44,7 +44,7 @@ void CAtmoSettingsDialog::DeleteAllChannel()
 	CUtils *Utils = new CUtils;
 
 	string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
-	newconfigSection = new char[tmpStr.length()];
+	newconfigSection = new char[tmpStr.length()+1];
 	strcpy(newconfigSection, tmpStr.c_str());
 
 	GString name = GString(newconfigSection);
@@ -633,7 +633,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			const char *ptr =  buffer1;
 
 			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
-			char *buffer = new char[Profile1.length()];
+			char *buffer = new char[Profile1.length()+1];
 			strcpy(buffer, Profile1.c_str());
 
 			// serialize buffer
@@ -658,7 +658,8 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 					Profile1 = Profile1 + "|" + string(buffer1);
 				else
 					Profile1 = string(buffer1);
-
+				
+				buffer = new char[Profile1.length()+1];
 				strcpy(buffer, Profile1.c_str());
 
 				GetProfile().SetConfig("Default", "profiles", buffer);
@@ -713,7 +714,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			//get profiles from XML
 			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
-			char *buffer = new char[Profile1.length()];
+			char *buffer = new char[Profile1.length()+1];
 			strcpy(buffer, Profile1.c_str());
 
 			//serialize the buffer
@@ -725,7 +726,10 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{		
 				rslt = lst.Serialize("|", i, 0);
 				if (rslt == buffer1)
+				{
 					lst.Remove(rslt, 1, 1);
+					break;
+				}
 			}
 
 			// Get new count after delete one
@@ -751,14 +755,20 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}	
 			// Set new Profile
 			count = lst.GetCount();
+			string tmpProfile;
 			for (int i=0; i<count;++i)
 			{
 				rslt = lst.Serialize("|", i, 0);
 				Profile1 = rslt;
-				if (count >> 1)
-					Profile1 = Profile1 + "|";
+				if (count >> 0)
+				{
+					if (tmpProfile == "")
+						tmpProfile = Profile1;
+					else
+					tmpProfile = tmpProfile + "|" + Profile1;
+				}
 			}
-			strcpy(buffer, Profile1.c_str());
+			strcpy(buffer, tmpProfile.c_str());
 			GetProfile().SetConfig("Default", "profiles", buffer);
 
 			// do not save any Channel settings if Profile deleted

@@ -188,9 +188,16 @@ DWORD CAtmoLiveView::Execute(void)
            
 
             /* send color data to the the hardware... */
-            pAtmoConnection->SendData(ColorPacket);
+			      try
+						{
+              pAtmoConnection->SendData(ColorPacket);
+              delete (char *)ColorPacket;
+						}
+						catch(...)
+						{
+							delete (char *)ColorPacket;
+						}
 
-            delete (char *)ColorPacket;
         }
 
         /*

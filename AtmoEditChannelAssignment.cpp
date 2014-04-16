@@ -285,7 +285,7 @@ ATMO_BOOL CAtmoEditChannelAssignment::InitDialog(WPARAM wParam)
 	HWND ListBox	= getDlgItem(IDC_LST_MAPPINGS);
 	if (pAtmoConfig->lastprofile != "")
 	{
-		char *buffer = new char[pAtmoConfig->lastprofile.length()];
+		char *buffer = new char[pAtmoConfig->lastprofile.length()+1];
 		strcpy(buffer, pAtmoConfig->lastprofile.c_str());
 
 		int selIndex = GetProfile().GetIntOrDefault(buffer, "CurrentChannelAssignment", 0);

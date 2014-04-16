@@ -2,6 +2,12 @@
 #define __OBJECTMODEL_H__
 
 #include "shlobj.h" 
+#include <string>
+
+typedef struct profil 
+{
+ char *name;
+} Profil;
 
 class CUtils
 {
