@@ -662,7 +662,6 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				buffer = new char[Profile1.length()+1];
 				strcpy(buffer, Profile1.c_str());
 
-				GetProfile().SetConfig("Default", "profiles", buffer);
 				pAtmoConfig->profiles.push_back(buffer1);
 				pAtmoConfig->lastprofile = buffer1;
 			}
@@ -672,9 +671,31 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{
 				hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
+
 				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
+
+			// sort buffer alphabetically
+			Profile1 = "";
+			strcpy(buffer1, "");
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
+			count = ComboBox_GetCount(hwndCtrl);
+			for (int i=0; i<count;i++)
+			{
+				if (Profile1 != "")
+				{
+					ComboBox_GetLBText(hwndCtrl, i, buffer1);
+					Profile1 = Profile1 + "|" + string(buffer1);
+				}				
+				else
+				{
+					ComboBox_GetLBText(hwndCtrl, i, buffer1);
+					Profile1 = buffer1;
+				}
+			}
+			GetProfile().SetConfig("Default", "profiles", Profile1.c_str());
+			
 			// cleanup ChannelAssignment
 			for(int i=1;i<10;i++)
 				pAtmoConfig->m_ChannelAssignments[i] = NULL;

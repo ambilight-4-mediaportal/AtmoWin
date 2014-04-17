@@ -179,7 +179,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
-      <DisableSpecificWarnings>4996; 4995</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996; 4995; 4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
