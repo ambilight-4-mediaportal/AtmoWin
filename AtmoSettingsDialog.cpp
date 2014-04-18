@@ -233,7 +233,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	HWND hwndCtrl;
 
 	GetWindowText(this->m_hDialog, buffer, sizeof(buffer));
-	sprintf(tmp , "%s (%d x %d Edition Mod by Angie05)", buffer, CAP_WIDTH, CAP_HEIGHT );
+	sprintf(tmp , "%s (%d x %d Edition... of MediaPortal Members)", buffer, CAP_WIDTH, CAP_HEIGHT );
 	SetWindowText(this->m_hDialog, tmp);
 
 	m_hCbxDevicetypes = getDlgItem(IDC_DEVICETYPE);
