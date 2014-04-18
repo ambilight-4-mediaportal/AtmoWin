@@ -47,18 +47,19 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 22, 17, 227, 113
+IDD_ABOUTBOX DIALOGEX 22, 17, 227, 140
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_CAPTION | WS_SYSMENU
 CAPTION "Info"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,79,92,69,12,WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,79,125,69,12,WS_GROUP
     LTEXT           "AtmoWin",IDC_STATIC,30,8,38,8
     LTEXT           "Controlsoftware for a PC Atmo Light...",IDC_STATIC,7,22,135,8
-    LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,8,32,202,8
-    LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,44,205,29
-    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle http://about.me/brian.aberle",IDC_STATIC,8,44,205,29
-    LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,10,72,184,16
+    LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,7,32,202,8
+		LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin", IDC_STATIC,8,42,224,17
+    LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,60,205,29
+    LTEXT           "Latest Version before moved to XML Support (Angie05)\nhttp://forum.team-mediaportal.com/members/angie05.103460/", IDC_STATIC,8,87,205,17
+    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle\nhttp://about.me/brian.aberle", IDC_STATIC,8,105,205,17
     ICON            IDI_ATMOICON,IDC_STATIC,4,3,21,20
 END
 
