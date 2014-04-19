@@ -334,7 +334,13 @@ void CAtmoZoneDefinition::UpdateWeighting(int *destWeight,
 			} 
 			else 
 			{
-				destWeight[index] = (int)(255.0 * (float)pow( ((float)m_BasicWeight[index])/255.0 , newEdgeWeightning));
+				try
+				  {
+				    destWeight[index] = (int)(255.0 * (float)pow( ((float)m_BasicWeight[index])/255.0 , newEdgeWeightning));
+				  }
+				catch(...)
+				{
+				}
 			}
 			index++;
 		}

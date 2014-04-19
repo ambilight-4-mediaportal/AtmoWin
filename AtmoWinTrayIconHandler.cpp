@@ -536,6 +536,7 @@ void CTrayIconWindow::UpdatePopupMenu()
 	CAtmoConnection *pAtmoConnection = this->m_pDynData->getAtmoConnection();
 	CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 	CLanguage *Lng = new CLanguage;
+	
 	if((pAtmoConnection == NULL) || (pAtmoConnection->isOpen()==ATMO_FALSE)) 
 	{
 		// disable change effect submenu!
@@ -585,7 +586,7 @@ void CTrayIconWindow::UpdatePopupMenu()
 
 	//get profiles from XML
 	string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
-	char *buffer = new char[Profile1.length()];
+	char *buffer = new char[Profile1.length()+1];
 	strcpy(buffer, Profile1.c_str());
 
 	//serialize the buffer
@@ -593,12 +594,12 @@ void CTrayIconWindow::UpdatePopupMenu()
 	__int64 count = lst.GetCount();
 	if (!count == 0)
 	{
-		for (__int64 i=0; i<count;i++)
+		for (int i=0; i<count;i++)
 		{		
 			GString rslt = lst.Serialize("|", (int)i, 0);
 			if (rslt != "")
 			{
-				char *buffer = new char[(int)rslt._len];
+				char *buffer = new char[(int)rslt._len + 1];
 				strcpy(buffer, rslt);
 
 				AddMenuItem(this->m_hProfileSubMenu, 0, buffer, ATMO_TRUE, ATMO_FALSE, ATMO_TRUE, UINT(MENUID_PROFILE_SUBMENU + 1 + i));

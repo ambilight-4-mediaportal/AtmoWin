@@ -273,7 +273,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 
 	profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", "");	
 
-	char *buffer = new char[profile1.length()];
+	char *buffer = new char[profile1.length()+1];
 	strcpy(buffer, profile1.c_str());
 
 	ReadXMLStringList(configSection, buffer);
@@ -300,7 +300,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 
 	if (lastprofile != "")
 	{
-		buffer = new char[lastprofile.length()];
+		buffer = new char[lastprofile.length()+1];
 		strcpy(buffer, lastprofile.c_str());
 		strcpy(this->newconfigSection, buffer);
 	}
@@ -598,7 +598,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	GetProfile().GetSectionNames(lstFind);
 
 	__int64 count = lstFind->GetCount();	
-	for(int i=0;i<count;i++) 
+	for(__int64 i=0;i<count;i++) 
 	{
 		gsfound = lstFind->GetStrAt(i);
 
@@ -606,8 +606,8 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 			lstFound->AddLast(gsfound->_str);
 	}
 
-	count = lstFound->GetCount() + 1;
-	for(int i=0;i<count;i++) 
+	count = lstFound->GetCount();
+	for(__int64 i=0;i<count;i++) 
 	{
 		gsfound = lstFound->GetStrAt(i);
 
@@ -640,7 +640,6 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	}
   lstFind->RemoveAll();
 	lstFound->RemoveAll();
-	delete gsfound;
 
 	UpdateZoneDefinitionCount();
 }
@@ -666,7 +665,7 @@ void CAtmoXMLConfig::ReadXMLStringList(char *section, char *default_value)
 	GString rslt;
 
 	string Profile1 = GetProfile().GetStringOrDefault(configSection, "profiles", default_value);
-	char *buffer = new char[Profile1.length()];
+	char *buffer = new char[Profile1.length()+1];
 	strcpy(buffer, Profile1.c_str());
 
 	GStringList lst("|", buffer);

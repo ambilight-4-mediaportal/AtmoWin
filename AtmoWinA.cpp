@@ -231,8 +231,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Utils->strConfigFromFile.FromFile(Utils->szTemp);
 			SetProfile(new GProfile((const char *)Utils->strConfigFromFile, Utils->strConfigFromFile.Length(), true));
 			Utils->firststart = true;
-		}		
+		}
 
+		Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
+	  sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+
+	  GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
+
+	  // Read Buffer from IniFile
+	  sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 		Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 

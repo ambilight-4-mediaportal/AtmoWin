@@ -44,7 +44,7 @@ void CAtmoSettingsDialog::DeleteAllChannel()
 	CUtils *Utils = new CUtils;
 
 	string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
-	newconfigSection = new char[tmpStr.length()];
+	newconfigSection = new char[tmpStr.length()+1];
 	strcpy(newconfigSection, tmpStr.c_str());
 
 	GString name = GString(newconfigSection);
@@ -233,7 +233,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	HWND hwndCtrl;
 
 	GetWindowText(this->m_hDialog, buffer, sizeof(buffer));
-	sprintf(tmp , "%s (%d x %d Edition Mod by Angie05)", buffer, CAP_WIDTH, CAP_HEIGHT );
+	sprintf(tmp , "%s (%d x %d Edition... of MediaPortal Members)", buffer, CAP_WIDTH, CAP_HEIGHT );
 	SetWindowText(this->m_hDialog, tmp);
 
 	m_hCbxDevicetypes = getDlgItem(IDC_DEVICETYPE);
@@ -637,7 +637,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			const char *ptr =  buffer1;
 
 			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
-			char *buffer = new char[Profile1.length()];
+			char *buffer = new char[Profile1.length()+1];
 			strcpy(buffer, Profile1.c_str());
 
 			// serialize buffer
@@ -662,10 +662,10 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 					Profile1 = Profile1 + "|" + string(buffer1);
 				else
 					Profile1 = string(buffer1);
-
+				
+				buffer = new char[Profile1.length()+1];
 				strcpy(buffer, Profile1.c_str());
 
-				GetProfile().SetConfig("Default", "profiles", buffer);
 				pAtmoConfig->profiles.push_back(buffer1);
 				pAtmoConfig->lastprofile = buffer1;
 			}
@@ -675,9 +675,31 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{
 				hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
+
 				hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 				ComboBox_AddString(hwndCtrl, buffer1);
 			}
+
+			// sort buffer alphabetically
+			Profile1 = "";
+			strcpy(buffer1, "");
+			hwndCtrl = this->getDlgItem(IDC_CB_PROFILES);
+			count = ComboBox_GetCount(hwndCtrl);
+			for (int i=0; i<count;i++)
+			{
+				if (Profile1 != "")
+				{
+					ComboBox_GetLBText(hwndCtrl, i, buffer1);
+					Profile1 = Profile1 + "|" + string(buffer1);
+				}				
+				else
+				{
+					ComboBox_GetLBText(hwndCtrl, i, buffer1);
+					Profile1 = buffer1;
+				}
+			}
+			GetProfile().SetConfig("Default", "profiles", Profile1.c_str());
+			
 			// cleanup ChannelAssignment
 			for(int i=1;i<10;i++)
 				pAtmoConfig->m_ChannelAssignments[i] = NULL;
@@ -717,7 +739,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 			//get profiles from XML
 			string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
-			char *buffer = new char[Profile1.length()];
+			char *buffer = new char[Profile1.length()+1];
 			strcpy(buffer, Profile1.c_str());
 
 			//serialize the buffer
@@ -729,7 +751,10 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			{		
 				rslt = lst.Serialize("|", i, 0);
 				if (rslt == buffer1)
+				{
 					lst.Remove(rslt, 1, 1);
+					break;
+				}
 			}
 
 			// Get new count after delete one
@@ -755,14 +780,20 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}	
 			// Set new Profile
 			count = lst.GetCount();
+			string tmpProfile;
 			for (int i=0; i<count;++i)
 			{
 				rslt = lst.Serialize("|", i, 0);
 				Profile1 = rslt;
-				if (count >> 1)
-					Profile1 = Profile1 + "|";
+				if (count >> 0)
+				{
+					if (tmpProfile == "")
+						tmpProfile = Profile1;
+					else
+					tmpProfile = tmpProfile + "|" + Profile1;
+				}
 			}
-			strcpy(buffer, Profile1.c_str());
+			strcpy(buffer, tmpProfile.c_str());
 			GetProfile().SetConfig("Default", "profiles", buffer);
 
 			// do not save any Channel settings if Profile deleted

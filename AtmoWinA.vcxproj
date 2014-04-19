@@ -182,7 +182,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
-      <DisableSpecificWarnings>4996; 4995</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996; 4995; 4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -202,7 +202,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DisableSpecificWarnings>4996; 4995</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996; 4995; 4244</DisableSpecificWarnings>
       <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>

@@ -88,7 +88,7 @@
         <setting name="52" value="Profielen" />
         <setting name="53" value="Laad" />
         <setting name="54" value="Standaard" />
-		<setting name="55" value="Enhanced Live view (Windows 8 or higher)" />
+		<setting name="55" value="Verbeterde 'Live beeld' weergave (Windows 8+)" />
     </section>
     <section name="Gradients">
         <setting name="0" value="Zone" />
@@ -162,7 +162,7 @@
         <setting name="0" value="Annuleer" />
         <setting name="1" value="Interface:" />
         <setting name="2" value="Verbinding:" />
-        <setting name="3" value="Aantal LED&apos;s" />
+        <setting name="3" value="Aantal LEDs" />
         <setting name="4" value="Snelheid" />
     </section>
     <section name="Dmxsetup">
@@ -202,7 +202,7 @@
         <setting name="5" value="Aantal kanalen buiten bereik 1 > 255" />
         <setting name="6" value="Fout" />
     </section>
-		<section name="Messages">
+	<section name="Messages">
 		<setting name="0" value="Dit apparaat heeft geen configuratie nodig" />
 		<setting name="1" value="Informatie" />
 		<setting name="2" value="Verbonden" />
