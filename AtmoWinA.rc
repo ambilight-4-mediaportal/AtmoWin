@@ -666,14 +666,14 @@ BEGIN
     BEGIN
         BLOCK "040704b0"
         BEGIN
-            VALUE "CompanyName", "Privat"
+            VALUE "CompanyName", "Private"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.5"
+            VALUE "FileVersion", "1.0.0.6"
             VALUE "InternalName", "AtmoWinA.exe"
             VALUE "LegalCopyright", "Copyright (C) 2014"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.5"
+            VALUE "ProductVersion", "1.0.0.6"
         END
     END
     BLOCK "VarFileInfo"

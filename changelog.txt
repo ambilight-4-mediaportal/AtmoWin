@@ -1,3 +1,10 @@
+Version 1.0.0.6
+BugsFix. (BassFan)
+Atmoduino V2 (NevCairiel) + rework the import (Azzuro)
+Win8 Desktop Duplication API  (NevCairiel)
+Max zone correction (Nevcairiel)
+Increase capture to 170x96 for Release_16x9 build (default build/Release is always 64x48) (NevCairiel)
+
 Version 1.0.0.5
 Moved setting from registry to XML file. ( thanks to BassFan :-] )
 Fix Enum display (needed fix for Win8 use) ( From NevCairiel fork "thanks" )
