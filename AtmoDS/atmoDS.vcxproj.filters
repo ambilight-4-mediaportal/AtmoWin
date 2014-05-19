@@ -24,10 +24,10 @@
     <ClCompile Include="AtmoFilter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\AtmoWinA\AtmoRegistry.cpp">
+    <ClCompile Include="..\AtmoRegistry.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\AtmoWinA\AtmoWin_i.c">
+    <ClCompile Include="..\AtmoWin_i.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="combase.cpp">
@@ -76,7 +76,7 @@
     <ClInclude Include="AtmoFilter.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\AtmoWinA\AtmoRegistry.h">
+    <ClInclude Include="..\AtmoRegistry.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">

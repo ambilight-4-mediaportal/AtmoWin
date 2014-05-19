@@ -13,10 +13,10 @@
 #include <math.h>
 
 #include "mtype.h"
-#include "..\AtmoWinA\AtmoRegistry.h"
+#include "..\AtmoRegistry.h"
 
 #include <comdef.h>
-#include "..\AtmoWinA\AtmoWin_h.h"
+#include "..\AtmoWin_h.h"
 
 #define ATMODS_REG_KEY     "SOFTWARE\\AtmoWinX\\dshow\\"
 

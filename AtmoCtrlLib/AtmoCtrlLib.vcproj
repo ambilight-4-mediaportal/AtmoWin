@@ -165,7 +165,7 @@
 				RelativePath=".\AtmoCtrlLib.cpp">
 			</File>
 			<File
-				RelativePath="..\AtmoWinA\AtmoWin_i.c">
+				RelativePath="..\AtmoWin_i.c">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool

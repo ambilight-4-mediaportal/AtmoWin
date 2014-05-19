@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <comdef.h>		
 #include <time.h>
-#include "..\AtmoWinA\AtmoWin_h.h"
+#include "..\AtmoWin_h.h"
 
 
 void showhelp(){

@@ -147,10 +147,10 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\AtmoWinA\AtmoRegistry.cpp">
+				RelativePath="..\AtmoRegistry.cpp">
 			</File>
 			<File
-				RelativePath="..\AtmoWinA\AtmoWin_i.c">
+				RelativePath="..\AtmoWin_i.c">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -221,7 +221,7 @@
 				RelativePath=".\AtmoFilter.h">
 			</File>
 			<File
-				RelativePath="..\AtmoWinA\AtmoRegistry.h">
+				RelativePath="..\AtmoRegistry.h">
 			</File>
 			<File
 				RelativePath=".\stdafx.h">

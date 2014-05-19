@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #include <comdef.h>
-#include "..\AtmoWinA\AtmoWin_h.h"
+#include "..\AtmoWin_h.h"
 
 #if defined(_MSC_VER)
 #define DLL extern "C" __declspec(dllexport)

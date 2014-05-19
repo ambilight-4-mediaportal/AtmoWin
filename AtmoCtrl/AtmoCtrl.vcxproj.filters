@@ -18,7 +18,7 @@
     <ClCompile Include="AtmoCtrl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\AtmoWinA\AtmoWin_i.c">
+    <ClCompile Include="..\AtmoWin_i.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\AtmoWinA\AtmoWin_i.c">
+    <ClCompile Include="..\AtmoWin_i.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="AtmoWinSampleComClient.cpp">

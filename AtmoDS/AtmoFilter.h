@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------------
 
 #include <comdef.h>
-#include "..\AtmoWinA\AtmoWin_h.h"
+#include "..\AtmoWin_h.h"
 
 extern const AMOVIESETUP_FILTER sudAtmoFilter;
 

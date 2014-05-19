@@ -51,7 +51,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(VCInstallDir)PlatformSDK\include\prerelease;$(VCInstallDir)PlatformSDK\include;$(DXSDK_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;C:\DXSDK\Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(VCInstallDir)PlatformSDK\include\prerelease;$(VCInstallDir)PlatformSDK\include;$(DXSDK_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;TEST1_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -96,8 +96,8 @@
     <ClCompile Include="amfilter.cpp" />
     <ClCompile Include="amvideo.cpp" />
     <ClCompile Include="AtmoFilter.cpp" />
-    <ClCompile Include="..\AtmoWinA\AtmoRegistry.cpp" />
-    <ClCompile Include="..\AtmoWinA\AtmoWin_i.c">
+    <ClCompile Include="..\AtmoRegistry.cpp" />
+    <ClCompile Include="..\AtmoWin_i.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AtmoFilter.h" />
-    <ClInclude Include="..\AtmoWinA\AtmoRegistry.h" />
+    <ClInclude Include="..\AtmoRegistry.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="transfrm.h" />
   </ItemGroup>
