@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _FnordlichtConfigDialog_h_
+#define _FnordlichtConfigDialog_h_
+
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 
@@ -21,4 +23,4 @@ public:
     ~CFnordlichtConfigDialog(void);
 };
 
-
+#endif

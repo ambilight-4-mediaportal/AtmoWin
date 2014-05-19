@@ -1,14 +1,15 @@
 /*
- * AtmoLeftRightColorChanger.h:  a fun effect - which fades a color from the left channel to the right channel, then
- *    takes the next random color and starts again...
- *
- *
- * See the README.txt file for copyright information and how to reach the author(s).
- *
- * $Id$
- */
+* AtmoLeftRightColorChanger.h:  a fun effect - which fades a color from the left channel to the right channel, then
+*    takes the next random color and starts again...
+*
+*
+* See the README.txt file for copyright information and how to reach the author(s).
+*
+* $Id$
+*/
 
-#pragma once
+#ifndef _AtmoLeftRightColorChanger_h_
+#define _AtmoLeftRightColorChanger_h_
 
 #include "atmobasiceffect.h"
 
@@ -18,6 +19,8 @@ protected:
 	virtual DWORD Execute(void);
 
 public:
-    CAtmoLeftRightColorChanger(CAtmoConnection *atmoConnection, CAtmoConfig *atmoConfig);
-    virtual ~CAtmoLeftRightColorChanger(void);
+	CAtmoLeftRightColorChanger(CAtmoConnection *atmoConnection, CAtmoConfig *atmoConfig);
+	virtual ~CAtmoLeftRightColorChanger(void);
 };
+
+#endif

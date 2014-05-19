@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoEditChannelAssignment_h_
+#define _AtmoEditChannelAssignment_h_
+
 #include "basicdialog.h"
 #include "atmodyndata.h"
 #include "atmodefs.h"
@@ -31,4 +33,7 @@ protected:
 public:
     CAtmoEditChannelAssignment(HINSTANCE hInst, HWND parent, CAtmoDynData *pDynData);
     virtual ~CAtmoEditChannelAssignment(void);
+
 };
+
+#endif

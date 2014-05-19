@@ -1,24 +1,27 @@
-#pragma once
+#ifndef _InfoDialog_h_
+#define _InfoDialog_h_
+
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 
 class CMoMoConfigDialog :
-    public CBasicDialog
+	public CBasicDialog
 {
 private:
-    CAtmoConfig *m_pConfig;
+	CAtmoConfig *m_pConfig;
 
 private: // handles...
-    HWND m_hCbxComports;
-    HWND m_hCbxDeviceType;
+	HWND m_hCbxComports;
+	HWND m_hCbxDeviceType;
 
 protected:
-    virtual ATMO_BOOL InitDialog(WPARAM wParam);
-    virtual ATMO_BOOL ExecuteCommand(HWND hControl,int wmId, int wmEvent);
+	virtual ATMO_BOOL InitDialog(WPARAM wParam);
+	virtual ATMO_BOOL ExecuteCommand(HWND hControl,int wmId, int wmEvent);
 
 public:
-    CMoMoConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig);
-    ~CMoMoConfigDialog(void);
+	CMoMoConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig);
+	~CMoMoConfigDialog(void);
 };
 
+#endif
 

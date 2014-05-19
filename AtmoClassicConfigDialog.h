@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _AtmoClassicConfigDialog_h_
+#define _AtmoClassicConfigDialog_h_
+
 #include "basicdialog.h"
 #include "AtmoConfig.h"
 
@@ -10,7 +12,7 @@ private:
 
 private: // handles...
     HWND m_hCbxComports;
-	HWND m_hCbxBaudrate;
+		HWND m_hCbxBaudrate;
 
 protected:
     virtual ATMO_BOOL InitDialog(WPARAM wParam);
@@ -21,4 +23,4 @@ public:
     ~CAtmoClassicConfigDialog(void);
 };
 
-
+#endif

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration>
+	<section name="Menu">
+		<setting name="0" value="Setting" />
+		<setting name="1" value="Language" />
+		<setting name="2" value="Mode" />
+		<setting name="3" value="No effect" />
+		<setting name="4" value="Static color" />
+		<setting name="5" value="Live" />
+		<setting name="6" value="Color changer" />
+		<setting name="7" value="Color changer LR" />
+		<setting name="8" value="Channel assignment" />
+		<setting name="9" value="Info" />
+		<setting name="10" value="Exit" />
+		<setting name="11" value="Profiles" />
+		<setting name="12" value="Nothing" />
+	</section>
+	<section name="ChannelAssignment">
+		<setting name="0" value="Off" />
+		<setting name="1" value="Top" />
+		<setting name="2" value="Right" />
+		<setting name="3" value="Bottom" />
+		<setting name="4" value="Left" />
+		<setting name="5" value="Combined" />
+		<setting name="6" value="Delete Mapping" />
+		<setting name="7" value="Edit Mapping" />
+		<setting name="8" value="Add Mapping" />
+		<setting name="9" value="Cancel" />
+		<setting name="10" value="Mappings" />
+		<setting name="11" value="Hardware Channel" />
+		<setting name="12" value="Zone number" />
+		<setting name="13" value="Name of mapping" />
+		<setting name="14" value="Channel assignment" />
+	</section>
+	<section name="SettingsDialog">
+		<setting name="0" value="No effect" />
+		<setting name="1" value="Static color" />
+		<setting name="2" value="Live" />
+		<setting name="3" value="Color changer" />
+		<setting name="4" value="Color changer LR" />
+		<setting name="5" value="Connected successfully" />
+		<setting name="6" value="Configure device" />
+		<setting name="7" value="Combined zone" />
+		<setting name="8" value="Change channel assignments" />
+		<setting name="9" value="Configure software adjustment" />
+		<setting name="10" value="Configure hardware adjustment" />
+		<setting name="11" value="Select" />
+		<setting name="12" value="Select" />
+		<setting name="13" value="Use:" />
+		<setting name="14" value="Widescreenmode" />
+		<setting name="15" value="Exit" />
+		<setting name="16" value="Effect active:" />
+		<setting name="17" value="Static color" />
+		<setting name="18" value="Color change" />
+		<setting name="19" value="Color change Left/Right" />
+		<setting name="20" value="Shutdown color" />
+		<setting name="21" value="Steps:" />
+		<setting name="22" value="Steps:" />
+		<setting name="23" value="Device type:" />
+		<setting name="24" value="Zones top:" />
+		<setting name="25" value="Zones bottom:" />
+		<setting name="26" value="Zones Left/Right:" />
+		<setting name="27" value="Live image parameters" />
+		<setting name="28" value="No Filter" />
+		<setting name="29" value="Combined" />
+		<setting name="30" value="Percent" />
+		<setting name="31" value="Edge weighting" />
+		<setting name="32" value="Brightness" />
+		<setting name="33" value="Darkness Limit" />
+		<setting name="34" value="Hue windowing" />
+		<setting name="35" value="Sat windowing" />
+		<setting name="36" value="Zone overlap" />
+		<setting name="37" value="Saturation" />
+		<setting name="38" value="Sensitivity" />
+		<setting name="39" value="Filter length" />
+		<setting name="40" value="Filter threshold" />
+		<setting name="41" value="Filter smoothness" />
+		<setting name="42" value="GDI capture framerate" />
+		<setting name="43" value="Filtermode:" />
+		<setting name="44" value="Source:" />
+		<setting name="45" value="Zone/LED setup" />
+		<setting name="46" value="White-/Color Adjustment" />
+		<setting name="47" value="Color Gradient" />
+		<setting name="48" value="Interlace rows" />
+		<setting name="49" value="Name" />
+		<setting name="50" value="Save" />
+		<setting name="51" value="Delete" />
+		<setting name="52" value="Profiles" />
+		<setting name="53" value="Load" />
+		<setting name="54" value="Default" />
+		<setting name="55" value="Enhanced Live view (Windows 8 or higher)" />
+	</section>
+	<section name="Gradients">
+		<setting name="0" value="Zone" />
+		<setting name="1" value="Combined zone" />
+		<setting name="2" value="Edge weighting" />
+		<setting name="3" value="File" />
+		<setting name="4" value="Really overwrite?" />
+		<setting name="5" value="Question" />
+		<setting name="6" value="File can't be overwritten." />
+		<setting name="7" value="Error" />
+		<setting name="8" value="Gradient loaded OK." />
+		<setting name="9" value="Info" />
+		<setting name="10" value="File not found" />
+		<setting name="11" value="File size / resolution is wrong!" />
+		<setting name="12" value="File is probably no BMP file!" />
+		<setting name="13" value="File doesn't have the correct color depth (8-bit, 24-bit)?" />
+		<setting name="14" value="Please only drag BMP files onto the surface!" />
+		<setting name="15" value="Gradient progressions" />
+		<setting name="16" value="Cancel" />
+		<setting name="17" value="Zones" />
+	</section>
+	<section name="ColorPicker">
+		<setting name="0" value="Red" />
+		<setting name="1" value="Green" />
+		<setting name="2" value="Blue" />
+		<setting name="3" value="ColorPicker" />
+		<setting name="4" value="Cancel" />
+	</section>
+	<section name="WhiteSetup">
+		<setting name="0" value="White" />
+		<setting name="1" value="Red" />
+		<setting name="2" value="Green" />
+		<setting name="3" value="Blue" />
+		<setting name="4" value="Yellow" />
+		<setting name="5" value="Magenta" />
+		<setting name="6" value="Cyan" />
+		<setting name="7" value="Cancel" />
+		<setting name="8" value="Color slider" />
+		<setting name="9" value="Software Gamma adjustment" />
+		<setting name="10" value="Mode:" />
+		<setting name="11" value="Active" />
+		<setting name="12" value="Reset all" />
+		<setting name="13" value="Reset to default value" />
+		<setting name="14" value="View Color" />
+		<setting name="15" value="Greyscale adjustment" />
+		<setting name="16" value="Get value from LUT" />
+		<setting name="17" value="Use 3D-LUT" />
+		<setting name="18" value="Color/White adjustment" />
+		<setting name="19" value="Simple white adjustment" />
+		<setting name="20" value="Color adjustment" />
+		<setting name="21" value="!!! Not yet implemented !!!" />
+		<setting name="22" value="SEDU calibration mode" />
+		<setting name="23" value="Invert colors" />
+		<setting name="24" value="Disabled" />
+		<setting name="25" value="Each color individually" />
+	</section>
+	<section name="WhiteSetupHW">
+		<setting name="0" value="Save to controller programming (EEPROM)..." />
+		<setting name="1" value="Cancel" />
+		<setting name="2" value="Adjusting brightness:" />
+		<setting name="3" value="Contrast" />
+		<setting name="4" value="Red" />
+		<setting name="5" value="Green" />
+		<setting name="6" value="Blue" />
+		<setting name="7" value="Gamma correction" />
+		<setting name="8" value="Global contrast" />
+		<setting name="9" value="The hardware white balance is only possible with an active connection to the hardware." />
+		<setting name="10" value="Error" />
+	</section>
+	<section name="Atmoduinosetup">
+		<setting name="0" value="Cancel" />
+		<setting name="1" value="Interface:" />
+		<setting name="2" value="Connection:" />
+		<setting name="3" value="Number of LED's" />
+		<setting name="4" value="Speed:" />
+	</section>
+	<section name="Dmxsetup">
+		<setting name="0" value="Cancel" />
+		<setting name="1" value="Interface:" />
+		<setting name="2" value="Connection:" />
+		<setting name="3" value="DMX start channels (separator &quot;,&quot; or &quot;;&quot;)" />
+		<setting name="4" value="Number of RGB channels (1 &gt; 256):" />
+		<setting name="5" value="Speed:" />
+		<setting name="6" value="Configure simple DMX" />
+	</section>
+	<section name="MultiAtmoLightsetup">
+		<setting name="0" value="Configure Atmolight multi" />
+		<setting name="1" value="Cancel" />
+		<setting name="2" value="Interface 0" />
+		<setting name="3" value="Connection:" />
+		<setting name="4" value="Interface 1" />
+		<setting name="5" value="Interface 2" />
+		<setting name="6" value="Interface 3" />
+		<setting name="7" value="Disabled" />
+	</section>
+	<section name="Momosetup">
+		<setting name="0" value="Configure MoMoLight device" />
+		<setting name="1" value="Cancel" />
+		<setting name="2" value="Serialport:" />
+		<setting name="3" value="Connection:" />
+		<setting name="4" value="Device type:" />
+		<setting name="5" value="3 - Channels" />
+		<setting name="6" value="4 - Channels" />
+	</section>
+	<section name="FNordLightsetup">
+		<setting name="0" value="Configure fnordlight device" />
+		<setting name="1" value="Cancel" />
+		<setting name="2" value="Serialport:" />
+		<setting name="3" value="Connection:" />
+		<setting name="4" value="Num Channels:" />
+		<setting name="5" value="Number of channels out of range 1 &gt; 255" />
+		<setting name="6" value="Error" />
+	</section>
+	<section name="Messages">
+		<setting name="0" value="This device doesn't have a special config dialog" />
+		<setting name="1" value="Info" />
+		<setting name="2" value="connected." />
+		<setting name="3" value="Error" />
+		<setting name="4" value="Selected display no longer in the list" />
+		<setting name="5" value="Delay should be more than 10ms for ColorChanger" />
+		<setting name="6" value="Steps should be more than zero for ColorChanger" />
+		<setting name="7" value="Delay should be more than 10ms for LR ColorChanger" />
+		<setting name="8" value="Steps should be more than zero for LR ColorChanger" />
+		<setting name="9" value="Sorry, no more than 10 settings possible." />
+		<setting name="10" value="This Profil allready exist in the List" />
+		<setting name="11" value="valid range is 1..256" />
+		<setting name="12" value="Would you really want to delete the profile?" />
+		<setting name="13" value="All configured channel will be lost" />
+		<setting name="14" value="timeGetDevCaps failed. Terminate." />
+		<setting name="15" value="CoInitialize failed. Terminate." />
+		<setting name="16" value="Common Controls Initialization failed." />
+		<setting name="17" value="Programm will be terminated." />
+		<setting name="18" value="Check the display settings." />
+		<setting name="19" value="Open Device LastError" />
+		<setting name="20" value="Failed to open device" />
+		<setting name="21" value="RegisterActiveObject failed." />
+		<setting name="22" value="LoadTypeLib failed. Code:" />
+		<setting name="23" value="RegisterTypeLib failed. Code:" />
+		<setting name="24" value="COM Server registered Ok!" />
+		<setting name="25" value="Failed to load, Check Format, Check Size." />
+		<setting name="26" value="Failed to open serial port" />
+		<setting name="27" value="with errorcode:" />
+		<setting name="28" value="Display Settings changed. check settings." />
+	</section>	
+</configuration>

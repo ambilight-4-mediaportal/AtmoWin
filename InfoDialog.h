@@ -7,7 +7,8 @@
  * $Id$
  */
 
-#pragma once
+#ifndef _InfoDialog_h_
+#define _InfoDialog_h_
 
 #include "basicdialog.h"
 
@@ -23,3 +24,5 @@ public:
     CInfoDialog(HINSTANCE hinst, HWND parentWindow);
     virtual ~CInfoDialog(void);
 };
+
+#endif

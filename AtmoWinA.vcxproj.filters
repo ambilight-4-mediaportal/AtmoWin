@@ -52,6 +52,18 @@
     <Filter Include="Ressourcendateien\Quelldateien">
       <UniqueIdentifier>{88ffdced-9b9e-4f8b-aa1e-56796636add4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\tinyxml">
+      <UniqueIdentifier>{b44941e3-72a9-4961-a44d-edbf15067228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\language">
+      <UniqueIdentifier>{5c1afb89-1b35-40ba-b1ea-7c9fc27f4107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\tinyxml">
+      <UniqueIdentifier>{6f8feb5d-923a-4b9d-8bc7-f850d2a5454e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\language">
+      <UniqueIdentifier>{cd27c6ea-eb6e-4bb0-854c-932e4447ce1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AtmoRes.cpp">
@@ -180,9 +192,6 @@
     <ClCompile Include="AtmoDynData.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
-    <ClCompile Include="AtmoRegistryConfig.cpp">
-      <Filter>Quelldateien\settings</Filter>
-    </ClCompile>
     <ClCompile Include="AtmoZoneDefinition.cpp">
       <Filter>Quelldateien\settings</Filter>
     </ClCompile>
@@ -216,6 +225,36 @@
     <ClCompile Include="MondolightConnection.cpp">
       <Filter>Quelldateien\devices</Filter>
     </ClCompile>
+    <ClCompile Include="Language.cpp">
+      <Filter>Quelldateien\language</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoXMLConfig.cpp">
+      <Filter>Quelldateien\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Quelldateien\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>Quelldateien\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Quelldateien\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Quelldateien\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectModel.cpp">
+      <Filter>Quelldateien\settings</Filter>   
+    </ClCompile>	  
+	<ClCompile Include="AtmoDesktopDuplicationCaptureInput.cpp">
+      <Filter>Quelldateien\pixelsources</Filter>   
+	</ClCompile>
+    <ClCompile Include="AtmoDuinoV2ConfigDialog.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmoDuinoV2Connection.cpp">
+      <Filter>Quelldateien\devices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="AtmoWin.idl">
@@ -233,9 +272,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="AtmoTools.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="AtmoWin_h.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="AtmoWinA.h">
@@ -382,20 +418,38 @@
     <ClInclude Include="AtmoConfig.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="basics\AtmoDisplays.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoDisplays.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
     <ClInclude Include="AtmoDynData.h">
       <Filter>Headerdateien\settings</Filter>
     </ClInclude>
-    <ClInclude Include="AtmoRegistryConfig.h">
-      <Filter>Headerdateien\settings</Filter>
-    </ClInclude>
     <ClInclude Include="AtmoZoneDefinition.h">
       <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Language.h">
+      <Filter>Headerdateien\language</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoXMLConfig.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Headerdateien\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Headerdateien\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel.h">
+      <Filter>Headerdateien\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDesktopDuplicationCaptureInput.h">
+      <Filter>Headerdateien\pixelsources</Filter>    
+	</ClInclude>
+	<ClInclude Include="AtmoDuinoV2Connection.h">
+      <Filter>Headerdateien\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmoDuinoV2ConfigDialog.h">
+      <Filter>Headerdateien\dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -411,9 +465,6 @@
     <None Include="small.ico">
       <Filter>Ressourcendateien</Filter>
     </None>
-    <None Include="HISTORY.txt" />
-    <None Include="ReadMe.txt" />
-    <None Include="libconfig.h++" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AtmoWinA.rc">
@@ -422,5 +473,8 @@
     <ResourceCompile Include="AtmoWinTlb.rc">
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="AtmoWinA.exe.manifest" />
   </ItemGroup>
 </Project>

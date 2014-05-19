@@ -1,11 +1,12 @@
 #include "StdAfx.h"
 #include "FnordlichtConfigDialog.h"
 #include "resource.h"
+#include "Language.h"
 
 CFnordlichtConfigDialog::CFnordlichtConfigDialog(HINSTANCE hInst, HWND parent, CAtmoConfig *pConfig) : 
-     CBasicDialog(hInst, IDD_CFG_FNORDL_DLG, parent)
+	CBasicDialog(hInst, IDD_CFG_FNORDL_DLG, parent)
 {
-   this->m_pConfig = pConfig;
+	this->m_pConfig = pConfig;
 }
 
 CFnordlichtConfigDialog::~CFnordlichtConfigDialog(void)
@@ -13,53 +14,78 @@ CFnordlichtConfigDialog::~CFnordlichtConfigDialog(void)
 }
 
 
-ATMO_BOOL CFnordlichtConfigDialog::InitDialog(WPARAM wParam) {
+ATMO_BOOL CFnordlichtConfigDialog::InitDialog(WPARAM wParam) 
+{
+	CLanguage *Lng = new CLanguage;
 
-        m_hCbxComports = getDlgItem(IDC_COMPORT);
-        InitDialog_ComPorts( m_hCbxComports );
-        int com = m_pConfig->getComport() - 1;
-        if(com < 0) com = 0;
-        ComboBox_SetCurSel(m_hCbxComports, com);
+  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
-        m_hEditNumChannels = getDlgItem(IDC_EDT_FNORDL_CH); 
-        this->SetEditInt(m_hEditNumChannels, m_pConfig->getFnordlicht_Amount());
+	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
-        return ATMO_FALSE;
+	// Read Buffer from IniFile
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+
+  Lng->XMLParse(Lng->szTemp, Lng->sNordLightSetupText, "FNordLichtsetup");  
+
+	m_hCbxComports = getDlgItem(IDC_COMPORT);
+	InitDialog_ComPorts( m_hCbxComports );
+	int com = m_pConfig->getComport() - 1;
+	if(com < 0) com = 0;
+	ComboBox_SetCurSel(m_hCbxComports, com);
+
+	m_hEditNumChannels = getDlgItem(IDC_EDT_FNORDL_CH); 
+	this->SetEditInt(m_hEditNumChannels, m_pConfig->getFnordlicht_Amount());
+
+	SendMessage(this->m_hDialog, WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sNordLightSetupText[0]));
+	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sNordLightSetupText[1]));
+	SendMessage(getDlgItem(IDC_STATIC74), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sNordLightSetupText[2]));
+	SendMessage(getDlgItem(IDC_STATIC75), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sNordLightSetupText[3]));
+	SendMessage(getDlgItem(IDC_STATIC76), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sNordLightSetupText[4]));
+
+	return ATMO_FALSE;
 }
 
 
 ATMO_BOOL CFnordlichtConfigDialog::ExecuteCommand(HWND hControl,int wmId, int wmEvent) 
 {
-    switch(wmId) {
-        case IDOK: {
-           int numChannels;
-           if(!this->GetEditInt(m_hEditNumChannels,numChannels)) {
-               return ATMO_TRUE; 
-           }
-           if((numChannels < 1) || (numChannels>255)) {
-               MessageBox(this->m_hDialog,"Number of channels out of range 1..255","Error",MB_ICONERROR | MB_OK);
-               return ATMO_TRUE;
-           }
-           m_pConfig->setFnordlicht_Amount( numChannels );
+	CLanguage *Lng = new CLanguage;
 
-           int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMPORT));
-           m_pConfig->setComport(comportSel + 1);
+	switch(wmId) 
+	{
+	case IDOK: 
+		{
+			int numChannels;
+			if(!this->GetEditInt(m_hEditNumChannels,numChannels)) 
+			{
+				return ATMO_TRUE; 
+			}
+			if((numChannels < 1) || (numChannels>255)) 
+			{
+				MessageBox(this->m_hDialog,Lng->sNordLightSetupText[5], Lng->sNordLightSetupText[6],MB_ICONERROR | MB_OK);
+				return ATMO_TRUE;
+			}
+			m_pConfig->setFnordlicht_Amount( numChannels );
 
-           EndDialog(this->m_hDialog, wmId);
-           break;
-        }
+			int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMPORT));
+			m_pConfig->setComport(comportSel + 1);
 
-        case IDCANCEL: {
-           EndDialog(this->m_hDialog, wmId);
-           break;
-        }
+			EndDialog(this->m_hDialog, wmId);
+			break;
+		}
 
-       default:
-           return ATMO_FALSE;
+	case IDCANCEL:
+		{
+			EndDialog(this->m_hDialog, wmId);
+			break;
+		}
 
-    }
+	default:
+		return ATMO_FALSE;
 
-    return ATMO_TRUE;
+	}
+
+	return ATMO_TRUE;
 }
 
 

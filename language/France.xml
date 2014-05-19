@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration>
+	<section name="Menu">
+		<setting name="0" value="Configuration" />
+		<setting name="1" value="Langage" />
+		<setting name="2" value="Mode" />
+		<setting name="3" value="OFF" />
+		<setting name="4" value="Couleur unique" />
+		<setting name="5" value="Temps réel" />
+		<setting name="6" value="Changement de couleur" />
+		<setting name="7" value="Changement de couleur G/D" />
+		<setting name="8" value="Attribution des canaux" />
+		<setting name="9" value="Info" />
+		<setting name="10" value="Quitter" />
+		<setting name="11" value="profiles" />
+		<setting name="12" value="Vide" />		
+	</section>
+	<section name="ChannelAssignment">
+		<setting name="0" value="OFF" />
+		<setting name="1" value="Haut" />
+		<setting name="2" value="Droite" />
+		<setting name="3" value="Bas" />
+		<setting name="4" value="Gauche" />
+		<setting name="5" value="Combinée" />
+		<setting name="6" value="Suppr. Profil" />
+		<setting name="7" value="Edit. Profil" />
+		<setting name="8" value="Ajout. Profil" />
+		<setting name="9" value="Annuler" />
+		<setting name="10" value="Profils" />
+		<setting name="11" value="Canaux contrôleur" />
+		<setting name="12" value="Num. Zone" />
+		<setting name="13" value="Nom du profil" />
+		<setting name="14" value="Attribution des canaux" />
+	</section>
+	<section name="SettingsDialog">
+		<setting name="0" value="OFF" />
+		<setting name="1" value="Couleur unique" />
+		<setting name="2" value="Temps réel" />
+		<setting name="3" value="Changement de couleur" />
+		<setting name="4" value="Changement de couleur G/D" />
+		<setting name="5" value="Connexion réussi" />
+		<setting name="6" value="Configuré périphérique" />
+		<setting name="7" value="Zone Combinée" />
+		<setting name="8" value="Config. attribution des canaux" />
+		<setting name="9" value="Configurer ajustement logiciel" />
+		<setting name="10" value="Configurer ajustement matériel" />
+		<setting name="11" value="Sélectionner" />
+		<setting name="12" value="Sélectionner" />
+		<setting name="13" value="Utiliser..." />
+		<setting name="14" value="Bar noire = Leds OFF" />
+		<setting name="15" value="Quitter" />
+		<setting name="16" value="Effet actif:" />
+		<setting name="17" value="Couleur unique" />
+		<setting name="18" value="Changement de couleur" />
+		<setting name="19" value="Changement de couleur G/D" />
+		<setting name="20" value="Couleur à l'extinction" />
+		<setting name="21" value="Étapes:" />
+		<setting name="22" value="Étapes:" />
+		<setting name="23" value="Matériel type:" />
+		<setting name="24" value="Zones Haut:" />
+		<setting name="25" value="Zones Bas:" />
+		<setting name="26" value="Zones Gauche/Droite:" />
+		<setting name="27" value="Configuration Temps réel" />
+		<setting name="28" value="Aucun filtre" />
+		<setting name="29" value="Combiné" />
+		<setting name="30" value="Pourcentage" />
+		<setting name="31" value="hauteur bords" />
+		<setting name="32" value="Luminosité" />
+		<setting name="33" value="Lim. obscurité" />
+		<setting name="34" value="Teinte" />
+		<setting name="35" value="Saturation ?!?" />
+		<setting name="36" value="superpos. zones" />
+		<setting name="37" value="Saturation" />
+		<setting name="38" value="Sensibilité" />
+		<setting name="39" value="réponses du filtre" />
+		<setting name="40" value="Seuil du filtre" />
+		<setting name="41" value="Lissage du filtre" />
+		<setting name="42" value="Capture GDI" />
+		<setting name="43" value="Filtre :" />
+		<setting name="44" value="source:" />
+		<setting name="45" value="zone/Led" />
+		<setting name="46" value="Blanc/Couleur Adjust." />
+		<setting name="47" value="Dégradé" />
+		<setting name="48" value="Ligne interlacé" />
+		<setting name="49" value="Nom" />
+		<setting name="50" value="Enreg." />
+		<setting name="51" value="Suppr." />
+		<setting name="52" value="profils" />
+		<setting name="53" value="Charg." />
+		<setting name="54" value="Default" />
+		<setting name="55" value="Win8 capture mode API" />
+	</section>
+	<section name="Gradients">
+		<setting name="0" value="Zone" />
+		<setting name="1" value="Zone combinée" />
+		<setting name="2" value="hauteur bord" />
+		<setting name="3" value="Fichier" />
+		<setting name="4" value="vraiment ré-écrire" />
+		<setting name="5" value="Question" />
+		<setting name="6" value="Ne peut être remplacé" />
+		<setting name="7" value="Erreur" />
+		<setting name="8" value="Dégradé charg. OK" />
+		<setting name="9" value="Info" />
+		<setting name="10" value="Fichier introuvable" />
+		<setting name="11" value="Taille fichier / résolution est faux" />
+		<setting name="12" value="Le fichier n'est peut être pas un fichier BMP !" />
+		<setting name="13" value="Fichier n'a peut être pas le bonne résolution (8bit, 24 bit)?" />
+		<setting name="14" value="SVP seulement BMP fichier peuvent être comme surface" />
+		<setting name="15" value="progression du dégradé" />
+		<setting name="16" value="Quitter" />
+		<setting name="17" value="Zones" />
+	</section>
+	<section name="ColorPicker">
+		<setting name="0" value="Rouge" />
+		<setting name="1" value="Vert" />
+		<setting name="2" value="Bleu" />
+		<setting name="3" value="ColorPicker" />
+		<setting name="4" value="Annuler" />
+	</section>
+	<section name="WhiteSetup">
+		<setting name="0" value="Blanc" />
+		<setting name="1" value="Rouge" />
+		<setting name="2" value="Vert" />
+		<setting name="3" value="Bleu" />
+		<setting name="4" value="Jaune" />
+		<setting name="5" value="Magenta" />
+		<setting name="6" value="Cyan" />
+		<setting name="7" value="Annuler" />
+		<setting name="8" value="curseur couleur" />
+		<setting name="9" value="logiciel Adjust. Gamma" />
+		<setting name="10" value="Mode:" />
+		<setting name="11" value="Actif" />
+		<setting name="12" value="Tout Reinit." />
+		<setting name="13" value="Reinit tout par défaut." />
+		<setting name="14" value="Couleur affichée" />
+		<setting name="15" value="Gris adjust." />
+		<setting name="16" value="Récupérer depuis LUT." />
+		<setting name="17" value="utiliser 3D-Lut" />
+		<setting name="18" value="Couleur/Blanc adjust." />
+		<setting name="19" value="Blanc simple adjust." />
+		<setting name="20" value="couleurs adjust." />
+		<setting name="21" value="! Non implanté !" />
+		<setting name="22" value="Calibrage SEDU" />
+		<setting name="23" value="inverser couleurs" />
+		<setting name="24" value="désactivé" />
+		<setting name="25" value="Chaque couleur individuelle" />
+	</section>
+	<section name="WhiteSetupHW">
+		<setting name="0" value="Flasher le contrôleur (EEPROM)" />
+		<setting name="1" value="Annuler" />
+		<setting name="2" value="Ajusté luminosité." />
+		<setting name="3" value="contraste" />
+		<setting name="4" value="Rouge" />
+		<setting name="5" value="Vert" />
+		<setting name="6" value="Bleu" />
+		<setting name="7" value="Correction Gamma" />
+		<setting name="8" value="contraste global" />
+		<setting name="9" value="l'ajustement des blancs par le contrôleur n'est possible qu'avec une connexion." />
+		<setting name="10" value="Erreur" />
+	</section>
+	<section name="Atmoduinosetup">
+		<setting name="0" value="Annuler" />
+		<setting name="1" value="Interface:" />
+		<setting name="2" value="Connexion..." />
+		<setting name="3" value="Nombre de LED" />
+		<setting name="4" value="Vitesse :" />
+	</section>
+	<section name="Dmxsetup">
+		<setting name="0" value="Annuler" />
+		<setting name="1" value="Interface :" />
+		<setting name="2" value="Connexion..." />
+		<setting name="3" value="DMX, 1er canaux (séparateur &quot;,&quot; ou &quot;;&quot;)" />
+		<setting name="4" value="Nombre de RGB canaux (1..256) :" />
+		<setting name="5" value="Vitesse:" />
+		<setting name="6" value="Configurer DMX simple" />
+	</section>
+	<section name="MultiAtmoLightsetup">
+		<setting name="0" value="Configuration AtmoLight-multi" />
+		<setting name="1" value="Annuler" />
+		<setting name="2" value="Interface 0" />
+		<setting name="3" value="Connexion..." />
+		<setting name="4" value="Interface 1" />
+		<setting name="5" value="Interface 2" />
+		<setting name="6" value="Interface 3" />
+		<setting name="7" value="Désactivé" />
+	</section>
+	<section name="Momosetup">
+		<setting name="0" value="Configuration MomoLight" />
+		<setting name="1" value="Annuler" />
+		<setting name="2" value="Port série :" />
+		<setting name="3" value="Connexion..." />
+		<setting name="4" value="Type de contrôleur:" />
+		<setting name="5" value="3 - canaux" />
+		<setting name="6" value="4 - canaux" />
+	</section>
+	<section name="FNordLightsetup">
+		<setting name="0" value="Configuration Fnordlight" />
+		<setting name="1" value="Annuler" />
+		<setting name="2" value="Port série:" />
+		<setting name="3" value="Connexion..." />
+		<setting name="4" value="Nombre canaux:" />
+		<setting name="5" value="Nombre de canaux hors de 1..255" />
+		<setting name="6" value="Erreur" />
+	</section>
+	<section name="Messages">
+		<setting name="0" value="Ce périphérique n'a pas de config. spécifique." />
+		<setting name="1" value="Info" />
+		<setting name="2" value="Connecté" />
+		<setting name="3" value="Erreur" />
+		<setting name="4" value="L'affichage sélectionné n'est plus disponible" />
+		<setting name="5" value="Délai doit être supérieur à 10ms pour chang. de couleur" />
+		<setting name="6" value="Etape doit être supérieur à 0 pour chang. de couleur" />
+		<setting name="7" value="Délai doit être supérieur à 10ms pour chang. de couleur GD" />
+		<setting name="8" value="Etape doit être supérieur à 0 pour chang. de couleur GD" />
+		<setting name="9" value="Désolé, pas plus de 10 paramètres." />
+		<setting name="10" value="Ce Profil existe déjà." />
+		<setting name="11" value="Vauleur possible : 1 -> 256" />
+		<setting name="12" value="Voulez-vous vraiment supprimer ce profil ?" />
+		<setting name="13" value="Toutes les zones configurés seront perdu !" />
+		<setting name="14" value="timeGetDevCaps échec. Terminé." />
+		<setting name="15" value="CoInitialize échec : Terminé" />
+		<setting name="16" value="Initialisation des contrôles commun : échec" />
+		<setting name="17" value="Programme va être fermé" />
+		<setting name="18" value="Vérifier les paramètres d'affichage" />
+		<setting name="19" value="Utilisation du périph. dernière erreur" />
+		<setting name="20" value="Echec d'utilisation du périph." />
+		<setting name="21" value="RegisterActiveObject  échec." />
+		<setting name="22" value="LoadTypeLib échec. Code:" />
+		<setting name="23" value="RegisterTypeLib échec. Code:" />
+		<setting name="24" value="COM Server enregistrement : Ok!" />
+		<setting name="25" value="Échec de chargement, Vérifiez Format et Taille." />
+		<setting name="26" value="Echec d'ouverture du port Série" />
+		<setting name="27" value="avec code-erreur:" />
+		<setting name="28" value="Paramètre Affichage modifié, vérifiez paramètre." />
+	</section>			
+</configuration>
