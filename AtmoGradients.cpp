@@ -53,15 +53,21 @@ ATMO_BOOL CAtmoGradients::InitDialog(WPARAM wParam)
 	HWND groupBox = getDlgItem( IDC_ZONE_GROUP );
 	CLanguage *Lng = new CLanguage;
 
-	// GetCurrentDir
-	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+	TCHAR dest[MAX_PATH];
+	Lng->GetThisPath(dest, MAX_PATH);
+	CString str = dest;
+	str = str + _T("\\Language");
+	TCHAR* CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);	
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
-	
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
+
 	Lng->XMLParse(Lng->szTemp, Lng->sGradientsText, "Gradients");  	
 
 	SetWindowLongPtr(groupBox, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
@@ -203,7 +209,7 @@ ATMO_BOOL CAtmoGradients::InitDialog(WPARAM wParam)
 		SetActiveZone( 0 );
 		SendMessage( m_ZoneRadios[ 0 ], (UINT)BM_SETCHECK, BST_CHECKED, 0);
 	}
- 
+
 	SendMessage(this->m_hDialog, WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sGradientsText[15]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sGradientsText[16]));
 	SendMessage(getDlgItem(IDC_ZONE_GROUP), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sGradientsText[17]));

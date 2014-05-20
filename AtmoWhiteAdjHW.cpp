@@ -93,15 +93,22 @@ ATMO_BOOL CAtmoWhiteAdjHW::InitDialog(WPARAM wParam)
 	SetupSliderControl(IDC_SL_GAMMA_BLUE,11,35,m_Hardware_gamma_blue,1);
 	SetEditDouble(IDC_EDT_GAMMA_BLUE, (double)m_Hardware_gamma_blue / 10.0);
 
-  Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+	TCHAR dest[MAX_PATH];
+	Lng->GetThisPath(dest, MAX_PATH);
+	CString str = dest;
+	str = str + _T("\\Language");
+	TCHAR* CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);	
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
 
-  Lng->XMLParse(Lng->szTemp, Lng->sTextCPicker, "WhiteSetupHW"); 
+	Lng->XMLParse(Lng->szTemp, Lng->sTextCPicker, "WhiteSetupHW"); 
 
 	SendMessage(getDlgItem(IDC_SAVE_TO_EEPROM), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupHWText[0]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sWhiteSetupHWText[1]));

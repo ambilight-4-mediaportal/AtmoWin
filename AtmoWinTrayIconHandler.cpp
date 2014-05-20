@@ -67,7 +67,7 @@ void CTrayIconWindow::createWindow()
 	ShowNotifyIcon(ATMO_TRUE);
 
 	CLanguage *Lng = new CLanguage;
-
+/*
 	// GetSpecialFolder
 	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
 	if (!Lng->DirectoryExists(Lng->szCurrentDir ))
@@ -76,6 +76,17 @@ void CTrayIconWindow::createWindow()
 	}
 
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+*/
+
+	TCHAR dest[MAX_PATH];
+  Lng->GetThisPath(dest, MAX_PATH);
+	CString str = dest;
+	str = str + _T("\\Language");
+	TCHAR* CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);	
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	this->m_hLanguageSubMenu = CreatePopupMenu();
 
@@ -85,9 +96,9 @@ void CTrayIconWindow::createWindow()
 	char szFile[MAX_PATH];
 
 	CString strExtension   = _T("\\*.xml");
-	strcat(Lng->szCurrentDir, strExtension);
+	strcat(CurrentPath, strExtension);
 
-	hSearch = FindFirstFile(Lng->szCurrentDir, &wfd);
+	hSearch = FindFirstFile(CurrentPath, &wfd);
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	nCurrentLanguage = MENUID_FIRST_LANGUAGE;
@@ -113,8 +124,15 @@ void CTrayIconWindow::createWindow()
 	FindClose(hSearch);
 
 	// Read Buffer from IniFile
-	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	dest[MAX_PATH];
+  Lng->GetThisPath(dest, MAX_PATH);
+	str = dest;
+	str = str + _T("\\Language");
+	CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);
+
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
 
 	// Create Default Xml Language if not exists
 	ifstream FileExists(Lng->szTemp);

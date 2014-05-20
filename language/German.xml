@@ -88,7 +88,7 @@
 		<setting name="52" value="Profile..." />
 		<setting name="53" value="Laden" />
 		<setting name="54" value="Standard:" />
-		<setting name="55" value="Enhanced Live view (Windows 8 or higher)" />
+		<setting name="55" value="Verbessertes LiveView (Windows 8 oder höher)" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />

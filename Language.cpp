@@ -5,6 +5,8 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <Shlwapi.h>
+#pragma comment(lib, "shlwapi.lib")
 
 char *sSection[MAX_SECTION_STRINGS] =
 {"Menu",               //0
@@ -490,4 +492,14 @@ void CLanguage::CreateDefaultXML(const char* FileName, char* Section[])
 
 	doc.SaveFile( FileName);
 
+}
+
+TCHAR* CLanguage::GetThisPath(TCHAR* dest, size_t destSize)
+{
+    if (!dest) return NULL;
+    if (MAX_PATH > destSize) return NULL;
+
+    DWORD length = GetModuleFileName( NULL, dest, destSize );
+    PathRemoveFileSpec(dest);
+		return dest;
 }

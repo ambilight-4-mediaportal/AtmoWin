@@ -19,16 +19,23 @@ ATMO_BOOL CAtmoMultiConfigDialog::InitDialog(WPARAM wParam)
 	int com;
 	CLanguage *Lng = new CLanguage;
 
-	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+	TCHAR dest[MAX_PATH];
+	Lng->GetThisPath(dest, MAX_PATH);
+	CString str = dest;
+	str = str + _T("\\Language");
+	TCHAR* CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);	
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
 
-  Lng->XMLParse(Lng->szTemp, Lng->sMultiAtmoLightDlgText, "MultiAtmoLightsetup"); 	 
-	
+	Lng->XMLParse(Lng->szTemp, Lng->sMultiAtmoLightDlgText, "MultiAtmoLightsetup"); 	 
+
 	m_hCbxComports[0] = getDlgItem(IDC_COMPORT_0);
 	ComboBox_AddString(m_hCbxComports[0], Lng->sMultiAtmoLightDlgText[7]);
 	InitDialog_ComPorts(m_hCbxComports[0]);
@@ -56,7 +63,7 @@ ATMO_BOOL CAtmoMultiConfigDialog::InitDialog(WPARAM wParam)
 	com = m_pConfig->getComport(3);
 	if(com < 0) com = 0;
 	ComboBox_SetCurSel(m_hCbxComports[3], com);   
-	
+
 	SendMessage(this->m_hDialog, WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sMultiAtmoLightDlgText[0]));
 	SendMessage(getDlgItem(IDCANCEL), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sMultiAtmoLightDlgText[1]));
 	SendMessage(getDlgItem(IDC_STATIC66), WM_SETTEXT, 0, (LPARAM)(LPCTSTR)(Lng->sMultiAtmoLightDlgText[2]));

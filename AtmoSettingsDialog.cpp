@@ -246,13 +246,20 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	CLanguage *Lng = new CLanguage;
 
-	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+	TCHAR dest[MAX_PATH];
+  Lng->GetThisPath(dest, MAX_PATH);
+	CString str = dest;
+	str = str + _T("\\Language");
+	TCHAR* CurrentPath = NULL;
+	CurrentPath = new TCHAR[str.GetLength()];
+	_tcscpy(CurrentPath, str);	
+
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
 
 	Lng->XMLParse(Lng->szTemp, Lng->sSettingText, "SettingsDialog");
 

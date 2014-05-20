@@ -20,7 +20,7 @@
 #pragma warning (disable:4100)	// Unreferenced formal parameter
 #pragma warning (disable:4702)	// Unreachable Code
 #pragma warning (disable:4127)	// conditional expression is constant
-
+#pragma warning (disable:4005)
 
 
 

@@ -233,13 +233,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Utils->firststart = true;
 		}
 
-		Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];	
-	  sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
+		TCHAR dest[MAX_PATH];
+		Lng->GetThisPath(dest, MAX_PATH);
+		CString str = dest;
+		str = str + _T("\\Language");
+		TCHAR* CurrentPath = NULL;
+		CurrentPath = new TCHAR[str.GetLength()];
+		_tcscpy(CurrentPath, str);	
 
-	  GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
+		sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
-	  // Read Buffer from IniFile
-	  sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
+		GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
+
+		// Read Buffer from IniFile
+		sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
+
 		Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
 
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
@@ -294,9 +302,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			}
 		}
 
-    hResInstance = hInstance;
-    hAtmo_ResInstance = hResInstance;
-    hAtmo_Instance    = hInstance;
+		hResInstance = hInstance;
+		hAtmo_ResInstance = hResInstance;
+		hAtmo_Instance    = hInstance;
 
 		atmoDisplays = new CAtmoDisplays();
 		if(atmoConfig->getLiveView_DisplayNr()>=atmoDisplays->getCount()) 

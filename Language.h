@@ -77,6 +77,7 @@ public:
 	int DirectoryExists(const char* dirName);
 	void XMLParse(const char* FileName, CString* sInText, const char* Section);
 	void CreateDefaultXML(const char* FileName, char* Section[]);
+	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
 
 	CLanguage(void);
 	virtual ~CLanguage(void);
