@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "ObjectModel.h"
+#include <Shlwapi.h>
+#pragma comment(lib, "shlwapi.lib")
 
 IMPLEMENT_FACTORY(MyConfiguration, configuration)
 IMPLEMENT_FACTORY(MySection, section)
 IMPLEMENT_FACTORY(MySetting ,	setting)
 
-char CUtils::szCurrentDir[MAX_PATH];
 char CUtils::szTemp[512];
 bool CUtils::firststart;
 
@@ -48,36 +49,12 @@ int CUtils::DirectoryExists(const char* dirName)
 	return (attribs & FILE_ATTRIBUTE_DIRECTORY);
 }
 
-char CUtils::GetSpecialFolder(int CLSID) 
+TCHAR* CUtils::GetThisPath(TCHAR* dest, size_t destSize)
 {
-	LPITEMIDLIST  pidl ; 
-	LPMALLOC      pShellMalloc; 
+    if (!dest) return NULL;
+    if (MAX_PATH > destSize) return NULL;
 
-	// SHGetSpecialFolderLocation generates a PIDL. The memory for the PIDL 
-	// is allocated by the shell, and should be freed using the shell 
-	// mallocator COM object. Use SHGetMalloc to retrieve the malloc object 
-	if(SUCCEEDED(SHGetMalloc(&pShellMalloc))) 
-	{ 
-		// if we were able to get the shell malloc object, then 
-		// proceed by fetching the pidl for the windows desktop 
-		if(SUCCEEDED(SHGetSpecialFolderLocation(NULL, 
-			CLSID, &pidl))) 
-		{ 
-			// return is true if success 
-			if(SHGetPathFromIDList(pidl, (char*)szCurrentDir)) 
-			{ 
-				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Settings");
-				return *szCurrentDir;
-			} 
-			else
-			return szCurrentDir[0];
-
-			pShellMalloc->Free(pidl); 
-			pShellMalloc->Release(); 
-		} 
-		else
-		return szCurrentDir[0];
-	} 
-	else
-	return szCurrentDir[0];
+    DWORD length = GetModuleFileName( NULL, dest, destSize );
+    PathRemoveFileSpec(dest);
+		return dest;
 }

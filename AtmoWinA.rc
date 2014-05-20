@@ -56,13 +56,13 @@ BEGIN
     LTEXT           "AtmoWin",IDC_STATIC,30,8,38,8
     LTEXT           "Controlsoftware for a PC Atmo Light...",IDC_STATIC,7,22,135,8
     LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,7,32,202,8
-		LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin", IDC_STATIC,8,42,224,17
+    LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,8,42,224,17
     LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,60,205,29
-    LTEXT           "Move from Registry to XML, add MultiLanguage Support,\nadd Profile to TrayMenu and other fixed\nv.1.0.0.1 to v.1.0.0.5 (BassFan)\nhttp://forum.team-mediaportal.com/members/bassfan.48781/", IDC_STATIC,8,87,265,37
-    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle\nhttp://about.me/brian.aberle", IDC_STATIC,8,122,205,17
-		LTEXT           "Angie05 : Colors algorithm support / Sedu support / BugFix", IDC_STATIC,8,140,205,8
-		LTEXT           "RickDB : Atmoduino Support", IDC_STATIC,8,150,205,8
-		LTEXT           "NevCairiel : Win8 API / Atmoduino V2 / BugFix", IDC_STATIC,8,160,205,8
+    LTEXT           "Move from Registry to XML, add MultiLanguage Support,\nadd Profile to TrayMenu and other fixed\nv.1.0.0.1 to v.1.0.0.5 (BassFan)\nhttp://forum.team-mediaportal.com/members/bassfan.48781/",IDC_STATIC,8,87,265,37
+    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle\nhttp://about.me/brian.aberle",IDC_STATIC,8,122,205,17
+    LTEXT           "Angie05 : Colors algorithm support / Sedu support / BugFix",IDC_STATIC,8,140,205,8
+    LTEXT           "RickDB : Atmoduino Support",IDC_STATIC,8,150,205,8
+    LTEXT           "NevCairiel : Win8 API / Atmoduino V2 / BugFix",IDC_STATIC,8,160,205,8
     ICON            IDI_ATMOICON,IDC_STATIC,4,3,21,20
 END
 
@@ -146,8 +146,8 @@ BEGIN
     PUSHBUTTON      "load",IDC_BU_LOADPROVILE,213,286,49,14
     LTEXT           "default",IDC_STATIC21,280,271,34,8
     COMBOBOX        IDC_CB_DEVPROFILES,319,269,48,59,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-	CONTROL         "Enhanced Live view (Windows 8 or higher)",IDC_LIVEMODE, //Checkbox Select GDI or DesktropDuplication
-					          "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,314,171,10
+    CONTROL         "Enhanced Live view (Windows 8 or higher)",IDC_LIVEMODE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,314,171,10
 END
 
 IDD_COLORPICKER DIALOGEX 0, 0, 331, 113
@@ -466,6 +466,7 @@ BEGIN
     EDITTEXT        IDC_ATMOCL_LED_AMOUNT,75,25,39,14,ES_AUTOHSCROLL
 END
 
+
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -605,37 +606,7 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
-/*
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
 
-STRINGTABLE
-BEGIN
-    IDS_APP_TITLE           "AtmoWinX"
-    IDS_SETTINGS            "&settings"
-    IDS_MODUS               "mode"
-    IDS_EFFECT_NONE         "no effect"
-    IDS_EFFECT_LIVE         "Live"
-    IDS_EFFECT_STAT_COLOR   "static color"
-    IDC_ATMOWINA            "AtmoSetupDialog"
-    IDS_EFFECT_COLOR_CHANGE "color changer"
-    IDS_EFFECT_COLOR_CHLR   "color changer LR"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_INFO                "Info"
-    IDS_QUIT                "exit"
-    IDS_CHANNELASSIGN       "channel assignment"
-    IDS_DISPLAY_SETCHANGED  "Display Einstellungen wurden verändert. Bitte Einstellungen überprüfen."
-    IDS_HINT                "hint"
-    IDS_EFFECT_COLOR_MODE   "ColorMode"
-END
-*/
-#endif    // Deutsch (Deutschland) resources
-/////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -650,8 +621,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,5
- PRODUCTVERSION 1,0,0,5
+ FILEVERSION 1,0,0,7
+ PRODUCTVERSION 1,0,0,7
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -668,12 +639,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Private"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.6"
+            VALUE "FileVersion", "1.0.0.7"
             VALUE "InternalName", "AtmoWinA.exe"
             VALUE "LegalCopyright", "Copyright (C) 2014"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.6"
+            VALUE "ProductVersion", "1.0.0.7"
         END
     END
     BLOCK "VarFileInfo"
@@ -682,7 +653,10 @@ BEGIN
     END
 END
 
+#endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
+
+
 
 #ifndef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -693,3 +667,4 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
+

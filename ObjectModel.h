@@ -13,7 +13,6 @@ class CUtils
 {
 
 public:
-  static char szCurrentDir[MAX_PATH];
   static char szTemp[512];
 	static bool firststart;
 
@@ -22,6 +21,7 @@ public:
 	
 	char GetSpecialFolder(int CLSID);
   int DirectoryExists(const char* dirName);
+	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
 
 	CUtils(void);
 	virtual ~CUtils(void);

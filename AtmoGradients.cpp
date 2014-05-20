@@ -58,7 +58,7 @@ ATMO_BOOL CAtmoGradients::InitDialog(WPARAM wParam)
 	CString str = dest;
 	str = str + _T("\\Language");
 	TCHAR* CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()];
+	CurrentPath = new TCHAR[str.GetLength()+1];
 	_tcscpy(CurrentPath, str);	
 
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);

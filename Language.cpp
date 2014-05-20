@@ -284,7 +284,6 @@ CString CLanguage::sMomoDlgText[MAX_MOMODLG_STRINGS];
 CString CLanguage::sNordLightSetupText[MAX_NORDLIGHTSETUP_STRINGS];
 CString CLanguage::sMessagesText[MAX_MESSAGE_STRINGS];
 
-char CLanguage::szCurrentDir[MAX_PATH];
 char CLanguage::szFileINI[MAX_PATH];
 char CLanguage::szLang[MAX_PATH], CLanguage::szTemp[512], CLanguage::Buffer[1024], CLanguage::szParam[32]; 
 
@@ -304,41 +303,6 @@ int CLanguage::DirectoryExists(const char* dirName)
 		return false;
 	}
 	return (attribs & FILE_ATTRIBUTE_DIRECTORY);
-}
-
-
-char CLanguage::GetSpecialFolder(int CLSID) 
-{
-	LPITEMIDLIST  pidl ; 
-	LPMALLOC      pShellMalloc; 
-
-	// SHGetSpecialFolderLocation generates a PIDL. The memory for the PIDL 
-	// is allocated by the shell, and should be freed using the shell 
-	// mallocator COM object. Use SHGetMalloc to retrieve the malloc object 
-	if(SUCCEEDED(SHGetMalloc(&pShellMalloc))) 
-	{ 
-		// if we were able to get the shell malloc object, then 
-		// proceed by fetching the pidl for the windows desktop 
-		if(SUCCEEDED(SHGetSpecialFolderLocation(NULL, 
-			CLSID, &pidl))) 
-		{ 
-			// return is true if success 
-			if(SHGetPathFromIDList(pidl, (char*)szCurrentDir)) 
-			{ 
-				strcat(szCurrentDir, "\\Team MediaPortal\\MediaPortal\\AtmoWin\\Language");
-				return *szCurrentDir;
-			} 
-			else
-			  return szCurrentDir[0];
-
-			pShellMalloc->Free(pidl); 
-		  pShellMalloc->Release(); 
-		} 
-		else
-		  return szCurrentDir[0];
-	} 
-	else
-		return szCurrentDir[0];
 }
 
 void CLanguage::XMLParse(const char* FileName, CString *sInText, const char* Section)

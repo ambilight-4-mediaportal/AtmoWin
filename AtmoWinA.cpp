@@ -202,15 +202,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 
 		CUtils *Utils = new CUtils;
 
-		// GetSpecialFolder
-		Utils->szCurrentDir[Utils->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
-		if (!Utils->DirectoryExists(Utils->szCurrentDir ))
+		// GetSettingsFolder
+	  TCHAR dest[MAX_PATH];
+    Utils->GetThisPath(dest, MAX_PATH);
+	  CString str = dest;
+	  str = str + _T("\\Settings");
+	  TCHAR* CurrentPath = NULL;
+	  CurrentPath = new TCHAR[str.GetLength()+1];
+	  _tcscpy(CurrentPath, str);	
+
+		if (!Utils->DirectoryExists(CurrentPath))
 		{
-			CreateDirectory(Utils->szCurrentDir, NULL);
+			CreateDirectory(CurrentPath, NULL);
 		}
 
 		// Read Buffer from IniFile
-		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
+		sprintf(Utils->szTemp, "%s\\%s.xml\0", CurrentPath, "AtmoWinX");
 
 		// Create Default Xml if not exists
 		ifstream FileExists(Utils->szTemp);
@@ -233,12 +240,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Utils->firststart = true;
 		}
 
-		TCHAR dest[MAX_PATH];
+		dest[MAX_PATH];
 		Lng->GetThisPath(dest, MAX_PATH);
-		CString str = dest;
+		str = dest;
 		str = str + _T("\\Language");
-		TCHAR* CurrentPath = NULL;
-		CurrentPath = new TCHAR[str.GetLength()];
+		CurrentPath = NULL;
+		CurrentPath = new TCHAR[str.GetLength()+1];
 		_tcscpy(CurrentPath, str);	
 
 		sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);

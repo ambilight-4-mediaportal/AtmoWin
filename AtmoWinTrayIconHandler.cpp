@@ -83,7 +83,7 @@ void CTrayIconWindow::createWindow()
 	CString str = dest;
 	str = str + _T("\\Language");
 	TCHAR* CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()];
+	CurrentPath = new TCHAR[str.GetLength()+1];
 	_tcscpy(CurrentPath, str);	
 
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
@@ -96,6 +96,7 @@ void CTrayIconWindow::createWindow()
 	char szFile[MAX_PATH];
 
 	CString strExtension   = _T("\\*.xml");
+
 	strcat(CurrentPath, strExtension);
 
 	hSearch = FindFirstFile(CurrentPath, &wfd);
@@ -129,7 +130,7 @@ void CTrayIconWindow::createWindow()
 	str = dest;
 	str = str + _T("\\Language");
 	CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()];
+	CurrentPath = new TCHAR[str.GetLength()+1];
 	_tcscpy(CurrentPath, str);
 
 	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
