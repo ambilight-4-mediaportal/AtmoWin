@@ -1,8 +1,11 @@
 #ifndef __OBJECTMODEL_H__
 #define __OBJECTMODEL_H__
 
+#include "atlstr.h"
 #include "shlobj.h" 
 #include <string>
+
+using namespace std; 
 
 typedef struct profil 
 {
@@ -11,17 +14,19 @@ typedef struct profil
 
 class CUtils
 {
+private:
+	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
 
 public:
-  static char szTemp[512];
+  static char szCurrentDir[MAX_PATH];
+	static char szTemp[512];
 	static bool firststart;
 
 	GString strConfigFromFile;
 	static GStringList profiles;
 	
-	char GetSpecialFolder(int CLSID);
   int DirectoryExists(const char* dirName);
-	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
+	char SetSettingsPath();
 
 	CUtils(void);
 	virtual ~CUtils(void);

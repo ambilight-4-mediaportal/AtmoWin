@@ -51,7 +51,7 @@ extern char *sMessages[MAX_MESSAGE_STRINGS];
 class CLanguage
 {
 private:
-	bool m_XmlOnInit;
+	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
 
 public:
 
@@ -68,15 +68,16 @@ public:
   static CString sMomoDlgText[MAX_MOMODLG_STRINGS];
 	static CString sNordLightSetupText[MAX_NORDLIGHTSETUP_STRINGS];
 	static CString sMessagesText[MAX_MESSAGE_STRINGS];
-
-  static char szFileINI[MAX_PATH];
+	
+	static char szCurrentDir[MAX_PATH];
+	static char szFileINI[MAX_PATH];
   static char szLang[MAX_PATH], szTemp[512], Buffer[1024], szParam[32];	
 
 	int DirectoryExists(const char* dirName);
 	void XMLParse(const char* FileName, CString* sInText, const char* Section);
 	void CreateDefaultXML(const char* FileName, char* Section[]);
-	TCHAR* GetThisPath(TCHAR* dest, size_t destSize);
-
+	
+	char SetLngPath();
 	CLanguage(void);
 	virtual ~CLanguage(void);
 

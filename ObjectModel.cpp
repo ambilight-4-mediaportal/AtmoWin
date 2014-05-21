@@ -7,6 +7,7 @@ IMPLEMENT_FACTORY(MyConfiguration, configuration)
 IMPLEMENT_FACTORY(MySection, section)
 IMPLEMENT_FACTORY(MySetting ,	setting)
 
+char CUtils::szCurrentDir[MAX_PATH];
 char CUtils::szTemp[512];
 bool CUtils::firststart;
 
@@ -57,4 +58,16 @@ TCHAR* CUtils::GetThisPath(TCHAR* dest, size_t destSize)
     DWORD length = GetModuleFileName( NULL, dest, destSize );
     PathRemoveFileSpec(dest);
 		return dest;
+}
+
+char CUtils::SetSettingsPath()
+{
+	memset(&szCurrentDir[0], 0, sizeof(szCurrentDir));
+
+	GetThisPath(szCurrentDir , MAX_PATH);
+
+	CString str = _T("\\Settings");
+	strcat(szCurrentDir, str);
+
+	return *szCurrentDir;
 }

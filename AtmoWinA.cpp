@@ -191,6 +191,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	TIMECAPS tc;
 	UINT wTimerRes;
 	CLanguage *Lng = new CLanguage;
+	CUtils *Utils = new CUtils;
 
 	HANDLE hMutex =  CreateMutex   (NULL, TRUE, "AtmowinA.AngieMod");
 	bool gefunden=FALSE;
@@ -200,24 +201,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 	{
 		InitCommonControls();
 
-		CUtils *Utils = new CUtils;
-
-		// GetSettingsFolder
-	  TCHAR dest[MAX_PATH];
-    Utils->GetThisPath(dest, MAX_PATH);
-	  CString str = dest;
-	  str = str + _T("\\Settings");
-	  TCHAR* CurrentPath = NULL;
-	  CurrentPath = new TCHAR[str.GetLength()+1];
-	  _tcscpy(CurrentPath, str);	
-
-		if (!Utils->DirectoryExists(CurrentPath))
+		// SetSettingsFolder
+		Utils->szCurrentDir[Utils->SetSettingsPath()];
+		if (!Utils->DirectoryExists(Utils->szCurrentDir))
 		{
-			CreateDirectory(CurrentPath, NULL);
+			CreateDirectory(Utils->szCurrentDir, NULL);
 		}
 
 		// Read Buffer from IniFile
-		sprintf(Utils->szTemp, "%s\\%s.xml\0", CurrentPath, "AtmoWinX");
+		sprintf(Utils->szTemp, "%s\\%s.xml\0", Utils->szCurrentDir, "AtmoWinX");
 
 		// Create Default Xml if not exists
 		ifstream FileExists(Utils->szTemp);
@@ -240,23 +232,29 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Utils->firststart = true;
 		}
 
-		dest[MAX_PATH];
-		Lng->GetThisPath(dest, MAX_PATH);
-		str = dest;
-		str = str + _T("\\Language");
-		CurrentPath = NULL;
-		CurrentPath = new TCHAR[str.GetLength()+1];
-		_tcscpy(CurrentPath, str);	
+		Lng->szCurrentDir[Lng->SetLngPath()];	
 
-		sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
+		if (!Utils->DirectoryExists(Lng->szCurrentDir))
+		{
+			CreateDirectory(Lng->szCurrentDir, NULL);
+		}
+
+		sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 		GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 		// Read Buffer from IniFile
-		sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
+		sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
-		Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
-
+	  // Create Default Xml Language if not exists
+	  ifstream FileExist(Lng->szTemp);
+	  if (!FileExist)
+		{		  
+			Lng->CreateDefaultXML(Lng->szTemp, sSection);
+		}
+		
+		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Messages");
+		
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
 		{
 			MessageBox(0,Lng->sMessagesText[14], Lng->sMessagesText[3],MB_OK | MB_ICONERROR);

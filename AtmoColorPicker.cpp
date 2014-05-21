@@ -58,20 +58,14 @@ ATMO_BOOL CAtmoColorPicker::InitDialog(WPARAM wParam)
 
 	UpdateColorControls(ATMO_TRUE, ATMO_TRUE);
 
-	TCHAR dest[MAX_PATH];
-  Lng->GetThisPath(dest, MAX_PATH);
-	CString str = dest;
-	str = str + _T("\\Language");
-	TCHAR* CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()+1];
-	_tcscpy(CurrentPath, str);	
+	Lng->szCurrentDir[Lng->SetLngPath()];
 
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
+	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	// Read Buffer from IniFile
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
 	Lng->XMLParse(Lng->szTemp, Lng->sTextCPicker, "ColorPicker");
 

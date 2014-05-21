@@ -67,26 +67,10 @@ void CTrayIconWindow::createWindow()
 	ShowNotifyIcon(ATMO_TRUE);
 
 	CLanguage *Lng = new CLanguage;
-/*
-	// GetSpecialFolder
-	Lng->szCurrentDir[Lng->GetSpecialFolder(CSIDL_COMMON_APPDATA)];
-	if (!Lng->DirectoryExists(Lng->szCurrentDir ))
-	{
-		CreateDirectory(Lng->szCurrentDir, NULL);
-	}
+
+	Lng->szCurrentDir[Lng->SetLngPath()];	
 
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
-*/
-
-	TCHAR dest[MAX_PATH];
-  Lng->GetThisPath(dest, MAX_PATH);
-	CString str = dest;
-	str = str + _T("\\Language");
-	TCHAR* CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()+1];
-	_tcscpy(CurrentPath, str);	
-
-	sprintf(Lng->szFileINI, "%s\\Language.ini\0", CurrentPath);
 
 	this->m_hLanguageSubMenu = CreatePopupMenu();
 
@@ -97,9 +81,9 @@ void CTrayIconWindow::createWindow()
 
 	CString strExtension   = _T("\\*.xml");
 
-	strcat(CurrentPath, strExtension);
+	strcat(Lng->szCurrentDir, strExtension);
 
-	hSearch = FindFirstFile(CurrentPath, &wfd);
+	hSearch = FindFirstFile(Lng->szCurrentDir, &wfd);
 	GetPrivateProfileString("Common", "Language", "English", Lng->szLang, 256, Lng->szFileINI);
 
 	nCurrentLanguage = MENUID_FIRST_LANGUAGE;
@@ -124,29 +108,11 @@ void CTrayIconWindow::createWindow()
 	}
 	FindClose(hSearch);
 
-	// Read Buffer from IniFile
-	dest[MAX_PATH];
-  Lng->GetThisPath(dest, MAX_PATH);
-	str = dest;
-	str = str + _T("\\Language");
-	CurrentPath = NULL;
-	CurrentPath = new TCHAR[str.GetLength()+1];
-	_tcscpy(CurrentPath, str);
+	Lng->szCurrentDir[Lng->SetLngPath()];	
 
-	sprintf(Lng->szTemp, "%s\\%s.xml\0", CurrentPath, Lng->szLang);
+	sprintf(Lng->szTemp, "%s\\%s.xml\0", Lng->szCurrentDir, Lng->szLang);
 
-	// Create Default Xml Language if not exists
-	ifstream FileExists(Lng->szTemp);
-	if (Lng->szTemp != "" && FileExists)
-	{
-		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
-	}
-	else
-	{
-		Lng->CreateDefaultXML(Lng->szTemp, sSection);
-		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
-	}
-
+	Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Menu");
 
 	this->m_hTrayIconPopupMenu = CreatePopupMenu();
 	lstrcpyn(data, Lng->sMenuText[0], 1023);
