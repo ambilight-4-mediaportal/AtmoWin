@@ -245,8 +245,8 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 		ComboBox_SetCurSel(m_hCbxDevicetypes, (int)-1);
 
 	CLanguage *Lng = new CLanguage;
-  
-  Lng->szCurrentDir[Lng->SetLngPath()];
+
+	Lng->szCurrentDir[Lng->SetLngPath()];
 
 	sprintf(Lng->szFileINI, "%s\\Language.ini\0", Lng->szCurrentDir);
 
@@ -625,6 +625,43 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 
 	switch(wmId) 
 	{
+	case IDC_CB_PROFILES:
+		{
+			if(wmEvent == CBN_EDITCHANGE) 
+			{
+				GString rslt;
+				Edit_GetText(hControl,buffer1,200);
+				bool found = false;
+
+				const char *ptr =  buffer1;
+
+				string Profile1 = GetProfile().GetStringOrDefault("Default", "profiles", "");
+				char *buffer = new char[Profile1.length()+1];
+				strcpy(buffer, Profile1.c_str());
+
+				// serialize buffer
+				GStringList lst("|", buffer);
+				__int64 count = lst.GetCount();
+
+				// check for entry if exist
+				if (count >> 0)
+				{
+					for (int i=0; i<count;i++)
+					{		
+						rslt = lst.Serialize("|", i, 0);
+						if (rslt == buffer1)
+							found=true;
+					}
+				}
+				if (!found) 
+				{
+					hwndCtrl = this->getDlgItem(IDC_BU_SAVEPROFILE);
+					EnableWindow(hwndCtrl, true);
+				}
+			}
+			break;
+		}
+
 		//save or add profile
 	case IDC_BU_SAVEPROFILE: 
 		{
@@ -663,7 +700,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 					Profile1 = Profile1 + "|" + string(buffer1);
 				else
 					Profile1 = string(buffer1);
-				
+
 				buffer = new char[Profile1.length()+1];
 				strcpy(buffer, Profile1.c_str());
 
@@ -700,13 +737,16 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				}
 			}
 			GetProfile().SetConfig("Default", "profiles", Profile1.c_str());
-			
+
 			// cleanup ChannelAssignment
 			for(int i=1;i<10;i++)
 				pAtmoConfig->m_ChannelAssignments[i] = NULL;
 
 			// should be saved now
 			pAtmoConfig->SaveSettings(pAtmoConfig->lastprofile);
+
+			hwndCtrl = this->getDlgItem(IDC_BU_SAVEPROFILE);
+			EnableWindow(hwndCtrl, false);
 			break;
 		}
 		//delete profile
@@ -791,7 +831,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 					if (tmpProfile == "")
 						tmpProfile = Profile1;
 					else
-					tmpProfile = tmpProfile + "|" + Profile1;
+						tmpProfile = tmpProfile + "|" + Profile1;
 				}
 			}
 			strcpy(buffer, tmpProfile.c_str());
@@ -838,7 +878,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			AtmoConnectionType conType = (AtmoConnectionType)ComboBox_GetCurSel(getDlgItem(IDC_DEVICETYPE));
 			pAtmoConfig->setConnectionType( conType );		
 
-      LivePictureSource backupLivePictureSource = m_pDynData->getLivePictureSource();
+			LivePictureSource backupLivePictureSource = m_pDynData->getLivePictureSource();
 			EffectMode newEffectMode = (EffectMode)ComboBox_GetCurSel(getDlgItem(IDC_EFFECTS));
 			pAtmoConfig->setEffectMode(newEffectMode);
 
@@ -870,7 +910,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 			}
 
 			CAtmoTools::SwitchEffect(this->m_pDynData, newEffectMode);
-      CAtmoTools::SwitchLiveSource(this->m_pDynData, backupLivePictureSource);
+			CAtmoTools::SwitchLiveSource(this->m_pDynData, backupLivePictureSource);
 
 			hwndCtrl = this->getDlgItem(IDC_CB_DEVPROFILES);
 			Edit_GetText(hwndCtrl,buffer2, 200);
