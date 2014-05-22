@@ -7,6 +7,12 @@
 #  https://github.com/ambilight-4-mediaportal
 #
 
+Version 1.0.0.7 : Not released yet
+Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. 
+ - Language : If no language found, English language is created.
+ - Setting : use the file under root path where is executed Atmowin.exe
+Deactivate the "Save" button for profile, available only when new profile is created, make misunderstanding because used as "Save setting"
+
 Version 1.0.0.6 : 2014.04.24
 BugsFix. (BassFan)
 Atmoduino V2 (NevCairiel) + rework the import (Azzuro)
