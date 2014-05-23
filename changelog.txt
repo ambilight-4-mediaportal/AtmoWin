@@ -8,10 +8,10 @@
 #
 
 Version 1.0.0.7 : Not released yet
-Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. 
- - Language : If no language found, English language is created.
- - Setting : use the file under root path where is executed Atmowin.exe
-Deactivate the "Save" button for profile, available only when new profile is created, make misunderstanding because used as "Save setting"
+Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. (BassFan)
+ - Language : If no language found, English language is created. (BassFan)
+ - Setting : use the file under root path where is executed Atmowin.exe (BassFan)
+Deactivate the "Save" button for profile, available only when new profile is created, make misunderstanding because used as "Save setting" (BassFan)
 
 Version 1.0.0.6 : 2014.04.24
 BugsFix. (BassFan)
@@ -48,8 +48,8 @@ Add Multi-language support on GUI Screen, (BassFan)
 Version 1.0.0.2
 Add KarateLight device ( cloned from 0.51 )
 Add Visual Styles and changed any in Channel assignment Dialog (BassFan)
-Correct Build with Comctl32.lib error link. 
-hidden not yet implemented Greyscale Setting )not removed in code only Change Window size)
+Correct Build with Comctl32.lib error link. (BassFan)
+hidden not yet implemented Greyscale Setting )not removed in code only Change Window size) (BassFan)
 
 Version 1.0.0.1
 Based on Angie05 rework : alpha 09
