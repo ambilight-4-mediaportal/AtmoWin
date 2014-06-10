@@ -565,34 +565,60 @@ ATMO_BOOL CAtmoEditChannelAssignment::ExecuteCommand(HWND hControl,int wmId, int
 
 	case IDC_BU_DELETE: 
 		{
-			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
-			int listIndex = ListBox_GetCurSel(listBox);
-			CUtils *Utils = new CUtils;
-
+			char *newconfigSection;
 			CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
-			char buffer2[64];
 
-			char *XMLSectionName = new char[pAtmoConfig->lastprofile.length()];
-			strcpy(XMLSectionName, pAtmoConfig->lastprofile.c_str());
+			GStringList *lstFind = new GStringList;
+	    GStringList *lstFound = new GStringList;
 
-			ListBox_GetText(listBox, listIndex, buffer2);
-			string name = string(XMLSectionName) + "_ChannelAssignment_" + string(buffer2);				
-			strcpy(XMLSectionName, name.c_str());
+			char XMLSectionName[100];
+			CUtils *Utils = new CUtils;
+			GString *gsfound = new GString;
 
-			GString section = GetProfile().GetStringOrDefault(XMLSectionName, "name", "?");
+			string tmpStr = pAtmoConfig->lastprofile + "_ChannelAssignment_";
+			newconfigSection = new char[tmpStr.length()+1];
+			strcpy(newconfigSection, tmpStr.c_str());
 
-			if (string(buffer2) == section._str)
+			GString name = GString(newconfigSection);
+
+			GetProfile().GetSectionNames(lstFind);
+
+			__int64 count = lstFind->GetCount();	
+			for(int i=0;i<count;i++) 
 			{
-				GetProfile().RemoveSection(XMLSectionName);
-				pAtmoConfig->m_ChannelDelete = true;
+				gsfound = lstFind->GetStrAt(i);
+
+				if (gsfound->Left(strlen(name._str)) == name._str)
+					lstFound->AddLast(gsfound->_str);
 			}
 
+			count = lstFound->GetCount() + 1;
+			for(int i=0;i<count;i++) 
+			{
+				gsfound = lstFound->GetStrAt(i);
+
+				if ( gsfound->Left(strlen(name._str)) == name._str)
+				{
+					strcpy(XMLSectionName, gsfound->_str);
+					GetProfile().RemoveSection(XMLSectionName);
+					break;
+				}
+			}
+			lstFind->RemoveAll();
+			lstFound->RemoveAll();
+			
+			HWND listBox = getDlgItem(IDC_LST_MAPPINGS);
+			int listIndex = ListBox_GetCurSel(listBox);
+			
 			ListBox_DeleteString(listBox, listIndex);
 			ListBox_SetCurSel(listBox, 0);
+
+			// do not save Channel
+			pAtmoConfig->m_ChannelDelete = true;
 			ExecuteCommand(listBox, IDC_LST_MAPPINGS, LBN_SELCHANGE);
 
 			this->m_pDynData->getAtmoConfig()->setCurrentChannelAssignment(0);
-			GetProfile().WriteCurrentConfig((const char *)Utils->strConfigFromFile, true);
+
 			break;
 		}
 	default:

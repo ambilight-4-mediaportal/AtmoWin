@@ -45,50 +45,48 @@
 		<setting name="9" value="Configure software adjustment" />
 		<setting name="10" value="Configure hardware adjustment" />
 		<setting name="11" value="Select" />
-		<setting name="12" value="Select" />
-		<setting name="13" value="Use:" />
-		<setting name="14" value="Widescreenmode" />
-		<setting name="15" value="Exit" />
-		<setting name="16" value="Effect active:" />
-		<setting name="17" value="Static color" />
-		<setting name="18" value="Color change" />
-		<setting name="19" value="Color change Left/Right" />
-		<setting name="20" value="Shutdown color" />
-		<setting name="21" value="Steps:" />
-		<setting name="22" value="Steps:" />
-		<setting name="23" value="Device type:" />
-		<setting name="24" value="Zones top:" />
-		<setting name="25" value="Zones bottom:" />
-		<setting name="26" value="Zones Left/Right:" />
-		<setting name="27" value="Live image parameters" />
-		<setting name="28" value="No Filter" />
-		<setting name="29" value="Combined" />
-		<setting name="30" value="Percent" />
-		<setting name="31" value="Edge weighting" />
-		<setting name="32" value="Brightness" />
-		<setting name="33" value="Darkness Limit" />
-		<setting name="34" value="Hue windowing" />
-		<setting name="35" value="Sat windowing" />
-		<setting name="36" value="Zone overlap" />
-		<setting name="37" value="Saturation" />
-		<setting name="38" value="Sensitivity" />
-		<setting name="39" value="Filter length" />
-		<setting name="40" value="Filter threshold" />
-		<setting name="41" value="Filter smoothness" />
-		<setting name="42" value="GDI capture framerate" />
-		<setting name="43" value="Filtermode:" />
-		<setting name="44" value="Source:" />
-		<setting name="45" value="Zone/LED setup" />
-		<setting name="46" value="White-/Color Adjustment" />
-		<setting name="47" value="Color Gradient" />
-		<setting name="48" value="Interlace rows" />
-		<setting name="49" value="Name" />
-		<setting name="50" value="Save" />
-		<setting name="51" value="Delete" />
-		<setting name="52" value="Profiles" />
-		<setting name="53" value="Load" />
-		<setting name="54" value="Default" />
-		<setting name="55" value="Enhanced Live view (Windows 8 or higher)" />
+		<setting name="12" value="Use:" />
+		<setting name="13" value="Widescreenmode" />
+		<setting name="14" value="Exit" />
+		<setting name="15" value="Effect active:" />
+		<setting name="16" value="Static color" />
+		<setting name="17" value="Color change" />
+		<setting name="18" value="Color change Left/Right" />
+		<setting name="19" value="Shutdown color" />
+		<setting name="20" value="Steps:" />
+		<setting name="21" value="Device type:" />
+		<setting name="22" value="Zones top:" />
+		<setting name="23" value="Zones bottom:" />
+		<setting name="24" value="Zones Left/Right:" />
+		<setting name="25" value="Live image parameters" />
+		<setting name="26" value="No Filter" />
+		<setting name="27" value="Combined" />
+		<setting name="28" value="Percent" />
+		<setting name="29" value="Edge weighting" />
+		<setting name="30" value="Brightness" />
+		<setting name="31" value="Darkness Limit" />
+		<setting name="32" value="Hue windowing" />
+		<setting name="33" value="Sat windowing" />
+		<setting name="34" value="Zone overlap" />
+		<setting name="35" value="Saturation" />
+		<setting name="36" value="Sensitivity" />
+		<setting name="37" value="Filter length" />
+		<setting name="38" value="Filter threshold" />
+		<setting name="39" value="Filter smoothness" />
+		<setting name="40" value="GDI capture framerate" />
+		<setting name="41" value="Filtermode:" />
+		<setting name="42" value="Source:" />
+		<setting name="43" value="Zone/LED setup" />
+		<setting name="44" value="White-/Color Adjustment" />
+		<setting name="45" value="Color Gradient" />
+		<setting name="46" value="Interlace rows" />
+		<setting name="47" value="Name" />
+		<setting name="48" value="Save" />
+		<setting name="49" value="Delete" />
+		<setting name="50" value="Profiles" />
+		<setting name="51" value="Default" />
+		<setting name="52" value="Delay [ms]:" />
+		<setting name="53" value="Enhanced Live view (Windows 8 or higher)" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />

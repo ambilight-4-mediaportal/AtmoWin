@@ -45,50 +45,48 @@
 		<setting name="9" value="Configurer ajustement logiciel" />
 		<setting name="10" value="Configurer ajustement matériel" />
 		<setting name="11" value="Sélectionner" />
-		<setting name="12" value="Sélectionner" />
-		<setting name="13" value="Utiliser..." />
-		<setting name="14" value="Bar noire = Leds OFF" />
-		<setting name="15" value="Quitter" />
-		<setting name="16" value="Effet actif:" />
-		<setting name="17" value="Couleur unique" />
-		<setting name="18" value="Changement de couleur" />
-		<setting name="19" value="Changement de couleur G/D" />
-		<setting name="20" value="Couleur à l'extinction" />
-		<setting name="21" value="Étapes:" />
-		<setting name="22" value="Étapes:" />
-		<setting name="23" value="Matériel type:" />
-		<setting name="24" value="Zones Haut:" />
-		<setting name="25" value="Zones Bas:" />
-		<setting name="26" value="Zones Gauche/Droite:" />
-		<setting name="27" value="Configuration Temps réel" />
-		<setting name="28" value="Aucun filtre" />
-		<setting name="29" value="Combiné" />
-		<setting name="30" value="Pourcentage" />
-		<setting name="31" value="hauteur bords" />
-		<setting name="32" value="Luminosité" />
-		<setting name="33" value="Lim. obscurité" />
-		<setting name="34" value="Teinte" />
-		<setting name="35" value="Saturation ?!?" />
-		<setting name="36" value="superpos. zones" />
-		<setting name="37" value="Saturation" />
-		<setting name="38" value="Sensibilité" />
-		<setting name="39" value="réponses du filtre" />
-		<setting name="40" value="Seuil du filtre" />
-		<setting name="41" value="Lissage du filtre" />
-		<setting name="42" value="Capture GDI" />
-		<setting name="43" value="Filtre :" />
-		<setting name="44" value="source:" />
-		<setting name="45" value="zone/Led" />
-		<setting name="46" value="Blanc/Couleur Adjust." />
-		<setting name="47" value="Dégradé" />
-		<setting name="48" value="Ligne interlacé" />
-		<setting name="49" value="Nom" />
-		<setting name="50" value="Enreg." />
-		<setting name="51" value="Suppr." />
-		<setting name="52" value="profils" />
-		<setting name="53" value="Charg." />
-		<setting name="54" value="Default" />
-		<setting name="55" value="Win8 capture mode API" />
+		<setting name="12" value="Utiliser..." />
+		<setting name="13" value="Bar noire = Leds OFF" />
+		<setting name="14" value="Quitter" />
+		<setting name="15" value="Effet actif:" />
+		<setting name="16" value="Couleur unique" />
+		<setting name="17" value="Changement de couleur" />
+		<setting name="18" value="Changement de couleur G/D" />
+		<setting name="19" value="Couleur à l'extinction" />
+		<setting name="20" value="Étapes:" />
+		<setting name="21" value="Matériel type:" />
+		<setting name="22" value="Zones Haut:" />
+		<setting name="23" value="Zones Bas:" />
+		<setting name="24" value="Zones Gauche/Droite:" />
+		<setting name="25" value="Configuration Temps réel" />
+		<setting name="26" value="Aucun filtre" />
+		<setting name="27" value="Combiné" />
+		<setting name="28" value="Pourcentage" />
+		<setting name="29" value="hauteur bords" />
+		<setting name="30" value="Luminosité" />
+		<setting name="31" value="Lim. obscurité" />
+		<setting name="32" value="Teinte" />
+		<setting name="33" value="Saturation ?!?" />
+		<setting name="34" value="superpos. zones" />
+		<setting name="35" value="Saturation" />
+		<setting name="36" value="Sensibilité" />
+		<setting name="37" value="réponses du filtre" />
+		<setting name="38" value="Seuil du filtre" />
+		<setting name="39" value="Lissage du filtre" />
+		<setting name="40" value="Capture GDI" />
+		<setting name="41" value="Filtre :" />
+		<setting name="42" value="source:" />
+		<setting name="43" value="zone/Led" />
+		<setting name="44" value="Blanc/Couleur Adjust." />
+		<setting name="45" value="Dégradé" />
+		<setting name="46" value="Ligne interlacé" />
+		<setting name="47" value="Nom" />
+		<setting name="48" value="Enreg." />
+		<setting name="49" value="Suppr." />
+		<setting name="50" value="profils" />
+		<setting name="51" value="Default" />
+		<setting name="52" value="Delay [ms]:" />
+		<setting name="53" value="Win8 capture mode API" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />

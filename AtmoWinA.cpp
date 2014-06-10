@@ -253,7 +253,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 			Lng->CreateDefaultXML(Lng->szTemp, sSection);
 		}
 		
-		Lng->XMLParse(Lng->szTemp, Lng->sMenuText, "Messages");
+		Lng->XMLParse(Lng->szTemp, Lng->sMessagesText, "Messages");
 		
 		if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) != TIMERR_NOERROR) 
 		{
@@ -262,7 +262,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR    lpCmd
 		}
 
 		// OLE COM System initialisierung? muss in jedem weiteren Thread auch passieren?
-		HRESULT r = CoInitialize(NULL);
+		HRESULT r = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 		if(r != S_OK)
 		{
 			MessageBox(0, Lng->sMessagesText[15],Lng->sMessagesText[3],MB_OK | MB_ICONERROR);

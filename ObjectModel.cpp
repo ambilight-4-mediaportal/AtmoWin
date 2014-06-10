@@ -71,3 +71,36 @@ char CUtils::SetSettingsPath()
 
 	return *szCurrentDir;
 }
+
+CString CUtils::GetFileVersionString(CString FileName)
+ {
+
+ char* fName = new char [strlen(FileName) +1];
+ strcpy(fName, FileName);
+
+ DWORD nSize = GetFileVersionInfoSize(fName, 0);
+ CString Result = "";
+
+ if (nSize)
+ {
+ char *pInfo = new char[nSize];
+
+ GetFileVersionInfo(fName, 0, nSize, pInfo);
+
+ VS_FIXEDFILEINFO *FileInfo;
+ UINT uLen;
+
+ VerQueryValue(pInfo, "\\", (void**) &FileInfo, (PUINT) &uLen);
+
+ Result.Format("%d.%d.%d.%d",
+ HIWORD(FileInfo->dwProductVersionMS),
+ LOWORD(FileInfo->dwProductVersionMS),
+ HIWORD(FileInfo->dwProductVersionLS),
+ LOWORD(FileInfo->dwProductVersionLS));
+
+ delete[] fName;
+ }
+
+ return Result;
+ }
+

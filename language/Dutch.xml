@@ -45,50 +45,48 @@
         <setting name="9" value="Software aanpassingen" />
         <setting name="10" value="Hardware aanpassingen" />
         <setting name="11" value="Selecteer" />
-        <setting name="12" value="Selecteer" />
-        <setting name="13" value="Gebruik" />
-        <setting name="14" value="Widescreen-modus" />
-        <setting name="15" value="Annuleer" />
-        <setting name="16" value="Actieve effect:" />
-        <setting name="17" value="Vaste kleur" />
-        <setting name="18" value="Kleur wisselaar" />
-        <setting name="19" value="Kleur wisselaar LR" />
-        <setting name="20" value="Kleur bij afsluiten" />
-        <setting name="21" value="Stappen:" />
-        <setting name="22" value="Stappen:" />
-        <setting name="23" value="Apparaat type:" />
-        <setting name="24" value="Zones boven:" />
-        <setting name="25" value="Zones onder:" />
-        <setting name="26" value="Zones Links/Rechts:" />
-        <setting name="27" value="Live beeld parameters" />
-        <setting name="28" value="Geen filter" />
-        <setting name="29" value="Gecombineerd" />
-        <setting name="30" value="Percentage" />
-        <setting name="31" value="Rand weging" />
-        <setting name="32" value="Helderheid" />
-        <setting name="33" value="Donkerheid limiet" />
-        <setting name="34" value="Hue venster" />
-        <setting name="35" value="Sat venster" />
-        <setting name="36" value="Zone overlap" />
-        <setting name="37" value="Kleurtint" />
-        <setting name="38" value="Gevoeligheid" />
-        <setting name="39" value="Filter lengte" />
-        <setting name="40" value="Filter drempel" />
-        <setting name="41" value="Filter soepelheid" />
-        <setting name="42" value="GDI beelden p/sec." />
-        <setting name="43" value="Filtermodus:" />
-        <setting name="44" value="Bron:" />
-        <setting name="45" value="Zone/LED instellingen" />
-        <setting name="46" value="Wit/Kleur aanpassingen" />
-        <setting name="47" value="Kleurverloop" />
-        <setting name="48" value="Interlace rijen" />
-        <setting name="49" value="Naam" />
-        <setting name="50" value="Opslaan" />
-        <setting name="51" value="Verwijder" />
-        <setting name="52" value="Profielen" />
-        <setting name="53" value="Laad" />
-        <setting name="54" value="Standaard" />
-		<setting name="55" value="Verbeterde 'Live beeld' weergave (Windows 8+)" />
+        <setting name="12" value="Gebruik" />
+        <setting name="13" value="Widescreen-modus" />
+        <setting name="14" value="Annuleer" />
+        <setting name="15" value="Actieve effect:" />
+        <setting name="16" value="Vaste kleur" />
+        <setting name="17" value="Kleur wisselaar" />
+        <setting name="18" value="Kleur wisselaar LR" />
+        <setting name="19" value="Kleur bij afsluiten" />
+        <setting name="20" value="Stappen:" />
+        <setting name="21" value="Apparaat type:" />
+        <setting name="22" value="Zones boven:" />
+        <setting name="23" value="Zones onder:" />
+        <setting name="24" value="Zones Links/Rechts:" />
+        <setting name="25" value="Live beeld parameters" />
+        <setting name="26" value="Geen filter" />
+        <setting name="27" value="Gecombineerd" />
+        <setting name="28" value="Percentage" />
+        <setting name="29" value="Rand weging" />
+        <setting name="30" value="Helderheid" />
+        <setting name="31" value="Donkerheid limiet" />
+        <setting name="32" value="Hue venster" />
+        <setting name="33" value="Sat venster" />
+        <setting name="34" value="Zone overlap" />
+        <setting name="35" value="Kleurtint" />
+        <setting name="36" value="Gevoeligheid" />
+        <setting name="37" value="Filter lengte" />
+        <setting name="38" value="Filter drempel" />
+        <setting name="39" value="Filter soepelheid" />
+        <setting name="40" value="GDI beelden p/sec." />
+        <setting name="41" value="Filtermodus:" />
+        <setting name="42" value="Bron:" />
+        <setting name="43" value="Zone/LED instellingen" />
+        <setting name="44" value="Wit/Kleur aanpassingen" />
+        <setting name="45" value="Kleurverloop" />
+        <setting name="46" value="Interlace rijen" />
+        <setting name="47" value="Naam" />
+        <setting name="48" value="Opslaan" />
+        <setting name="49" value="Verwijder" />
+        <setting name="50" value="Profielen" />
+        <setting name="51" value="Standaard" />
+        <setting name="52" value="Delay [ms]:" />
+		    <setting name="53" value="Verbeterde 'Live beeld' weergave (Windows 8+)" />
     </section>
     <section name="Gradients">
         <setting name="0" value="Zone" />

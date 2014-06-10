@@ -225,7 +225,7 @@
 #define IDC_BU_DELETE                   1205
 #define IDC_BU_SAVEPROFILE              1206
 #define IDC_CB_PROFILES                 1207
-#define IDC_BU_LOADPROVILE              1208
+//#define IDC_BU_LOADPROVILE              1208
 #define IDC_BU_PROFDELETE               1209
 #define IDC_CB_DEVPROFILES              1210
 #define IDC_LIVEMODE                    1211
@@ -293,6 +293,8 @@
 #define IDC_STATIC74                    1473
 #define IDC_STATIC75                    1474
 #define IDC_STATIC76                    1475
+#define IDC_STATIC77                    1476
+#define IDC_STATIC78                    1477
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

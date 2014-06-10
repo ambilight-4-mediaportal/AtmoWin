@@ -71,50 +71,48 @@ char *sTextSettingDialog[MAX_SETTINGSDIALOG_STRINGS] =
 "Configure software adjustment", //9
 "Configure hardware adjustment", //10
 "Select",                        //11
-"Select",                        //12
-"Use:",                          //13
-"Widescreenmode",                //14
-"Exit",                          //15
-"Effect active:",                //16
-"Static color",                  //17
-"Color change",                  //18
-"Color change Left/Right",       //19
-"Shutdown color",                //20
-"Steps:",                        //21
-"Steps:",                        //22
-"Device type:",                  //23
-"Zones top:",                    //24
-"Zones bottom:",                 //25
-"Zones Left/Right:",             //26
-"Live image parameters",         //27
-"No Filter",                     //28
-"Combined",                      //29
-"Percent",                       //30
-"Edge weighting",                //31
-"Brightness",                    //32
-"Darkness Limit",                //33
-"Hue windowing",                 //34
-"Sat windowing",                 //35
-"Zone overlap",                  //36
-"Saturation",                    //37
-"Sensitivity",                   //38
-"Filter length",                 //39
-"Filter threshold",              //40
-"Filter smoothness",             //41
-"GDI capture framerate",         //42
-"Filtermode:",                   //43
-"Source:",                       //44
-"Zone/LED setup",                //45
-"White-/Color Adjustment",       //46
-"Color Gradient",                //47
-"Interlace rows",                //48
-"Name",                          //49
-"Save",                          //50
-"Delete",                        //51
-"Profiles",                      //52
-"Load",                          //53
-"Default",                       //54
-"Enhanced Live view (Windows 8 or higher)" //55
+"Use:",                          //12
+"Widescreenmode",                //13
+"Exit",                          //14
+"Effect active:",                //15
+"Static color",                  //16
+"Color change",                  //17
+"Color change Left/Right",       //18
+"Shutdown color",                //19
+"Steps:",                        //20
+"Device type:",                  //21
+"Zones top:",                    //22
+"Zones bottom:",                 //23
+"Zones Left/Right:",             //24
+"Live image parameters",         //25
+"No Filter",                     //26
+"Combined",                      //27
+"Percent",                       //28
+"Edge weighting",                //29
+"Brightness",                    //30
+"Darkness Limit",                //31
+"Hue windowing",                 //32
+"Sat windowing",                 //33
+"Zone overlap",                  //34
+"Saturation",                    //35
+"Sensitivity",                   //36
+"Filter length",                 //37
+"Filter threshold",              //38
+"Filter smoothness",             //39
+"GDI capture framerate",         //40
+"Filtermode:",                   //41
+"Source:",                       //42
+"Zone/LED setup",                //43
+"White-/Color Adjustment",       //44
+"Color Gradient",                //45
+"Interlace rows",                //46
+"Name",                          //47
+"Save",                          //48
+"Delete",                        //49
+"Profiles",                      //50
+"Default",                       //51
+"Delay [ms]:",                   //52
+"Enhanced Live view (Windows 8 or higher)", //53
 };
 
 char *sTextAtmoGradients[MAX_GRADIENTSDIALOG_STRINGS] = 

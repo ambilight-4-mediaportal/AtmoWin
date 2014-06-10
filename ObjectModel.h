@@ -26,6 +26,7 @@ public:
 	static GStringList profiles;
 	
   int DirectoryExists(const char* dirName);
+	CString GetFileVersionString(CString FileName);
 	char SetSettingsPath();
 
 	CUtils(void);

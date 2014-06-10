@@ -45,50 +45,48 @@
 		<setting name="9" value="Softwareabgleich konfigurieren" />
 		<setting name="10" value="Hardwareabgleich konfigurieren" />
 		<setting name="11" value="auswählen" />
-		<setting name="12" value="auswählen" />
-		<setting name="13" value="verwenden..." />
-		<setting name="14" value="Widescreenmodus" />
-		<setting name="15" value="Abbrechen" />
-		<setting name="16" value="Aktiver Effekt:" />
-		<setting name="17" value="Feste Farbe" />
-		<setting name="18" value="Farbwechsel" />
-		<setting name="19" value="Farbwechsel LR" />
-		<setting name="20" value="Farbe beim beenden" />
-		<setting name="21" value="Schritte:" />
-		<setting name="22" value="Schritte:" />
-		<setting name="23" value="Gerätetyp:" />
-		<setting name="24" value="Anzahl Zonen oben:" />
-		<setting name="25" value="Anzahl Zonen unten:" />
-		<setting name="26" value="Anzahl Zonen Links/Rechts:" />
-		<setting name="27" value="Live Bild Parameter..." />
-		<setting name="28" value="KeinFilter" />
-		<setting name="29" value="Kombiniert" />
-		<setting name="30" value="Prozent" />
-		<setting name="31" value="Randmaß" />
-		<setting name="32" value="Helligkeit" />
-		<setting name="33" value="Dunkelheits-Limit" />
-		<setting name="34" value="Fensterton" />
-		<setting name="35" value="Sat Windowing" />
-		<setting name="36" value="Zonen Überlappung" />
-		<setting name="37" value="Sättigung" />
-		<setting name="38" value="Empfindlichkeit" />
-		<setting name="39" value="Filter länge" />
-		<setting name="40" value="Filter Schwelle" />
-		<setting name="41" value="Filter Glätte" />
-		<setting name="42" value="GDI Capt. Framerate" />
-		<setting name="43" value="Filtermodus" />
-		<setting name="44" value="Quelle" />
-		<setting name="45" value="Zone / LED Einstellungen..." />
-		<setting name="46" value="Weissabgleich..." />
-		<setting name="47" value="Farbverläufe" />
-		<setting name="48" value="Interlace Zeilen" />
-		<setting name="49" value="Namen:" />
-		<setting name="50" value="Speichern" />
-		<setting name="51" value="Löschen" />
-		<setting name="52" value="Profile..." />
-		<setting name="53" value="Laden" />
-		<setting name="54" value="Standard:" />
-		<setting name="55" value="Verbessertes LiveView (Windows 8 oder höher)" />
+		<setting name="12" value="verwenden..." />
+		<setting name="13" value="Widescreenmodus" />
+		<setting name="14" value="Abbrechen" />
+		<setting name="15" value="Aktiver Effekt:" />
+		<setting name="16" value="Feste Farbe" />
+		<setting name="17" value="Farbwechsel" />
+		<setting name="18" value="Farbwechsel LR" />
+		<setting name="19" value="Farbe beim beenden" />
+		<setting name="20" value="Schritte:" />
+		<setting name="21" value="Gerätetyp:" />
+		<setting name="22" value="Anzahl Zonen oben:" />
+		<setting name="23" value="Anzahl Zonen unten:" />
+		<setting name="24" value="Anzahl Zonen Links/Rechts:" />
+		<setting name="25" value="Live Bild Parameter..." />
+		<setting name="26" value="KeinFilter" />
+		<setting name="27" value="Kombiniert" />
+		<setting name="28" value="Prozent" />
+		<setting name="29" value="Randmaß" />
+		<setting name="30" value="Helligkeit" />
+		<setting name="31" value="Dunkelheits-Limit" />
+		<setting name="32" value="Fensterton" />
+		<setting name="33" value="Sat Windowing" />
+		<setting name="34" value="Zonen Überlappung" />
+		<setting name="35" value="Sättigung" />
+		<setting name="36" value="Empfindlichkeit" />
+		<setting name="37" value="Filter länge" />
+		<setting name="38" value="Filter Schwelle" />
+		<setting name="39" value="Filter Glätte" />
+		<setting name="40" value="GDI Capt. Framerate" />
+		<setting name="41" value="Filtermodus" />
+		<setting name="42" value="Quelle" />
+		<setting name="43" value="Zone / LED Einstellungen..." />
+		<setting name="44" value="Weissabgleich..." />
+		<setting name="45" value="Farbverläufe" />
+		<setting name="46" value="Interlace Zeilen" />
+		<setting name="47" value="Namen:" />
+		<setting name="48" value="Speichern" />
+		<setting name="49" value="Löschen" />
+		<setting name="50" value="Profile..." />
+		<setting name="51" value="Standard:" />
+		<setting name="52" value="Verzögerung [ms]:" />
+		<setting name="53" value="Verbessertes LiveView (Windows 8 oder höher)" />
 	</section>
 	<section name="Gradients">
 		<setting name="0" value="Zone" />
@@ -106,7 +104,7 @@
 		<setting name="12" value="Datei ist vermutlich keine BMP Datei!" />
 		<setting name="13" value="Datei hat nicht die richtige Farbtiefe (8-bit, 24-bit)?" />
 		<setting name="14" value="Bitte nur BMP Dateien auf die Fläche ziehen!" />
-		<setting name="15" value="Gradientverläufe" />
+		<setting name="15" value="Farbverläufe" />
 		<setting name="16" value="Abbrechen" />
 		<setting name="17" value="Zonen" />
 	</section>
