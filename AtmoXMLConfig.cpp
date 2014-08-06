@@ -124,7 +124,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "Software_gamma_mode", m_Software_gamma_mode);
 	GetProfile().SetConfig(newconfigSection, "Software_gamma_red", m_Software_gamma_red);
 	GetProfile().SetConfig(newconfigSection, "Software_gamma_green", m_Software_gamma_green);
-	GetProfile().SetConfig(newconfigSection, "Hardware_gamma_blue", m_Hardware_gamma_blue);
+	GetProfile().SetConfig(newconfigSection, "Software_gamma_blue", m_Software_gamma_blue);
 	GetProfile().SetConfig(newconfigSection, "Software_gamma_global", m_Software_gamma_global);
 	GetProfile().SetConfig(newconfigSection, "hAtmoClLeds", m_hAtmoClLeds);
 
