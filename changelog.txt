@@ -6,6 +6,8 @@
 #  GitHub source : 
 #  https://github.com/ambilight-4-mediaportal
 #
+Version 1.0.0.8 : 2014.08.06
+Correction of save value for Software_gamma_blue in XML. (Azzuro)
 
 Version 1.0.0.7 : 2014.06.23
 Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. (BassFan)
