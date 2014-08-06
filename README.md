@@ -5,7 +5,7 @@ MediaPortal forum :
 http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/
 
 MediaPortal binary :
-https://ambilight-4-mediaportal.googlecode.com/git/MPEI Release/Atmowin/
+https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/
 
 GitHub source :
 https://github.com/ambilight-4-mediaportal
