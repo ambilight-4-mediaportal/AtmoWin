@@ -198,6 +198,29 @@ ATMO_BOOL CAtmoDmxSerialConnection::SendData(pColorPacket data) {
 
 	int zoneIdx, z = 0;
 
+	ATMO_BOOL sumZone = m_pAtmoConfig->getZoneSummary();
+	if (sumZone)
+	{
+
+		int totalChannels = getNumChannels();
+		int intRed = data->zone[totalChannels].r;
+		int intGreen = data->zone[totalChannels].g;
+		int intBlue = data->zone[totalChannels].b;
+
+		char strTotalChannels[10];
+		char strRed[50];
+		char strGreen[50];
+		char strBlue[50];
+		char strCombined[50];
+
+		std::string output;
+		sprintf(strCombined, "%d,%d,%d,%d", intRed, intGreen, intBlue, totalChannels);
+
+		std::ofstream out("hue_output.txt");
+		out << strCombined;
+		out.close();
+	}
+
 	for(int channel = 0; channel < getNumChannels(); channel++) {
 		if(m_ChannelAssignment && (channel < m_NumAssignedChannels))
 			zoneIdx = m_ChannelAssignment[channel];

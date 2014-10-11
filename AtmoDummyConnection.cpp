@@ -192,6 +192,7 @@ void CAtmoDummyConnection::HandleWmPaint(PAINTSTRUCT ps,HDC hdc) {
           oldBrush = (HBRUSH)SelectObject(hdc, CreateSolidBrush(RGB(m_CurrentValues->zone[z].r, m_CurrentValues->zone[z].g, m_CurrentValues->zone[z].b)));
           Rectangle(hdc, x1, y1, x2, y2);
           DeleteObject(SelectObject(hdc, oldBrush));
+		  CAtmoDummyConnection::HUEOUTPUT();
         }
 
         sprintf(zonetext, "Z:%d,C:%d", z, FindChannel(z));
@@ -264,4 +265,27 @@ char *CAtmoDummyConnection::getChannelName(int ch)
 int CAtmoDummyConnection::getNumChannels()
 {
   return m_pAtmoConfig->getZoneCount();
+}
+
+void CAtmoDummyConnection::HUEOUTPUT()
+{
+	//For some reason getNumChannels() with dummy connection will report 1 extra channel....doing -1 for now untill we figure out why its doing this
+	int totalChannels = CAtmoDummyConnection::getNumChannels() - 1;
+
+	int intRed = m_CurrentValues->zone[totalChannels].r;
+	int intGreen = m_CurrentValues->zone[totalChannels].g;
+	int intBlue = m_CurrentValues->zone[totalChannels].b;
+
+	char strTotalChannels[10];
+	char strRed[50];
+	char strGreen[50];
+	char strBlue[50];
+	char strCombined[50];
+
+	std::string output;
+	sprintf(strCombined, "%d,%d,%d,%d", intRed, intGreen, intBlue, totalChannels);
+
+	std::ofstream out("hue_output.txt");
+	out << strCombined;
+	out.close();
 }

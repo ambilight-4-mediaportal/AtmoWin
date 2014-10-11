@@ -35,6 +35,7 @@ public:
     char *getChannelName(int ch);
 
     virtual ATMO_BOOL CreateDefaultMapping(CAtmoChannelAssignment *ca);
+	virtual void HUEOUTPUT();
 };
 
 #endif
