@@ -192,7 +192,7 @@ ATMO_BOOL CAtmoGradients::InitDialog(WPARAM wParam)
 
 	m_ZoneRadios[ zonenIdx ] = 0;
 
-	this->SetupSliderControl(IDC_EDGE_WEIGHT,1,30,this->m_edge_weight,5);
+	this->SetupSliderControl(IDC_EDGE_WEIGHT,1,100,this->m_edge_weight,5); //Gradient slider
 	SendMessage(getDlgItem(IDC_EDGE_WEIGHT),TBM_SETPAGESIZE,0,2);
 
 	char buffer[32];

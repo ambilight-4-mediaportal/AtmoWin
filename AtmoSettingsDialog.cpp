@@ -236,7 +236,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 	HWND hwndCtrl;
 
 	GetWindowText(this->m_hDialog, buffer, sizeof(buffer));
-	CString FileVersion =  "Vers: " + Utils->GetFileVersionString("AtmoWinA.exe");
+		CString FileVersion =  "Vers: 1.0.0.8";
 
 	sprintf(tmp , "%s (%d x %d Edition... of MediaPortal Members) " + FileVersion, buffer, CAP_WIDTH, CAP_HEIGHT );
 	SetWindowText(this->m_hDialog, tmp);
