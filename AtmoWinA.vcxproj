@@ -149,26 +149,35 @@
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStaticCRT|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>C:\Program Files (x86)\Windows Kits\8.1\Include\shared;XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_StaticCRT|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='StaticMT|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_16x9|Win32'">
     <IncludePath>XMLFoundation\Libraries\XMLFoundation\inc;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
     <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -289,7 +298,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>version.lib;Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)AtmoWinA_16x9.exe</OutputFile>
+      <OutputFile>$(OutDir)AtmoWinA.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
