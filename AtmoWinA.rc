@@ -47,23 +47,24 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 22, 17, 227, 185
+IDD_ABOUTBOX DIALOGEX 22, 17, 243, 205
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_CAPTION | WS_SYSMENU
 CAPTION "Info"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,79,170,69,12,WS_GROUP
-    LTEXT           "AtmoWin",IDC_STATIC,30,8,38,8
+    DEFPUSHBUTTON   "OK",IDOK,90,181,69,12,WS_GROUP
+    LTEXT           "AtmoWin",IDC_STATIC,29,10,38,8
     LTEXT           "Controlsoftware for a PC Atmo Light...",IDC_STATIC,7,22,135,8
     LTEXT           "developed by  the VDR-Portal community",IDC_STATIC,7,32,202,8
-    LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,8,42,224,17
-    LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,8,60,205,29
-    LTEXT           "Move from Registry to XML, add MultiLanguage Support,\nadd Profile to TrayMenu and other fixed\nv.1.0.0.1 to v.1.0.0.5 (BassFan)\nhttp://forum.team-mediaportal.com/members/bassfan.48781/",IDC_STATIC,8,87,265,37
-    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle\nhttp://about.me/brian.aberle",IDC_STATIC,8,122,205,17
-    LTEXT           "Angie05 : Colors algorithm support / Sedu support / BugFix",IDC_STATIC,8,140,205,8
-    LTEXT           "RickDB : Atmoduino Support",IDC_STATIC,8,150,205,8
-    LTEXT           "NevCairiel : Win8 API / Atmoduino V2 / BugFix",IDC_STATIC,8,160,205,8
-    ICON            IDI_ATMOICON,IDC_STATIC,4,3,21,20
+    LTEXT           "http://www.vdr-wiki.de/wiki/index.php/Atmo-plugin\nhttp://www.vdr-wiki.de/wiki/index.php/AtmoWin",IDC_STATIC,8,42,224,21
+    LTEXT           "Original versions: MacGyver2k, Matthiaz\nAtmoWinA rewrite: Igor (aka André Weber)\nAlgorithms for Color computation: Eike Edener",IDC_STATIC,7,59,205,29
+    LTEXT           "Move from Registry to XML, add MultiLanguage Support,\nadd Profile to TrayMenu and other fixed\nv.1.0.0.1 to v.1.0.0.5 (BassFan)\nhttp://forum.team-mediaportal.com/members/bassfan.48781/",IDC_STATIC,7,85,210,37
+    LTEXT           "Credits for XMLFoundation Serializer goes to Brian Aberle\nhttp://about.me/brian.aberle",IDC_STATIC,7,118,205,17
+    LTEXT           "Angie05 : Colors algorithm support / Sedu support / BugFix",IDC_STATIC,7,136,205,8
+    LTEXT           "RickDB : Atmoduino Support",IDC_STATIC,7,147,205,8
+    LTEXT           "NevCairiel : Win8 API / Atmoduino V2 / BugFix",IDC_STATIC,7,156,205,8
+    ICON            IDI_ATMOICON,IDC_STATIC,7,3,18,18
+    LTEXT           "Azzuro : few fix",IDC_STATIC,7,165,205,8
 END
 
 IDD_SETUP DIALOGEX 0, 0, 389, 331
@@ -350,13 +351,13 @@ BEGIN
     SCROLLBAR       IDC_SCROLL,285,46,10,163,SBS_VERT
     PUSHBUTTON      "delete mapping",IDC_BU_DELETE,313,115,104,14,WS_DISABLED
     PUSHBUTTON      "edit mapping",IDC_BU_MODIFY,313,130,104,14,WS_DISABLED
-    PUSHBUTTON      "Mapping hinzufügen",IDC_BU_ADD,313,145,104,14,WS_DISABLED
+    PUSHBUTTON      "Add Mapping",IDC_BU_ADD,313,145,104,14,WS_DISABLED
     PUSHBUTTON      "cancel",IDCANCEL,313,160,104,14
     DEFPUSHBUTTON   "OK",IDOK,313,195,104,14
     LTEXT           "Mappings",IDC_STATIC56,1,1,45,8
     LTEXT           "Hardware Channel",IDC_HW_CHANNEL_STATIC,120,29,60,8
     LTEXT           "Zone number",IDC_HW_ZONE_STATIC,205,29,63,8
-    LTEXT           "Name of mapping",IDC_STATIC57,120,1,76,8
+    LTEXT           "Name of profil",IDC_STATIC57,120,1,76,8
 END
 
 IDD_CFG_ATMO_DLG DIALOGEX 0, 0, 186, 100
@@ -431,8 +432,8 @@ CAPTION "Gradient progressions"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,318,180,50,14
-    PUSHBUTTON      "Abbrechen",IDCANCEL,318,159,50,14
-    GROUPBOX        "Zonen",IDC_ZONE_GROUP,4,4,308,167,WS_TABSTOP,WS_EX_ACCEPTFILES
+    PUSHBUTTON      "Cancel",IDCANCEL,318,159,50,14
+    GROUPBOX        "Zoning",IDC_ZONE_GROUP,4,4,308,167,WS_TABSTOP,WS_EX_ACCEPTFILES
     CONTROL         "",IDC_EDGE_WEIGHT,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | WS_TABSTOP,78,171,233,23
     LTEXT           "Edge weightning [100]",IDC_STATIC_EDGEW,4,178,69,8
 END
@@ -504,10 +505,10 @@ GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
-        LEFTMARGIN, 4
-        RIGHTMARGIN, 223
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
         TOPMARGIN, 3
-        BOTTOMMARGIN, 109
+        BOTTOMMARGIN, 200
     END
 
     IDD_SETUP, DIALOG
@@ -617,9 +618,10 @@ END
 //
 // Version
 //
+
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,8
- PRODUCTVERSION 1,0,0,8
+ FILEVERSION 1,0,0,9
+ PRODUCTVERSION 1,0,0,9
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -636,12 +638,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Private"
             VALUE "FileDescription", "ControlSoftware for a PC-AmbiLight"
-            VALUE "FileVersion", "1.0.0.8"
+            VALUE "FileVersion", "1.0.0.9"
             VALUE "InternalName", "AtmoWinA.exe"
-            VALUE "LegalCopyright", "Copyright (C) 2014"
+            VALUE "LegalCopyright", "Copyright (C) 2016"
             VALUE "OriginalFilename", "AtmoWinA.exe"
             VALUE "ProductName", "AtmoWinA"
-            VALUE "ProductVersion", "1.0.0.8"
+            VALUE "ProductVersion", "1.0.0.9"
         END
     END
     BLOCK "VarFileInfo"

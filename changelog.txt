@@ -6,6 +6,15 @@
 #  GitHub source : 
 #  https://github.com/ambilight-4-mediaportal
 #
+
+Version 1.0.0.9 : 2016.01.27
+Correction of the gradient slider on color gradient dialog. (Azzuro)
+Update platform project to VS120.
+translate few internal source text.
+set capturesize to 96x54 for 16x9 build
+set max capture to 300. ( need testing !)
+
+
 Version 1.0.0.8 : 2014.08.06
 Correction of save value for Software_gamma_blue in XML. (Azzuro)
 
