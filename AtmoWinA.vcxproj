@@ -298,7 +298,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>version.lib;Comctl32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)AtmoWinA.exe</OutputFile>
+      <OutputFile>$(OutDir)AtmoWinA_16x9.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>

@@ -13,450 +13,464 @@
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo-perchannel-whiteadj.txt</LocalFileName>
+              <LocalFileName>..\Base\atmo-perchannel-whiteadj.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{2eb2f1b5-e4cb-4c47-9ad9-049591351d40}-atmo-perchannel-whiteadj.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmo-perchannel-whiteadj.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoCtrl.exe</LocalFileName>
+              <LocalFileName>..\Base\AtmoCtrl.exe</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{95ea8770-0610-4939-b99c-1815023a2016}-AtmoCtrl.exe</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\AtmoCtrl.exe</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoCtrlLib.dll</LocalFileName>
+              <LocalFileName>..\Base\AtmoCtrlLib.dll</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{db0190b0-681c-4952-8483-4f6d11370b5f}-AtmoCtrlLib.dll</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\AtmoCtrlLib.dll</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmoDS.dll</LocalFileName>
+              <LocalFileName>..\Base\atmoDS.dll</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{60359bbc-02a2-451c-a28c-25eb9a52aab2}-atmoDS.dll</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmoDS.dll</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmods_settings.reg</LocalFileName>
+              <LocalFileName>..\Base\atmods_settings.reg</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{e1cb8d96-a571-4290-998f-94a60e139a9a}-atmods_settings.reg</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmods_settings.reg</DestinationFilename>
             </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoWinA.exe</LocalFileName>
+              <LocalFileName>..\Release\AtmoWinA.exe</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{f5b985b2-08fd-47d8-80cd-2496534312cc}-AtmoWinA.exe</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_live.bat</LocalFileName>
+              <LocalFileName>..\Base\atmo_live.bat</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{fc2e02af-2d08-487d-a47b-e6595d031fa6}-atmo_live.bat</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmo_live.bat</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_off.bat</LocalFileName>
+              <LocalFileName>..\Base\atmo_off.bat</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{1e4e865a-6752-42fc-9c13-f5a88c91dbd6}-atmo_off.bat</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmo_off.bat</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_static.bat</LocalFileName>
+              <LocalFileName>..\Base\atmo_static.bat</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{99377915-732e-49c1-8b4e-ac621150ed3c}-atmo_static.bat</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\atmo_static.bat</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\changelog.txt</LocalFileName>
-              <ZipFileName>Installer{CopyFile}\{162b0de0-81d5-4dbb-9209-aaafdb716e8e}-changelog.txt</ZipFileName>
-              <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
-            </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-              <Param1 />
-              <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\COPYING.txt</LocalFileName>
+              <LocalFileName>..\Base\COPYING.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{7d74782d-bacd-46af-a076-611ff0bcab32}-COPYING.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\COPYING.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\HISTORY.txt</LocalFileName>
+              <LocalFileName>..\Base\HISTORY.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{ac255612-39cc-4f3f-a202-4bcfc6668630}-HISTORY.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\HISTORY.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-AtmoCtrl.txt</LocalFileName>
+              <LocalFileName>..\Base\ReadMe-AtmoCtrl.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{ceadf88d-2bcb-4823-bc54-c3cd517bfac7}-ReadMe-AtmoCtrl.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\ReadMe-AtmoCtrl.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-AtmoCtrlLib.txt</LocalFileName>
+              <LocalFileName>..\Base\ReadMe-AtmoCtrlLib.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{fa3e5cb6-80f2-4532-b5a7-b01cad892ad7}-ReadMe-AtmoCtrlLib.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\ReadMe-AtmoCtrlLib.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-atmods.txt</LocalFileName>
+              <LocalFileName>..\Base\ReadMe-atmods.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{92687889-82a3-46ea-a352-420bc70812fb}-ReadMe-atmods.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\ReadMe-atmods.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\README.txt</LocalFileName>
+              <LocalFileName>..\Base\README.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{d72e97ca-98fd-4b3e-8a98-22f2c3bad127}-README.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\README.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\register.cmd</LocalFileName>
+              <LocalFileName>..\Base\register.cmd</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{d8469688-6299-425e-9b27-33f17b92d077}-register.cmd</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\register.cmd</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\sample-AtmoCtrl.cmd</LocalFileName>
+              <LocalFileName>..\Base\sample-AtmoCtrl.cmd</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{99d849d5-5351-44ec-ab0a-a128b88f1fb8}-sample-AtmoCtrl.cmd</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\sample-AtmoCtrl.cmd</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\unreg_filter.cmd</LocalFileName>
+              <LocalFileName>..\Base\unreg_filter.cmd</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{cf2f0999-7033-48ab-a099-86177aab0c4b}-unreg_filter.cmd</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\unreg_filter.cmd</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\black_zero.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\black_zero.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{58012760-b786-4e44-93d9-7268e55e57c9}-black_zero.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\black_zero.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_links.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\kanal_links.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{f5f8a5db-93cd-4074-8796-3ddfce9419aa}-kanal_links.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_links.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_oben.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\kanal_oben.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{cb006ed6-67b5-460b-9297-dc72693b4b3d}-kanal_oben.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_oben.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_rechts.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\kanal_rechts.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{1ffdedc5-9cb2-47f6-adbb-c0a87eec7e6d}-kanal_rechts.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_rechts.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_unten.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\kanal_unten.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{5f986a2b-02a3-46e5-b806-9297a2687bb1}-kanal_unten.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_unten.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_linke_hälfte.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_linke_hälfte.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{d29fa642-b7da-46f4-945a-3fcee02e299a}-oben_linke_h_lfte.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_linke_hälfte.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_linke_hälfte_50_50.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_linke_hälfte_50_50.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{bbea490e-65d3-455a-bb1f-c25eca47ad15}-oben_linke_h_lfte_50_50.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_linke_hälfte_50_50.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_links_keil.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_links_keil.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{c88cd233-95c1-49a7-be91-f58d12c9e9eb}-oben_links_keil.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_links_keil.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechte_hälfte.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_rechte_hälfte.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{dc1662e7-4659-4cde-8069-8d8d3426343d}-oben_rechte_h_lfte.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechte_hälfte.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechte_hälfte_50_50.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_rechte_hälfte_50_50.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{04d67936-393a-4850-afc1-3598b9518ab6}-oben_rechte_h_lfte_50_50.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechte_hälfte_50_50.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechts_keil.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_rechts_keil.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{2b67fb14-70a5-4057-8587-e4553fa05f25}-oben_rechts_keil.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechts_keil.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\readme.txt</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\readme.txt</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{99bafeb7-ab35-4f90-b636-4a3acff3c2d1}-readme.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\readme.txt</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\summenkanal.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\summenkanal.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{316962aa-9956-4c1a-93e8-9d6bf3773183}-summenkanal.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\summenkanal.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_0.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\standard\zone_0.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{a6ce9b29-aab0-414c-a92c-3c6bddbfa41b}-zone_0.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_0.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_1.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\standard\zone_1.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{ecaa7511-f186-4b60-80df-388fd5e06d32}-zone_1.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_1.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_2.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\standard\zone_2.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{91da2321-1682-4ec7-af92-ce8123367474}-zone_2.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_2.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_3.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\standard\zone_3.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{a3087644-a25a-441c-9ac8-6419646a6e53}-zone_3.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_3.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_4.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\standard\zone_4.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{53b6983e-fe22-4a6a-af5e-5b6f88ae9b02}-zone_4.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_4.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{3f58b0df-5d89-4b29-94d2-1d0c6a653fb5}-zone_3.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{e4b2b12e-97aa-44b5-be88-0ba56040e0d3}-zone_4.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\60_40\zone_3.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\60_40\zone_3.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{03a8093e-a284-4d03-9a3b-c07e3b049d82}-zone_3.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\60_40\zone_3.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\60_40\zone_4.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\60_40\zone_4.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{7fd3481e-78a1-4f4c-9dff-cb75cca473aa}-zone_4.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\60_40\zone_4.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\50_50\zone_3.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\50_50\zone_3.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{9c3ddcf4-01de-420f-980c-54596ec057bc}-zone_3.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\50_50\zone_3.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\50_50\zone_4.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\oben_geteilt\50_50\zone_4.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{55d5be0f-5714-4173-a369-2e85907ec537}-zone_4.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\50_50\zone_4.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_0.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_0.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{bed4d84e-25df-4e5d-b33d-82175a7dc2c4}-zone_0.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_0.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_0.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_0.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{b4cbee1e-1593-477b-b922-6bb6f6b7fe4a}-zone_0.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_0.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_1.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_1.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{258aa504-685a-4c7a-a086-0a542be414fd}-zone_1.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_1.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_1.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_1.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{32504d01-5ac9-4197-bc92-842c6de25dc1}-zone_1.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_1.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_2.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_2.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{1ca4e489-ce52-49eb-bb6d-c9c4ccf67b5c}-zone_2.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_2.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_2.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_2.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{63bf0127-fd17-459a-abba-ca2ef8d3fe78}-zone_2.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_2.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_3.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_3.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{3849d25a-42c8-43ef-80a5-0862f5cc0b83}-zone_3.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_3.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_3.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_3.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{8bab65db-8c2b-416d-933b-cb912423ea64}-zone_3.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_3.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_4.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_4.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{566e8a6c-29fb-4e9a-b6be-04e3d3d424f6}-zone_4.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_4.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_4.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_4.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{d4e69dc1-78a0-4bb8-acf1-8740eb6f65ec}-zone_4.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_4.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_5.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_5.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{32e15a57-0fef-4ee7-8480-a4f9602a6fdd}-zone_5.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_5.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_5.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_5.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{f84a74ee-eb8e-49d0-9a11-b83df1c63281}-zone_5.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_5.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_6.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_6.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{1c5b971c-c38f-4cba-adee-2461dcacfbe2}-zone_6.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_6.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_6.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_6.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{094339b7-f1cc-4519-997a-e9831e2cbedf}-zone_6.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_6.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_7.bmp</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_7.bmp</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{1d17f405-0200-45f2-9b72-218f89be5d84}-zone_7.bmp</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_7.bmp</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_7.cdr</LocalFileName>
+              <LocalFileName>..\Base\zonen_masken\8-channels\zone_7.cdr</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{3ded55c9-1880-4e41-b67d-9955019b7f80}-zone_7.cdr</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_7.cdr</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\3Dlut.3dl</LocalFileName>
+              <LocalFileName>..\Base\3Dlut.3dl</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{a9fe5120-9bdc-4af0-a07c-71dcaff5e6bd}-3Dlut.3dl</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\3Dlut.3dl</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\Dutch.xml</LocalFileName>
+              <LocalFileName>..\Base\Language\Dutch.xml</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{b7165b97-8caa-4de4-b03e-737f99d2f62a}-Dutch.xml</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\Language\Dutch.xml</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\English.xml</LocalFileName>
+              <LocalFileName>..\Base\Language\English.xml</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{357f2141-227c-416f-9659-2186fe7389bb}-English.xml</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\Language\English.xml</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\France.xml</LocalFileName>
+              <LocalFileName>..\Base\Language\France.xml</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{08881342-307b-472d-a3d0-6ba5d0d6430a}-France.xml</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\Language\France.xml</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\German.xml</LocalFileName>
+              <LocalFileName>..\Base\Language\German.xml</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{13308f09-124d-4d86-ad4a-e3f4d1cbe19c}-German.xml</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\Language\German.xml</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>AlwaysOverwrite</UpdateOption>
+              <LocalFileName>..\Release_16x9\AtmoWinA_16x9.exe</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{f7b376c7-2d98-4fcb-8193-25ffac17c805}-AtmoWinA_16x9.exe</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\AtmoWinA_16x9.exe</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>AlwaysOverwrite</UpdateOption>
+              <LocalFileName>..\Base\AtmoWinA.exe</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{ccf525d7-7d17-4834-97bc-53e090a542be}-AtmoWinA.exe</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>AlwaysOverwrite</UpdateOption>
+              <LocalFileName>..\changelog.txt</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
             </FileItem>
           </Items>
         </Files>
@@ -864,14 +878,14 @@ public class Script
     <Name>AtmoWin</Name>
     <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
     <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
-    <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+    <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
     <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
-    <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+    <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
     <Version>
       <Major>1</Major>
       <Minor>0</Minor>
       <Build>0</Build>
-      <Revision>8</Revision>
+      <Revision>9</Revision>
     </Version>
     <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
 
@@ -880,13 +894,13 @@ Atmolight: Manage Atmowin
 
 If MediaPortal &lt; Version 1.6 
 MPCoreChanger </ExtensionDescription>
-    <VersionDescription>Version 1.0.0.8 :
-Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescription>
+    <VersionDescription>Version 1.0.0.9 :
+</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.8.mpe1</OnlineLocation>
+    <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
     <ReleaseDate>2014-08-06T10:45:58</ReleaseDate>
     <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
-    <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
+    <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
     <Params>
       <Items>
         <SectionParam Name="Icon">
@@ -895,7 +909,7 @@ Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescrip
           <Description>The icon file of the package (jpg,png,bmp)</Description>
         </SectionParam>
         <SectionParam Name="Online Icon">
-          <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+          <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
           <ValueType>String</ValueType>
           <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
         </SectionParam>
@@ -924,456 +938,470 @@ Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescrip
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo-perchannel-whiteadj.txt</LocalFileName>
+        <LocalFileName>..\Base\atmo-perchannel-whiteadj.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{2eb2f1b5-e4cb-4c47-9ad9-049591351d40}-atmo-perchannel-whiteadj.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmo-perchannel-whiteadj.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoCtrl.exe</LocalFileName>
+        <LocalFileName>..\Base\AtmoCtrl.exe</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{95ea8770-0610-4939-b99c-1815023a2016}-AtmoCtrl.exe</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\AtmoCtrl.exe</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoCtrlLib.dll</LocalFileName>
+        <LocalFileName>..\Base\AtmoCtrlLib.dll</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{db0190b0-681c-4952-8483-4f6d11370b5f}-AtmoCtrlLib.dll</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\AtmoCtrlLib.dll</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmoDS.dll</LocalFileName>
+        <LocalFileName>..\Base\atmoDS.dll</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{60359bbc-02a2-451c-a28c-25eb9a52aab2}-atmoDS.dll</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmoDS.dll</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmods_settings.reg</LocalFileName>
+        <LocalFileName>..\Base\atmods_settings.reg</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{e1cb8d96-a571-4290-998f-94a60e139a9a}-atmods_settings.reg</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmods_settings.reg</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\AtmoWinA.exe</LocalFileName>
+        <LocalFileName>..\Release\AtmoWinA.exe</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{f5b985b2-08fd-47d8-80cd-2496534312cc}-AtmoWinA.exe</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_live.bat</LocalFileName>
+        <LocalFileName>..\Base\atmo_live.bat</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{fc2e02af-2d08-487d-a47b-e6595d031fa6}-atmo_live.bat</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmo_live.bat</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_off.bat</LocalFileName>
+        <LocalFileName>..\Base\atmo_off.bat</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{1e4e865a-6752-42fc-9c13-f5a88c91dbd6}-atmo_off.bat</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmo_off.bat</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\atmo_static.bat</LocalFileName>
+        <LocalFileName>..\Base\atmo_static.bat</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{99377915-732e-49c1-8b4e-ac621150ed3c}-atmo_static.bat</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\atmo_static.bat</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\changelog.txt</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{162b0de0-81d5-4dbb-9209-aaafdb716e8e}-changelog.txt</ZipFileName>
-        <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
-      </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-        <Param1 />
-        <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\COPYING.txt</LocalFileName>
+        <LocalFileName>..\Base\COPYING.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{7d74782d-bacd-46af-a076-611ff0bcab32}-COPYING.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\COPYING.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\HISTORY.txt</LocalFileName>
+        <LocalFileName>..\Base\HISTORY.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{ac255612-39cc-4f3f-a202-4bcfc6668630}-HISTORY.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\HISTORY.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-AtmoCtrl.txt</LocalFileName>
+        <LocalFileName>..\Base\ReadMe-AtmoCtrl.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{ceadf88d-2bcb-4823-bc54-c3cd517bfac7}-ReadMe-AtmoCtrl.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\ReadMe-AtmoCtrl.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-AtmoCtrlLib.txt</LocalFileName>
+        <LocalFileName>..\Base\ReadMe-AtmoCtrlLib.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{fa3e5cb6-80f2-4532-b5a7-b01cad892ad7}-ReadMe-AtmoCtrlLib.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\ReadMe-AtmoCtrlLib.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\ReadMe-atmods.txt</LocalFileName>
+        <LocalFileName>..\Base\ReadMe-atmods.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{92687889-82a3-46ea-a352-420bc70812fb}-ReadMe-atmods.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\ReadMe-atmods.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\README.txt</LocalFileName>
+        <LocalFileName>..\Base\README.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{d72e97ca-98fd-4b3e-8a98-22f2c3bad127}-README.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\README.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\register.cmd</LocalFileName>
+        <LocalFileName>..\Base\register.cmd</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{d8469688-6299-425e-9b27-33f17b92d077}-register.cmd</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\register.cmd</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\sample-AtmoCtrl.cmd</LocalFileName>
+        <LocalFileName>..\Base\sample-AtmoCtrl.cmd</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{99d849d5-5351-44ec-ab0a-a128b88f1fb8}-sample-AtmoCtrl.cmd</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\sample-AtmoCtrl.cmd</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\unreg_filter.cmd</LocalFileName>
+        <LocalFileName>..\Base\unreg_filter.cmd</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{cf2f0999-7033-48ab-a099-86177aab0c4b}-unreg_filter.cmd</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\unreg_filter.cmd</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\black_zero.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\black_zero.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{58012760-b786-4e44-93d9-7268e55e57c9}-black_zero.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\black_zero.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_links.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\kanal_links.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{f5f8a5db-93cd-4074-8796-3ddfce9419aa}-kanal_links.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_links.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_oben.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\kanal_oben.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{cb006ed6-67b5-460b-9297-dc72693b4b3d}-kanal_oben.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_oben.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_rechts.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\kanal_rechts.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{1ffdedc5-9cb2-47f6-adbb-c0a87eec7e6d}-kanal_rechts.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_rechts.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\kanal_unten.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\kanal_unten.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{5f986a2b-02a3-46e5-b806-9297a2687bb1}-kanal_unten.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\kanal_unten.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_linke_hälfte.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_linke_hälfte.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{d29fa642-b7da-46f4-945a-3fcee02e299a}-oben_linke_h_lfte.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_linke_hälfte.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_linke_hälfte_50_50.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_linke_hälfte_50_50.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{bbea490e-65d3-455a-bb1f-c25eca47ad15}-oben_linke_h_lfte_50_50.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_linke_hälfte_50_50.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_links_keil.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_links_keil.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{c88cd233-95c1-49a7-be91-f58d12c9e9eb}-oben_links_keil.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_links_keil.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechte_hälfte.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_rechte_hälfte.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{dc1662e7-4659-4cde-8069-8d8d3426343d}-oben_rechte_h_lfte.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechte_hälfte.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechte_hälfte_50_50.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_rechte_hälfte_50_50.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{04d67936-393a-4850-afc1-3598b9518ab6}-oben_rechte_h_lfte_50_50.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechte_hälfte_50_50.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_rechts_keil.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_rechts_keil.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{2b67fb14-70a5-4057-8587-e4553fa05f25}-oben_rechts_keil.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_rechts_keil.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\readme.txt</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\readme.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{99bafeb7-ab35-4f90-b636-4a3acff3c2d1}-readme.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\readme.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\summenkanal.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\summenkanal.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{316962aa-9956-4c1a-93e8-9d6bf3773183}-summenkanal.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\summenkanal.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_0.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\standard\zone_0.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{a6ce9b29-aab0-414c-a92c-3c6bddbfa41b}-zone_0.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_0.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_1.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\standard\zone_1.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{ecaa7511-f186-4b60-80df-388fd5e06d32}-zone_1.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_1.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_2.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\standard\zone_2.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{91da2321-1682-4ec7-af92-ce8123367474}-zone_2.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_2.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_3.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\standard\zone_3.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{a3087644-a25a-441c-9ac8-6419646a6e53}-zone_3.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_3.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\standard\zone_4.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\standard\zone_4.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{53b6983e-fe22-4a6a-af5e-5b6f88ae9b02}-zone_4.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\standard\zone_4.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{3f58b0df-5d89-4b29-94d2-1d0c6a653fb5}-zone_3.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\Keilteilung\zone_3.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{e4b2b12e-97aa-44b5-be88-0ba56040e0d3}-zone_4.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\Keilteilung\zone_4.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\60_40\zone_3.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\60_40\zone_3.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{03a8093e-a284-4d03-9a3b-c07e3b049d82}-zone_3.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\60_40\zone_3.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\60_40\zone_4.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\60_40\zone_4.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{7fd3481e-78a1-4f4c-9dff-cb75cca473aa}-zone_4.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\60_40\zone_4.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\50_50\zone_3.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\50_50\zone_3.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{9c3ddcf4-01de-420f-980c-54596ec057bc}-zone_3.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\50_50\zone_3.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\oben_geteilt\50_50\zone_4.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\oben_geteilt\50_50\zone_4.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{55d5be0f-5714-4173-a369-2e85907ec537}-zone_4.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\oben_geteilt\50_50\zone_4.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_0.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_0.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{bed4d84e-25df-4e5d-b33d-82175a7dc2c4}-zone_0.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_0.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_0.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_0.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{b4cbee1e-1593-477b-b922-6bb6f6b7fe4a}-zone_0.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_0.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_1.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_1.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{258aa504-685a-4c7a-a086-0a542be414fd}-zone_1.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_1.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_1.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_1.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{32504d01-5ac9-4197-bc92-842c6de25dc1}-zone_1.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_1.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_2.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_2.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{1ca4e489-ce52-49eb-bb6d-c9c4ccf67b5c}-zone_2.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_2.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_2.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_2.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{63bf0127-fd17-459a-abba-ca2ef8d3fe78}-zone_2.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_2.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_3.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_3.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{3849d25a-42c8-43ef-80a5-0862f5cc0b83}-zone_3.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_3.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_3.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_3.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{8bab65db-8c2b-416d-933b-cb912423ea64}-zone_3.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_3.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_4.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_4.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{566e8a6c-29fb-4e9a-b6be-04e3d3d424f6}-zone_4.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_4.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_4.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_4.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{d4e69dc1-78a0-4bb8-acf1-8740eb6f65ec}-zone_4.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_4.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_5.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_5.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{32e15a57-0fef-4ee7-8480-a4f9602a6fdd}-zone_5.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_5.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_5.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_5.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{f84a74ee-eb8e-49d0-9a11-b83df1c63281}-zone_5.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_5.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_6.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_6.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{1c5b971c-c38f-4cba-adee-2461dcacfbe2}-zone_6.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_6.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_6.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_6.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{094339b7-f1cc-4519-997a-e9831e2cbedf}-zone_6.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_6.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_7.bmp</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_7.bmp</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{1d17f405-0200-45f2-9b72-218f89be5d84}-zone_7.bmp</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_7.bmp</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\zonen_masken\8-channels\zone_7.cdr</LocalFileName>
+        <LocalFileName>..\Base\zonen_masken\8-channels\zone_7.cdr</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{3ded55c9-1880-4e41-b67d-9955019b7f80}-zone_7.cdr</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\zonen_masken\8-channels\zone_7.cdr</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\3Dlut.3dl</LocalFileName>
+        <LocalFileName>..\Base\3Dlut.3dl</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{a9fe5120-9bdc-4af0-a07c-71dcaff5e6bd}-3Dlut.3dl</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\3Dlut.3dl</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\Dutch.xml</LocalFileName>
+        <LocalFileName>..\Base\Language\Dutch.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{b7165b97-8caa-4de4-b03e-737f99d2f62a}-Dutch.xml</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\Language\Dutch.xml</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\English.xml</LocalFileName>
+        <LocalFileName>..\Base\Language\English.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{357f2141-227c-416f-9659-2186fe7389bb}-English.xml</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\Language\English.xml</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\France.xml</LocalFileName>
+        <LocalFileName>..\Base\Language\France.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{08881342-307b-472d-a3d0-6ba5d0d6430a}-France.xml</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\Language\France.xml</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\..\Atmowin\Atmowin - Merged\latest\Language\German.xml</LocalFileName>
+        <LocalFileName>..\Base\Language\German.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{13308f09-124d-4d86-ad4a-e3f4d1cbe19c}-German.xml</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\Language\German.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>AlwaysOverwrite</UpdateOption>
+        <LocalFileName>..\Release_16x9\AtmoWinA_16x9.exe</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{f7b376c7-2d98-4fcb-8193-25ffac17c805}-AtmoWinA_16x9.exe</ZipFileName>
+        <DestinationFilename>%Config%\Atmowin\AtmoWinA_16x9.exe</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>AlwaysOverwrite</UpdateOption>
+        <LocalFileName>..\Base\AtmoWinA.exe</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{ccf525d7-7d17-4834-97bc-53e090a542be}-AtmoWinA.exe</ZipFileName>
+        <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>AlwaysOverwrite</UpdateOption>
+        <LocalFileName>..\changelog.txt</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
+        <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>image\AtmoWin-mpei.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{cc406bf8-ba93-44ff-bdc0-be0c9b94bd36}-AtmoWin-mpei.png</ZipFileName>
+        <ZipFileName>Installer{CopyFile}\{3e9841b9-2b7e-4fe8-91fd-8f88cdb2b002}-AtmoWin-mpei.png</ZipFileName>
         <DestinationFilename />
       </FileItem>
     </Items>
@@ -1386,7 +1414,7 @@ Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescrip
         <LocalFileName />
         <ZipFileName>Installer{CopyFile}\{62667caa-1837-4677-a2b6-82ddc7dbf2b9}-</ZipFileName>
         <DestinationFilename>%Config%\Atmowin</DestinationFilename>
-        <Folder>..\..\Atmowin\Atmowin - Merged\latest</Folder>
+        <Folder>..\Base</Folder>
         <Group>AtmoWin</Group>
         <Recursive>true</Recursive>
       </FolderGroup>

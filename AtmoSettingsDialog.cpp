@@ -237,7 +237,7 @@ ATMO_BOOL CAtmoSettingsDialog::InitDialog(WPARAM wParam)
 
 	GetWindowText(this->m_hDialog, buffer, sizeof(buffer));
 #ifdef CAP_16x9
-	CString FileVersion = "Vers : " + Utils->GetFileVersionString("AtmoWinA.exe") + " - 16x9";
+	CString FileVersion = "Vers : " + Utils->GetFileVersionString("AtmoWinA_16x9.exe") + " - 16x9";
 #else
 	CString FileVersion = "Vers : " + Utils->GetFileVersionString("AtmoWinA.exe");
 #endif

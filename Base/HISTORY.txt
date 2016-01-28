@@ -1,0 +1,263 @@
+Atmo Light Steuersoftware für Windows 32-bit
+--------------------------------------------
+2012-02-18: Version 0.50 von Igor
+- Anzahl auswählbarer COM Ports auf 64 erweitert (für alle devices)
+- Zonenanzahl auf 84 erweitert (für MiniDMX um dort 252 Kanäle ausnutzen zu können)
+- dazu kann man jetzt oben/unten/links/rechts bis zu 64 Zonen definieren
+  (in der Summe darf man aber nich über 84 kommen)
+- im ReadMe.txt die Erklärung für die Registration der COM Server verbessert
+
+
+2010-10-25: Version 0.49 von Igor
+- fNordlicht - Anzahl der Kanäle auch in der Registry speichern
+- fNordlicht - Konfiguration der Zonenzuordnung korrigiert 
+
+2010-07-29: Version 0.48 von Igor
+- Bugfix: Anzahl der Zonen nun wirklich bis 64 einstellbar (vorher nur 63 nöglich)
+- DMX Device mit Auswahl der Schnittstellegeschwindigkeit (115200, 250000 Bit/s)
+
+2010-06-17: Version 0.48 von Igor
+- Support für fNordlicht Hardware (kaskadierbares System bis zu 254 Kanäle, an einer seriellen Schnittstelle)
+  der Source dafür stammt von Kai Lauterbauch (siehe auch Quelltexte)
+- direkter Zugriff auf die Kanäle von AtmoLight classic, Multi AtmoLight,
+  und MoMoLight - dort kann man jetzt die Farben von nicht durch den LiveView
+  etc. verwendeten Kanälen - mit dem externen Befehlszeilenprogramm AtmoCtrl.exe
+  steuern.(natürlich geht das auch über die Programmierschnittstelle)
+- GDI Capture Modus - um einen Interlaced Abtastungsmodus erweitert  
+  die Idee stammt Tobias (aka Tobybear) - dazu gibt es im Einstellungsdialog
+  jetzt die Option - [Interlace Rows] - 
+  1 = ein Vollbild capturen bei 25 fps = 25 Vollbilder je Sekunde  
+  2 = ein Halbbild capturen bei 25 fps = 12,5 Vollbilder je Sekunde  
+  3 = drei Teilbilder capturen bei 25 fps = 8,33 Vollbilder je Sekunde  
+  d.h. es wird nicht bei jedem Frame der komplette Bildschirm kopiert
+  sondern nur je X te Zeile und so verteilt über mehrer Frames
+  hinweg der gesamte Bildschirm erfasst. Was zu einer leichten
+  Reduzierung der CPU Last kommen sollte.
+- Tobybear hat auch noch Support für 8 und 16bit Desktops ergänzt 
+  (hab ich allerdings selbst noch nicht weiter getestet)
+- einige Bugs im Zonen-Kanal-Mapping Editor wurden ebenfalls behoben
+
+2010-03-03: Version 0.47 von Igor
+- erster Versuch eines Dialoges zur Anzeige der Gradienten und der Auswirkung
+  des Edgeweightning Parameters
+- Schließen der Verbindung zur Hardware (serielle Schnittstelle), wenn 
+  der PC in einen Energiesparmodus wechselt
+
+2009-11-02: Version 0.46 von Igor
+- erste Version mit DirectShow Filter auch wenn er noch nicht richtig geht *g*
+  (speziell für Systeme mit Hardwarebeschleunigung, das kann damit auch nicht
+  funktionieren - prinzipbedingt, denn dazu müsste der Filter ja die Frames
+  dekodieren - um die notwendigen Informationen für Atmo zu extrahieren.
+  darin steckt das Problem - für Hochauflösendes Material ist das durch den 
+  PC oft selbst nicht möglich, daher werden dem Filter die nur vorbereiteten
+  Frames übergeben, welche erst in der Grafikhardware endgültig dekodiert werden.
+- der Filter wird so wohl nur bei normalen PAL oder ähnlichem Material
+  ohne Hardwarebeschleunigng (Dekodierung) korrekt funktionieren können.
+  (z.B. für Overlay oder VMR9 etc.) 
+- Unterstützung für MoMoLight Hardware
+  
+
+2009-02-28: Version 0.45 von Igor
+- kleine Änderung - Berechnung der Durchschnittshelligkeit für jede Zone getrennt, es werden nur
+  Pixel in den Durchschnitt einbezogen, welche Darknesslimit überschreiten UND deren 
+  EdgeWeightning > 0 ist - dürfte nur in dem Fall Wirkung zeigen wo man die Zonen
+  via Bitmapdatei umdefiniert hat - für die meisten User also wohl eher nicht so wichtig.
+
+2009-02-13: Version 0.45 von Igor
+- generelle Überarbeitung des Zonenlayouts - klare Trennung zwischen Ermittlung der Farben 
+  und der räumlichen Annordung der Ausgabegeräte.
+  -> als Zonen werden Bereiche des Bildes bezeichnet, welche nach den altbekannten
+     Regeln analysiert werden
+     
+  Im Gegensatz zum alten AtmoWin ist deren Anzahl nun nicht mehr fest, im
+  Einstellungsdialog kann man festlegen wieviele Zonen man oben, unten bzw.
+  Links/Rechts haben möchte - daraus errechnet das Programm automatisch
+  die passenden Gradienten (Gewichtungsfaktoren) für die Einteilung
+  des Bildschirms.   
+  
+  -> Eine Manipulation ist weiterhin über die Bitmap Dateien möglich, welche wie gehabt
+     Zone_0.bmp, Zone_1.bmp etc. heißen.
+     Die Nummerierung der Zonen ist allerdings seit dieser Version anders, und nicht
+     mehr von der eigentlichen Hardware abhängig, so müssen ggf. alten Zonen Bitmaps
+     umbenannt werden.
+     Die Nummerierung der Zonen beginnt dabei Links oben mit Null und geht im 
+     Unterzeigersinn reih um -- sollte eine Summenzone konfiguriert sein - ist
+     dies immer die letzte Zone.
+     (die Nummerierung lässt sich mit dem Dummy Device anzeigen.)
+  -> wer jetzt vielleicht verschiedene Settings von Gradienten benötigt,
+     hat für verschiedene Hardware / Zonenlayouts die Möglichkeit die Bitmaps
+     nicht mehr direkt im Programmordner abzulegen, sondern in Ordnern 
+     unterhalb welche sich aus dem Gerätenamen und dem Zonenlayout ergeben
+     - die Ordner legt AtmoWin beim Wechsel des Layouts selbst an. 
+     So dass ihr nur noch die Dateien hineinkopieren müsst.
+     
+- Ebenso müssen wohl die Kanalmappings neu eingestellt werden.
+  (Ein Standard 1:1 bzw. empfohlenes Mapping gibt es aber weiterhin, wer selbst
+   keine Eigenen definiert hat, wird wohl von der Änderung nicht viel merken.)
+     
+- Die Gammakorrektur in Software hat jetzt auch einen Einstellungsdialog
+  im Software Weißabgleich bekommen. 
+  (man sollte diese aber nur aktivieren, wenn das nicht von der Hardware
+   übernommen wird - sonst gibt das Probleme.)
+  
+- Der GDI Screencapture Modus kann jetzt auch mit einer niedrigeren einstellbaren 
+  Framerate grabben - und somit für ein wenig CPU Entlastung sorgen.
+  (perfekt ists aber immer noch nicht...)
+  
+- Da bei der Einspeisung der Frames von VideoLan aus - bei mir immer AtmoLight
+  50-100ms zu früh dran war - habe ich die Verbindung zwischen Framecapture
+  und eigenliche Liveausgabe - mit einer Warteschlange ausgestatet, über welche
+  sich ein längerer Verzögerungsfaktor einstellen läßt.
+  (dafür gibt es den Registrykey "LiveView_FrameDelay" in Millisekunden.)  
+  
+- Die Konfiguration der Geräteschnittstellen, wurde in gerätespezifische Dialoge      
+  ausgelagert, welche über den Button [Gerät konfigurieren...] erreichbar ist.
+
+- Folgende neue Devices bzw. Abwandlungen sind ergänzt wurden:
+  - Mondolight - ein 16-Kanal auf CPLD? basierendes AtmoLight Derivat,
+    was der VDR Portal User "Slime" entwickelt.
+    
+  - Multi AtmoLight - ist eigentlich keine neue Hardware - aber dieser
+    spezielle Adapter ermöglicht es bis zu vier 4-Kanal Atmo Platinen
+    gleichzeitig wie ein grosse AtmoLight anzusprechen. Ist Sicherlich
+    für Aufrüstungswillige, welche ihre Hardware behalten wollen eine 
+    gute Idee.
+    
+  - der DMX Adapter erlaubt nun die Konfiguration des Startkanals und die 
+    Anzahl der AtmoWin Kanäle, welche er bereitstellen soll.
+
+2009-02-??: Version 0.44b von Igor     
+- Bugfix Version wo ein Bereich (1/3 vom rechten Rand aus) des Bildschirms bei 
+  der Wandlung der Gradienten in Gewichtungsfaktor schlichtweg - ignoriert wurde.  
+
+2008-02-24: Version 0.44 von Igor
+- Schnittstelle zu einem einfachen DMX Device an der Seriellen Schnittstelle
+  vom User VDR+DMX übernommen.
+  den Basiskanal beginnend bei 0 stellt man über den DWORD Registry Wert 
+  "DMX_BaseChannel" ein ab diesem Kanal belegt AtmoWin 15 aufeinanderfolgende 
+  Kanäle... immer in der Reihenfolge R G B ... 
+  (die restlichen Kanäle können über die COM/ActiveX Schnittstellen
+   oder das Hilfsprogramm AtmoCtrl.exe angesprochen werden.)
+- Gamma Korrektur in Software implementiert (aber noch ohne Gui
+  da wir sie ja eigentlich nicht mehr brauchen, durch die Firmware welche
+  das schon macht.)
+  dafür gibt es die Registry Werte 
+  * Software_gamma_mode 0=disable, 1=pro Farbanteil,2=global, 
+  * Software_gamma_global Wert/100 = Gammakorrektur für R,G,B
+  * Software_gamma_red Wert/100 = Gammakorrektur für Rot
+  * Software_gamma_green Wert/100 = Gammakorrektur für Grün
+  * Software_gamma_blue  Wert/100 = Gammakorrektur für Blau
+- da meine VLC Erweiterung die Frames ca. 40ms for der eigentlichen Anzeige
+  erhält - ist es z.T. mir aufgefallen das die AtmoLight Farbe
+  einen Tick for dem Bild schon gewechselt hat - dafür habe
+  ich den Parameter "LiveView_FrameDelay" ergänzt - damit kann
+  man die Ausgabe der Werte um ca. 30-35ms verzögern, dann dürften
+  die Farben von AtmoLight wieder synchron zum Bild sein.
+- Wer sein AtmoLight unter Windows an so einem USB Adapter betreibt, und
+  diesen wie an einem USB Switch betreibt der nicht ständig mit Strom versorgt
+  ist - wird vielleicht genervt sein von der Fehlermeldung das der COM Port
+  nicht geöffnet werden konnte - aus diesem Grund wurde der Registry DWORD
+  Wert "IgnoreConnectionErrorOnStartup" eingeführt setzt man diesen auf 1 
+  wird beim starten wenn die Schnittstelle nicht verfügbar ist auf das NUL
+  Device umgeschaltet - (ist zwar auch nicht der Weisheit letzter Schluss
+  aber besser als wenn der PC ne unschöne Fehlermeldung ausgibt.)
+  (Der Key muss manuell angelegt werden.)    
+- zusätzliches NUL device für Ausgabe
+- einiges an Kompilerwarnings etc. noch aufgeräumt
+
+2007-11-24: Version 0.43 von Igor
+- COM Interface für externe Filter z.B. DirectShow-Filter (sobald mal verfügbar)
+- Zuordnung der Kanäle Logisch -> Hardware frei definierbar bis zu 10 verschiedene Setups möglich
+- neues Unterprojekt "AtmoCtrlDll" zur Verwendung in VideoLanClient Modul
+  (siehe auch ReadMe-AtmoCtrlLib.txt)
+- Zuordnung der Bildschirmbereiche zu den Kanälen und deren Wichtung, kann jetzt
+  über externe Bitmap Dateien verändert werden, so z.B. auch möglich aus den
+  oberen Kanal zu splitten -> siehe "zonen_masken\readme.txt" wie es Funktioniert.
+- Dummy Device für Entwickler die Ihre Hardware nicht am selben PC haben - in
+  Form eines kleinen Fensters was die Farben der Kanäle anzeigt.
+- Readme Texte überarbeitet für die externen Tools   
+- Hardware Weissabgleich für Leute welche die neueste Firmware auf Ihrem
+  AtmoLight Controller verwenden...
+    
+
+2007-09-25: Version 0.42 von Igor
+- Multi Monitor Bug behoben falsche Positionen für Zugriff auf ScreenShot Bitmap
+  in AtmoGdiDisplayCaptureInput.cpp Initialisierung
+  --> Thanks to MacGyver for Debugging
+
+
+2007-09-24: Version 0.41 von Igor
+- Settings Dialog Comport Wechsel (off by one ;-) Bug gefixed - Thanks to Ipconfig
+  (da war ein +1 auf die Auswahl zuviel!) 
+
+2007-09-23: Version 0.40 von Igor
+- nahezu komplettes Rewrite der Dialoge / Effekte 
+- Modularisierung...
+- Interne Struktur komplett über den Haufen geworfen - an einigen Stellen direkt den
+  Source der Linux Quellen eingebaut - speziell bei der Berechnung des Livebildes
+  so dass jetzt auch unter Windows der gleiche Funktionsumfang zur Verfügung steht...
+  und und und...
+  als Basis dienten die Quellen das Atmo Plugins "atmo-0.1.1" ... das einpflegen von
+  Änderungen die dort gemacht werden in die Windows Version sollte recht einfach
+  gehen - da nur minimale Anpassungen notwendig sind --> WinMerge leistet da gute 
+  Dienste.
+
+2007-07-09: Version 0.35 von Matthiaz
+- Es werden jetzt alle Parameter gesichert, 
+- auch der Bertriebsmodus, der beim Sichern der Parameter aktiv war, wird 
+  beim Neustart von AtmoWin wieder ausgeführt
+
+
+2007-09-06: Version 0.34 von Matthiaz
+- Einstellungen in der Registry speichert. 
+- PPK kann angepasst werden (bis max. 5000 Punkte pro Kanal!). 
+- Und ob es minimiert starten soll. Und, und und...
+- Ich hoffe ausserdem, dass der untere Kanal nun funktioniert... 
+
+
+2007-09-04: Version 0.33 von Matthiaz
+- Einstellungen werden in der Registry gesichert
+- Nur noch ein Thread bei Live-Bild
+- Berechnungsparameter sind anpassbar (Neustart von AtmoWin erforderlich!)
+
+
+2007-08-29: Version 0.22 von Matthiaz 
+- Farbwechsel parallel mit allen 4 Röhren, 
+- und von links nach rechts und zurück nur für die linke und rechte Röhre. 
+- Geschwindigkeit per Int.Schritte und -Pause wählbar. 
+
+
+2007-08-26: version 0.21 von Matthiaz
+- Programm minimiert starten
+- ein paar Effekte?
+- automatische Bildbreitenanpassung
+
+
+2007-05-19: Version 0.2 von MacGyver2k 
+- toll designtes icon ( ich flehe jeden an ein besseres zu machen ) *g*
+- minimize to tray
+- multimonitorsupport ( bzw zwei monitor:| )
+- auswahl des monitors auf dem berechnet werden soll
+- "debug" anzeige der auflösung + position ( eigentlich kein feature, aber dann wird die liste hier länger )
+- veränderung der auflösung ( windows, spiele ) wird registriert und die pixel werden angepasst
+- auswertung von 120 pixeln pro kanal anstatt 60 ( ist über "PPK" in der source festgelegt, hab vergessen das in die gui einzubaun, sollte aber kein problem sein  )
+- funktion zum lesen/schreiben der settings aus der registry - schreiben geht, lesen nicht - daher hab ichs nicht aktiviert - hab mittendrin beim programmiern dann aufgehört
+- beim beenden des programms werden alle kanäle auf 0 gesetzt -> licht aus 
+
+
+2007-03-15: Version 0.01? von MacGyver2k
+Known Limitations
+- teilweise falsche Helligkeitsdarstellung bei schwarz.
+- Settings werden noch nicht abgespeichert.
+- minimieren zum tray + icon
+- beim starten wird sofort versucht com1 zu öffnen.
+- beim weissabgleich wird immer statischer werte addiert/subtrahiert.
+- ausgabe momentan nur auf primärem monitor
+- kein summenkanal
+- falsche eingaben möglich in der gui
+- farbberechnung fehlerhaft
+- noch kein helligkeitsmodus -> maximal vorkommende helligkeit
+- kein 16:9 modus
+- keine neue pixelzuordnung beim wechsel der auflösung -> fehlerhafte berechnung
+
+

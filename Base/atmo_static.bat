@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Atmowin\AtmoCtrl.exe" -effect static
