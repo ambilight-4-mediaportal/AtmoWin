@@ -472,6 +472,13 @@
               <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
             </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\Base\register 16x9.cmd</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{ed620157-cd59-41c3-8487-954c79c995b0}-register 16x9.cmd</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\register 16x9.cmd</DestinationFilename>
+            </FileItem>
           </Items>
         </Files>
       </GroupItem>
@@ -895,10 +902,15 @@ Atmolight: Manage Atmowin
 If MediaPortal &lt; Version 1.6 
 MPCoreChanger </ExtensionDescription>
     <VersionDescription>Version 1.0.0.9 :
+Correction of the gradient slider on color gradient dialog. (Azzuro)
+Update platform project to VS120.
+translate few internal source text.
+set capturesize to 96x54 for 16x9 build
+set max capture to 300. ( need testing !)
 </VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
-    <ReleaseDate>2014-08-06T10:45:58</ReleaseDate>
+    <ReleaseDate>2016-01-28T10:45:58</ReleaseDate>
     <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
     <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
     <Params>
@@ -1396,6 +1408,13 @@ MPCoreChanger </ExtensionDescription>
         <LocalFileName>..\changelog.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\Base\register 16x9.cmd</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{ed620157-cd59-41c3-8487-954c79c995b0}-register 16x9.cmd</ZipFileName>
+        <DestinationFilename>%Config%\Atmowin\register 16x9.cmd</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
         <Param1 />
