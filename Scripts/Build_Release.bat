@@ -40,13 +40,13 @@ REM : NOT USED FOR ATMOWIN : @"%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUI
 if %1!==Debug! goto END
 
 echo.
-echo Building Atmowin
+echo Building Atmowin 16x9
 echo Build mode: %BUILD_TYPE_16x9%
 echo.
 
 REM : NOT USED FOR ATMOWIN : @"%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" NuGet/RestorePackages.targets
 
-"%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" /target:Rebuild /property:VisualStudioVersion=12.0;Configuration=%BUILD_TYPE% "..\AtmoWinA.sln" >> %LOG%
+"%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" /target:Rebuild /property:VisualStudioVersion=12.0;Configuration=%BUILD_TYPE_16x9% "..\AtmoWinA.sln" >> %LOG%
 
 echo Building MPEI
 copy "..\MPEI\AtmoWin.xmp2" "..\MPEI\AtmoWin_COPY.xmp2"
