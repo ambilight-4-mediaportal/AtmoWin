@@ -478,7 +478,7 @@
       <GroupItem Name="Atmowin_4x3">
         <ParentGroup />
         <DisplayName>Atmowin 4x3</DisplayName>
-        <DefaulChecked>true</DefaulChecked>
+        <DefaulChecked>false</DefaulChecked>
         <Description>use Atmowin with capture definition : 64x48</Description>
         <Files>
           <Items>
@@ -492,7 +492,7 @@
           </Items>
         </Files>
       </GroupItem>
-      <GroupItem Name="Atmowin-16x9">
+      <GroupItem Name="Atmowin_16x9">
         <ParentGroup />
         <DisplayName>Atmowin 16x9</DisplayName>
         <DefaulChecked>false</DefaulChecked>
@@ -585,7 +585,7 @@ The AtmoLight process plugin needs the MPCoreChanger plugin to replace the origi
         </Actions>
         <IncludedGroups>
           <string>Atmowin_4x3</string>
-          <string>Atmowin-16x9</string>
+          <string>Atmowin_16x9</string>
         </IncludedGroups>
         <PanelName>Tree View Selector</PanelName>
         <WizardButtonsEnum>BackNextCancel</WizardButtonsEnum>
@@ -957,23 +957,35 @@ public class Script
       <Build>0</Build>
       <Revision>9</Revision>
     </Version>
-    <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
-
-AtmoWin needs an additional plugin :
-Atmolight: Manage Atmowin 
-
-If MediaPortal &lt; Version 1.6 
+    <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
+
+
+
+AtmoWin needs an additional plugin :
+
+Atmolight: Manage Atmowin 
+
+
+
+If MediaPortal &lt; Version 1.6 
+
 MPCoreChanger </ExtensionDescription>
-    <VersionDescription>Version 1.0.0.9 :
-Correction of the gradient slider on color gradient dialog. (Azzuro)
-Update platform project to VS120.
-translate few internal source text.
-set capturesize to 96x54 for 16x9 build
-set max capture to 300. ( need testing !)
+    <VersionDescription>Version 1.0.0.9 :
+
+Correction of the gradient slider on color gradient dialog. (Azzuro)
+
+Update platform project to VS120.
+
+translate few internal source text.
+
+set capturesize to 96x54 for 16x9 build
+
+set max capture to 300. ( need testing !)
+
 </VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
-    <ReleaseDate>2016-01-28T10:45:58</ReleaseDate>
+    <ReleaseDate>2016-02-01T10:45:58</ReleaseDate>
     <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
     <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
     <Params>
@@ -1469,7 +1481,7 @@ set max capture to 300. ( need testing !)
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>image\AtmoWin-mpei.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{3e9841b9-2b7e-4fe8-91fd-8f88cdb2b002}-AtmoWin-mpei.png</ZipFileName>
+        <ZipFileName>Installer{CopyFile}\{eab98b91-9ab8-42cb-a3f1-96be9b145522}-AtmoWin-mpei.png</ZipFileName>
         <DestinationFilename />
       </FileItem>
     </Items>
