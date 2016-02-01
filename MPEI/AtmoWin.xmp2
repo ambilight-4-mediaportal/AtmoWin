@@ -454,16 +454,16 @@
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\Release_16x9\AtmoWinA_16x9.exe</LocalFileName>
+              <LocalFileName>..\Release_16x9\AtmoWinA.exe</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{f7b376c7-2d98-4fcb-8193-25ffac17c805}-AtmoWinA_16x9.exe</ZipFileName>
-              <DestinationFilename>%Config%\Atmowin\AtmoWinA_16x9.exe</DestinationFilename>
+              <DestinationFilename>%Config%\Atmowin\bin\16x9\AtmoWinA.exe</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
-              <LocalFileName>..\Base\AtmoWinA.exe</LocalFileName>
+              <LocalFileName>..\Release\AtmoWinA.exe</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{ccf525d7-7d17-4834-97bc-53e090a542be}-AtmoWinA.exe</ZipFileName>
-              <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
+              <DestinationFilename>%Config%\Atmowin\bin\4x3\AtmoWinA.exe</DestinationFilename>
             </FileItem>
             <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
               <Param1 />
@@ -472,12 +472,40 @@
               <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
               <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
             </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="Atmowin_4x3">
+        <ParentGroup />
+        <DisplayName>Atmowin 4x3</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>use Atmowin with capture definition : 64x48</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
               <Param1 />
-              <UpdateOption>OverwriteIfOlder</UpdateOption>
-              <LocalFileName>..\Base\register 16x9.cmd</LocalFileName>
-              <ZipFileName>Installer{CopyFile}\{ed620157-cd59-41c3-8487-954c79c995b0}-register 16x9.cmd</ZipFileName>
-              <DestinationFilename>%Config%\Atmowin\register 16x9.cmd</DestinationFilename>
+              <UpdateOption>AlwaysOverwrite</UpdateOption>
+              <LocalFileName>..\Release\AtmoWinA.exe</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{23ba893f-d717-4d08-b825-752468a5f856}-AtmoWinA.exe</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="Atmowin-16x9">
+        <ParentGroup />
+        <DisplayName>Atmowin 16x9</DisplayName>
+        <DefaulChecked>false</DefaulChecked>
+        <Description>use Atmowin with capture definition : 96x54
+! Use more ressource than 4x3 version ! </Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>AlwaysOverwrite</UpdateOption>
+              <LocalFileName>..\Release_16x9\AtmoWinA.exe</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{2079a9bf-5361-4394-a2d4-8c66c9dfe399}-AtmoWinA.exe</ZipFileName>
+              <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
             </FileItem>
           </Items>
         </Files>
@@ -526,6 +554,41 @@ The AtmoLight process plugin needs the MPCoreChanger plugin to replace the origi
         </IncludedGroups>
         <PanelName>Welcome Screen</PanelName>
         <WizardButtonsEnum>NextCancel</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="ca2f7813-c418-403d-9e08-790d79fe51ad" Name="Tree View Selector" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header Title">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Header title</Description>
+            </SectionParam>
+            <SectionParam Name="Header description">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of section, shown in under section title</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+            <SectionParam Name="Description ">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of this operation</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups>
+          <string>Atmowin_4x3</string>
+          <string>Atmowin-16x9</string>
+        </IncludedGroups>
+        <PanelName>Tree View Selector</PanelName>
+        <WizardButtonsEnum>BackNextCancel</WizardButtonsEnum>
       </SectionItem>
       <SectionItem Guid="985c0ac3-86d0-49ee-97cd-06a8c2419add" Name="Install Section" ConditionGroup="">
         <Params>
@@ -1391,16 +1454,9 @@ set max capture to 300. ( need testing !)
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\Release_16x9\AtmoWinA_16x9.exe</LocalFileName>
+        <LocalFileName>..\Release_16x9\AtmoWinA.exe</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{f7b376c7-2d98-4fcb-8193-25ffac17c805}-AtmoWinA_16x9.exe</ZipFileName>
-        <DestinationFilename>%Config%\Atmowin\AtmoWinA_16x9.exe</DestinationFilename>
-      </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
-        <Param1 />
-        <UpdateOption>AlwaysOverwrite</UpdateOption>
-        <LocalFileName>..\Base\AtmoWinA.exe</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{ccf525d7-7d17-4834-97bc-53e090a542be}-AtmoWinA.exe</ZipFileName>
-        <DestinationFilename>%Config%\Atmowin\AtmoWinA.exe</DestinationFilename>
+        <DestinationFilename>%Config%\Atmowin\bin\16x9\AtmoWinA.exe</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
         <Param1 />
@@ -1408,13 +1464,6 @@ set max capture to 300. ( need testing !)
         <LocalFileName>..\changelog.txt</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{81190220-cb01-414e-b816-12ecd9aa857f}-changelog.txt</ZipFileName>
         <DestinationFilename>%Config%\Atmowin\changelog.txt</DestinationFilename>
-      </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-        <Param1 />
-        <UpdateOption>OverwriteIfOlder</UpdateOption>
-        <LocalFileName>..\Base\register 16x9.cmd</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{ed620157-cd59-41c3-8487-954c79c995b0}-register 16x9.cmd</ZipFileName>
-        <DestinationFilename>%Config%\Atmowin\register 16x9.cmd</DestinationFilename>
       </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
         <Param1 />

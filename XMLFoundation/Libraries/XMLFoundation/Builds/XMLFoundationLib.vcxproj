@@ -333,7 +333,7 @@
     </Bscmake>
     <Lib>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>../../Release/XMLFoundation.lib</OutputFile>
+      <OutputFile>%(OutputFile)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_StaticCRT|Win32'">
