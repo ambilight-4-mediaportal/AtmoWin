@@ -48,9 +48,9 @@
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage />
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -71,14 +71,14 @@ Color picker / greyscale adjustment fixes merged from SEDU mod (angie05).
 
 Bugfix for registry saving the Atmoduino channels.</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.0.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.0.mpe1</OnlineLocation>
         <ReleaseDate>2013-08-25T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -157,9 +157,9 @@ Bugfix for registry saving the Atmoduino channels.</VersionDescription>
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage />
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -175,14 +175,14 @@ Bugfix for registry saving the Atmoduino channels.</VersionDescription>
 AtmoWin needs an additional plugin (MPCoreChanger &amp; Atmolight) which will be installed/updated automatically while installing!!! </ExtensionDescription>
         <VersionDescription>Based on Angie05 : Alpha 09</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.1.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.1.mpe1</OnlineLocation>
         <ReleaseDate>2013-08-25T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -261,9 +261,9 @@ AtmoWin needs an additional plugin (MPCoreChanger &amp; Atmolight) which will be
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage />
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -282,14 +282,14 @@ Add KarateLight device ( cloned from 0.51 )
 Add Visual Styles and changed any in Channel assignment Dialog
 Correct Build with Comctl32.lib error link. </VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.2.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.2.mpe1</OnlineLocation>
         <ReleaseDate>2013-08-25T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -368,9 +368,9 @@ Correct Build with Comctl32.lib error link. </VersionDescription>
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage />
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -399,14 +399,14 @@ AtmoWin needs an additional plugin (MPCoreChanger &amp; Atmolight) which will be
         <VersionDescription>Version 1.0.0.3
 Add Multi-language support on GUI Screen,</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.3.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.3.mpe1</OnlineLocation>
         <ReleaseDate>2014-03-07T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -485,9 +485,9 @@ Add Multi-language support on GUI Screen,</VersionDescription>
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage />
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -518,14 +518,14 @@ Moved Language files to language folder.
 Replacement of Lng files by XML.
 Correct White adjustement Setting : only White or Color adjustement can be used. </VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.4.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.4.mpe1</OnlineLocation>
         <ReleaseDate>2014-03-17T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -604,9 +604,9 @@ Correct White adjustement Setting : only White or Color adjustement can be used.
         <Name>AtmoWin</Name>
         <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
         <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
         <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
         <Version>
           <Major>1</Major>
           <Minor>0</Minor>
@@ -632,331 +632,14 @@ Fix various small bug
 /// VC++ 2013 x86 : http://www.microsoft.com/en-us/download/details.aspx?id=40784             	///
 ///////////////////////////////////////////////////////////////////////////////////////////////////</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.5.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.5.mpe1</OnlineLocation>
         <ReleaseDate>2014-04-01T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
-              <ValueType>String</ValueType>
-              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
-            </SectionParam>
-            <SectionParam Name="Configuration file">
-              <Value />
-              <ValueType>Template</ValueType>
-              <Description>The file used to configure the extension.
- If it has .exe extension the will be executed.
- If it has .dll extension it's started like MP plugin configuration.</Description>
-            </SectionParam>
-            <SectionParam Name="Online Screenshots">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Online stored screenshot urls separated by ; </Description>
-            </SectionParam>
-            <SectionParam Name="Force to uninstall on update">
-              <Value>NO</Value>
-              <ValueType>Bool</ValueType>
-              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
-            </SectionParam>
-          </Items>
-        </Params>
-      </GeneralInfo>
-      <UniqueFileList>
-        <Items />
-      </UniqueFileList>
-      <ProjectSettings>
-        <FolderGroups />
-      </ProjectSettings>
-      <IsSkin>false</IsSkin>
-    </PackageClass>
-    <PackageClass>
-      <Version>2.0</Version>
-      <Groups>
-        <Items>
-          <GroupItem Name="AtmoWin">
-            <DisplayName>AtmoWin</DisplayName>
-            <DefaulChecked>true</DefaulChecked>
-            <Description>AtmoWin</Description>
-            <Files>
-              <Items />
-            </Files>
-          </GroupItem>
-        </Items>
-      </Groups>
-      <Sections>
-        <Items />
-      </Sections>
-      <Dependencies>
-        <Items>
-          <DependencyItem>
-            <Type>MediaPortal</Type>
-            <Id />
-            <MinVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MinVersion>
-            <MaxVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MaxVersion>
-            <WarnOnly>false</WarnOnly>
-            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
-            <Name>MediaPortal</Name>
-          </DependencyItem>
-        </Items>
-      </Dependencies>
-      <PluginDependencies>
-        <Items />
-      </PluginDependencies>
-      <GeneralInfo>
-        <Name>AtmoWin</Name>
-        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
-        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
-        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
-        <Version>
-          <Major>1</Major>
-          <Minor>0</Minor>
-          <Build>0</Build>
-          <Revision>6</Revision>
-        </Version>
-        <ExtensionDescription>AtmoWin Software for Ambilight systeml. No need to switch AERO off anymore! 
-
-AtmoWin needs an additional plugin (MPCoreChanger &amp; Atmolight) which will be installed/updated automatically while installing!!! </ExtensionDescription>
-        <VersionDescription>Version 1.0.0.6
-BugsFix. (BassFan)
-Atmoduino V2 (NevCairiel) + rework the import (Azzuro)
-Win8 Desktop Duplication API  (NevCairiel)
-Max zone correction (Nevcairiel)
-Increase capture to 170x96 for Release_16x9 build (default build/Release is always 64x48) (NevCairiel)</VersionDescription>
-        <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.6.mpe1</OnlineLocation>
-        <ReleaseDate>2014-04-24T10:45:58</ReleaseDate>
-        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
-        <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
-        <Params>
-          <Items>
-            <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
-              <ValueType>String</ValueType>
-              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
-            </SectionParam>
-            <SectionParam Name="Configuration file">
-              <Value />
-              <ValueType>Template</ValueType>
-              <Description>The file used to configure the extension.
- If it has .exe extension the will be executed.
- If it has .dll extension it's started like MP plugin configuration.</Description>
-            </SectionParam>
-            <SectionParam Name="Online Screenshots">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Online stored screenshot urls separated by ; </Description>
-            </SectionParam>
-            <SectionParam Name="Force to uninstall on update">
-              <Value>NO</Value>
-              <ValueType>Bool</ValueType>
-              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
-            </SectionParam>
-          </Items>
-        </Params>
-      </GeneralInfo>
-      <UniqueFileList>
-        <Items />
-      </UniqueFileList>
-      <ProjectSettings>
-        <FolderGroups />
-      </ProjectSettings>
-      <IsSkin>false</IsSkin>
-    </PackageClass>
-    <PackageClass>
-      <Version>2.0</Version>
-      <Groups>
-        <Items>
-          <GroupItem Name="AtmoWin">
-            <DisplayName>AtmoWin</DisplayName>
-            <DefaulChecked>true</DefaulChecked>
-            <Description>AtmoWin</Description>
-            <Files>
-              <Items />
-            </Files>
-          </GroupItem>
-        </Items>
-      </Groups>
-      <Sections>
-        <Items />
-      </Sections>
-      <Dependencies>
-        <Items>
-          <DependencyItem>
-            <Type>MediaPortal</Type>
-            <Id />
-            <MinVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MinVersion>
-            <MaxVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MaxVersion>
-            <WarnOnly>false</WarnOnly>
-            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
-            <Name>MediaPortal</Name>
-          </DependencyItem>
-        </Items>
-      </Dependencies>
-      <PluginDependencies>
-        <Items />
-      </PluginDependencies>
-      <GeneralInfo>
-        <Name>AtmoWin</Name>
-        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
-        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
-        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
-        <Version>
-          <Major>1</Major>
-          <Minor>0</Minor>
-          <Build>0</Build>
-          <Revision>7</Revision>
-        </Version>
-        <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
-
-AtmoWin needs an additional plugin :
-Atmolight: Manage Atmowin 
-MPCoreChanger : For MP &lt;1.6 only. </ExtensionDescription>
-        <VersionDescription>Version 1.0.0.7 :
-Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. (BassFan)
- - Language : If no language found, English language is created. (BassFan)
- - Setting : use the file under root path where is executed Atmowin.exe (BassFan)
-Deactivate the "Save" button for profile, available only when new profile is created, make misunderstanding because used as "Save setting" (BassFan)
-Fixed various error (BassFan)</VersionDescription>
-        <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.7.mpe1</OnlineLocation>
-        <ReleaseDate>2014-06-23T10:45:58</ReleaseDate>
-        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
-        <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
-        <Params>
-          <Items>
-            <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
-              <ValueType>String</ValueType>
-              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
-            </SectionParam>
-            <SectionParam Name="Configuration file">
-              <Value />
-              <ValueType>Template</ValueType>
-              <Description>The file used to configure the extension.
- If it has .exe extension the will be executed.
- If it has .dll extension it's started like MP plugin configuration.</Description>
-            </SectionParam>
-            <SectionParam Name="Online Screenshots">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Online stored screenshot urls separated by ; </Description>
-            </SectionParam>
-            <SectionParam Name="Force to uninstall on update">
-              <Value>NO</Value>
-              <ValueType>Bool</ValueType>
-              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
-            </SectionParam>
-          </Items>
-        </Params>
-      </GeneralInfo>
-      <UniqueFileList>
-        <Items />
-      </UniqueFileList>
-      <ProjectSettings>
-        <FolderGroups />
-      </ProjectSettings>
-      <IsSkin>false</IsSkin>
-    </PackageClass>
-    <PackageClass>
-      <Version>2.0</Version>
-      <Groups>
-        <Items>
-          <GroupItem Name="AtmoWin">
-            <DisplayName>AtmoWin</DisplayName>
-            <DefaulChecked>true</DefaulChecked>
-            <Description>AtmoWin</Description>
-            <Files>
-              <Items />
-            </Files>
-          </GroupItem>
-        </Items>
-      </Groups>
-      <Sections>
-        <Items />
-      </Sections>
-      <Dependencies>
-        <Items>
-          <DependencyItem>
-            <Type>MediaPortal</Type>
-            <Id />
-            <MinVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MinVersion>
-            <MaxVersion>
-              <Major>1</Major>
-              <Minor>1</Minor>
-              <Build>6</Build>
-              <Revision>27644</Revision>
-            </MaxVersion>
-            <WarnOnly>false</WarnOnly>
-            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
-            <Name>MediaPortal</Name>
-          </DependencyItem>
-        </Items>
-      </Dependencies>
-      <PluginDependencies>
-        <Items />
-      </PluginDependencies>
-      <GeneralInfo>
-        <Name>AtmoWin</Name>
-        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
-        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
-        <HomePage>https://code.google.com/p/ambilight-4-mediaportal/</HomePage>
-        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
-        <UpdateUrl>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/Atmowin_update.xml</UpdateUrl>
-        <Version>
-          <Major>1</Major>
-          <Minor>0</Minor>
-          <Build>0</Build>
-          <Revision>8</Revision>
-        </Version>
-        <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
-
-AtmoWin needs an additional plugin :
-Atmolight: Manage Atmowin 
-
-If MediaPortal &lt; Version 1.6 
-MPCoreChanger </ExtensionDescription>
-        <VersionDescription>Version 1.0.0.8 :
-Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescription>
-        <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://ambilight-4-mediaportal.googlecode.com/git/MPEI%20Release/Atmowin/AtmoWin_1.0.0.8.mpe1</OnlineLocation>
-        <ReleaseDate>2014-08-06T10:45:58</ReleaseDate>
-        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
-        <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
-        <Params>
-          <Items>
-            <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>
@@ -1042,7 +725,219 @@ Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescrip
           <Major>1</Major>
           <Minor>0</Minor>
           <Build>0</Build>
-          <Revision>9</Revision>
+          <Revision>6</Revision>
+        </Version>
+        <ExtensionDescription>AtmoWin Software for Ambilight systeml. No need to switch AERO off anymore! 
+
+AtmoWin needs an additional plugin (MPCoreChanger &amp; Atmolight) which will be installed/updated automatically while installing!!! </ExtensionDescription>
+        <VersionDescription>Version 1.0.0.6
+BugsFix. (BassFan)
+Atmoduino V2 (NevCairiel) + rework the import (Azzuro)
+Win8 Desktop Duplication API  (NevCairiel)
+Max zone correction (Nevcairiel)
+Increase capture to 170x96 for Release_16x9 build (default build/Release is always 64x48) (NevCairiel)</VersionDescription>
+        <DevelopmentStatus>Stable</DevelopmentStatus>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.6.mpe1</OnlineLocation>
+        <ReleaseDate>2014-04-24T10:45:58</ReleaseDate>
+        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
+        <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
+        <Params>
+          <Items>
+            <SectionParam Name="Online Icon">
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
+              <ValueType>String</ValueType>
+              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
+            </SectionParam>
+            <SectionParam Name="Configuration file">
+              <Value />
+              <ValueType>Template</ValueType>
+              <Description>The file used to configure the extension.
+ If it has .exe extension the will be executed.
+ If it has .dll extension it's started like MP plugin configuration.</Description>
+            </SectionParam>
+            <SectionParam Name="Online Screenshots">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Online stored screenshot urls separated by ; </Description>
+            </SectionParam>
+            <SectionParam Name="Force to uninstall on update">
+              <Value>NO</Value>
+              <ValueType>Bool</ValueType>
+              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+      </GeneralInfo>
+      <UniqueFileList>
+        <Items />
+      </UniqueFileList>
+      <ProjectSettings>
+        <FolderGroups />
+      </ProjectSettings>
+      <IsSkin>false</IsSkin>
+    </PackageClass>
+    <PackageClass>
+      <Version>2.0</Version>
+      <Groups>
+        <Items>
+          <GroupItem Name="AtmoWin">
+            <DisplayName>AtmoWin</DisplayName>
+            <DefaulChecked>true</DefaulChecked>
+            <Description>AtmoWin</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
+        </Items>
+      </Groups>
+      <Sections>
+        <Items />
+      </Sections>
+      <Dependencies>
+        <Items>
+          <DependencyItem>
+            <Type>MediaPortal</Type>
+            <Id />
+            <MinVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MinVersion>
+            <MaxVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MaxVersion>
+            <WarnOnly>false</WarnOnly>
+            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
+            <Name>MediaPortal</Name>
+          </DependencyItem>
+        </Items>
+      </Dependencies>
+      <PluginDependencies>
+        <Items />
+      </PluginDependencies>
+      <GeneralInfo>
+        <Name>AtmoWin</Name>
+        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
+        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
+        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
+        <Version>
+          <Major>1</Major>
+          <Minor>0</Minor>
+          <Build>0</Build>
+          <Revision>7</Revision>
+        </Version>
+        <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
+
+AtmoWin needs an additional plugin :
+Atmolight: Manage Atmowin 
+MPCoreChanger : For MP &lt;1.6 only. </ExtensionDescription>
+        <VersionDescription>Version 1.0.0.7 :
+Make Atmowin totally "Portable", no more Hardcoded path. for using without MediaPortal. (BassFan)
+ - Language : If no language found, English language is created. (BassFan)
+ - Setting : use the file under root path where is executed Atmowin.exe (BassFan)
+Deactivate the "Save" button for profile, available only when new profile is created, make misunderstanding because used as "Save setting" (BassFan)
+Fixed various error (BassFan)</VersionDescription>
+        <DevelopmentStatus>Stable</DevelopmentStatus>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.7.mpe1</OnlineLocation>
+        <ReleaseDate>2014-06-23T10:45:58</ReleaseDate>
+        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
+        <Location>../../MPEI Release/Atmowin/[Name]_[Version].mpe1</Location>
+        <Params>
+          <Items>
+            <SectionParam Name="Online Icon">
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
+              <ValueType>String</ValueType>
+              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
+            </SectionParam>
+            <SectionParam Name="Configuration file">
+              <Value />
+              <ValueType>Template</ValueType>
+              <Description>The file used to configure the extension.
+ If it has .exe extension the will be executed.
+ If it has .dll extension it's started like MP plugin configuration.</Description>
+            </SectionParam>
+            <SectionParam Name="Online Screenshots">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Online stored screenshot urls separated by ; </Description>
+            </SectionParam>
+            <SectionParam Name="Force to uninstall on update">
+              <Value>NO</Value>
+              <ValueType>Bool</ValueType>
+              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+      </GeneralInfo>
+      <UniqueFileList>
+        <Items />
+      </UniqueFileList>
+      <ProjectSettings>
+        <FolderGroups />
+      </ProjectSettings>
+      <IsSkin>false</IsSkin>
+    </PackageClass>
+    <PackageClass>
+      <Version>2.0</Version>
+      <Groups>
+        <Items>
+          <GroupItem Name="AtmoWin">
+            <DisplayName>AtmoWin</DisplayName>
+            <DefaulChecked>true</DefaulChecked>
+            <Description>AtmoWin</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
+        </Items>
+      </Groups>
+      <Sections>
+        <Items />
+      </Sections>
+      <Dependencies>
+        <Items>
+          <DependencyItem>
+            <Type>MediaPortal</Type>
+            <Id />
+            <MinVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MinVersion>
+            <MaxVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MaxVersion>
+            <WarnOnly>false</WarnOnly>
+            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
+            <Name>MediaPortal</Name>
+          </DependencyItem>
+        </Items>
+      </Dependencies>
+      <PluginDependencies>
+        <Items />
+      </PluginDependencies>
+      <GeneralInfo>
+        <Name>AtmoWin</Name>
+        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
+        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
+        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
+        <Version>
+          <Major>1</Major>
+          <Minor>0</Minor>
+          <Build>0</Build>
+          <Revision>8</Revision>
         </Version>
         <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
 
@@ -1051,17 +946,203 @@ Atmolight: Manage Atmowin
 
 If MediaPortal &lt; Version 1.6 
 MPCoreChanger </ExtensionDescription>
-        <VersionDescription>Version 1.0.0.9 :
-</VersionDescription>
+        <VersionDescription>Version 1.0.0.8 :
+Correction of save value for Software_gamma_blue in XML (Azzuro)</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.8.mpe1</OnlineLocation>
         <ReleaseDate>2014-08-06T10:45:58</ReleaseDate>
         <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
         <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
-              <Value>http://ambilight-4-mediaportal.googlecode.com/git/MPEI/Atmowin/image/AtmoWin-mpei.png</Value>
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
+              <ValueType>String</ValueType>
+              <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
+            </SectionParam>
+            <SectionParam Name="Configuration file">
+              <Value />
+              <ValueType>Template</ValueType>
+              <Description>The file used to configure the extension.
+ If it has .exe extension the will be executed.
+ If it has .dll extension it's started like MP plugin configuration.</Description>
+            </SectionParam>
+            <SectionParam Name="Online Screenshots">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Online stored screenshot urls separated by ; </Description>
+            </SectionParam>
+            <SectionParam Name="Force to uninstall on update">
+              <Value>NO</Value>
+              <ValueType>Bool</ValueType>
+              <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+      </GeneralInfo>
+      <UniqueFileList>
+        <Items />
+      </UniqueFileList>
+      <ProjectSettings>
+        <FolderGroups />
+      </ProjectSettings>
+      <IsSkin>false</IsSkin>
+    </PackageClass>
+    <PackageClass>
+      <Version>2.0</Version>
+      <Groups>
+        <Items>
+          <GroupItem Name="AtmoWin">
+            <DisplayName>AtmoWin</DisplayName>
+            <DefaulChecked>true</DefaulChecked>
+            <Description>AtmoWin</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
+          <GroupItem Name="Atmowin_4x3">
+            <DisplayName>Atmowin_4x3</DisplayName>
+            <DefaulChecked>false</DefaulChecked>
+            <Description>Atmowin_4x3</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
+          <GroupItem Name="Atmowin_16x9">
+            <DisplayName>Atmowin_16x9</DisplayName>
+            <DefaulChecked>false</DefaulChecked>
+            <Description>Atmowin_16x9</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
+        </Items>
+      </Groups>
+      <Sections>
+        <Items />
+      </Sections>
+      <Dependencies>
+        <Items>
+          <DependencyItem>
+            <Type>MediaPortal</Type>
+            <Id />
+            <MinVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MinVersion>
+            <MaxVersion>
+              <Major>1</Major>
+              <Minor>1</Minor>
+              <Build>6</Build>
+              <Revision>27644</Revision>
+            </MaxVersion>
+            <WarnOnly>false</WarnOnly>
+            <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
+            <Name>MediaPortal</Name>
+          </DependencyItem>
+        </Items>
+      </Dependencies>
+      <PluginDependencies>
+        <Items />
+      </PluginDependencies>
+      <GeneralInfo>
+        <Name>AtmoWin</Name>
+        <Id>e0802934-4e24-4b0c-bf8c-a6f35af1093a</Id>
+        <Author>Angie05 , RickDB , legnod (installer), azzuro(Teensy), André Weber, Matthiaz, MacGyver2k, swifty, BassFan, NevCairiel</Author>
+        <HomePage>https://github.com/ambilight-4-mediaportal/AtmoWin</HomePage>
+        <ForumPage>http://forum.team-mediaportal.com/forums/ambient-lighting-system.671/</ForumPage>
+        <UpdateUrl>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/Atmowin_update.xml</UpdateUrl>
+        <Version>
+          <Major>1</Major>
+          <Minor>0</Minor>
+          <Build>0</Build>
+          <Revision>9</Revision>
+        </Version>
+        <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
+
+
+
+
+
+
+
+
+
+
+
+AtmoWin needs an additional plugin :
+
+
+
+
+
+Atmolight: Manage Atmowin 
+
+
+
+
+
+
+
+
+
+
+
+If MediaPortal &lt; Version 1.6 
+
+
+
+
+
+MPCoreChanger </ExtensionDescription>
+        <VersionDescription>Version 1.0.0.9 :
+
+
+
+
+
+Correction of the gradient slider on color gradient dialog. (Azzuro)
+
+
+
+
+
+Update platform project to VS120.
+
+
+
+
+
+translate few internal source text.
+
+
+
+
+
+set capturesize to 96x54 for 16x9 build
+
+
+
+
+
+set max capture to 300. ( need testing !)
+
+
+
+
+
+</VersionDescription>
+        <DevelopmentStatus>Stable</DevelopmentStatus>
+        <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
+        <ReleaseDate>2016-02-01T10:45:58</ReleaseDate>
+        <Tags>sedu-board, atmowin, ws2801, ambilight, teensy 2, atmoduino, ambilight, led</Tags>
+        <Location>../MPEI_Release/[Name]_[Version].mpe1</Location>
+        <Params>
+          <Items>
+            <SectionParam Name="Online Icon">
+              <Value>https://github.com/ambilight-4-mediaportal/AtmoWin/raw/master/MPEI/image/AtmoWin-mpei.png</Value>
               <ValueType>String</ValueType>
               <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
             </SectionParam>

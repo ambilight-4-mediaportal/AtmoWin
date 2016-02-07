@@ -957,31 +957,79 @@ public class Script
       <Build>0</Build>
       <Revision>9</Revision>
     </Version>
-    <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
-
-
-
-AtmoWin needs an additional plugin :
-
-Atmolight: Manage Atmowin 
-
-
-
-If MediaPortal &lt; Version 1.6 
-
+    <ExtensionDescription>AtmoWin Software for Ambilight systeml. 
+
+
+
+
+
+
+
+
+
+
+
+AtmoWin needs an additional plugin :
+
+
+
+
+
+Atmolight: Manage Atmowin 
+
+
+
+
+
+
+
+
+
+
+
+If MediaPortal &lt; Version 1.6 
+
+
+
+
+
 MPCoreChanger </ExtensionDescription>
-    <VersionDescription>Version 1.0.0.9 :
-
-Correction of the gradient slider on color gradient dialog. (Azzuro)
-
-Update platform project to VS120.
-
-translate few internal source text.
-
-set capturesize to 96x54 for 16x9 build
-
-set max capture to 300. ( need testing !)
-
+    <VersionDescription>Version 1.0.0.9 :
+
+
+
+
+
+Correction of the gradient slider on color gradient dialog. (Azzuro)
+
+
+
+
+
+Update platform project to VS120.
+
+
+
+
+
+translate few internal source text.
+
+
+
+
+
+set capturesize to 96x54 for 16x9 build
+
+
+
+
+
+set max capture to 300. ( need testing !)
+
+
+
+
+
 </VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation>https://github.com/ambilight-4-mediaportal/Binaries/raw/master/AtmoWin/AtmoWin_1.0.0.9.mpe1</OnlineLocation>
@@ -1481,7 +1529,7 @@ set max capture to 300. ( need testing !)
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>image\AtmoWin-mpei.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{eab98b91-9ab8-42cb-a3f1-96be9b145522}-AtmoWin-mpei.png</ZipFileName>
+        <ZipFileName>Installer{CopyFile}\{e9487920-84ec-45ee-a232-839e13bef4bf}-AtmoWin-mpei.png</ZipFileName>
         <DestinationFilename />
       </FileItem>
     </Items>
