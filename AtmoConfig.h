@@ -191,6 +191,7 @@ protected:
 	int m_DMX_RGB_Channels;
 	int m_DMX_BaudrateIndex;
 	int m_Ardu_BaudrateIndex;
+	int m_ArduV2_BaudrateIndex;
 
 protected:
 	int m_MoMo_Channels;
@@ -470,6 +471,9 @@ public:
 
 	int getArdu_BaudrateIndex() { return m_Ardu_BaudrateIndex; }
 	void setArdu_BaudrateIndex(int baudrateIndex) { m_Ardu_BaudrateIndex = baudrateIndex; }
+
+	int getArduV2_BaudrateIndex() { return m_ArduV2_BaudrateIndex; }
+	void setArduV2_BaudrateIndex(int baudrateIndex) { m_ArduV2_BaudrateIndex = baudrateIndex; }
 
 	int getMoMo_Channels() { return m_MoMo_Channels; }
 	void setMoMo_Channels(int chCount) { m_MoMo_Channels = chCount; }

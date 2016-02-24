@@ -17,13 +17,25 @@ CAtmoDuinoV2ConfigDialog::~CAtmoDuinoV2ConfigDialog(void)
 
 ATMO_BOOL CAtmoDuinoV2ConfigDialog::InitDialog(WPARAM wParam) 
 {
-
     m_hCbxComports = getDlgItem(IDC_COMPORT);
     InitDialog_ComPorts(m_hCbxComports);
     int com = m_pConfig->getComport() - 1;
     if (com < 0) com = 0;
 
     ComboBox_SetCurSel(m_hCbxComports, com);
+
+		m_hCbxBaudrate = getDlgItem(IDC_COMBO2);
+		ComboBox_AddString(m_hCbxBaudrate, "115200");
+		ComboBox_AddString(m_hCbxBaudrate, "230400");
+		ComboBox_AddString(m_hCbxBaudrate, "250000");
+		ComboBox_AddString(m_hCbxBaudrate, "500000");
+		ComboBox_AddString(m_hCbxBaudrate, "1000000");
+		ComboBox_AddString(m_hCbxBaudrate, "2000000");
+		ComboBox_AddString(m_hCbxBaudrate, "4000000");
+		ComboBox_AddString(m_hCbxBaudrate, "6000000");
+		ComboBox_AddString(m_hCbxBaudrate, "8000000");
+		ComboBox_AddString(m_hCbxBaudrate, "10000000");
+		ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getArduV2_BaudrateIndex());
 
     char buf[10];
     HWND control;
@@ -46,6 +58,7 @@ ATMO_BOOL CAtmoDuinoV2ConfigDialog::ExecuteCommand(HWND hControl, int wmId, int 
         int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMPORT));
 
         m_pConfig->setComport(comportSel + 1);
+				m_pConfig->setArduV2_BaudrateIndex(ComboBox_GetCurSel(getDlgItem(IDC_COMBO2)));
 
         HWND control = getDlgItem(IDC_ATMOCL_LED_AMOUNT);
         char buf[10];

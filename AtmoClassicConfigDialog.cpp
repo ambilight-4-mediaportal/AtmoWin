@@ -79,7 +79,6 @@ ATMO_BOOL CAtmoClassicConfigDialog::ExecuteCommand(HWND hControl,int wmId, int w
 			m_pConfig->setArduComport(comportSel + 1);
 			m_pConfig->setArdu_BaudrateIndex( ComboBox_GetCurSel(getDlgItem(IDC_COMBO2)) );
 
-
 			EndDialog(this->m_hDialog, wmId);
 			break;
 		}

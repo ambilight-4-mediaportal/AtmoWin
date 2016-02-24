@@ -94,6 +94,7 @@ void CAtmoConfig::LoadDefaults()
 #endif
 
 	m_Ardu_BaudrateIndex             = 0; // Low 115kbaud 
+	m_ArduV2_BaudrateIndex					 = 0; // default baudrate
 	m_ColorChanger_iSteps            = 50;
 	m_ColorChanger_iDelay            = 25;
 	m_CurrentChannelAssignment       = 0;
@@ -298,6 +299,8 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_DMX_BaudrateIndex            = pAtmoConfigSrc->m_DMX_BaudrateIndex;
 
 	this->m_Ardu_BaudrateIndex           = pAtmoConfigSrc->m_Ardu_BaudrateIndex;
+
+	this->m_ArduV2_BaudrateIndex = pAtmoConfigSrc->m_ArduV2_BaudrateIndex;
 
 	this->m_MoMo_Channels                = pAtmoConfigSrc->m_MoMo_Channels;
 

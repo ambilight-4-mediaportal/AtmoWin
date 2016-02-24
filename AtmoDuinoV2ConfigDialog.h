@@ -11,8 +11,8 @@ private:
     CAtmoConfig *m_pConfig;
 
 private: // handles...
-    HWND m_hCbxComports;
-		HWND m_hCbxBaudrate;
+	HWND m_hCbxComports;
+	HWND m_hCbxBaudrate;
 
 protected:
     virtual ATMO_BOOL InitDialog(WPARAM wParam);
