@@ -325,6 +325,7 @@ ATMO_BOOL CAtmoTools::RecreateConnection(CAtmoDynData *pDynData)
 					char errorMsgBuf[200];
 					sprintf(errorMsgBuf,Lng->sMessagesText[26] + "com%d" + Lng->sMessagesText[26] + "%d (0x%x)",
 						pDynData->getAtmoConfig()->getArduComport(),
+						pDynData->getAtmoConfig()->getAtmoV2Comport(), /* Todo */
 						tempConnection->getLastError(),
 						tempConnection->getLastError()
 						);

@@ -25,8 +25,17 @@ ATMO_BOOL CAtmoDuinoV2ConfigDialog::InitDialog(WPARAM wParam)
 
     ComboBox_SetCurSel(m_hCbxComports, com);
 
+
     char buf[10];
     HWND control;
+
+	m_hCbxBaudrate = getDlgItem(IDC_COMBO_ATMOV2);
+	ComboBox_AddString(m_hCbxBaudrate, "115200");
+	ComboBox_AddString(m_hCbxBaudrate, "230400");
+	ComboBox_AddString(m_hCbxBaudrate, "345600");
+	ComboBox_AddString(m_hCbxBaudrate, "460800");
+	ComboBox_AddString(m_hCbxBaudrate, "576000");
+	ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getAtmoV2_BaudrateIndex());
 
     control = getDlgItem(IDC_ATMOCL_LED_AMOUNT);
     Edit_LimitText(control, 3);
@@ -51,6 +60,9 @@ ATMO_BOOL CAtmoDuinoV2ConfigDialog::ExecuteCommand(HWND hControl, int wmId, int 
         char buf[10];
         Edit_GetText(control, buf, sizeof(buf));
         m_pConfig->setAtmoV2ClLeds(atoi(buf));
+
+		m_pConfig->setAtmoV2Comport(comportSel + 1);
+		m_pConfig->setAtmoV2_BaudrateIndex(ComboBox_GetCurSel(getDlgItem(IDC_COMBO_ATMOV2)));
 
         EndDialog(this->m_hDialog, wmId);
         break;

@@ -2,21 +2,6 @@
 // Microsoft Visual C++ generated include file.
 // Used by AtmoWinA.rc
 //
-/*
-#define IDS_SETTINGS                    104
-#define IDS_MODUS                       105
-#define IDS_EFFECT_NONE                 106
-#define IDS_EFFECT_LIVE                 107
-#define IDS_EFFECT_STAT_COLOR           108
-#define IDC_ATMOWINA                    109
-#define IDS_EFFECT_COLOR_CHANGE         110
-#define IDS_EFFECT_COLOR_CHLR           111
-#define IDS_INFO                        112
-#define IDS_QUIT                        113
-#define IDS_CHANNELASSIGN               114
-#define IDS_DISPLAY_SETCHANGED          115
-#define IDS_HINT                        116
-#define IDS_EFFECT_COLOR_MODE           117*/
 #define ID_LANGUAGE                     500
 #define IDS_APP_TITLE                   1000
 #define IDD_ABOUTBOX                    1001
@@ -182,7 +167,6 @@
 #define IDC_COMBO2                      1162
 #define IDC_CHK_SEDUCALMODE             1163
 #define IDC_CHK_INVERTCLR               1164
-#define IDC_COMBO3                      1165
 #define IDC_RADIO50                     1166
 #define IDC_RB_RED                      1167
 #define IDC_EDIT34                      1168
@@ -225,12 +209,12 @@
 #define IDC_BU_DELETE                   1205
 #define IDC_BU_SAVEPROFILE              1206
 #define IDC_CB_PROFILES                 1207
-//#define IDC_BU_LOADPROVILE              1208
 #define IDC_BU_PROFDELETE               1209
 #define IDC_CB_DEVPROFILES              1210
 #define IDC_LIVEMODE                    1211
 #define IDD_CFG_ATMODUINOV2_DLG         1212
 #define IDC_ATMOCL_LED_AMOUNT           1213
+#define IDC_COMBO_ATMOV2                1214
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416
@@ -304,7 +288,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        146
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1214
+#define _APS_NEXT_CONTROL_VALUE         1215
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
 #endif

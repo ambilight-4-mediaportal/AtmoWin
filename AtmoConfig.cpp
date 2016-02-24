@@ -87,6 +87,7 @@ void CAtmoConfig::LoadDefaults()
 
 	m_Comport     = -1;
 	m_ArduComport     = -1;
+	m_AtmoV2Comport = -1;
 	m_Comports[0] = -1;
 	m_Comports[1] = -1;
 	m_Comports[2] = -1;
@@ -94,6 +95,7 @@ void CAtmoConfig::LoadDefaults()
 #endif
 
 	m_Ardu_BaudrateIndex             = 0; // Low 115kbaud 
+	m_AtmoV2_BaudrateIndex           = 0; // Low 115kbaud 
 	m_ColorChanger_iSteps            = 50;
 	m_ColorChanger_iDelay            = 25;
 	m_CurrentChannelAssignment       = 0;
@@ -195,6 +197,7 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->setSerialDevice(3, pAtmoConfigSrc->getSerialDevice(3));
 #else
 	this->m_ArduComport                  = pAtmoConfigSrc->m_ArduComport;
+	this->m_AtmoV2Comport                = pAtmoConfigSrc->m_AtmoV2Comport;
 	this->m_Comport                      = pAtmoConfigSrc->m_Comport;
 	this->m_Comports[0]                  = pAtmoConfigSrc->m_Comports[0];
 	this->m_Comports[1]                  = pAtmoConfigSrc->m_Comports[1];
@@ -298,6 +301,8 @@ void CAtmoConfig::Assign(CAtmoConfig *pAtmoConfigSrc)
 	this->m_DMX_BaudrateIndex            = pAtmoConfigSrc->m_DMX_BaudrateIndex;
 
 	this->m_Ardu_BaudrateIndex           = pAtmoConfigSrc->m_Ardu_BaudrateIndex;
+
+	this->m_AtmoV2_BaudrateIndex         = pAtmoConfigSrc->m_AtmoV2_BaudrateIndex;
 
 	this->m_MoMo_Channels                = pAtmoConfigSrc->m_MoMo_Channels;
 
@@ -485,6 +490,17 @@ int CAtmoConfig::getArduComport(int i)
 	}
 }
 
+int CAtmoConfig::getAtmoV2Comport(int i)
+{
+	if (i == 0)
+		return this->m_AtmoV2Comport;
+	else
+	{
+		i--;
+		return this->m_Comports[i];
+	}
+}
+
 void CAtmoConfig::setComport(int i, int nr)
 {
 	if(i == 0)
@@ -502,6 +518,16 @@ void CAtmoConfig::setArduComport(int i, int nr)
 	else 
 	{
 		this->m_Comports[i-1] = nr;
+	}
+}
+
+void CAtmoConfig::setAtmoV2Comport(int i, int nr)
+{
+	if (i == 0)
+		this->m_AtmoV2Comport = nr;
+	else
+	{
+		this->m_Comports[i - 1] = nr;
 	}
 }
 

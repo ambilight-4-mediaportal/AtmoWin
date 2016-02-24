@@ -32,6 +32,8 @@ ATMO_BOOL CAtmoClassicConfigDialog::InitDialog(WPARAM wParam)
 	ComboBox_AddString(m_hCbxBaudrate, "115200");
 	ComboBox_AddString(m_hCbxBaudrate, "230400");
 	ComboBox_AddString(m_hCbxBaudrate, "345600");
+	ComboBox_AddString(m_hCbxBaudrate, "460800");
+	ComboBox_AddString(m_hCbxBaudrate, "576000");
 	ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getArdu_BaudrateIndex());
 
 	control = getDlgItem(IDC_EDIT1);

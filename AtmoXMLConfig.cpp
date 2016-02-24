@@ -47,6 +47,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(configSection, "EffectMode", (int)m_eEffectMode);
 	GetProfile().SetConfig(configSection, "comport", this->m_Comport);
 	GetProfile().SetConfig(configSection, "Arducomport", this->m_ArduComport);
+	GetProfile().SetConfig(configSection, "AtmoV2comport", this->m_AtmoV2Comport);
 	GetProfile().SetConfig(configSection, "comport_1", m_Comports[0]);
 	GetProfile().SetConfig(configSection, "comport_2",  m_Comports[1]);
 	GetProfile().SetConfig(configSection, "comport_3", m_Comports[2]);
@@ -192,6 +193,7 @@ void CAtmoXMLConfig::SaveSettings(std::string Profile1)
 	GetProfile().SetConfig(newconfigSection, "DMX_RGB_Channels", m_DMX_RGB_Channels);
 	GetProfile().SetConfig(newconfigSection, "DMX_BaudrateIndex", m_DMX_BaudrateIndex);
 	GetProfile().SetConfig(newconfigSection, "Ardu_BaudrateIndex", m_Ardu_BaudrateIndex);
+	GetProfile().SetConfig(newconfigSection, "AtmoV2_BaudrateIndex", m_AtmoV2_BaudrateIndex);
 	GetProfile().SetConfig(newconfigSection, "MoMo_Channels", m_MoMo_Channels);
 	GetProfile().SetConfig(newconfigSection, "Fnordlicht_Amount", m_Fnordlicht_Amount);
 
@@ -329,6 +331,12 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 		m_IsShowConfigDialog = 1; 
 		m_ArduComport=1; 
 	} 
+	m_AtmoV2Comport = GetProfile().GetIntOrDefault(configSection, "AtmoV2comport", -1); // -1 als Indikator ob Setup noch erfolgen muss!
+	if (m_AtmoV2Comport < 1)
+	{
+		m_IsShowConfigDialog=1;
+		m_AtmoV2Comport=1;
+	}
 	m_eEffectMode = (EffectMode)GetProfile().GetIntOrDefault(configSection, "EffectMode", (int)m_eEffectMode);
 
 	m_WhiteAdjustment_Red    = CheckByteValue(GetProfile().GetIntOrDefault(newconfigSection, "WhiteAdjustment_Red", m_WhiteAdjustment_Red));
@@ -565,6 +573,7 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 	m_AtmoV2ClLeds             = GetProfile().GetIntOrDefault(newconfigSection, "hAtmoV2ClLeds", m_AtmoV2ClLeds );
 	  if (m_AtmoV2ClLeds > 256) m_AtmoV2ClLeds = 256;
     if (m_AtmoV2ClLeds < 1)   m_AtmoV2ClLeds = 1;
+	m_AtmoV2_BaudrateIndex = GetProfile().GetIntOrDefault(newconfigSection, "AtmoV2_BaudrateIndex", m_AtmoV2_BaudrateIndex);
 
 	m_MoMo_Channels          = GetProfile().GetIntOrDefault(newconfigSection, "MoMo_Channels", m_MoMo_Channels);	
 	if(m_MoMo_Channels > 254) 

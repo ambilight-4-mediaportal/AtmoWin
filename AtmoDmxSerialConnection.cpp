@@ -160,15 +160,16 @@ ATMO_BOOL CAtmoDmxSerialConnection::isOpen(void) {
 }
 
 ATMO_BOOL CAtmoDmxSerialConnection::HardwareWhiteAdjust(int global_gamma,
-																												int global_contrast,
-																												int contrast_red,
-																												int contrast_green,
-																												int contrast_blue,
-																												int gamma_red,
-																												int gamma_green,
-																												int gamma_blue,
-																												ATMO_BOOL storeToEeprom) {
-																													return ATMO_FALSE;
+	int global_contrast,
+	int contrast_red,
+	int contrast_green,
+	int contrast_blue,
+	int gamma_red,
+	int gamma_green,
+	int gamma_blue,
+	ATMO_BOOL storeToEeprom)
+{
+	return ATMO_FALSE;
 }
 
 

@@ -36,6 +36,7 @@ protected:
 #else
 	int m_Comport;
 	int m_ArduComport;
+	int m_AtmoV2Comport;
 	int m_Comports[3]; // additional Comports
 #endif
 	enum AtmoConnectionType m_eAtmoConnectionType;
@@ -191,6 +192,7 @@ protected:
 	int m_DMX_RGB_Channels;
 	int m_DMX_BaudrateIndex;
 	int m_Ardu_BaudrateIndex;
+	int m_AtmoV2_BaudrateIndex;
 
 protected:
 	int m_MoMo_Channels;
@@ -264,6 +266,11 @@ public:
 	void setArduComport(int value)          { m_ArduComport = value; }
 	int getArduComport(int i);
 	void setArduComport(int i, int nr);
+
+	int getAtmoV2Comport()                    { return m_AtmoV2Comport; }
+	void setAtmoV2Comport(int value)          { m_AtmoV2Comport = value; }
+	int getAtmoV2Comport(int i);
+	void setAtmoV2Comport(int i, int nr);
 #endif
 
 	ATMO_BOOL getIgnoreConnectionErrorOnStartup() { return m_IgnoreConnectionErrorOnStartup; }
@@ -470,6 +477,9 @@ public:
 
 	int getArdu_BaudrateIndex() { return m_Ardu_BaudrateIndex; }
 	void setArdu_BaudrateIndex(int baudrateIndex) { m_Ardu_BaudrateIndex = baudrateIndex; }
+
+	int getAtmoV2_BaudrateIndex() { return m_AtmoV2_BaudrateIndex; }
+	void setAtmoV2_BaudrateIndex(int baudrateIndex) { m_AtmoV2_BaudrateIndex = baudrateIndex; }
 
 	int getMoMo_Channels() { return m_MoMo_Channels; }
 	void setMoMo_Channels(int chCount) { m_MoMo_Channels = chCount; }

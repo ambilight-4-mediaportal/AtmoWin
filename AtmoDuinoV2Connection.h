@@ -58,7 +58,7 @@ public:
     virtual ATMO_BOOL setChannelValues(int numValues, unsigned char *channel_values);
 
 
-    virtual const char *getDevicePath() { return "atmoduino V2"; }
+    virtual const char *getDevicePath() { return "AtmoDuino V2"; }
 
 #if !defined(_ATMO_VLC_PLUGIN_)
     virtual char *getChannelName(int ch);

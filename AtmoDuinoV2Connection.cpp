@@ -69,7 +69,20 @@ ATMO_BOOL CAtmoDuinoV2Connection::OpenConnection() {
     DCB dcb; // fuer comport-parameter
     dcb.DCBlength = sizeof(DCB);
     GetCommState(m_hComport, &dcb);   // ger current serialport settings
-    dcb.BaudRate = CBR_115200;        // set speed
+    
+	//dcb.BaudRate = CBR_115200;        // set speed
+
+	switch (m_pAtmoConfig->getAtmoV2_BaudrateIndex())
+	{
+	case 1:
+		dcb.BaudRate = 230400; //CBR_256000; // set higher speed  250000 ?
+		break;
+	case 2: dcb.BaudRate = 345600;
+		break;
+	default:
+		dcb.BaudRate = CBR_115200; // set default speed
+	}
+
     dcb.ByteSize = 8;                 // set databits
     dcb.Parity = NOPARITY;            // set parity
     dcb.StopBits = ONESTOPBIT;        // set one stop bit
