@@ -46,7 +46,7 @@ ATMO_BOOL CAtmoDuinoV2ConfigDialog::InitDialog(WPARAM wParam)
 	ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getAtmoV2_BaudrateIndex());
 
     control = getDlgItem(IDC_ATMOCL_LED_AMOUNT);
-    Edit_LimitText(control, 3);
+    Edit_LimitText(control, 4);
     sprintf(buf, "%d", m_pConfig->getAtmoV2ClLeds());
     Edit_SetText(control, buf);
 

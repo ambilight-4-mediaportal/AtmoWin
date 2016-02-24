@@ -44,8 +44,8 @@ ATMO_BOOL CAtmoClassicConfigDialog::InitDialog(WPARAM wParam)
 	ComboBox_AddString(m_hCbxBaudrate, "10000000");
 	ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getArdu_BaudrateIndex());
 
-	control = getDlgItem(IDC_EDIT1);
-	Edit_LimitText(control, 3);
+	control = getDlgItem(IDC_EDIT1_led);
+	Edit_LimitText(control, 4);
 	sprintf(buf, "%d", m_pConfig->getAtmoClLeds());
 	Edit_SetText(control, buf);
 
@@ -81,7 +81,7 @@ ATMO_BOOL CAtmoClassicConfigDialog::ExecuteCommand(HWND hControl,int wmId, int w
 		{
 			int comportSel = ComboBox_GetCurSel(getDlgItem(IDC_COMBO_COMPORT));
 
-			HWND control = getDlgItem(IDC_EDIT1);
+			HWND control = getDlgItem(IDC_EDIT1_led);
 			char buf[10];
 			Edit_GetText(control, buf, sizeof(buf));
 			m_pConfig->setAtmoClLeds(atoi(buf));

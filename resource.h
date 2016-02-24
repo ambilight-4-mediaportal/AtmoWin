@@ -215,6 +215,7 @@
 #define IDD_CFG_ATMODUINOV2_DLG         1212
 #define IDC_ATMOCL_LED_AMOUNT           1213
 #define IDC_COMBO_ATMOV2                1214
+#define IDC_EDIT1_led                   1215
 #define IDC_STATIC15                    1414
 #define IDC_STATIC16                    1415
 #define IDC_STATIC17                    1416
@@ -288,7 +289,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        146
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1215
+#define _APS_NEXT_CONTROL_VALUE         1216
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
 #endif
