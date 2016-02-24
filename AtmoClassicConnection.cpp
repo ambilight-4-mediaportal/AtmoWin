@@ -76,6 +76,10 @@ ATMO_BOOL CAtmoClassicConnection::OpenConnection() {
           break; 
 		case 2: dcb.BaudRate  = 345600;
 		  break;
+		case 3: dcb.BaudRate = 460800;
+			break;
+		case 4: dcb.BaudRate = 576000;
+			break;
 		default: 
           dcb.BaudRate  = CBR_115200; // set default speed
      }
