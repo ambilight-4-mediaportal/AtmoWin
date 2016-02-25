@@ -571,8 +571,9 @@ void CAtmoXMLConfig::LoadSettings(std::string profile1)
 
 	// AtmoduinoV2
 	m_AtmoV2ClLeds             = GetProfile().GetIntOrDefault(newconfigSection, "hAtmoV2ClLeds", m_AtmoV2ClLeds );
-	  if (m_AtmoV2ClLeds > 256) m_AtmoV2ClLeds = 256;
-    if (m_AtmoV2ClLeds < 1)   m_AtmoV2ClLeds = 1;
+	// MAX Leds set on Atmoduino device setting
+	  if (m_AtmoV2ClLeds > 768) m_AtmoV2ClLeds = 768;
+	  if (m_AtmoV2ClLeds < 1)   m_AtmoV2ClLeds = 1;
 	m_AtmoV2_BaudrateIndex = GetProfile().GetIntOrDefault(newconfigSection, "AtmoV2_BaudrateIndex", m_AtmoV2_BaudrateIndex);
 
 	m_MoMo_Channels          = GetProfile().GetIntOrDefault(newconfigSection, "MoMo_Channels", m_MoMo_Channels);	

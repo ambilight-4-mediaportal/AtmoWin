@@ -420,7 +420,7 @@ public:
 
 	// atmoduinoV2 
 	int getAtmoV2ClLeds() { return m_AtmoV2ClLeds; }
-	void setAtmoV2ClLeds(int leds) { m_AtmoV2ClLeds = leds; } 
+	void setAtmoV2ClLeds(int ledsV2) { m_AtmoV2ClLeds = ledsV2; } 
 
 	// Atmoduino
 	int getAtmoClLeds() { return m_hAtmoClLeds; }
