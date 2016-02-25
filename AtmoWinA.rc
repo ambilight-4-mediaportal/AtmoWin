@@ -389,7 +389,7 @@ BEGIN
     LTEXT           "interface:",IDC_STATIC61,9,13,42,8
     GROUPBOX        "Connection ...",IDC_STATIC62,2,2,202,103
     LTEXT           "DMX start channels (separator "","" or "";"")",IDC_STATIC63,6,61,150,8
-    LTEXT           "Number of RGB channels (1..256):",IDC_STATIC64,9,46,111,8
+    LTEXT           "Number of RGB channels (1..1024):",IDC_STATIC64,9,46,111,8
     COMBOBOX        IDC_BAUDRATE,69,26,73,100,CBS_DROPDOWNLIST | WS_TABSTOP
     LTEXT           "Speed:",IDC_STATIC65,9,28,53,8
 END

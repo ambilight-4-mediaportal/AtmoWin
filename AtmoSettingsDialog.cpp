@@ -1248,7 +1248,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				if(Edit_GetText(hControl,buffer,sizeof(buffer))>0) 
 				{
 					int value = atoi(buffer);
-					if((value>=0) && (value<=128)) 
+					if((value>=0) && (value<=512)) 
 					{
 						CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 						int z = pAtmoConfig->getZonesLRCount() * 2 + pAtmoConfig->getZonesBottomCount() + value;
@@ -1275,7 +1275,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				if(Edit_GetText(hControl,buffer,sizeof(buffer))>0) 
 				{
 					int value = atoi(buffer);
-					if((value>=0) && (value<=128)) 
+					if((value>=0) && (value<=512)) 
 					{ 
 						CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 						int z = pAtmoConfig->getZonesLRCount() * 2 + pAtmoConfig->getZonesTopCount() + value;
@@ -1301,7 +1301,7 @@ ATMO_BOOL CAtmoSettingsDialog::ExecuteCommand(HWND hControl,int wmId, int wmEven
 				if(Edit_GetText(hControl,buffer,sizeof(buffer))>0)
 				{
 					int value = atoi(buffer);
-					if((value>=0) && (value<=64))
+					if((value>=0) && (value<=256))
 					{
 						CAtmoConfig *pAtmoConfig = this->m_pDynData->getAtmoConfig();
 						int z = value * 2 + pAtmoConfig->getZonesTopCount() + pAtmoConfig->getZonesBottomCount();

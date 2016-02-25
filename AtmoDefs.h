@@ -79,7 +79,7 @@ typedef struct
 
 
 // maximal Anzahl Kanaele... original 5!
-#define CAP_MAX_NUM_ZONES  256
+#define CAP_MAX_NUM_ZONES  1024
 // only for classic to avoid changing too much code!
 // #define ATMO_MAX_NUM_CHANNELS 5
 
