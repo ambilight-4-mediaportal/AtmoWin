@@ -72,37 +72,37 @@ ATMO_BOOL CAtmoDuinoV2Connection::OpenConnection() {
     
 	//dcb.BaudRate = CBR_115200;        // set speed
 
-	switch (m_pAtmoConfig->getAtmoV2_BaudrateIndex())
-	{
-				// set baud speed
-		case 1: dcb.BaudRate = 115200;
-		break;
-		case 2: dcb.BaudRate = 230400;
-		break;
-		case 3: dcb.BaudRate = 250000;
-		break;
-		case 4: dcb.BaudRate = 345600;
-		break;
-		case 5: dcb.BaudRate = 460800;
-		break;
-		case 6: dcb.BaudRate = 500000;
-		break;
-		case 7: dcb.BaudRate = 576000;
-		break;							
-		case 8: dcb.BaudRate = 1000000;	
-		break;							
-		case 9: dcb.BaudRate = 2000000;
-		break;
-		case 10: dcb.BaudRate = 4000000;
-		break;
-		case 11: dcb.BaudRate = 6000000;
-		break;
-		case 12: dcb.BaudRate = 8000000;
-		break;
-		case 13: dcb.BaudRate = 10000000;
-		break;
-		default: dcb.BaudRate = CBR_115200; // set default speed
-	}
+    switch (m_pAtmoConfig->getAtmoV2_BaudrateIndex())
+    {
+      // set baud speed
+    case 0: dcb.BaudRate = 115200;
+      break;
+    case 1: dcb.BaudRate = 230400;
+      break;
+    case 2: dcb.BaudRate = 250000;
+      break;
+    case 3: dcb.BaudRate = 345600;
+      break;
+    case 4: dcb.BaudRate = 460800;
+      break;
+    case 5: dcb.BaudRate = 500000;
+      break;
+    case 6: dcb.BaudRate = 576000;
+      break;
+    case 7: dcb.BaudRate = 1000000;
+      break;
+    case 8: dcb.BaudRate = 2000000;
+      break;
+    case 9: dcb.BaudRate = 4000000;
+      break;
+    case 10: dcb.BaudRate = 6000000;
+      break;
+    case 11: dcb.BaudRate = 8000000;
+      break;
+    case 12: dcb.BaudRate = 10000000;
+      break;
+    default: dcb.BaudRate = 115200; // set default speed
+    }
 
     dcb.ByteSize = 8;                 // set databits
     dcb.Parity = NOPARITY;            // set parity

@@ -29,21 +29,21 @@ ATMO_BOOL CAtmoDuinoV2ConfigDialog::InitDialog(WPARAM wParam)
     char buf[10];
     HWND control;
 
-	m_hCbxBaudrate = getDlgItem(IDC_COMBO_ATMOV2);
-	ComboBox_AddString(m_hCbxBaudrate, "115200");
-	ComboBox_AddString(m_hCbxBaudrate, "230400");
-	ComboBox_AddString(m_hCbxBaudrate, "250000");
-	ComboBox_AddString(m_hCbxBaudrate, "345600");
-	ComboBox_AddString(m_hCbxBaudrate, "460800");
-	ComboBox_AddString(m_hCbxBaudrate, "500000");
-	ComboBox_AddString(m_hCbxBaudrate, "576000");
-	ComboBox_AddString(m_hCbxBaudrate, "1000000");
-	ComboBox_AddString(m_hCbxBaudrate, "2000000");
-	ComboBox_AddString(m_hCbxBaudrate, "4000000");
-	ComboBox_AddString(m_hCbxBaudrate, "6000000");
-	ComboBox_AddString(m_hCbxBaudrate, "8000000");
-	ComboBox_AddString(m_hCbxBaudrate, "10000000");
-	ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getAtmoV2_BaudrateIndex());
+    m_hCbxBaudrate = getDlgItem(IDC_COMBO_ATMOV2);
+    ComboBox_AddString(m_hCbxBaudrate, "115200");
+    ComboBox_AddString(m_hCbxBaudrate, "230400");
+    ComboBox_AddString(m_hCbxBaudrate, "250000");
+    ComboBox_AddString(m_hCbxBaudrate, "345600");
+    ComboBox_AddString(m_hCbxBaudrate, "460800");
+    ComboBox_AddString(m_hCbxBaudrate, "500000");
+    ComboBox_AddString(m_hCbxBaudrate, "576000");
+    ComboBox_AddString(m_hCbxBaudrate, "1000000");
+    ComboBox_AddString(m_hCbxBaudrate, "2000000");
+    ComboBox_AddString(m_hCbxBaudrate, "4000000");
+    ComboBox_AddString(m_hCbxBaudrate, "6000000");
+    ComboBox_AddString(m_hCbxBaudrate, "8000000");
+    ComboBox_AddString(m_hCbxBaudrate, "10000000");
+    ComboBox_SetCurSel(m_hCbxBaudrate, m_pConfig->getAtmoV2_BaudrateIndex());
 
     control = getDlgItem(IDC_ATMOCL_LED_AMOUNT);
     Edit_LimitText(control, 4);
